@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
+  <!-- BASIC -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web</title>
+  <meta name="theme-color" content="#0f172a" />
 
+  <!-- TITLE -->
+   <title>Muzaffar Mustafayev | Software Engineer & Portfolio</title>
+
+  <!-- SEO META -->
+  <meta name="description" content="Muzaffar Mustafayev — Software Engineer. React, Node.js, MongoDB va zamonaviy web texnologiyalar asosida ishlab chiqilgan portfolio va loyihalar." />
+  <meta name="keywords" content="Muzaffar Mustafayev, Software Engineer Uzbekistan, React Developer, Node.js Developer, Web Developer Portfolio" />
+  <meta name="author" content="Muzaffar Mustafayev" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- OPEN GRAPH (Telegram, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Muzaffar Mustafayev | Software Engineer" />
+  <meta property="og:description" content="Professional Software Engineer portfolio. React, Node.js, modern web development." />
+  <meta property="og:image" content="./src/assets/USER.jpg" />
+  <meta property="og:url" content="https://muzaffarbek.uz" />
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Muzaffar Mustafayev | Software Engineer" />
+  <meta name="twitter:description" content="React & Node.js asosidagi professional portfolio" />
+  <meta name="twitter:image" content="/seo-preview.png" />
+
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://muzaffarbek.uz" />
+<link rel="shortcut icon" href="./src/assets/favicon.svg" type="image/x-icon">
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class', // dark/light toggle uchun
+      darkMode: 'class',
       theme: {
         extend: {
           animation: {
@@ -19,10 +45,29 @@
       },
     }
   </script>
-</head>
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
-  <div id="root"></div>
 
+  <!-- STRUCTURED DATA (Google uchun oltin) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muzaffar Mustafayev",
+    "jobTitle": "Software Engineer",
+    "url": "https://muzaffarbek.uz",
+    "sameAs": [
+    "https://github.com/muzaffarbekmustafayev",
+     "https://www.linkedin.com/in/muzaffarbek-mustafayev-121846278"
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+  <noscript>
+    This website works best with JavaScript enabled.
+  </noscript>
+
+  <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

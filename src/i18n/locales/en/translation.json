@@ -1,0 +1,74 @@
+{
+  "navbar": {
+    "role": "Software Engineer"
+  },
+  "menu": {
+    "home": "Home",
+    "about": "About Me",
+    "portfolio": "Projects",
+    "skills": "Skills",
+    "resume": "Resume",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi, I'm Muzaffarbek Mustafayev",
+    "role": "Software Engineer",
+    "description": "I build reliable and user-focused web applications that solve real problems. For me, every project is not just code — it is a working system."
+  },
+  "about": {
+    "title": "About Me",
+    "quote": "I don't just write code — I build solutions that work.",
+    "intro": "My name is Muzaffarbek Mustafayev. I am a Software Engineer and a third-year student at Samarkand State University.",
+    "stack": "I design and implement web systems tailored to business and user needs. Every decision I make focuses on usability, reliability, and long-term value.",
+    "experience": "I have experience working with users, managing data, controlling access levels, and building secure, scalable systems.",
+    "interests": "I value simplifying complex problems, ensuring security, and continuously improving systems. Growth is a daily discipline for me.",
+    "missionLabel": "Mission",
+    "mission": "My goal is to become an engineer who creates simple yet powerful and reliable systems that deliver real value to users.",
+    "techTitle": "Functionalities I Can Build"
+  },
+  "resume": {
+    "role": "Fullstack Developer",
+    "stack": "Web systems developer",
+    "location": "Samarkand, Uzbekistan",
+    "download": "Download Resume",
+    "downloadAlert": "Resume downloaded!",
+    "summary": {
+      "title": "Professional Summary",
+      "text": "I build secure, user-friendly, and scalable web applications aligned with business and user needs. Practical value and results are always my top priority."
+    },
+    "experience": {
+      "title": "Practical Experience",
+      "role": "Software Engineer",
+      "company": "Samarkand State University",
+      "period": "2023 – Present",
+      "tasks": [
+        "Building user registration and authentication flows",
+        "Managing permissions and access levels for different user roles",
+        "Organizing creation, editing, and deletion of data",
+        "Establishing reliable communication between frontend and backend",
+        "Designing clear and scalable system architectures for large projects"
+      ]
+    },
+    "projects": {
+      "title": "Systems I Can Build",
+      "ai": "Intelligent services that interact with users and automate processes",
+      "face": "Security-focused identity verification and access control solutions"
+    },
+    "skills": {
+      "title": "Core Capabilities"
+    },
+    "education": {
+      "title": "Education",
+      "degree": "Bachelor in Software Engineering",
+      "school": "Samarkand State University",
+      "desc": "Education focused on practical problem-solving, structured thinking, and real-world projects"
+    },
+    "languages": {
+      "title": "Languages",
+      "uz": "Uzbek (Native)",
+      "en": "English (Fluent)",
+      "ru": "Russian (Professional)"
+    }
+  }
+}

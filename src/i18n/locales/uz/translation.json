@@ -1,0 +1,74 @@
+{
+  "navbar": {
+    "role": "Software Engineer"
+  },
+  "menu": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "portfolio": "Loyihalar",
+    "skills": "Imkoniyatlarim",
+    "resume": "Rezyume",
+    "blog": "Blog",
+    "contact": "Aloqa"
+  },
+  "home": {
+    "greeting": "Salom, men Muzaffarbek Mustafayevman",
+    "role": "Software Engineer",
+    "description": "Men real muammolarni hal qiladigan, foydalanuvchi uchun qulay va barqaror web ilovalar yarataman. Har bir loyiha men uchun faqat kod emas — bu ishlaydigan tizim."
+  },
+  "about": {
+    "title": "Men haqimda",
+    "quote": "Men kod yozmayman — men ishlaydigan yechimlar yarataman.",
+    "intro": "Mening ismim Muzaffarbek Mustafayev. Men Software Engineer va Samarqand davlat universitetining 3-bosqich talabasi.",
+    "stack": "Men biznes va foydalanuvchi ehtiyojlariga mos keladigan web tizimlarni loyihalayman va amalga oshiraman. Har bir qarorim qulaylik, ishonchlilik va uzoq muddatli foydalanishga qaratilgan.",
+    "experience": "Men foydalanuvchilar bilan ishlash, ma’lumotlarni boshqarish, ruxsat darajalarini nazorat qilish va tizimlarni xavfsiz hamda kengaytiriladigan tarzda qurish bo‘yicha tajribaga egaman.",
+    "interests": "Men murakkab muammolarni soddalashtirishni, xavfsizlikni ta’minlashni va tizimlarni doimiy rivojlantirishni muhim deb bilaman. O‘sish — bu mening kundalik odatim.",
+    "missionLabel": "Maqsad",
+    "mission": "Mening maqsadim — foydalanuvchiga haqiqiy qiymat beradigan, sodda, lekin kuchli va ishonchli tizimlar yaratadigan muhandis bo‘lish.",
+    "techTitle": "Men yarata oladigan funksionalliklar"
+  },
+  "resume": {
+    "role": "Fullstack dasturchi",
+    "stack": "Web tizimlar ishlab chiquvchi",
+    "location": "Samarqand, O‘zbekiston",
+    "download": "Rezyumeni yuklab olish",
+    "downloadAlert": "Rezyume yuklandi!",
+    "summary": {
+      "title": "Professional xulosa",
+      "text": "Men foydalanuvchi va biznes ehtiyojlariga mos keladigan, xavfsiz, qulay va barqaror web ilovalar ishlab chiqaman. Loyihalarda natija va amaliy foyda birinchi o‘rinda turadi."
+    },
+    "experience": {
+      "title": "Amaliy tajriba",
+      "role": "Software Engineer",
+      "company": "Samarkand State University",
+      "period": "2023 – hozir",
+      "tasks": [
+        "Foydalanuvchilarni ro‘yxatdan o‘tkazish va tizimga kirish jarayonlarini yaratish",
+        "Turli darajadagi foydalanuvchilar uchun ruxsat va cheklovlarni boshqarish",
+        "Ma’lumotlarni yaratish, tahrirlash va o‘chirish jarayonlarini tashkil etish",
+        "Frontend va backend o‘rtasida aniq va ishonchli aloqa o‘rnatish",
+        "Katta loyihalar uchun tushunarli va kengaytiriladigan tizim tuzilmasini qurish"
+      ]
+    },
+    "projects": {
+      "title": "Yarata oladigan tizimlar",
+      "ai": "Foydalanuvchi bilan muloqot qiluvchi va jarayonlarni avtomatlashtiruvchi aqlli xizmatlar",
+      "face": "Xavfsizlikka yo‘naltirilgan shaxsni aniqlash va tizimga kirish yechimlari"
+    },
+    "skills": {
+      "title": "Asosiy imkoniyatlarim"
+    },
+    "education": {
+      "title": "Ta’lim",
+      "degree": "Dasturiy injiniring (Bakalavr)",
+      "school": "Samarqand davlat universiteti",
+      "desc": "Amaliy muammolarni yechish, tizimli fikrlash va real loyihalar bilan ishlashga yo‘naltirilgan ta’lim"
+    },
+    "languages": {
+      "title": "Tillar",
+      "uz": "O‘zbek (ona tili)",
+      "en": "Ingliz (erkin muloqot)",
+      "ru": "Rus (professional daraja)"
+    }
+  }
+}

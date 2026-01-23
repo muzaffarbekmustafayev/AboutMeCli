@@ -1,6 +1,6 @@
 export const socialMedias = {
   git_hub: {
-    path: "https://github.com/muzaffarbekmustafayevgit",
+    path: "https://github.com/muzaffarbekmustafayev",
     label: "GitHub",
   },
   linkedin: {
