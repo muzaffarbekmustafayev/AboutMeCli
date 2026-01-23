@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const languages = [
-    { code: "en", label: "EN" },
+  { code: "en", label: "EN" },
+  { code: "ru", label: "RU" },
   { code: "uz", label: "UZ" },
-  
-  { code: "ru", label: "RU" }
 ];
+
+// Default tilni aniqlash
+const detectLanguage = () => {
+  // 1️⃣ Agar user oldin tanlagan bo‘lsa — o‘sha
+  const savedLang = localStorage.getItem("language");
+  if (savedLang) return savedLang;
+
+  // 2️⃣ Browser tiliga qaraymiz
+  const browserLang = navigator.language || navigator.userLanguage;
+
+  if (browserLang && browserLang.toLowerCase().startsWith("ru")) {
+    return "ru";
+  }
+
+  // 3️⃣ Boshqa barcha holatlar
+  return "en";
+};
 
 const LangToggle = () => {
   const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const lang = detectLanguage();
+
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+      localStorage.setItem("language", lang);
+    }
+  }, [i18n]);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);

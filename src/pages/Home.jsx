@@ -61,10 +61,7 @@ function Home() {
           duration-500
         "
       >
-        {/* Theme toggle (mobile only) */}
-        <div className="flex justify-end mb-4 lg:hidden">
-          <ThemeToggle />
-        </div>
+       
 
         {/* Title */}
         <h3
