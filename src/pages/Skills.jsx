@@ -57,7 +57,7 @@ function Skills() {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200">
-      <span className="hidden"><ThemeToggle /></span>
+      {/* <span className="hidden"><ThemeToggle /></span> */}
 
       {/* TITLE */}
       <div className="text-center mb-8">

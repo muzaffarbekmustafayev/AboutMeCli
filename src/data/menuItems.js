@@ -7,4 +7,4 @@ export const menuItems = [
   { key: "blog", path: "/blog", label: "Blog" },
   { key: "contact", path: "/contact", label: "Contact" }
 
-];
+];  

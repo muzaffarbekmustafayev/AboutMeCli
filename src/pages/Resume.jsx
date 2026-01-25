@@ -17,7 +17,7 @@ import {
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "../components/ThemeToggle";
 import { socialMedias } from "../data/socialMedias";
-
+import CVDownload from "../components/CVdownload";
 const Resume = () => {
   const { t } = useTranslation();
 
@@ -28,9 +28,9 @@ const Resume = () => {
   return (
     <div className="min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-      <div className="w-full hidden flex justify-end pr-4">
+      {/* <div className="w-full hidden flex justify-end pr-4">
         <ThemeToggle />
-      </div>
+      </div> */}
 
       <div className="max-w-4xl mx-auto mt-12 px-4 py-8 sm:px-6 lg:px-8">
 
@@ -74,13 +74,7 @@ const Resume = () => {
               </div>
             </div>
 
-            <button
-              onClick={downloadResume}
-              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:from-blue-600 hover:to-purple-600 transition-all hover:shadow-lg"
-            >
-              <Download size={20} />
-              {t("resume.download")}
-            </button>
+           < CVDownload/>
           </div>
 
           {/* SOCIAL */}

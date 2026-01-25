@@ -70,5 +70,39 @@
       "en": "Ingliz (erkin muloqot)",
       "ru": "Rus (professional daraja)"
     }
+  },
+  "contact": {
+    "title": "Bog‘lanish",
+    "subtitle": "Loyiha, hamkorlik yoki savollar bo‘yicha bemalol murojaat qiling",
+    "email": "Email",
+    "phone": "Telefon",
+    "formTitle": "Xabar yuborish",
+    "name": "Ismingiz",
+    "emailPlaceholder": "Email manzilingiz",
+    "message": "Xabaringiz",
+    "send": "Yuborish",
+    "success": "Xabaringiz muvaffaqiyatli yuborildi!"
+  },"portfolio": {
+    "title": "Yarata oladigan tizimlar",
+    "subtitle": "Men real muammolarni hal qiladigan, xavfsiz va kengaytiriladigan web tizimlar yarataman",
+    "systems": {
+      "auth": {
+        "title": "Foydalanuvchi tizimlari",
+        "desc": "Ro‘yxatdan o‘tish, tizimga kirish, foydalanuvchi rollari va ruxsatlarni boshqarish."
+      },
+      "security": {
+        "title": "Xavfsizlikka yo‘naltirilgan yechimlar",
+        "desc": "Ma’lumotlarni himoyalash, ruxsatlarni nazorat qilish va xavfsiz ishlash muhitini ta’minlash."
+      },
+      "management": {
+        "title": "Ma’lumotlarni boshqarish tizimlari",
+        "desc": "Yaratish, tahrirlash va boshqarish jarayonlari aniq va qulay tashkil etilgan tizimlar."
+      },
+      "automation": {
+        "title": "Avtomatlashtirilgan jarayonlar",
+        "desc": "Takroriy ishlarni avtomatlashtirish va tizim ishini soddalashtirish."
+      }
+    },
+    "note": "Har bir tizim real loyiha talablariga moslab ishlab chiqiladi."
   }
 }

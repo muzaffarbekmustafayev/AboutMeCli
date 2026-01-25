@@ -70,5 +70,44 @@
       "en": "English (Fluent)",
       "ru": "Russian (Professional)"
     }
+  },
+
+  
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Feel free to contact me for projects, collaboration, or any questions",
+    "email": "Email",
+    "phone": "Phone",
+    "formTitle": "Send a Message",
+    "name": "Your Name",
+    "emailPlaceholder": "Your Email Address",
+    "message": "Your Message",
+    "send": "Send Message",
+    "success": "Your message has been sent successfully!"
+  },
+   "portfolio": {
+    "title": "Systems I Build",
+    "subtitle": "I design and build secure, scalable systems that solve real-world problems",
+    "systems": {
+      "auth": {
+        "title": "User Management Systems",
+        "desc": "User registration, authentication, role management, and access control."
+      },
+      "security": {
+        "title": "Security-Oriented Solutions",
+        "desc": "Protecting data, managing permissions, and ensuring secure system operation."
+      },
+      "management": {
+        "title": "Data Management Systems",
+        "desc": "Well-structured systems for creating, editing, and managing information."
+      },
+      "automation": {
+        "title": "Process Automation",
+        "desc": "Automating repetitive tasks to simplify workflows and improve efficiency."
+      }
+    },
+    "note": "Each system is tailored to real project requirements."
   }
 }
+
+

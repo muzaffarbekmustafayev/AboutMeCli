@@ -178,7 +178,20 @@ function Home() {
             >
               <Linkedin className="w-5 h-5 text-blue-700 dark:text-blue-400" />
             </a>
-
+<a
+              href={socialMedias.telegram.path}
+              target="_blank"
+              rel="noreferrer"
+              className="
+                p-3 rounded-full
+                bg-gray-200 dark:bg-gray-700
+                shadow-md
+                hover:-translate-y-1 hover:shadow-xl
+                transition
+              "
+            >
+              <TelegramIcon size={20} />
+            </a>
             <a
               href={socialMedias.youtube.path}
               target="_blank"
@@ -194,20 +207,7 @@ function Home() {
               <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
             </a>
 
-            <a
-              href={socialMedias.telegram.path}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                p-3 rounded-full
-                bg-gray-200 dark:bg-gray-700
-                shadow-md
-                hover:-translate-y-1 hover:shadow-xl
-                transition
-              "
-            >
-              <TelegramIcon size={20} />
-            </a>
+            
           </div>
         </div>
       </div>
