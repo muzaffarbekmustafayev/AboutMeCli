@@ -82,7 +82,8 @@
     "message": "Xabaringiz",
     "send": "Yuborish",
     "success": "Xabaringiz muvaffaqiyatli yuborildi!"
-  },"portfolio": {
+  },
+  "portfolio": {
     "title": "Yarata oladigan tizimlar",
     "subtitle": "Men real muammolarni hal qiladigan, xavfsiz va kengaytiriladigan web tizimlar yarataman",
     "systems": {
@@ -104,5 +105,67 @@
       }
     },
     "note": "Har bir tizim real loyiha talablariga moslab ishlab chiqiladi."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Fikrlar, tajribalar va",
+    "titleAccent": "amaliy yechimlar",
+    "subtitle": "Front-end, dizayn va ishlab chiqish jarayoni bo‘yicha yangi maqolalar, mini qo‘llanmalar va real tajribalar.",
+    "weekly": {
+      "title": "Haftalik yangiliklar",
+      "description": "Eng ommabop mavzular, yangi maqolalar va qisqa tavsiyalar.",
+      "cta": "Obuna bo‘lish"
+    },
+    "readMore": "O‘qishni davom ettirish",
+    "topicsTitle": "Tavsiya etilgan mavzular",
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Haftasiga bir marta qisqa, foydali kontent yuboramiz.",
+      "placeholder": "Email manzilingiz",
+      "cta": "Ro‘yxatdan o‘tish"
+    },
+    "posts": [
+      {
+        "title": "React komponentlarini tizimli qurish",
+        "excerpt": "Komponentlarni toza, qayta ishlatiladigan va oson sinovdan o‘tkaziladigan qilib tuzish bo‘yicha amaliy yondashuvlar.",
+        "date": "2024-11-02",
+        "readTime": "6 daqiqa",
+        "category": "React",
+        "tags": ["Hooks", "Architecture"]
+      },
+      {
+        "title": "Vite bilan tezkor Frontend workflow",
+        "excerpt": "HMR, optimallashtirilgan build va zamonaviy tooling yordamida tezkor ishlab chiqish jarayoni.",
+        "date": "2024-10-18",
+        "readTime": "5 daqiqa",
+        "category": "Tooling",
+        "tags": ["Vite", "Performance"]
+      },
+      {
+        "title": "Portfolio saytingizni SEOga tayyorlash",
+        "excerpt": "Meta taglar, semantik HTML va ma’lumot tuzilmasi orqali ko‘rinuvchanlikni oshirish usullari.",
+        "date": "2024-09-30",
+        "readTime": "7 daqiqa",
+        "category": "SEO",
+        "tags": ["Accessibility", "Best practices"]
+      }
+    ],
+    "topics": [
+      {
+        "title": "Front-end checklist",
+        "description": "Har bir loyiha uchun eng muhim tekshiruvlar ro‘yxati.",
+        "badge": "Qo‘llanma"
+      },
+      {
+        "title": "Tailwind CSS bilan dizayn tizimi",
+        "description": "Tokenlar, rang palitrasi va komponentlar uyg‘unligi.",
+        "badge": "Dizayn"
+      },
+      {
+        "title": "React performance tips",
+        "description": "Re-renderlarni kamaytirish va UXni tezlashtirish.",
+        "badge": "Performance"
+      }
+    ]
   }
 }
