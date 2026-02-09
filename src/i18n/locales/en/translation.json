@@ -71,8 +71,6 @@
       "ru": "Russian (Professional)"
     }
   },
-
-  
   "contact": {
     "title": "Get in Touch",
     "subtitle": "Feel free to contact me for projects, collaboration, or any questions",
@@ -85,7 +83,7 @@
     "send": "Send Message",
     "success": "Your message has been sent successfully!"
   },
-   "portfolio": {
+  "portfolio": {
     "title": "Systems I Build",
     "subtitle": "I design and build secure, scalable systems that solve real-world problems",
     "systems": {
@@ -107,6 +105,68 @@
       }
     },
     "note": "Each system is tailored to real project requirements."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Thoughts, experiences, and",
+    "titleAccent": "practical solutions",
+    "subtitle": "Fresh posts on front-end, design, and development workflows with mini guides and real insights.",
+    "weekly": {
+      "title": "Weekly highlights",
+      "description": "Popular topics, new posts, and quick tips in one place.",
+      "cta": "Subscribe"
+    },
+    "readMore": "Continue reading",
+    "topicsTitle": "Recommended topics",
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "We send one short, useful update every week.",
+      "placeholder": "Your email address",
+      "cta": "Sign up"
+    },
+    "posts": [
+      {
+        "title": "Structuring React components the right way",
+        "excerpt": "Practical approaches to keep components clean, reusable, and easy to test.",
+        "date": "2024-11-02",
+        "readTime": "6 min read",
+        "category": "React",
+        "tags": ["Hooks", "Architecture"]
+      },
+      {
+        "title": "Fast front-end workflow with Vite",
+        "excerpt": "HMR, optimized builds, and modern tooling for rapid development.",
+        "date": "2024-10-18",
+        "readTime": "5 min read",
+        "category": "Tooling",
+        "tags": ["Vite", "Performance"]
+      },
+      {
+        "title": "SEO readiness for your portfolio",
+        "excerpt": "Improve visibility with meta tags, semantic HTML, and structured data.",
+        "date": "2024-09-30",
+        "readTime": "7 min read",
+        "category": "SEO",
+        "tags": ["Accessibility", "Best practices"]
+      }
+    ],
+    "topics": [
+      {
+        "title": "Front-end checklist",
+        "description": "The most important checks for every project.",
+        "badge": "Guide"
+      },
+      {
+        "title": "Design systems with Tailwind CSS",
+        "description": "Tokens, palettes, and cohesive component styling.",
+        "badge": "Design"
+      },
+      {
+        "title": "React performance tips",
+        "description": "Reduce re-renders and speed up the UX.",
+        "badge": "Performance"
+      }
+    ]
   }
 }
 
