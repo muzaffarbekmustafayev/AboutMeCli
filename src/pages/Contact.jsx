@@ -5,7 +5,8 @@ import Button from "../components/Button";
 import { socialMedias } from "../data/socialMedias";
 
 import TelegramIcon from "../components/Icons/TelegramIcon";
-import { Github, Linkedin, Youtube,Instagram } from "lucide-react";
+import { Github, Linkedin, Youtube } from "lucide-react";
+
 const Contact = () => {
   const { t } = useTranslation();
 
@@ -19,12 +20,18 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
+    if (success) {
+      setSuccess(false);
+    }
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (loading) return;
+
+    const hasEmptyFields = Object.values(formData).some((value) => !value.trim());
+    if (hasEmptyFields) return;
 
     setLoading(true);
     setSuccess(false);
@@ -37,11 +44,54 @@ const Contact = () => {
     }, 1500);
   };
 
+  const socialLinks = [
+    {
+      key: "telegram",
+      href: socialMedias.telegram.path,
+      label: "Telegram",
+      icon: <TelegramIcon size={20} />,
+      iconClass: "text-sky-600 dark:text-sky-400"
+    },
+    {
+      key: "github",
+      href: socialMedias.git_hub.path,
+      label: "GitHub",
+      icon: <Github className="w-5 h-5" />,
+      iconClass: "text-gray-900 dark:text-gray-200"
+    },
+    {
+      key: "linkedin",
+      href: socialMedias.linkedin.path,
+      label: "LinkedIn",
+      icon: <Linkedin className="w-5 h-5" />,
+      iconClass: "text-blue-700 dark:text-blue-400"
+    },
+    {
+      key: "instagram",
+      href: socialMedias.instagram.path,
+      label: "Instagram",
+      icon: <InstagramIcon size={20} />,
+      iconClass: "text-pink-600 dark:text-pink-400"
+    },
+    {
+      key: "facebook",
+      href: socialMedias.facebook.path,
+      label: "Facebook",
+      icon: <FacebookIcon size={20} />,
+      iconClass: "text-blue-600 dark:text-blue-400"
+    },
+    {
+      key: "youtube",
+      href: socialMedias.youtube.path,
+      label: "YouTube",
+      icon: <Youtube className="w-5 h-5" />,
+      iconClass: "text-red-600 dark:text-red-400"
+    }
+  ];
+
   return (
     <div className="min-h-screen pt-20 px-4 bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="max-w-5xl mx-auto">
-
-        {/* TITLE */}
         <div className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-200">
             {t("contact.title")}
@@ -52,8 +102,6 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-
-          {/* LEFT – CONTACT INFO */}
           <div className="space-y-5">
             <ContactItem
               icon={<Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
@@ -66,123 +114,38 @@ const Contact = () => {
               icon={<Phone className="w-5 h-5 text-green-600 dark:text-green-400" />}
               label={t("contact.phone")}
               value={socialMedias.phone.path}
-            />{/* Social links */}
-<div className="flex gap-3 pt-2">
+              href={`tel:${socialMedias.phone.path.replace(/\s+/g, "")}`}
+            />
 
-
-    <a
-    href={socialMedias.telegram.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Telegram"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <TelegramIcon size={20} />
-  </a>
-  <a
-    href={socialMedias.git_hub.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="GitHub"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Github className="w-5 h-5 text-gray-900 dark:text-gray-200" />
-  </a>
-
-  <a
-    href={socialMedias.linkedin.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="LinkedIn"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Linkedin className="w-5 h-5 text-blue-700 dark:text-blue-400" />
-  </a>
-
- 
-
-  <a
-    href={socialMedias.instagram.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <InstagramIcon size={20} />
-  </a>
-  
-  <a
-    href={socialMedias.facebook.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Facebook"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <FacebookIcon size={20} />
-  </a>
-
-   <a
-    href={socialMedias.youtube.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="YouTube"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
-  </a>
-</div>
+            <div className="flex flex-wrap gap-3 pt-2">
+              {socialLinks.map(({ key, href, label, icon, iconClass }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className={`p-3 rounded-full bg-gray-200 dark:bg-gray-700 shadow-md hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition ${iconClass}`}
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
 
           </div>
 
-          {/* RIGHT – FORM */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
             <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
               {t("contact.formTitle")}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-
               <Input
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder={t("contact.name")}
+                autoComplete="name"
               />
 
               <Input
@@ -191,6 +154,7 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={t("contact.emailPlaceholder")}
+                autoComplete="email"
               />
 
               <Textarea
@@ -198,22 +162,27 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder={t("contact.message")}
+                minLength={10}
               />
 
-             <Button
-  type="submit"
-  variant="primary"
-  size="lg"
-  loading={loading}
-  disabled={loading}
-  className="w-full"
-  icon={<Send size={18} />}
->
-  {t("contact.send")}
-</Button>
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                loading={loading}
+                disabled={
+                  loading ||
+                  Object.values(formData).some((value) => !value.trim()) ||
+                  formData.message.trim().length < 10
+                }
+                className="w-full"
+                icon={<Send size={18} />}
+              >
+                {t("contact.send")}
+              </Button>
 
               {success && (
-                <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
+                <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl" role="status">
                   <p className="text-green-700 dark:text-green-400">
                     {t("contact.success")}
                   </p>
