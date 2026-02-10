@@ -28,7 +28,7 @@
       },
 
       images: [
-        "../../public/projects/demo/js_compiler.png"
+        "../projects/demo/js_compiler.png"
       ]
     },
   ];

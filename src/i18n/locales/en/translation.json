@@ -167,6 +167,34 @@
         "badge": "Performance"
       }
     ]
+  },
+
+ "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Tools and technologies I use to build scalable, modern web applications.",
+
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools"
+    },
+
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate"
+    },
+
+    "footer": "I value clean code, scalable architecture, and long-term solutions over short-lived hacks."
+  }
+  ,
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you are looking for seems to have vanished like words whispered to the wind. Perhaps it is time to return and choose another path.",
+    "backHome": "Back to home"
   }
 }
 

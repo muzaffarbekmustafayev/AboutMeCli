@@ -167,5 +167,34 @@
         "badge": "Performance"
       }
     ]
+  },
+  "skills": {
+    "title": "Ko‘nikmalar va texnologiyalar",
+    "subtitle": "Zamonaviy va kengaytiriladigan web ilovalar yaratishda foydalanadigan vositalarim.",
+
+    "categories": {
+      "all": "Barchasi",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Ma’lumotlar bazasi",
+      "tools": "Vositalar"
+    },
+
+    "levels": {
+      "expert": "Mutaxassis",
+      "advanced": "Yuqori",
+      "intermediate": "O‘rta"
+    },
+
+    "footer": "Men qisqa muddatli yechimlardan ko‘ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman."
   }
+  ,
+  "notFound": {
+    "code": "404",
+    "title": "Sahifa topilmadi",
+    "description": "Siz izlagan manzil shamolga aytilgan so‘zdek g‘oyib bo‘lgan ko‘rinadi. Balki orqaga qaytib, yo‘lni boshqatdan tanlarmiz?",
+    "backHome": "Asosiy sahifaga qaytish"
+  }
+
+
 }
