@@ -82,7 +82,7 @@ export const projects = [
 
     links: {
       github: "https://github.com/muzaffarbekmustafayev/infinityFlower.git",
-      live: "",
+      live: "https://infinity-flower.vercel.app/",
       zip: "/public/projects/zips/infinityFlower-main.zip"
     },
 
