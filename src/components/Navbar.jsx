@@ -34,20 +34,20 @@ export default function Navbar() {
         }
       `}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
         <Logo t={t} />
 
         <DesktopMenu t={t} isActive={isActive} />
 
-       <div className="flex items-center gap-3">
-  <div className="hidden lg:block">
-    <LangToggle />
-  </div>
+        <div className="flex items-center justify-end gap-3 shrink-0">
+          <div className="hidden lg:block">
+            <LangToggle />
+          </div>
 
-  <ThemeToggle />
-  <Burger open={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
-</div>
+          <ThemeToggle />
+          <Burger open={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
+        </div>
 
       </div>
 
@@ -85,7 +85,7 @@ const Logo = ({ t }) => (
 /* ================= DESKTOP MENU ================= */
 
 const DesktopMenu = ({ t, isActive }) => (
-  <div className="hidden lg:flex items-center">
+  <div className="hidden lg:flex items-center justify-center">
     {menuItems.map(({ key, path }) => (
       <Link key={key} to={path} className="relative px-4 py-2 group">
         <span
@@ -130,8 +130,8 @@ const MobileMenu = ({ open, close, isActive, t }) => {
   if (!open) return null;
 
   return (
-    <div className="lg:hidden fixed inset-0 top-20 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl">
-      <div className="p-6 space-y-3">
+    <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/40">
+      <div className="p-6 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto">
         {menuItems.map(({ key, path }) => (
           <Link
             key={key}

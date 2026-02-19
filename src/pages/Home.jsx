@@ -6,7 +6,6 @@ import MyImage from "../assets/USER.jpg";
 import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
-import ThemeToggle from "../components/ThemeToggle";
 
 function Home() {
   const { t } = useTranslation();
@@ -24,43 +23,39 @@ function Home() {
     <section
       className="
         min-h-screen
-        flex
-        flex-col
-        lg:flex-row
-        items-center
-        justify-center
-        gap-8
+        flex items-center justify-center
         px-4
         sm:px-6
-        md:px-10
-        pt-24
+        lg:px-8
+        pt-28
+        pb-12
         bg-gray-50
         dark:bg-gray-900
         transition-colors
         duration-500
       "
     >
-      {/* ================= CONTENT CARD ================= */}
-      <div
-        className="
-          w-full
-          max-w-xl
-          bg-white/80
-          dark:bg-gray-800/80
-          backdrop-blur-xl
-          rounded-2xl
-          p-6
-          sm:p-8
-          lg:p-10
-          border
-          border-gray-200
-          dark:border-gray-700
-          shadow-[0_0_40px_rgba(59,130,246,0.35)]
-          dark:shadow-[0_0_50px_rgba(59,130,246,0.45)]
-          transition-all
-          duration-500
-        "
-      >
+      <div className="w-full max-w-6xl grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* ================= CONTENT CARD ================= */}
+        <div
+          className="
+            w-full
+            bg-white/80
+            dark:bg-gray-800/80
+            backdrop-blur-xl
+            rounded-2xl
+            p-6
+            sm:p-8
+            lg:p-10
+            border
+            border-gray-200
+            dark:border-gray-700
+            shadow-[0_0_40px_rgba(59,130,246,0.35)]
+            dark:shadow-[0_0_50px_rgba(59,130,246,0.45)]
+            transition-all
+            duration-500
+          "
+        >
        
 
         {/* Title */}
@@ -74,7 +69,7 @@ function Home() {
             text-gray-900
             dark:text-white
             mb-4
-            text-center
+            text-center lg:text-left
             
             max-w-md
             mx-auto
@@ -145,10 +140,10 @@ function Home() {
         </p>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
           <CVdownload />
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
             <a
               href={socialMedias.git_hub.path}
               target="_blank"
@@ -210,42 +205,43 @@ function Home() {
             
           </div>
         </div>
-      </div>
-
-      {/* ================= DESKTOP IMAGE ================= */}
-      <div className="relative hidden lg:block w-80 h-80 xl:w-96 xl:h-96">
-        <div
-          className="
-            absolute inset-0 rounded-full
-            motion-reduce:animate-none
-          "
-          style={{
-            background:
-              "conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)",
-            transform: `rotate(${rotation}deg)`,
-          }}
-        >
-          <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full shadow-inner" />
         </div>
 
-        <div
-          className="
-            absolute
-            inset-6
-            rounded-full
-            overflow-hidden
-            border
-            border-white
-            dark:border-gray-800
-            shadow-xl
-          "
-        >
-          <img
-            src={MyImage}
-            alt="Muzaffarbek Mustafayev"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
+        {/* ================= DESKTOP IMAGE ================= */}
+        <div className="relative hidden lg:block w-80 h-80 xl:w-96 xl:h-96 justify-self-center">
+          <div
+            className="
+              absolute inset-0 rounded-full
+              motion-reduce:animate-none
+            "
+            style={{
+              background:
+                "conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)",
+              transform: `rotate(${rotation}deg)`,
+            }}
+          >
+            <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full shadow-inner" />
+          </div>
+
+          <div
+            className="
+              absolute
+              inset-6
+              rounded-full
+              overflow-hidden
+              border
+              border-white
+              dark:border-gray-800
+              shadow-xl
+            "
+          >
+            <img
+              src={MyImage}
+              alt="Muzaffarbek Mustafayev"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>

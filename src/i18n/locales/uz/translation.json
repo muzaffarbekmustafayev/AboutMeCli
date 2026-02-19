@@ -84,6 +84,32 @@
     "success": "Xabaringiz muvaffaqiyatli yuborildi!"
   },
   "portfolio": {
+    "pageTitle": "Mening Loyihalarim",
+    "pageSubtitle": "G‘oyadan amalga oshirilgan real loyihalar va amaliy texnologiyalar",
+    "projectLabel": "Loyiha",
+    "downloadZip": "ZIP yuklab olish",
+    "items": {
+      "infinityFlower": {
+        "title": "Infinity Flower",
+        "description": "Davomiy o‘sib boruvchi va o‘zgaruvchan gul shaklidagi vizualizatsiya.",
+        "features": [
+          "Foydalanuvchi ro‘yxatdan o‘tmasdan ko'rish va o‘zaro ta’sir qilish imkoniyati",
+          "Real-time animatsiya",
+          "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
+          "Chiroyli va o‘zgaruvchan gul shakli"
+        ]
+      },
+      "jsCompiler": {
+        "title": "JS Compiler",
+        "description": "JavaScript kodini bajaruvchi va natijalarni ko‘rsatuvchi tizim.",
+        "features": [
+          "Foydalanuvchi ro‘yxatdan o‘tmasdan kod yozishi va bajarishi mumkin",
+          "Real-time compiler",
+          "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
+          "Natijalar darhol"
+        ]
+      }
+    },
     "title": "Yarata oladigan tizimlar",
     "subtitle": "Men real muammolarni hal qiladigan, xavfsiz va kengaytiriladigan web tizimlar yarataman",
     "systems": {
