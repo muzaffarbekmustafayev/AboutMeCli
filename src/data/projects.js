@@ -2,7 +2,7 @@ export const projects = [
 
 
   {
-    id: "JS Compiler",
+    id: "jsCompiler",
     title: "JS Compiler",
     description:
       "JavaScript kodini bajaruvchi va natijalarni ko‘rsatuvchi tizim.",
@@ -33,7 +33,7 @@ export const projects = [
     ]
   },
    {
-    id: "WormGPT",
+    id: "wormGPT",
     title: "WormGPT",
     description:
       "AI asosida JavaScript kodini yozishga yordam beruvchi tizim.",

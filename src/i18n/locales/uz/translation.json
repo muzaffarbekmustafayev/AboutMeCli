@@ -87,7 +87,11 @@
     "pageTitle": "Mening Loyihalarim",
     "pageSubtitle": "G‘oyadan amalga oshirilgan real loyihalar va amaliy texnologiyalar",
     "projectLabel": "Loyiha",
+    "github": "GitHub",
     "downloadZip": "ZIP yuklab olish",
+    "liveDemo": "Jonli demo",
+    "details": "Batafsil",
+    "close": "Yopish",
     "items": {
       "infinityFlower": {
         "title": "Infinity Flower",
@@ -106,6 +110,15 @@
           "Foydalanuvchi ro‘yxatdan o‘tmasdan kod yozishi va bajarishi mumkin",
           "Real-time compiler",
           "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
+          "Natijalar darhol"
+        ]
+      },
+      "wormGPT": {
+        "title": "WormGPT",
+        "description": "AI asosida JavaScript kodini yozishga yordam beruvchi tizim.",
+        "features": [
+          "Foydalanuvchi ro‘yxatdan o‘tmasdan kod yozishi va bajarishi mumkin",
+          "Real-time chat",
           "Natijalar darhol"
         ]
       }
@@ -157,7 +170,10 @@
         "date": "2024-11-02",
         "readTime": "6 daqiqa",
         "category": "React",
-        "tags": ["Hooks", "Architecture"]
+        "tags": [
+          "Hooks",
+          "Architecture"
+        ]
       },
       {
         "title": "Vite bilan tezkor Frontend workflow",
@@ -165,7 +181,10 @@
         "date": "2024-10-18",
         "readTime": "5 daqiqa",
         "category": "Tooling",
-        "tags": ["Vite", "Performance"]
+        "tags": [
+          "Vite",
+          "Performance"
+        ]
       },
       {
         "title": "Portfolio saytingizni SEOga tayyorlash",
@@ -173,7 +192,10 @@
         "date": "2024-09-30",
         "readTime": "7 daqiqa",
         "category": "SEO",
-        "tags": ["Accessibility", "Best practices"]
+        "tags": [
+          "Accessibility",
+          "Best practices"
+        ]
       }
     ],
     "topics": [
@@ -197,7 +219,6 @@
   "skills": {
     "title": "Ko‘nikmalar va texnologiyalar",
     "subtitle": "Zamonaviy va kengaytiriladigan web ilovalar yaratishda foydalanadigan vositalarim.",
-
     "categories": {
       "all": "Barchasi",
       "frontend": "Frontend",
@@ -205,22 +226,17 @@
       "database": "Ma’lumotlar bazasi",
       "tools": "Vositalar"
     },
-
     "levels": {
       "expert": "Mutaxassis",
       "advanced": "Yuqori",
       "intermediate": "O‘rta"
     },
-
     "footer": "Men qisqa muddatli yechimlardan ko‘ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman."
-  }
-  ,
+  },
   "notFound": {
     "code": "404",
     "title": "Sahifa topilmadi",
     "description": "Siz izlagan manzil shamolga aytilgan so‘zdek g‘oyib bo‘lgan ko‘rinadi. Balki orqaga qaytib, yo‘lni boshqatdan tanlarmiz?",
     "backHome": "Asosiy sahifaga qaytish"
   }
-
-
 }

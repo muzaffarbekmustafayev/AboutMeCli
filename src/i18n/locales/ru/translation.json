@@ -108,6 +108,15 @@
           "Поддерживаются основные возможности JavaScript",
           "Мгновенный результат"
         ]
+      },
+      "wormGPT": {
+        "title": "WormGPT",
+        "description": "An AI-assisted system that helps write JavaScript code.",
+        "features": [
+          "Users can write and run code without registration",
+          "Real-time chat",
+          "Instant output"
+        ]
       }
     },
     "title": "Системы, которые я создаю",
@@ -130,7 +139,11 @@
         "desc": "Автоматизация рутинных задач для упрощения рабочих процессов."
       }
     },
-    "note": "Каждая система разрабатывается под реальные требования проекта."
+    "note": "Каждая система разрабатывается под реальные требования проекта.",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "details": "Details",
+    "close": "Close"
   },
   "blog": {
     "eyebrow": "Блог",
@@ -157,7 +170,10 @@
         "date": "2024-11-02",
         "readTime": "6 мин чтения",
         "category": "React",
-        "tags": ["Hooks", "Architecture"]
+        "tags": [
+          "Hooks",
+          "Architecture"
+        ]
       },
       {
         "title": "Быстрый workflow на Vite",
@@ -165,7 +181,10 @@
         "date": "2024-10-18",
         "readTime": "5 мин чтения",
         "category": "Tooling",
-        "tags": ["Vite", "Performance"]
+        "tags": [
+          "Vite",
+          "Performance"
+        ]
       },
       {
         "title": "SEO готовность портфолио",
@@ -173,7 +192,10 @@
         "date": "2024-09-30",
         "readTime": "7 мин чтения",
         "category": "SEO",
-        "tags": ["Accessibility", "Best practices"]
+        "tags": [
+          "Accessibility",
+          "Best practices"
+        ]
       }
     ],
     "topics": [
@@ -194,12 +216,9 @@
       }
     ]
   },
-
-
   "skills": {
     "title": "Навыки и технологии",
     "subtitle": "Инструменты и технологии, которые я использую для создания масштабируемых и современных веб-приложений.",
-
     "categories": {
       "all": "Все",
       "frontend": "Фронтенд",
@@ -207,17 +226,13 @@
       "database": "Базы данных",
       "tools": "Инструменты"
     },
-
     "levels": {
       "expert": "Эксперт",
       "advanced": "Продвинутый",
       "intermediate": "Средний"
     },
-
     "footer": "Я ценю чистый код, масштабируемую архитектуру и долгосрочные решения выше краткосрочных хаков."
-  }
-,
-
+  },
   "notFound": {
     "code": "404",
     "title": "Страница не найдена",

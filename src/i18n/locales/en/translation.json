@@ -87,7 +87,11 @@
     "pageTitle": "My Projects",
     "pageSubtitle": "Real projects built from ideas with practical technologies",
     "projectLabel": "Project",
+    "github": "GitHub",
     "downloadZip": "Download ZIP",
+    "liveDemo": "Live Demo",
+    "details": "Details",
+    "close": "Close",
     "items": {
       "infinityFlower": {
         "title": "Infinity Flower",
@@ -106,6 +110,15 @@
           "Users can write and execute code without registration",
           "Real-time compiler",
           "Core JavaScript features are supported",
+          "Instant output"
+        ]
+      },
+      "wormGPT": {
+        "title": "WormGPT",
+        "description": "An AI-assisted system that helps write JavaScript code.",
+        "features": [
+          "Users can write and run code without registration",
+          "Real-time chat",
           "Instant output"
         ]
       }
@@ -157,7 +170,10 @@
         "date": "2024-11-02",
         "readTime": "6 min read",
         "category": "React",
-        "tags": ["Hooks", "Architecture"]
+        "tags": [
+          "Hooks",
+          "Architecture"
+        ]
       },
       {
         "title": "Fast front-end workflow with Vite",
@@ -165,7 +181,10 @@
         "date": "2024-10-18",
         "readTime": "5 min read",
         "category": "Tooling",
-        "tags": ["Vite", "Performance"]
+        "tags": [
+          "Vite",
+          "Performance"
+        ]
       },
       {
         "title": "SEO readiness for your portfolio",
@@ -173,7 +192,10 @@
         "date": "2024-09-30",
         "readTime": "7 min read",
         "category": "SEO",
-        "tags": ["Accessibility", "Best practices"]
+        "tags": [
+          "Accessibility",
+          "Best practices"
+        ]
       }
     ],
     "topics": [
@@ -194,11 +216,9 @@
       }
     ]
   },
-
- "skills": {
+  "skills": {
     "title": "Skills & Technologies",
     "subtitle": "Tools and technologies I use to build scalable, modern web applications.",
-
     "categories": {
       "all": "All",
       "frontend": "Frontend",
@@ -206,16 +226,13 @@
       "database": "Database",
       "tools": "Tools"
     },
-
     "levels": {
       "expert": "Expert",
       "advanced": "Advanced",
       "intermediate": "Intermediate"
     },
-
     "footer": "I value clean code, scalable architecture, and long-term solutions over short-lived hacks."
-  }
-  ,
+  },
   "notFound": {
     "code": "404",
     "title": "Page not found",
@@ -223,5 +240,3 @@
     "backHome": "Back to home"
   }
 }
-
-
