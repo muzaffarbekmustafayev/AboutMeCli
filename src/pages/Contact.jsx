@@ -1,26 +1,34 @@
 import React, { useState } from "react";
-import { FacebookIcon, InstagramIcon, Mail, Phone, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Send,
+  Github,
+  Linkedin,
+  Youtube,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
+
 import Button from "../components/Button";
 import { socialMedias } from "../data/socialMedias";
-
 import TelegramIcon from "../components/Icons/TelegramIcon";
-import { Github, Linkedin, Youtube,Instagram } from "lucide-react";
+
 const Contact = () => {
   const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +37,6 @@ const Contact = () => {
     setLoading(true);
     setSuccess(false);
 
-    // demo submit (backend bo‘lsa shu yerda bo‘ladi)
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
@@ -38,193 +45,117 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 px-4 bg-gray-50 dark:bg-gray-900 transition-colors">
-      <div className="max-w-5xl mx-auto">
-
-        {/* TITLE */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-200">
+    <section className="min-h-screen pt-20 md:pt-24 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900 transition-colors">
+      <div className="max-w-6xl mx-auto pb-12 md:pb-16">
+        {/* HEADER */}
+        <div className="text-center mb-10 md:mb-14">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100">
             {t("contact.title")}
           </h1>
-          <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+          <p className="mt-4 text-sm sm:text-base text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-
-          {/* LEFT – CONTACT INFO */}
-          <div className="space-y-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-start">
+          {/* LEFT – INFO */}
+          <div className="space-y-4 sm:space-y-5 md:space-y-6">
             <ContactItem
-              icon={<Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
+              icon={<Mail className="w-5 h-5 text-blue-500" />}
               label={t("contact.email")}
               value={socialMedias.email.path}
               href={`mailto:${socialMedias.email.path}`}
             />
 
             <ContactItem
-              icon={<Phone className="w-5 h-5 text-green-600 dark:text-green-400" />}
+              icon={<Phone className="w-5 h-5 text-green-500" />}
               label={t("contact.phone")}
               value={socialMedias.phone.path}
-            />{/* Social links */}
-<div className="flex gap-3 pt-2">
+            />
 
-
-    <a
-    href={socialMedias.telegram.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Telegram"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <TelegramIcon size={20} />
-  </a>
-  <a
-    href={socialMedias.git_hub.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="GitHub"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Github className="w-5 h-5 text-gray-900 dark:text-gray-200" />
-  </a>
-
-  <a
-    href={socialMedias.linkedin.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="LinkedIn"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Linkedin className="w-5 h-5 text-blue-700 dark:text-blue-400" />
-  </a>
-
- 
-
-  <a
-    href={socialMedias.instagram.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <InstagramIcon size={20} />
-  </a>
-  
-  <a
-    href={socialMedias.facebook.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Facebook"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <FacebookIcon size={20} />
-  </a>
-
-   <a
-    href={socialMedias.youtube.path}
-    target="_blank"
-    rel="noreferrer"
-    aria-label="YouTube"
-    className="
-      p-3 rounded-full
-      bg-gray-200 dark:bg-gray-700
-      shadow-md
-      hover:-translate-y-1 hover:shadow-xl
-      transition
-    "
-  >
-    <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
-  </a>
-</div>
-
+            {/* SOCIALS */}
+            <div className="pt-2 sm:pt-4">
+              <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
+                Social platforms
+              </p>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                <SocialLink href={socialMedias.telegram.path}>
+                  <TelegramIcon size={20} />
+                </SocialLink>
+                <SocialLink href={socialMedias.git_hub.path}>
+                  <Github />
+                </SocialLink>
+                <SocialLink href={socialMedias.linkedin.path}>
+                  <Linkedin />
+                </SocialLink>
+                <SocialLink href={socialMedias.instagram.path}>
+                  <Instagram />
+                </SocialLink>
+                <SocialLink href={socialMedias.facebook.path}>
+                  <Facebook />
+                </SocialLink>
+                <SocialLink href={socialMedias.youtube.path}>
+                  <Youtube className="text-red-500" />
+                </SocialLink>
+              </div>
+            </div>
           </div>
 
           {/* RIGHT – FORM */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-              {t("contact.formTitle")}
-            </h2>
+          <div className="relative rounded-2xl sm:rounded-3xl p-[1px] bg-gradient-to-br from-blue-600 to-purple-600 shadow-xl">
+            <div className="rounded-[calc(1rem-1px)] sm:rounded-[1.45rem] bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-5 sm:mb-6">
+                {t("contact.formTitle")}
+              </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder={t("contact.name")}
+                />
 
-              <Input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder={t("contact.name")}
-              />
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder={t("contact.emailPlaceholder")}
+                />
 
-              <Input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={t("contact.emailPlaceholder")}
-              />
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder={t("contact.message")}
+                />
 
-              <Textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={t("contact.message")}
-              />
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  loading={loading}
+                  disabled={loading}
+                  className="w-full"
+                  icon={<Send size={18} />}
+                >
+                  {t("contact.send")}
+                </Button>
 
-             <Button
-  type="submit"
-  variant="primary"
-  size="lg"
-  loading={loading}
-  disabled={loading}
-  className="w-full"
-  icon={<Send size={18} />}
->
-  {t("contact.send")}
-</Button>
-
-              {success && (
-                <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
-                  <p className="text-green-700 dark:text-green-400">
-                    {t("contact.success")}
-                  </p>
-                </div>
-              )}
-            </form>
+                {success && (
+                  <div className="mt-4 p-4 rounded-xl bg-green-100 dark:bg-green-900/30">
+                    <p className="text-green-800 dark:text-green-300 text-sm font-medium">
+                      {t("contact.success")}
+                    </p>
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
-
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -233,34 +164,59 @@ export default Contact;
 /* ====== SMALL COMPONENTS ====== */
 
 const ContactItem = ({ icon, label, value, href }) => (
-  <div className="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg">
-    <div className="w-11 h-11 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+  <div className="flex items-start sm:items-center gap-3 sm:gap-4 rounded-2xl bg-white dark:bg-gray-800 p-4 sm:p-5 shadow-lg hover:shadow-xl transition">
+    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center shrink-0">
       {icon}
     </div>
-    <div>
-      <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
+    <div className="min-w-0">
+      <p className="text-sm text-gray-600 dark:text-gray-300">{label}</p>
       {href ? (
-        <a href={href} className="font-medium text-gray-800 dark:text-gray-200">
+        <a
+          href={href}
+          className="block font-medium text-gray-900 dark:text-gray-100 hover:underline break-all"
+        >
           {value}
         </a>
       ) : (
-        <p className="font-medium text-gray-800 dark:text-gray-200">{value}</p>
+        <p className="font-medium text-gray-900 dark:text-gray-100 break-all">{value}</p>
       )}
     </div>
   </div>
+);
+
+const SocialLink = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    className="
+      w-10 h-10 sm:w-11 sm:h-11 rounded-full
+      bg-gray-200 dark:bg-gray-700
+      text-gray-700 dark:text-gray-200
+      flex items-center justify-center
+      shadow-md hover:shadow-xl
+      hover:-translate-y-1
+      transition
+    "
+  >
+    {children}
+  </a>
 );
 
 const Input = ({ type = "text", ...props }) => (
   <input
     type={type}
     required
-    className="w-full px-4 py-3 rounded-xl border
-               border-gray-300 dark:border-gray-600
-               bg-gray-50 dark:bg-gray-700
-               text-gray-800 dark:text-gray-100
-               placeholder-gray-500 dark:placeholder-gray-400
-               focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
-               transition"
+    className="
+      w-full px-4 py-3 rounded-xl
+      border border-gray-300 dark:border-gray-600
+      bg-gray-50 dark:bg-gray-700
+      text-gray-900 dark:text-gray-100
+      placeholder-gray-500 dark:placeholder-gray-300
+      focus:ring-2 focus:ring-blue-500
+      focus:border-transparent
+      transition
+    "
     {...props}
   />
 );
@@ -269,13 +225,16 @@ const Textarea = (props) => (
   <textarea
     rows="4"
     required
-    className="w-full px-4 py-3 rounded-xl border
-               border-gray-300 dark:border-gray-600
-               bg-gray-50 dark:bg-gray-700
-               text-gray-800 dark:text-gray-100
-               placeholder-gray-500 dark:placeholder-gray-400
-               focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
-               transition"
+    className="
+      w-full px-4 py-3 rounded-xl
+      border border-gray-300 dark:border-gray-600
+      bg-gray-50 dark:bg-gray-700
+      text-gray-900 dark:text-gray-100
+      placeholder-gray-500 dark:placeholder-gray-300
+      focus:ring-2 focus:ring-blue-500
+      focus:border-transparent
+      transition
+    "
     {...props}
   />
 );

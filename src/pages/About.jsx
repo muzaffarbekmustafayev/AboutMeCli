@@ -7,7 +7,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex dark:text-white items-center justify-center px-4 py-20"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300"
     >
       <div
         className="relative rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 w-full max-w-xl lg:max-w-3xl xl:max-w-4xl
@@ -19,18 +19,18 @@ function About() {
       >
         {/* TITLE */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             {t("about.title")}
           </h1>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"></div>
         </div>
 
         {/* CONTENT */}
-        <div className="space-y-6 md:space-y-8 text-lg leading-relaxed">
+        <div className="space-y-6 md:space-y-8 text-base sm:text-lg leading-relaxed">
 
           {/* QUOTE */}
           <p
-            className="text-xl md:text-2xl font-light text-gray-700 dark:text-gray-300 italic
+            className="text-lg sm:text-xl md:text-2xl font-light text-gray-800 dark:text-gray-200 italic
                      bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-900
                      p-4 md:p-6 rounded-xl border-l-4 border-blue-600
                      shadow-sm"
@@ -90,7 +90,7 @@ function About() {
 
         {/* SKILLS */}
         <div className="mt-10 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-semibold mb-4">
+          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
             <span className="text-blue-600">#</span>{" "}
             {t("about.techTitle")}
           </h3>
@@ -113,7 +113,7 @@ function About() {
               <span
                 key={tech}
                 className="px-3 py-1.5 bg-white dark:bg-gray-800 rounded-full text-sm
-                         border border-gray-200 dark:border-gray-700 shadow-sm"
+                         border border-gray-200 dark:border-gray-700 shadow-sm text-gray-800 dark:text-gray-200"
               >
                 {tech}
               </span>
