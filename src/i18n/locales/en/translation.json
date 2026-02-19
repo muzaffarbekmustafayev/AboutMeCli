@@ -84,6 +84,32 @@
     "success": "Your message has been sent successfully!"
   },
   "portfolio": {
+    "pageTitle": "My Projects",
+    "pageSubtitle": "Real projects built from ideas with practical technologies",
+    "projectLabel": "Project",
+    "downloadZip": "Download ZIP",
+    "items": {
+      "infinityFlower": {
+        "title": "Infinity Flower",
+        "description": "A continuously growing and morphing flower-like visualization.",
+        "features": [
+          "Can be viewed and interacted with without registration",
+          "Real-time animation",
+          "Core JavaScript features are supported",
+          "Beautiful and dynamic flower form"
+        ]
+      },
+      "jsCompiler": {
+        "title": "JS Compiler",
+        "description": "A system that runs JavaScript code and shows results instantly.",
+        "features": [
+          "Users can write and execute code without registration",
+          "Real-time compiler",
+          "Core JavaScript features are supported",
+          "Instant output"
+        ]
+      }
+    },
     "title": "Systems I Build",
     "subtitle": "I design and build secure, scalable systems that solve real-world problems",
     "systems": {

@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { projects } from "../data/projects";
+import { useTranslation } from "react-i18next";
 import {
   Github,
   ExternalLink,
-  Image as ImageIcon,
-  Code2
+  Code2,
+  Download
 } from "lucide-react";
 
 const Portfolio = () => {
-  const [activeProject, setActiveProject] = useState(null);
+  const { t } = useTranslation();
 
   return (
     <section className="min-h-screen pt-28 pb-20 px-4 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-500">
@@ -18,19 +19,31 @@ const Portfolio = () => {
         <div className="text-center mb-10">
          
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Mening{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-              Loyihalarim
-            </span>
+            {t("portfolio.pageTitle")}
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
-            G‘oyadan amalga oshirilgan real loyihalar va amaliy texnologiyalar
+            {t("portfolio.pageSubtitle")}
           </p>
         </div>
 
         {/* GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+          {projects.map((project) => {
+            const titleKey = `portfolio.items.${project.key}.title`;
+            const descriptionKey = `portfolio.items.${project.key}.description`;
+            const featuresKey = `portfolio.items.${project.key}.features`;
+
+            const title = t(titleKey, { defaultValue: project.title });
+            const description = t(descriptionKey, { defaultValue: project.description });
+            const translatedFeatures = t(featuresKey, {
+              returnObjects: true,
+              defaultValue: project.features,
+            });
+            const features = Array.isArray(translatedFeatures)
+              ? translatedFeatures
+              : project.features;
+
+            return (
             <div
               key={project.id}
               className="
@@ -76,21 +89,21 @@ const Portfolio = () => {
                 <div className="flex items-center gap-2 mb-3">
                   <Code2 size={16} className="text-blue-500" />
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                    Project
+                    {t("portfolio.projectLabel")}
                   </span>
                 </div>
 
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">
-                  {project.title}
+                  {title}
                 </h3>
 
                 <p className="text-gray-600 dark:text-gray-400 mb-5 line-clamp-3">
-                  {project.description}
+                  {description}
                 </p>
 
                 {/* FEATURES */}
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
-                  {project.features.slice(0, 3).map((feature, i) => (
+                  {features.slice(0, 3).map((feature, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="mt-1 w-1.5 h-1.5 bg-blue-500 rounded-full" />
                       {feature}
@@ -124,8 +137,10 @@ const Portfolio = () => {
                     )}
                   </div>
 
-                  <button
-                    onClick={() => setActiveProject(project)}
+                  <a
+                    href={project.links.zip}
+                    target="_blank"
+                    rel="noreferrer"
                     className="
                       flex items-center gap-2
                       px-5 py-2.5
@@ -136,23 +151,16 @@ const Portfolio = () => {
                       transition-all active:scale-95
                     "
                   >
-                    Batafsil
-                    <ImageIcon size={16} />
-                  </button>
+                    {t("portfolio.downloadZip")}
+                    <Download size={16} />
+                  </a>
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
-
-      {/* MODAL */}
-      {activeProject && (
-        <ProjectModal
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
-        />
-      )}
     </section>
   );
 };
