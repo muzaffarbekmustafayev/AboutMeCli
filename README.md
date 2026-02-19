@@ -1,16 +1,58 @@
-# React + Vite
+# AboutMeCli
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React + Vite.
 
-Currently, two official plugins are available:
+## Tech Stack
+- React
+- Vite
+- Tailwind CSS
+- React Router
+- i18next + react-i18next
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run Locally
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Build
+```bash
+npm run build
+npm run preview
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Multilingual Support
+Project uses `i18next` with 3 languages:
+- `uz`
+- `en`
+- `ru`
 
-## Expanding the ESLint configuration
+Main i18n config:
+- `src/i18n/index.js`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Translations:
+- `src/i18n/locales/uz/translation.json`
+- `src/i18n/locales/en/translation.json`
+- `src/i18n/locales/ru/translation.json`
+
+## Portfolio Page i18n
+`src/pages/Portfolio.jsx` is fully connected to translation keys.
+
+Texts and project content are read from:
+- `portfolio.pageTitle`
+- `portfolio.pageSubtitle`
+- `portfolio.projectLabel`
+- `portfolio.github`
+- `portfolio.downloadZip`
+- `portfolio.liveDemo`
+- `portfolio.details`
+- `portfolio.close`
+- `portfolio.items.<projectId>.*`
+
+Project ids are defined in:
+- `src/data/projects.js`
+
+Current localized project ids:
+- `jsCompiler`
+- `wormGPT`
+- `infinityFlower`
