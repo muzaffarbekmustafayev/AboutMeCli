@@ -90,4 +90,35 @@ export const projects = [
       "../projects/demo/infinity_flower.png"
     ]
   },
+
+
+
+  {
+    id: "TextToVoice",
+    title: "Text To Voice",
+    description:
+      "Matnni ovozga aylantiruvchi ilova. Foydalanuvchilar matn kiritsa, u ovozga aylantiriladi",
+
+    features: [
+      "Foydalanuvchi ro‘yxatdan o‘tmasdan matn kiritsa, u ovozga aylantiriladi",
+      "Real-time ovozga aylantirish",
+      "Asosiy JavaScript funksiyalari ishlatilgan"
+    ],
+
+    technologies: [
+      "Node.js",
+      "JS",
+      "Terminal"
+    ],
+
+    links: {
+      github: "https://github.com/muzaffarbekmustafayev/TextToVoice.git",
+      live: "",
+      zip: "/public/projects/zips/TextToVoice-main.zip"
+    },
+
+    images: [
+      "../projects/demo/TextToVoice.jpg"
+    ]
+  },
 ];

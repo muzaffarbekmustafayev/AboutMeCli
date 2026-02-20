@@ -121,6 +121,15 @@
           "Real-time chat",
           "Natijalar darhol"
         ]
+      },
+      "TextToVoice": {
+        "title": "Text To Voice",
+        "description": "Matnni ovozga aylantiruvchi ilova. Foydalanuvchilar matn kiritsa, u ovozga aylantiriladi.",
+        "features": [
+          "Foydalanuvchi ro‘yxatdan o‘tmasdan matn kiritishi va natijani eshitishi mumkin",
+          "Real-time ovozga aylantirish",
+          "Asosiy JavaScript funksiyalari ishlatilgan"
+        ]
       }
     },
     "title": "Yarata oladigan tizimlar",

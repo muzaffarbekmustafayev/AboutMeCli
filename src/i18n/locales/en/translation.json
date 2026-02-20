@@ -121,6 +121,15 @@
           "Real-time chat",
           "Instant output"
         ]
+      },
+      "TextToVoice": {
+        "title": "Text To Voice",
+        "description": "An app that converts text into speech so users can input text and hear the output.",
+        "features": [
+          "Users can enter text and listen to speech output without registration",
+          "Real-time text-to-speech conversion",
+          "Built with core JavaScript functionality"
+        ]
       }
     },
     "title": "Systems I Build",

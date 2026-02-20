@@ -111,11 +111,20 @@
       },
       "wormGPT": {
         "title": "WormGPT",
-        "description": "An AI-assisted system that helps write JavaScript code.",
+        "description": "Система на базе ИИ, которая помогает писать JavaScript-код.",
         "features": [
-          "Users can write and run code without registration",
-          "Real-time chat",
-          "Instant output"
+          "Пользователь может писать и запускать код без регистрации",
+          "Чат в реальном времени",
+          "Мгновенный результат"
+        ]
+      },
+      "TextToVoice": {
+        "title": "Text To Voice",
+        "description": "Приложение для преобразования текста в речь: пользователь вводит текст и сразу слышит результат.",
+        "features": [
+          "Можно вводить текст и получать озвучку без регистрации",
+          "Преобразование текста в речь в реальном времени",
+          "Реализовано на базовых возможностях JavaScript"
         ]
       }
     },
