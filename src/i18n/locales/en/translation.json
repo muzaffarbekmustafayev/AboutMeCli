@@ -98,7 +98,7 @@
         "description": "A continuously growing and morphing flower-like visualization.",
         "features": [
           "Can be viewed and interacted with without registration",
-          "Real-time animation",
+       
           "Core JavaScript features are supported",
           "Beautiful and dynamic flower form"
         ]

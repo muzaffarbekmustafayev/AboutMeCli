@@ -98,7 +98,7 @@
         "description": "Davomiy o‘sib boruvchi va o‘zgaruvchan gul shaklidagi vizualizatsiya.",
         "features": [
           "Foydalanuvchi ro‘yxatdan o‘tmasdan ko'rish va o‘zaro ta’sir qilish imkoniyati",
-          "Real-time animatsiya",
+         
           "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
           "Chiroyli va o‘zgaruvchan gul shakli"
         ]

@@ -1,5 +1,34 @@
 export const projects = [
 
+ {
+    id: "infinityFlower",
+    title: "Infinity Flower",
+    description:
+      "Dizayn va kodlashni birlashtirgan interaktiv veb-ilova. Foydalanuvchilar aylanib turuvchi gulni ko‘rishlari mumkin",
+
+    features: [
+      "Foydalanuvchi ro‘yxatdan o‘tmasdan gulni ko‘rishi mumkin",
+      
+      "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi"
+    ],
+
+    technologies: [
+      "Html",
+      "Css",
+      "JS",
+      "Stylesheet"
+    ],
+
+    links: {
+      github: "https://github.com/muzaffarbekmustafayev/infinityFlower.git",
+      live: "https://infinity-flower.vercel.app/",
+      zip: "/public/projects/zips/infinityFlower-main.zip"
+    },
+
+    images: [
+      "../projects/demo/infinity_flower.png"
+    ]
+  },
 
   {
     id: "jsCompiler",
@@ -61,36 +90,7 @@ export const projects = [
       "../projects/demo/worm_gpt.png"
     ]
   },
-   {
-    id: "infinityFlower",
-    title: "Infinity Flower",
-    description:
-      "Dizayn va kodlashni birlashtirgan interaktiv veb-ilova. Foydalanuvchilar aylanib turuvchi gulni ko‘rishlari mumkin",
-
-    features: [
-      "Foydalanuvchi ro‘yxatdan o‘tmasdan gulni ko‘rishi mumkin",
-      "Real-time aylanib turuvchi gul",
-      "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi"
-    ],
-
-    technologies: [
-      "Html",
-      "Css",
-      "JS",
-      "Stylesheet"
-    ],
-
-    links: {
-      github: "https://github.com/muzaffarbekmustafayev/infinityFlower.git",
-      live: "https://infinity-flower.vercel.app/",
-      zip: "/public/projects/zips/infinityFlower-main.zip"
-    },
-
-    images: [
-      "../projects/demo/infinity_flower.png"
-    ]
-  },
-
+  
 
 
   {
@@ -119,6 +119,71 @@ export const projects = [
 
     images: [
       "../projects/demo/TextToVoice.jpg"
+    ]
+  },
+
+   {
+    id: "Email Sender",
+    title: "Email Sender",
+    description:
+      "Elektron pochta xabarlarini yuboruvchi ilova. Foydalanuvchilar elektron pochta xabarini yuborish mumkin",
+
+    features: [
+      "Foydalanuvchi elektron pochta xabarini yuborishi mumkin",
+      "Real-time xabar yuborish",
+      "Asosiy JavaScript funksiyalari ishlatilgan"
+    ],
+
+    technologies: [
+      "Node.js",
+      "JS",
+      "Terminal"
+    ],
+
+    links: {
+      github: "https://github.com/muzaffarbekmustafayev/Email.git",
+      live: "",
+      zip: "/public/projects/zips/Email-main.zip"
+    },
+
+    images: [
+      "../projects/demo/email.jpg",  
+    ]
+  },
+
+
+
+
+ 
+
+   {
+    id: "Countdown Timer",
+    title: "Countdown Timer",
+    description:
+      "Hisoblash vaqti uchun hisoblash vaqti tizimi. Foydalanuvchilar hisoblash vaqtini o‘rnatish mumkin",
+
+    features: [
+      "Foydalanuvchi hisoblash vaqtini o‘rnatishi mumkin",
+      "Real-time hisoblash",
+      "Asosiy JavaScript funksiyalari ishlatilgan"
+    ],
+
+    technologies: [
+      "Node.js",
+      "JS",
+      "React JS",
+      "Tailwind CSS"
+
+    ],
+
+    links: {
+      github: "https://github.com/muzaffarbekmustafayev/CountdownTimer.git",
+      live: "https://countdown-timer-steel-nu.vercel.app/",
+      zip: "/public/projects/zips/CountdownTimer-main.zip"
+    },
+
+    images: [
+      "../projects/demo/Countdown-timer.jpg",  
     ]
   },
 ];
