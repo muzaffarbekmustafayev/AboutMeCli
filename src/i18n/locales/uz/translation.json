@@ -8,7 +8,7 @@
     "portfolio": "Loyihalar",
     "skills": "Imkoniyatlarim",
     "resume": "Rezyume",
-    "blog": "Blog",
+    "certificates": "Sertifikatlar",
     "contact": "Aloqa"
   },
   "home": {
@@ -224,6 +224,18 @@
         "badge": "Performance"
       }
     ]
+  },
+  "certificates": {
+    "eyebrow": "Certificates",
+    "title": "Mening",
+    "titleAccent": "sertifikatlarim",
+    "subtitle": "Sertifikat rasmlarini `public/certificates` ichiga joylang va ro'yxatni `public/certificates/certificates.json` orqali boshqaring.",
+    "refresh": "Yangilash",
+    "certificate": "Sertifikat",
+    "viewImage": "Rasmni ochish",
+    "empty": "Hozircha sertifikatlar qo'shilmagan.",
+    "error": "Sertifikatlar ro'yxatini o'qib bo'lmadi.",
+    "setupHint": "`public/certificates/certificates.json` faylini yarating yoki to'ldiring."
   },
   "skills": {
     "title": "Ko‘nikmalar va texnologiyalar",
