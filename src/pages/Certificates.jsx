@@ -8,8 +8,6 @@ import {
   Eye,
   FolderX,
   RefreshCw,
-  Search,
-  SlidersHorizontal,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ImageModal from "../components/ImageModal";
@@ -42,6 +40,11 @@ const extractYear = (value, timestamp) => {
   return yearMatch ? yearMatch[0] : "";
 };
 
+const toExternalLink = (value) => {
+  if (!value || typeof value !== "string") return "";
+  return /^https?:\/\//i.test(value.trim()) ? value.trim() : "";
+};
+
 const normalizeCertificate = (item, index) => {
   const payload = typeof item === "string" ? { image: item } : item;
   if (!payload || typeof payload !== "object") return null;
@@ -57,6 +60,7 @@ const normalizeCertificate = (item, index) => {
     title: payload.title || filenameToTitle(image),
     issuer: payload.issuer || "",
     date: payload.date || "",
+    link: toExternalLink(payload.link || payload.url || payload.credentialUrl),
     timestamp,
     year: extractYear(payload.date, timestamp),
   };
@@ -69,9 +73,6 @@ function Certificates() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [issuerFilter, setIssuerFilter] = useState("all");
-  const [yearFilter, setYearFilter] = useState("all");
 
   const fetchCertificates = useCallback(async () => {
     setLoading(true);
@@ -103,42 +104,25 @@ function Certificates() {
     fetchCertificates();
   }, [fetchCertificates]);
 
-  const issuerOptions = useMemo(() => {
-    const values = Array.from(new Set(certificates.map((item) => item.issuer).filter(Boolean)));
-    return ["all", ...values.sort((a, b) => a.localeCompare(b))];
-  }, [certificates]);
-
-  const yearOptions = useMemo(() => {
-    const values = Array.from(new Set(certificates.map((item) => item.year).filter(Boolean)));
-    return ["all", ...values.sort((a, b) => Number(b) - Number(a))];
-  }, [certificates]);
-
-  const filteredCertificates = useMemo(() => {
-    const normalizedQuery = searchQuery.trim().toLowerCase();
-
-    return certificates.filter((item) => {
-      const matchesSearch =
-        normalizedQuery.length === 0 ||
-        item.title.toLowerCase().includes(normalizedQuery) ||
-        item.issuer.toLowerCase().includes(normalizedQuery) ||
-        item.date.toLowerCase().includes(normalizedQuery);
-
-      const matchesIssuer = issuerFilter === "all" || item.issuer === issuerFilter;
-      const matchesYear = yearFilter === "all" || item.year === yearFilter;
-
-      return matchesSearch && matchesIssuer && matchesYear;
-    });
-  }, [certificates, searchQuery, issuerFilter, yearFilter]);
-
   const hasCertificates = certificates.length > 0;
-  const totalIssuers = Math.max(issuerOptions.length - 1, 0);
-  const latestYear = yearOptions[1] || t("certificates.unknownYear", { defaultValue: "N/A" });
+  const totalIssuers = useMemo(() => {
+    return new Set(certificates.map((item) => item.issuer).filter(Boolean)).size;
+  }, [certificates]);
+
+  const latestYear = useMemo(() => {
+    const years = certificates
+      .map((item) => item.year)
+      .filter(Boolean)
+      .sort((a, b) => Number(b) - Number(a));
+
+    return years[0] || t("certificates.unknownYear", { defaultValue: "N/A" });
+  }, [certificates, t]);
 
   return (
     <section className="section-shell min-h-screen px-4 pt-28 pb-20">
       <SEO
         title={t("certificates.title")}
-        description={t("certificates.subtitle")}
+        description={t("certificates.pageSubtitle", { defaultValue: "Professional certificates and achievements." })}
         path="/certificates"
       />
 
@@ -162,7 +146,7 @@ function Certificates() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base text-slate-600 dark:text-slate-400 sm:text-lg">
-            {t("certificates.subtitle")}
+            {t("certificates.pageSubtitle", { defaultValue: "Professional certificates and achievements." })}
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -190,59 +174,6 @@ function Certificates() {
           </button>
         </header>
 
-        {!loading && !error && hasCertificates && (
-          <div className="glass-card mt-10 rounded-3xl p-4 sm:p-5">
-            <div className="grid gap-3 md:grid-cols-[1.25fr_0.95fr_0.8fr]">
-              <label className="relative block">
-                <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  placeholder={t("certificates.search", { defaultValue: "Search by title, issuer, or date" })}
-                  className="h-11 w-full rounded-xl border border-slate-200/80 bg-white/80 pl-10 pr-3 text-sm text-slate-800 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/25 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
-                />
-              </label>
-
-              <label className="relative block">
-                <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                <select
-                  value={issuerFilter}
-                  onChange={(event) => setIssuerFilter(event.target.value)}
-                  className="h-11 w-full appearance-none rounded-xl border border-slate-200/80 bg-white/80 pl-10 pr-8 text-sm text-slate-800 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/25 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
-                >
-                  {issuerOptions.map((issuer) => (
-                    <option key={issuer} value={issuer}>
-                      {issuer === "all"
-                        ? t("certificates.allIssuers", { defaultValue: "All Issuers" })
-                        : issuer}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="relative block">
-                <CalendarDays className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                <select
-                  value={yearFilter}
-                  onChange={(event) => setYearFilter(event.target.value)}
-                  className="h-11 w-full appearance-none rounded-xl border border-slate-200/80 bg-white/80 pl-10 pr-8 text-sm text-slate-800 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/25 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
-                >
-                  {yearOptions.map((year) => (
-                    <option key={year} value={year}>
-                      {year === "all" ? t("certificates.allYears", { defaultValue: "All Years" }) : year}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            <p className="mt-3 text-left text-sm text-slate-500 dark:text-slate-400">
-              {t("certificates.results", { defaultValue: "Showing" })} {filteredCertificates.length} {t("certificates.items", { defaultValue: "items" })}
-            </p>
-          </div>
-        )}
-
         {loading && (
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, index) => (
@@ -262,7 +193,7 @@ function Certificates() {
           <StatePanel
             icon={<AlertTriangle className="h-6 w-6" />}
             title={error}
-            description={t("certificates.setupHint")}
+            description={t("certificates.errorDescription", { defaultValue: "Please try refreshing the page." })}
             actionLabel={t("certificates.refresh", { defaultValue: "Refresh" })}
             onAction={fetchCertificates}
             danger
@@ -273,29 +204,15 @@ function Certificates() {
           <StatePanel
             icon={<FolderX className="h-6 w-6" />}
             title={t("certificates.empty")}
-            description={t("certificates.setupHint")}
+            description={t("certificates.emptyDescription", { defaultValue: "New certificates will appear here soon." })}
             actionLabel={t("certificates.refresh", { defaultValue: "Refresh" })}
             onAction={fetchCertificates}
           />
         )}
 
-        {!loading && !error && hasCertificates && filteredCertificates.length === 0 && (
-          <StatePanel
-            icon={<Search className="h-6 w-6" />}
-            title={t("certificates.noMatches", { defaultValue: "No certificates match your filters." })}
-            description={t("certificates.tryAnother", { defaultValue: "Try another keyword, issuer, or year." })}
-            actionLabel={t("certificates.clearFilters", { defaultValue: "Clear filters" })}
-            onAction={() => {
-              setSearchQuery("");
-              setIssuerFilter("all");
-              setYearFilter("all");
-            }}
-          />
-        )}
-
-        {!loading && !error && filteredCertificates.length > 0 && (
+        {!loading && !error && certificates.length > 0 && (
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredCertificates.map((certificate) => (
+            {certificates.map((certificate) => (
               <article key={certificate.id} className="group glass-card overflow-hidden rounded-3xl">
                 <button
                   type="button"
@@ -364,12 +281,14 @@ function Certificates() {
                     </button>
 
                     <a
-                      href={certificate.image}
+                      href={certificate.link || certificate.image}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-lg border border-teal-300/70 bg-teal-100/70 px-3 py-2 text-xs font-semibold text-teal-700 transition hover:-translate-y-0.5 dark:border-teal-700/60 dark:bg-teal-900/30 dark:text-teal-200"
                     >
-                      {t("certificates.viewImage", { defaultValue: "Open image" })}
+                      {certificate.link
+                        ? t("certificates.viewCredential", { defaultValue: "View credential" })
+                        : t("certificates.viewImage", { defaultValue: "Open image" })}
                       <ExternalLink size={14} />
                     </a>
                   </div>

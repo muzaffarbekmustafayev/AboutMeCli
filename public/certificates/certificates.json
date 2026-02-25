@@ -4,6 +4,45 @@
     "image": "images/Introduction_to_generative_ai.png",
     "title": "Introduction to Generative AI",
     "issuer": "Google Cloud",
-    "date": "May 27, 2025"
+    "date": "May 27, 2025",
+    "link":"https://www.coursera.org/account/accomplishments/certificate/0060P87PCIAB"
   }
+
+  ,{
+    "id": "cert2",
+    "image": "images/Developing_Back-End_Apps.png",
+    "title": "Developing Back-End Apps with Node.js and Express",
+    "issuer": "IBM",
+    "date": "June 5, 2025",
+    "link":"https://www.coursera.org/account/accomplishments/certificate/U5FRGVD6180H"
+  }
+
+  , {
+    "id": "cert3",
+    "image": "images/Programming_with_JavaScript.png",
+    "title": "IProgramming with JavaScript",
+    "issuer": "Meta",
+    "date": "June 3, 2025",
+    "link":"https://www.coursera.org/account/accomplishments/certificate/NZQUT5PI01F7"
+  }
+
+  ,{
+    "id": "cert4",
+    "image": "images/Authentic_Nodejs.png",
+    "title": "Authentic Node.js WebSocket Server Workshop",
+    "issuer": "Google Cloud",
+    "date": "June 4, 2025",
+    "link":"https://www.coursera.org/account/accomplishments/certificate/BNR3LVCVVJJS"
+  }
+,{
+    "id": "cert5",
+    "image": "images/Introduction_to_Front-End.png",
+    "title": "Introduction to Front-End Development",
+    "issuer": "Meta",
+    "date": "June 4, 2025",
+    "link":"https://www.coursera.org/account/accomplishments/certificate/REDBAEMLBRUA"
+  }
+  
+  
+  
 ]
