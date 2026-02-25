@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "cert1",
+    "image": "images/Introduction_to_generative_ai.png",
+    "title": "Introduction to Generative AI",
+    "issuer": "Google Cloud",
+    "date": "May 27, 2025"
+  }
+]

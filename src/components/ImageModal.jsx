@@ -1,53 +1,78 @@
-import React, { useEffect } from 'react';
-import { X, ZoomIn, ZoomOut, Download } from 'lucide-react';
+import React, { useEffect } from "react";
+import { Download, ExternalLink, X } from "lucide-react";
 
 const ImageModal = ({ image, title, onClose }) => {
   useEffect(() => {
-    const handleEscape = (e) => e.key === 'Escape' && onClose();
-    document.addEventListener('keydown', handleEscape);
-    document.body.style.overflow = 'hidden';
-    
+    const handleEscape = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
+
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [onClose]);
 
   const handleDownload = () => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = image;
-    link.download = title || 'image';
+    link.download = title || "certificate";
     link.click();
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white"
+    <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 sm:p-6" onClick={onClose}>
+      <div
+        className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-slate-200/20 bg-slate-900/85 shadow-2xl"
+        onClick={(event) => event.stopPropagation()}
       >
-        <X size={24} />
-      </button>
+        <div className="flex items-center justify-between gap-3 border-b border-slate-700/70 px-4 py-3 sm:px-5">
+          <div className="min-w-0">
+            <p className="truncate font-display text-base font-semibold text-slate-100 sm:text-lg">
+              {title || "Certificate"}
+            </p>
+            <p className="text-xs text-slate-400">Press ESC to close</p>
+          </div>
 
-      <button
-        onClick={handleDownload}
-        className="absolute top-4 right-16 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white"
-      >
-        <Download size={24} />
-      </button>
+          <div className="flex items-center gap-2">
+            <a
+              href={image}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              title="Open in new tab"
+            >
+              <ExternalLink size={16} />
+            </a>
 
-      <div onClick={(e) => e.stopPropagation()} className="max-w-5xl max-h-[90vh] overflow-auto">
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-auto rounded-lg"
-        />
-        {title && (
-          <p className="text-white text-center mt-4 text-lg font-semibold">{title}</p>
-        )}
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              title="Download image"
+            >
+              <Download size={16} />
+            </button>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              title="Close"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-auto bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_62%)] p-3 sm:p-5">
+          <div className="mx-auto max-w-5xl rounded-2xl border border-slate-600/70 bg-slate-950/70 p-2 sm:p-3">
+            <img src={image} alt={title || "Certificate"} className="h-auto w-full rounded-xl object-contain" />
+          </div>
+        </div>
       </div>
     </div>
   );
