@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Download, ExternalLink, X } from "lucide-react";
 
 const ImageModal = ({ image, title, onClose }) => {
+  const [imageLoading, setImageLoading] = useState(true);
+
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") onClose();
@@ -70,7 +72,24 @@ const ImageModal = ({ image, title, onClose }) => {
 
         <div className="flex-1 overflow-auto bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_62%)] p-3 sm:p-5">
           <div className="mx-auto max-w-5xl rounded-2xl border border-slate-600/70 bg-slate-950/70 p-2 sm:p-3">
-            <img src={image} alt={title || "Certificate"} className="h-auto w-full rounded-xl object-contain" />
+            <div className="relative">
+              {imageLoading && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-slate-900/65">
+                  <div className="h-10 w-10 animate-spin rounded-full border-2 border-teal-400 border-t-transparent" />
+                  <span className="sr-only">Loading image</span>
+                </div>
+              )}
+
+              <img
+                src={image}
+                alt={title || "Certificate"}
+                onLoad={() => setImageLoading(false)}
+                onError={() => setImageLoading(false)}
+                className={`h-auto w-full rounded-xl object-contain transition-opacity duration-300 ${
+                  imageLoading ? "opacity-0" : "opacity-100"
+                }`}
+              />
+            </div>
           </div>
         </div>
       </div>

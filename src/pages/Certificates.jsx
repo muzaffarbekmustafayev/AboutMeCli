@@ -128,6 +128,7 @@ function Certificates() {
 
       {selectedImage && (
         <ImageModal
+          key={selectedImage.id}
           image={selectedImage.image}
           title={selectedImage.title}
           onClose={() => setSelectedImage(null)}
@@ -214,27 +215,12 @@ function Certificates() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {certificates.map((certificate) => (
               <article key={certificate.id} className="group glass-card overflow-hidden rounded-3xl">
-                <button
-                  type="button"
-                  onClick={() => setSelectedImage(certificate)}
-                  className="relative block w-full overflow-hidden text-left"
-                >
-                  <div className="aspect-[4/3] bg-slate-100 dark:bg-slate-900">
-                    <img
-                      src={certificate.image}
-                      alt={certificate.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
-                    />
-                  </div>
-
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent px-4 py-4">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/25 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
-                      <Award size={12} />
-                      {t("certificates.certificate", { defaultValue: "Certificate" })}
-                    </div>
-                  </div>
-                </button>
+                <CertificateImageButton
+                  certificate={certificate}
+                  onPreview={setSelectedImage}
+                  loadingLabel={t("ui.loading", { defaultValue: "Loading..." })}
+                  badgeLabel={t("certificates.certificate", { defaultValue: "Certificate" })}
+                />
 
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-3">
@@ -336,5 +322,49 @@ const StatePanel = ({ icon, title, description, actionLabel, onAction, danger = 
     </button>
   </div>
 );
+
+const CertificateImageButton = ({ certificate, onPreview, loadingLabel, badgeLabel }) => {
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
+  const handleImageReady = () => {
+    setIsImageLoading(false);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={() => onPreview(certificate)}
+      className="relative block w-full overflow-hidden text-left"
+      aria-busy={isImageLoading}
+    >
+      <div className="relative aspect-[4/3] bg-slate-100 dark:bg-slate-900">
+        {isImageLoading && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-200/70 dark:bg-slate-800/70">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-teal-500/80 border-t-transparent" />
+            <span className="sr-only">{loadingLabel}</span>
+          </div>
+        )}
+
+        <img
+          src={certificate.image}
+          alt={certificate.title}
+          loading="lazy"
+          onLoad={handleImageReady}
+          onError={handleImageReady}
+          className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.05] ${
+            isImageLoading ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent px-4 py-4">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/25 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
+          <Award size={12} />
+          {badgeLabel}
+        </div>
+      </div>
+    </button>
+  );
+};
 
 export default Certificates;
