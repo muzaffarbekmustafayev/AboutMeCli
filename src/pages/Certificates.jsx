@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Award, Building2, Calendar, ExternalLink, RefreshCw } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import ImageModal from "../components/ImageModal";
+import SEO from "../components/SEO";
 
 const CERTIFICATES_MANIFEST = "/certificates/certificates.json";
 const IMAGE_EXTENSIONS = /\.(png|jpe?g|webp|avif|svg)$/i;
@@ -38,6 +40,7 @@ function Blog() {
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const fetchCertificates = useCallback(async () => {
     setLoading(true);
@@ -77,6 +80,20 @@ function Blog() {
 
   return (
     <section className="min-h-screen bg-gray-50 dark:bg-[#0b1120] pt-28 pb-20 px-4">
+      <SEO 
+        title={t("certificates.title")}
+        description={t("certificates.subtitle")}
+        path="/certificates"
+      />
+      
+      {selectedImage && (
+        <ImageModal 
+          image={selectedImage.image}
+          title={selectedImage.title}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
+      
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <p className="text-sm uppercase tracking-[0.3em] text-blue-500 font-semibold">
@@ -137,7 +154,8 @@ function Blog() {
                 key={certificate.id}
                 className="group rounded-3xl bg-white dark:bg-gray-900/70 border overflow-hidden hover:shadow-xl transition"
               >
-                <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden cursor-pointer"
+                     onClick={() => setSelectedImage(certificate)}>
                   <img
                     src={certificate.image}
                     alt={certificate.title}

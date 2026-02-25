@@ -1,6 +1,5 @@
 // src/components/Select.jsx
 import React, { forwardRef, useState, useRef, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 
 const Select = forwardRef(({
   label,
@@ -31,7 +30,6 @@ const Select = forwardRef(({
   const [internalValue, setInternalValue] = useState(multiple ? [] : '');
   const selectRef = useRef(null);
   const dropdownRef = useRef(null);
-  const { theme } = useTheme();
 
   // Sync internal value with external value prop
   useEffect(() => {

@@ -11,6 +11,20 @@
     "certificates": "Certificates",
     "contact": "Contact"
   },
+  "ui": {
+    "loading": "Loading...",
+    "theme": {
+      "switchToDark": "Switch to dark mode",
+      "switchToLight": "Switch to light mode"
+    },
+    "language": {
+      "select": "Select language",
+      "switchTo": "Switch language to {{language}}",
+      "uz": "Uzbek",
+      "en": "English",
+      "ru": "Russian"
+    }
+  },
   "home": {
     "greeting": "Hi, I'm Muzaffarbek Mustafayev",
     "role": "Software Engineer",

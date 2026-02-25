@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Github, Linkedin, Youtube } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO";
 
 import MyImage from "../assets/USER.jpg";
 import TelegramIcon from "../components/Icons/TelegramIcon";
@@ -20,7 +21,13 @@ function Home() {
   }, []);
 
   return (
-    <section
+    <>
+      <SEO 
+        title={t("home.title", { defaultValue: "Home" })}
+        description={t("home.description", { defaultValue: "Full Stack Developer Portfolio" })}
+        path="/"
+      />
+      <section
       className="
         min-h-screen
         flex items-center justify-center
@@ -145,7 +152,7 @@ function Home() {
 
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
             <a
-              href={socialMedias.git_hub.path}
+              href={socialMedias.github.path}
               target="_blank"
               rel="noreferrer"
               className="
@@ -245,6 +252,7 @@ function Home() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

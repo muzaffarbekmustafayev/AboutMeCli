@@ -11,6 +11,20 @@
     "certificates": "Sertifikatlar",
     "contact": "Aloqa"
   },
+  "ui": {
+    "loading": "Yuklanmoqda...",
+    "theme": {
+      "switchToDark": "Qorong‘i rejimga o‘tish",
+      "switchToLight": "Yorug‘ rejimga o‘tish"
+    },
+    "language": {
+      "select": "Tilni tanlang",
+      "switchTo": "Tilni {{language}} ga almashtirish",
+      "uz": "O‘zbekcha",
+      "en": "Inglizcha",
+      "ru": "Ruscha"
+    }
+  },
   "home": {
     "greeting": "Salom, men Muzaffarbek Mustafayevman",
     "role": "Software Engineer",

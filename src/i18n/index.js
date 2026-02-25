@@ -6,6 +6,8 @@ import uz from "./locales/uz/translation.json";
 import en from "./locales/en/translation.json";
 import ru from "./locales/ru/translation.json";
 
+const supportedLanguages = ["uz", "en", "ru"];
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -16,10 +18,11 @@ i18n
       ru: { translation: ru }
     },
 
-    // 🔑 ASOSIY TIL
     fallbackLng: "uz",
+    supportedLngs: supportedLanguages,
+    load: "languageOnly",
+    cleanCode: true,
 
-    // 🔍 QAYERDAN TIL ANIQLANSIN
     detection: {
       order: ["localStorage", "navigator", "htmlTag"],
       lookupLocalStorage: "language",
@@ -28,7 +31,9 @@ i18n
 
     interpolation: {
       escapeValue: false
-    }
+    },
+
+    returnNull: false
   });
 
 export default i18n;

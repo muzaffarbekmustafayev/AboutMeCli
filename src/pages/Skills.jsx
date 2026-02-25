@@ -7,6 +7,7 @@ import {
   EffectCoverflow,
 } from "swiper/modules";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO";
 
 import {
   Code,
@@ -65,6 +66,12 @@ function Skills() {
   }, [category]);
 
   return (
+    <>
+      <SEO 
+        title={t("skills.title", { defaultValue: "Skills" })}
+        description={t("skills.description", { defaultValue: "My technical skills" })}
+        path="/skills"
+      />
     <section className="max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
       {/* TITLE */}
       <div className="text-center mb-10">
@@ -176,6 +183,7 @@ function Skills() {
         {t("skills.footer")}
       </p>
     </section>
+    </>
   );
 }
 

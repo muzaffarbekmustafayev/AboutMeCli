@@ -1,10 +1,17 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO";
 
 function About() {
   const { t } = useTranslation();
 
   return (
+    <>
+      <SEO 
+        title={t("about.title", { defaultValue: "About" })}
+        description={t("about.description", { defaultValue: "Learn more about me" })}
+        path="/about"
+      />
     <section
       id="about"
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300"
@@ -122,6 +129,7 @@ function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

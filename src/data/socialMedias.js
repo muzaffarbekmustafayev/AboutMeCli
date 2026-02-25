@@ -1,4 +1,9 @@
 export const socialMedias = {
+  github: {
+    path: "https://github.com/muzaffarbekmustafayev",
+    label: "GitHub",
+  },
+  // Backward compatibility for older references
   git_hub: {
     path: "https://github.com/muzaffarbekmustafayev",
     label: "GitHub",

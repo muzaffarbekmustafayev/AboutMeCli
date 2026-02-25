@@ -15,6 +15,7 @@ import {
   Youtube
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO";
 import ThemeToggle from "../components/ThemeToggle";
 import { socialMedias } from "../data/socialMedias";
 import CVDownload from "../components/CVdownload";
@@ -88,7 +89,7 @@ const Resume = () => {
             </a>
 
             <a
-              href={socialMedias.git_hub.path}
+              href={socialMedias.github.path}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow"
             >
               <Github size={18} />

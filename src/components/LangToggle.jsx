@@ -1,55 +1,41 @@
-import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const languages = [
-  { code: "en", label: "EN" },
-  { code: "ru", label: "RU" },
-  { code: "uz", label: "UZ" },
+  { code: "en", label: "EN", labelKey: "ui.language.en" },
+  { code: "ru", label: "RU", labelKey: "ui.language.ru" },
+  { code: "uz", label: "UZ", labelKey: "ui.language.uz" }
 ];
 
-// Default tilni aniqlash
-const detectLanguage = () => {
-  // 1️⃣ Agar user oldin tanlagan bo‘lsa — o‘sha
-  const savedLang = localStorage.getItem("language");
-  if (savedLang) return savedLang;
-
-  // 2️⃣ Browser tiliga qaraymiz
-  const browserLang = navigator.language || navigator.userLanguage;
-
-  if (browserLang && browserLang.toLowerCase().startsWith("ru")) {
-    return "ru";
-  }
-
-  // 3️⃣ Boshqa barcha holatlar
-  return "en";
-};
+const getBaseLanguage = (lang = "") => lang.split("-")[0].toLowerCase();
 
 const LangToggle = () => {
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    const lang = detectLanguage();
-
-    if (i18n.language !== lang) {
-      i18n.changeLanguage(lang);
-      localStorage.setItem("language", lang);
-    }
-  }, [i18n]);
+  const { t, i18n } = useTranslation();
+  const activeLanguage = getBaseLanguage(i18n.resolvedLanguage || i18n.language || "uz");
 
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem("language", lng);
+    if (activeLanguage !== lng) {
+      i18n.changeLanguage(lng);
+    }
   };
 
   return (
-    <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1 shadow-inner">
+    <div
+      role="group"
+      aria-label={t("ui.language.select")}
+      className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1 shadow-inner"
+    >
       {languages.map((lang) => {
-        const isActive = i18n.language === lang.code;
+        const isActive = activeLanguage === lang.code;
+        const languageName = t(lang.labelKey);
 
         return (
           <button
             key={lang.code}
+            type="button"
             onClick={() => changeLanguage(lang.code)}
+            aria-label={t("ui.language.switchTo", { language: languageName })}
+            aria-pressed={isActive}
+            title={languageName}
             className={`
               px-3 py-1.5 text-sm font-semibold rounded-lg transition-all duration-300
               ${
@@ -58,7 +44,6 @@ const LangToggle = () => {
                   : "text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }
             `}
-            aria-label={`Change language to ${lang.label}`}
           >
             {lang.label}
           </button>

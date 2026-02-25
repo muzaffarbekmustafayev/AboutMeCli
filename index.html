@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="uz" class="scroll-smooth">
 <head>
   <!-- BASIC -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="light dark" />
 
   <!-- TITLE -->
    <title>Muzaffar Mustafayev – Software Engineer in Uzbekistan | React & Node.js Developer
@@ -32,6 +33,23 @@
   <!-- CANONICAL -->
   <link rel="canonical" href="https://muzaffarbek.uz" />
 <link rel="shortcut icon" href="./src/assets/favicon.svg" type="image/x-icon">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("theme");
+        var themeMode = ["light", "dark", "system"].includes(storedTheme) ? storedTheme : "system";
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var resolvedTheme = themeMode === "system" ? (prefersDark ? "dark" : "light") : themeMode;
+        var root = document.documentElement;
+
+        root.classList.toggle("dark", resolvedTheme === "dark");
+        root.dataset.theme = resolvedTheme;
+        root.style.colorScheme = resolvedTheme;
+      } catch (error) {
+        // no-op
+      }
+    })();
+  </script>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -41,6 +59,19 @@
         extend: {
           animation: {
             'spin-slow': 'spin 4s linear infinite',
+            'slide-in': 'slideIn 0.3s ease-out',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'bounce-slow': 'bounce 3s infinite',
+          },
+          keyframes: {
+            slideIn: {
+              '0%': { transform: 'translateX(100%)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
           },
         },
       },
