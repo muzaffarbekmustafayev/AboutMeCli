@@ -14,22 +14,17 @@ function About() {
       />
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300"
+      className="section-shell min-h-screen flex items-center justify-center px-4 sm:px-6 py-20 text-slate-700 dark:text-slate-300"
     >
       <div
-        className="relative rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 w-full max-w-xl lg:max-w-3xl xl:max-w-4xl
-               bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50
-               shadow-[0_10px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
-               shadow-blue-500/10 dark:shadow-blue-500/20
-               hover:shadow-[0_15px_50px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_15px_50px_rgba(59,130,246,0.25)]
-               transition-all duration-500 ease-out"
+        className="glass-card relative rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 w-full max-w-xl lg:max-w-3xl xl:max-w-4xl transition-all duration-500 ease-out"
       >
         {/* TITLE */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold brand-gradient">
             {t("about.title")}
           </h1>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-teal-600 to-cyan-500 rounded-full"></div>
         </div>
 
         {/* CONTENT */}
@@ -38,8 +33,8 @@ function About() {
           {/* QUOTE */}
           <p
             className="text-lg sm:text-xl md:text-2xl font-light text-gray-800 dark:text-gray-200 italic
-                     bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-900
-                     p-4 md:p-6 rounded-xl border-l-4 border-blue-600
+                     bg-gradient-to-r from-teal-50 to-white dark:from-slate-800 dark:to-slate-900
+                     p-4 md:p-6 rounded-xl border-l-4 border-teal-600
                      shadow-sm"
           >
             “{t("about.quote")}”
@@ -55,9 +50,9 @@ function About() {
 
           {/* STACK */}
           <div
-            className="bg-gradient-to-br from-white to-blue-50/50 dark:from-gray-800 dark:to-blue-900/10
-                       p-5 md:p-6 rounded-xl border border-blue-100 dark:border-blue-900/30
-                       shadow-[0_5px_20px_rgba(59,130,246,0.1)]"
+            className="bg-gradient-to-br from-white to-teal-50/60 dark:from-slate-800 dark:to-cyan-900/10
+                       p-5 md:p-6 rounded-xl border border-teal-100 dark:border-cyan-900/30
+                       shadow-[0_5px_20px_rgba(20,184,166,0.15)]"
           >
             <p>
               {t("about.stack")}
@@ -81,12 +76,12 @@ function About() {
           {/* MISSION */}
           <div
             className="relative p-6 md:p-8 rounded-2xl
-                       bg-gradient-to-r from-blue-600/10 via-white to-blue-600/10
-                       dark:from-blue-900/20 dark:via-gray-900 dark:to-blue-900/20
-                       border-2 border-blue-200/50 dark:border-blue-800/30
+                       bg-gradient-to-r from-teal-600/10 via-white to-cyan-500/10
+                       dark:from-teal-900/20 dark:via-slate-900 dark:to-cyan-900/20
+                       border-2 border-teal-200/50 dark:border-cyan-800/30
                        shadow-lg transition-all duration-500"
           >
-            <div className="absolute -top-3 left-6 px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full">
+            <div className="absolute -top-3 left-6 px-3 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
               {t("about.missionLabel")}
             </div>
             <p className="text-lg font-medium text-gray-900 dark:text-gray-100 pt-2">
@@ -97,8 +92,8 @@ function About() {
 
         {/* SKILLS */}
         <div className="mt-10 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-            <span className="text-blue-600">#</span>{" "}
+          <h3 className="font-display text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            <span className="text-teal-600">#</span>{" "}
             {t("about.techTitle")}
           </h3>
 

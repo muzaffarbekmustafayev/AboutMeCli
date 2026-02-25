@@ -22,7 +22,7 @@ const LangToggle = () => {
     <div
       role="group"
       aria-label={t("ui.language.select")}
-      className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1 shadow-inner"
+      className="control-surface inline-flex items-center rounded-xl p-1"
     >
       {languages.map((lang) => {
         const isActive = activeLanguage === lang.code;
@@ -40,8 +40,8 @@ const LangToggle = () => {
               px-3 py-1.5 text-sm font-semibold rounded-lg transition-all duration-300
               ${
                 isActive
-                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow"
-                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow"
+                  : "text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/70"
               }
             `}
           >

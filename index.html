@@ -57,11 +57,30 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63',
+            },
+          },
           animation: {
             'spin-slow': 'spin 4s linear infinite',
             'slide-in': 'slideIn 0.3s ease-out',
             'fade-in': 'fadeIn 0.5s ease-out',
             'bounce-slow': 'bounce 3s infinite',
+            'float-soft': 'floatSoft 8s ease-in-out infinite',
           },
           keyframes: {
             slideIn: {
@@ -71,6 +90,10 @@
             fadeIn: {
               '0%': { opacity: '0' },
               '100%': { opacity: '1' },
+            },
+            floatSoft: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
             },
           },
         },
@@ -94,7 +117,7 @@
   </script>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+<body class="font-sans text-slate-900 dark:text-slate-100 transition-colors duration-500">
   <noscript>
     This website works best with JavaScript enabled.
   </noscript>

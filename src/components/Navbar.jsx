@@ -6,8 +6,6 @@ import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
 import { menuItems } from "../data/menuItems";
 
-/* ================= NAVBAR ================= */
-
 export default function Navbar() {
   const { t } = useTranslation();
   const location = useLocation();
@@ -24,31 +22,28 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav
-      className={`
-        fixed top-0 left-0 z-50 w-full transition-all duration-500
-        ${
+    <nav className="fixed top-0 left-0 z-50 w-full px-2 sm:px-4">
+      <div
+        className={`mx-auto mt-2 sm:mt-3 max-w-7xl rounded-2xl transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-md border-b border-gray-200/40 dark:border-gray-700/40 py-2"
-            : "bg-transparent py-4"
-        }
-      `}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+            ? "glass-card control-surface px-3 py-2 sm:px-4"
+            : "bg-transparent px-1 py-2"
+        }`}
+      >
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-4">
+          <Logo t={t} />
 
-        <Logo t={t} />
+          <DesktopMenu t={t} isActive={isActive} />
 
-        <DesktopMenu t={t} isActive={isActive} />
+          <div className="flex items-center justify-end gap-2 sm:gap-3 shrink-0">
+            <div className="hidden lg:block">
+              <LangToggle />
+            </div>
 
-        <div className="flex items-center justify-end gap-3 shrink-0">
-          <div className="hidden lg:block">
-            <LangToggle />
+            <ThemeToggle />
+            <Burger open={menuOpen} toggle={() => setMenuOpen((prev) => !prev)} />
           </div>
-
-          <ThemeToggle />
-          <Burger open={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
         </div>
-
       </div>
 
       <MobileMenu
@@ -61,96 +56,96 @@ export default function Navbar() {
   );
 }
 
-/* ================= LOGO ================= */
-
 const Logo = ({ t }) => (
-  <Link to="/" className="flex items-center gap-3 group">
-    <div className="w-10 h-10 rounded-full flex items-center justify-center
-      bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500
-      text-white font-bold shadow-lg animate-pulse">
-      M
+  <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+    <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-600 to-cyan-500 text-white shadow-lg shadow-teal-700/30">
+      <span className="font-display text-sm font-bold">M</span>
+      <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
     </div>
 
-    <div className="leading-tight">
-      <p className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+    <div className="leading-tight hidden sm:block">
+      <p className="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50">
         Muzaffarbek
       </p>
-      <p className="text-xs text-gray-500 dark:text-gray-400 tracking-wider">
+      <p className="text-[11px] text-slate-500 dark:text-slate-400 tracking-[0.12em] uppercase">
         {t("navbar.role")}
       </p>
     </div>
   </Link>
 );
 
-/* ================= DESKTOP MENU ================= */
-
 const DesktopMenu = ({ t, isActive }) => (
   <div className="hidden lg:flex items-center justify-center">
-    {menuItems.map(({ key, path }) => (
-      <Link key={key} to={path} className="relative px-4 py-2 group">
-        <span
-          className={`font-medium transition-colors ${
-            isActive(path)
-              ? "text-blue-600 dark:text-blue-400"
-              : "text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
-          }`}
-        >
-          {t(`menu.${key}`)}
-        </span>
+    <div className="control-surface rounded-full p-1.5 flex items-center gap-1">
+      {menuItems.map(({ key, path }) => {
+        const active = isActive(path);
 
-        {isActive(path) && (
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full
-            bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse" />
-        )}
-      </Link>
-    ))}
+        return (
+          <Link
+            key={key}
+            to={path}
+            className={`px-3 xl:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              active
+                ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-md"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
+            }`}
+          >
+            {t(`menu.${key}`)}
+          </Link>
+        );
+      })}
+    </div>
   </div>
 );
-
-/* ================= BURGER ================= */
 
 const Burger = ({ open, toggle }) => (
   <button
     onClick={toggle}
     aria-label="Toggle menu"
-    className="lg:hidden w-12 h-12 rounded-xl flex items-center justify-center
-      hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+    aria-expanded={open}
+    className="lg:hidden control-surface h-11 w-11 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200"
   >
     <div className="space-y-1">
-      <span className={`block w-6 h-0.5 bg-current transition ${open && "rotate-45 translate-y-1.5"}`} />
-      <span className={`block w-6 h-0.5 bg-current transition ${open && "opacity-0"}`} />
-      <span className={`block w-6 h-0.5 bg-current transition ${open && "-rotate-45 -translate-y-1.5"}`} />
+      <span
+        className={`block h-0.5 w-5 bg-current transition ${open ? "translate-y-1.5 rotate-45" : ""}`}
+      />
+      <span
+        className={`block h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`}
+      />
+      <span
+        className={`block h-0.5 w-5 bg-current transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`}
+      />
     </div>
   </button>
 );
-
-/* ================= MOBILE MENU ================= */
 
 const MobileMenu = ({ open, close, isActive, t }) => {
   if (!open) return null;
 
   return (
-    <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/40">
-      <div className="p-6 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto">
-        {menuItems.map(({ key, path }) => (
-          <Link
-            key={key}
-            to={path}
-            onClick={close}
-            className={`flex items-center justify-between p-4 rounded-2xl transition ${
-              isActive(path)
-                ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
-                : "hover:bg-gray-100 dark:hover:bg-gray-800"
-            }`}
-          >
-            <span className="text-lg font-medium">
-              {t(`menu.${key}`)}
-            </span>
-            <span>→</span>
-          </Link>
-        ))}
+    <div className="lg:hidden mx-2 sm:mx-4 mt-2 rounded-2xl glass-card overflow-hidden">
+      <div className="p-4 space-y-2 max-h-[calc(100dvh-6rem)] overflow-y-auto">
+        {menuItems.map(({ key, path }) => {
+          const active = isActive(path);
 
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+          return (
+            <Link
+              key={key}
+              to={path}
+              onClick={close}
+              className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-all ${
+                active
+                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white"
+                  : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              }`}
+            >
+              <span>{t(`menu.${key}`)}</span>
+              <span aria-hidden="true">&gt;</span>
+            </Link>
+          );
+        })}
+
+        <div className="pt-3 border-t border-slate-200/70 dark:border-slate-700/80">
           <LangToggle />
         </div>
       </div>

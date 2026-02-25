@@ -16,12 +16,9 @@ function CVDownload() {
 
   return (
     <button
+      type="button"
       onClick={handleDownload}
-      className="flex items-center gap-2 px-6 py-3 rounded-lg 
-                 bg-gradient-to-r from-blue-500 to-purple-500 
-                 text-white font-medium 
-                 hover:from-blue-600 hover:to-purple-600 
-                 transition-all hover:shadow-lg"
+      className="primary-cta inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-semibold transition-all duration-300"
     >
       <Download size={20} />
       <span>{t("resume.download")}</span>

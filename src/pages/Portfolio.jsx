@@ -35,7 +35,7 @@ const Portfolio = () => {
   }, [searchTerm, selectedTech, t]);
 
   return (
-    <section className="min-h-screen pt-28 pb-24 px-4 bg-gradient-to-b from-gray-50 to-white dark:from-[#0b1120] dark:to-[#0f172a] transition-colors duration-500">
+    <section className="section-shell min-h-screen pt-28 pb-24 px-4 transition-colors duration-500">
       <SEO 
         title={t("portfolio.pageTitle")}
         description={t("portfolio.pageSubtitle")}
@@ -45,7 +45,7 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            <span className="font-display brand-gradient">
               {t("portfolio.pageTitle")}
             </span>
           </h1>
@@ -63,7 +63,7 @@ const Portfolio = () => {
               placeholder={t("portfolio.search", { defaultValue: "Search projects..." })}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full pl-12 pr-4 py-3 rounded-xl glass-card focus:ring-2 focus:ring-teal-500 outline-none"
             />
           </div>
           
@@ -72,7 +72,7 @@ const Portfolio = () => {
             <select
               value={selectedTech}
               onChange={(e) => setSelectedTech(e.target.value)}
-              className="pl-12 pr-8 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none appearance-none cursor-pointer min-w-[200px]"
+              className="pl-12 pr-8 py-3 rounded-xl glass-card focus:ring-2 focus:ring-teal-500 outline-none appearance-none cursor-pointer min-w-[200px]"
             >
               {allTechnologies.map(tech => (
                 <option key={tech} value={tech}>
@@ -97,15 +97,11 @@ const Portfolio = () => {
             const projectDescription = t(`portfolio.items.${project.id}.description`, {
               defaultValue: project.description,
             });
-            const projectFeatures = t(`portfolio.items.${project.id}.features`, {
-              returnObjects: true,
-              defaultValue: project.features,
-            });
 
             return (
               <div
                 key={project.id}
-                className="group relative flex flex-col rounded-3xl overflow-hidden bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2"
+                className="group glass-card relative flex flex-col rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/20"
               >
                 <div className="relative h-60 overflow-hidden">
                   <img
@@ -118,7 +114,7 @@ const Portfolio = () => {
 
                 <div className="p-8 flex flex-col flex-grow relative z-10">
                   <div className="flex items-center gap-2 mb-3">
-                    <Code2 size={16} className="text-blue-500" />
+                    <Code2 size={16} className="text-teal-500" />
                     <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       {t("portfolio.projectLabel")}
                     </span>
@@ -136,7 +132,7 @@ const Portfolio = () => {
                     {project.technologies?.slice(0, 4).map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                        className="px-3 py-1 text-xs font-medium rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300"
                       >
                         {tech}
                       </span>
@@ -166,7 +162,7 @@ const Portfolio = () => {
                         href={project.links.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:scale-105 transition-transform text-sm font-semibold"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 text-white hover:scale-105 transition-transform text-sm font-semibold"
                       >
                         <ExternalLink size={16} />
                         {t("portfolio.liveDemo")}
@@ -187,7 +183,7 @@ const Portfolio = () => {
 
                   <button
                     onClick={() => setActiveProject(project)}
-                    className="mt-4 text-blue-600 dark:text-blue-400 font-semibold hover:underline text-sm"
+                    className="mt-4 text-teal-600 dark:text-teal-400 font-semibold hover:underline text-sm"
                   >
                     {t("portfolio.details")} →
                   </button>
@@ -209,7 +205,7 @@ const Portfolio = () => {
       {/* Project Modal */}
       {activeProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl">
+          <div className="glass-card relative max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl">
             <button
               onClick={() => setActiveProject(null)}
               className="sticky top-4 float-right mr-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
@@ -245,7 +241,7 @@ const Portfolio = () => {
                 {activeProject.technologies?.map((tech, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium"
+                    className="px-4 py-2 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 font-medium"
                   >
                     {tech}
                   </span>
@@ -270,7 +266,7 @@ const Portfolio = () => {
                     href={activeProject.links.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white hover:scale-105 transition-transform font-semibold"
+                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-teal-600 text-white hover:scale-105 transition-transform font-semibold"
                   >
                     <ExternalLink size={20} />
                     {t("portfolio.liveDemo")}

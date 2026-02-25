@@ -72,10 +72,10 @@ function Skills() {
         description={t("skills.description", { defaultValue: "My technical skills" })}
         path="/skills"
       />
-    <section className="max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
+    <section className="section-shell max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
       {/* TITLE */}
       <div className="text-center mb-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold brand-gradient">
           {t("skills.title")}
         </h2>
         <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -92,8 +92,8 @@ function Skills() {
             onClick={() => setCategory(c)}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
               category === c
-                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:scale-105"
+                ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-lg scale-105"
+                : "control-surface text-slate-700 dark:text-slate-300 hover:scale-105"
             }`}
           >
             {t(`skills.categories.${c}`)}
@@ -107,7 +107,7 @@ function Skills() {
         <button
           ref={prevRef}
           className="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 z-10
-          w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-xl
+          w-12 h-12 rounded-full control-surface
           opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
         >
           <ChevronLeft />
@@ -116,7 +116,7 @@ function Skills() {
         <button
           ref={nextRef}
           className="absolute right-0 top-1/2 translate-x-8 -translate-y-1/2 z-10
-          w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-xl
+          w-12 h-12 rounded-full control-surface
           opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
         >
           <ChevronRight />
@@ -152,15 +152,13 @@ function Skills() {
               <SwiperSlide key={index} className="!w-[260px]">
                 <div
                   className="
-                    relative h-60 rounded-2xl
-                    border border-gray-200/70 dark:border-gray-700/60
-                    bg-white dark:bg-gray-900
+                    glass-card group relative h-60 rounded-2xl
                     flex flex-col items-center justify-center
                     shadow-xl transition-all duration-300
-                    hover:shadow-blue-500/30
+                    hover:shadow-cyan-500/20
                   "
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 opacity-100 transition" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition" />
 
                   <Icon className={`w-16 h-16 mb-4 ${skill.color}`} />
 

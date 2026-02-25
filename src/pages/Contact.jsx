@@ -154,7 +154,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="min-h-screen px-4 pt-28 pb-20 bg-gradient-to-b from-gray-50 to-white dark:from-[#0b1120] dark:to-[#0f172a]">
+    <section className="section-shell min-h-screen px-4 pt-28 pb-20">
       <SEO
         title={t("contact.title")}
         description={t("contact.subtitle")}
@@ -164,7 +164,7 @@ const Contact = () => {
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center sm:mb-14">
           <h1 className="text-4xl font-extrabold sm:text-5xl">
-            <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            <span className="font-display brand-gradient">
               {t("contact.title")}
             </span>
           </h1>
@@ -175,7 +175,7 @@ const Contact = () => {
         </div>
 
         <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-lg dark:border-gray-800 dark:bg-gray-900/70 sm:rounded-3xl sm:p-8">
+          <div className="glass-card rounded-2xl p-5 sm:rounded-3xl sm:p-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
               {t("contact.formTitle", { defaultValue: "Send a Message" })}
             </h2>
@@ -237,7 +237,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="primary-cta inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? (
                   <>
@@ -255,7 +255,7 @@ const Contact = () => {
           </div>
 
           <div className="space-y-6 sm:space-y-8">
-            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-lg dark:border-gray-800 dark:bg-gray-900/70 sm:rounded-3xl sm:p-8">
+            <div className="glass-card rounded-2xl p-5 sm:rounded-3xl sm:p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {t("contact.infoTitle", { defaultValue: "Contact Information" })}
               </h2>
@@ -289,7 +289,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-lg dark:border-gray-800 dark:bg-gray-900/70 sm:rounded-3xl sm:p-8">
+            <div className="glass-card rounded-2xl p-5 sm:rounded-3xl sm:p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {t("contact.socialTitle", { defaultValue: "Follow Me" })}
               </h2>

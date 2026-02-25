@@ -64,7 +64,7 @@ function Blog() {
         .sort((a, b) => (a.date < b.date ? 1 : -1));
 
       setCertificates(normalized);
-    } catch (_err) {
+    } catch {
       setCertificates([]);
       setError(t("certificates.error"));
     } finally {
@@ -79,7 +79,7 @@ function Blog() {
   const hasCertificates = useMemo(() => certificates.length > 0, [certificates]);
 
   return (
-    <section className="min-h-screen bg-gray-50 dark:bg-[#0b1120] pt-28 pb-20 px-4">
+    <section className="section-shell min-h-screen pt-28 pb-20 px-4">
       <SEO 
         title={t("certificates.title")}
         description={t("certificates.subtitle")}
@@ -100,9 +100,9 @@ function Blog() {
             {t("certificates.eyebrow")}
           </p>
 
-          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white">
+          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white">
             {t("certificates.title")} {" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">
+            <span className="brand-gradient">
               {t("certificates.titleAccent")}
             </span>
           </h1>
@@ -114,7 +114,7 @@ function Blog() {
           <button
             type="button"
             onClick={fetchCertificates}
-            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 text-white font-semibold"
+            className="primary-cta mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold"
           >
             <RefreshCw size={18} />
             {t("certificates.refresh")}
@@ -152,7 +152,7 @@ function Blog() {
             {certificates.map((certificate) => (
               <article
                 key={certificate.id}
-                className="group rounded-3xl bg-white dark:bg-gray-900/70 border overflow-hidden hover:shadow-xl transition"
+                className="group glass-card rounded-3xl overflow-hidden hover:shadow-xl transition"
               >
                 <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden cursor-pointer"
                      onClick={() => setSelectedImage(certificate)}>
@@ -194,7 +194,7 @@ function Blog() {
                     href={certificate.image}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400"
                   >
                     {t("certificates.viewImage")}
                     <ExternalLink size={15} />

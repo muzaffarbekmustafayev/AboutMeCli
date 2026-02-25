@@ -1,5 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Github, Linkedin, Youtube } from "lucide-react";
+import React, { useMemo } from "react";
+import {
+  ArrowRight,
+  Code2,
+  Github,
+  Globe2,
+  Linkedin,
+  Mail,
+  Rocket,
+  Sparkles,
+  Youtube,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
 
@@ -10,248 +21,200 @@ import CVdownload from "../components/CVdownload";
 
 function Home() {
   const { t } = useTranslation();
-  const [rotation, setRotation] = useState(0);
 
-  // Gradient rotation
-  useEffect(() => {
-    const id = setInterval(() => {
-      setRotation((prev) => (prev + 1) % 360);
-    }, 24);
-    return () => clearInterval(id);
-  }, []);
+  const socialLinks = useMemo(
+    () => [
+      {
+        href: socialMedias.github.path,
+        label: "GitHub",
+        tone: "text-slate-700 dark:text-slate-200",
+        icon: <Github className="h-4 w-4" />,
+      },
+      {
+        href: socialMedias.linkedin.path,
+        label: "LinkedIn",
+        tone: "text-blue-700 dark:text-blue-400",
+        icon: <Linkedin className="h-4 w-4" />,
+      },
+      {
+        href: socialMedias.telegram.path,
+        label: "Telegram",
+        tone: "text-sky-700 dark:text-sky-400",
+        icon: <TelegramIcon size={16} color="currentColor" />,
+      },
+      {
+        href: socialMedias.youtube.path,
+        label: "YouTube",
+        tone: "text-rose-700 dark:text-rose-400",
+        icon: <Youtube className="h-4 w-4" />,
+      },
+    ],
+    []
+  );
+
+  const highlights = useMemo(
+    () => [
+      {
+        icon: <Code2 className="h-4 w-4 text-teal-600 dark:text-teal-300" />,
+        title: t("home.highlight.architecture", { defaultValue: "Clean Architecture" }),
+        desc: t("home.highlight.architectureDesc", {
+          defaultValue: "Scalable frontend and backend structure for long-term growth.",
+        }),
+      },
+      {
+        icon: <Globe2 className="h-4 w-4 text-cyan-600 dark:text-cyan-300" />,
+        title: t("home.highlight.ux", { defaultValue: "User-Centered UX" }),
+        desc: t("home.highlight.uxDesc", {
+          defaultValue: "Fast, accessible interfaces with purposeful interaction patterns.",
+        }),
+      },
+      {
+        icon: <Rocket className="h-4 w-4 text-amber-600 dark:text-amber-300" />,
+        title: t("home.highlight.delivery", { defaultValue: "Production Delivery" }),
+        desc: t("home.highlight.deliveryDesc", {
+          defaultValue: "From idea to deployment with performance and reliability in focus.",
+        }),
+      },
+    ],
+    [t]
+  );
 
   return (
     <>
-      <SEO 
+      <SEO
         title={t("home.title", { defaultValue: "Home" })}
         description={t("home.description", { defaultValue: "Full Stack Developer Portfolio" })}
         path="/"
       />
-      <section
-      className="
-        min-h-screen
-        flex items-center justify-center
-        px-4
-        sm:px-6
-        lg:px-8
-        pt-28
-        pb-12
-        bg-gray-50
-        dark:bg-gray-900
-        transition-colors
-        duration-500
-      "
-    >
-      <div className="w-full max-w-6xl grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        {/* ================= CONTENT CARD ================= */}
-        <div
-          className="
-            w-full
-            bg-white/80
-            dark:bg-gray-800/80
-            backdrop-blur-xl
-            rounded-2xl
-            p-6
-            sm:p-8
-            lg:p-10
-            border
-            border-gray-200
-            dark:border-gray-700
-            shadow-[0_0_40px_rgba(59,130,246,0.35)]
-            dark:shadow-[0_0_50px_rgba(59,130,246,0.45)]
-            transition-all
-            duration-500
-          "
-        >
-       
 
-        {/* Title */}
-        <h3
-          className="
-            typing-once
-            text-xl
-            sm:text-2xl
-            md:text-3xl
-            font-semibold
-            text-gray-900
-            dark:text-white
-            mb-4
-            text-center lg:text-left
-            
-            max-w-md
-            mx-auto
-            lg:mx-0
-          "
-        >
-          {t("home.greeting")}
-        </h3>
+      <section className="section-shell relative min-h-screen overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8">
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-teal-500/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-16 right-0 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl" />
 
-        {/* ===== MOBILE IMAGE (only < lg) ===== */}
-        <div className="flex justify-center mb-6 lg:hidden">
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32">
-            <div
-              className="
-                absolute inset-0 rounded-full
-                motion-reduce:animate-none
-              "
-              style={{
-                background:
-                  "conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)",
-                transform: `rotate(${rotation}deg)`,
-              }}
-            >
-              <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full" />
+        <div className="mx-auto w-full max-w-7xl grid gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal-300/50 bg-teal-100/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:border-teal-600/40 dark:bg-teal-500/20 dark:text-teal-200">
+              <Sparkles size={14} />
+              {t("home.availability", { defaultValue: "Available for new projects" })}
             </div>
 
-            <div
-              className="
-                absolute
-                inset-1
-                sm:inset-2
-                rounded-full
-                overflow-hidden
-                border
-                border-white
-                dark:border-gray-800
-                shadow-lg
-              "
-            >
-              <img
-                src={MyImage}
-                alt="Muzaffarbek Mustafayev"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+            <h1 className="mt-6 font-display text-4xl leading-tight text-slate-900 dark:text-slate-100 sm:text-5xl xl:text-6xl">
+              {t("home.greeting")}
+              <span className="mt-2 block brand-gradient">
+                {t("home.headline", { defaultValue: "I design systems that people enjoy using." })}
+              </span>
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+              {t("home.description")}
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <CVdownload />
+
+              <Link
+                to="/contact"
+                className="control-surface inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-200"
+              >
+                {t("home.contactCta", { defaultValue: "Start a conversation" })}
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="glass-card group flex items-center justify-between rounded-2xl px-4 py-3"
+                  aria-label={link.label}
+                >
+                  <span className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <span className={link.tone}>{link.icon}</span>
+                    {link.label}
+                  </span>
+                  <ArrowRight size={15} className="text-slate-500 transition-transform group-hover:translate-x-1" />
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {highlights.map((item) => (
+                <div key={item.title} className="glass-card rounded-2xl p-4">
+                  <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-display text-sm font-semibold text-slate-900 dark:text-slate-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="relative mx-auto w-full max-w-md lg:ml-auto">
+              <div className="absolute -inset-3 rounded-[2.2rem] bg-gradient-to-br from-teal-500/30 via-cyan-400/20 to-amber-400/30 blur-2xl" />
+
+              <div className="glass-card relative rounded-[2.2rem] p-5 sm:p-6">
+                <div className="relative overflow-hidden rounded-[1.7rem] border border-white/50 dark:border-slate-700/60">
+                  <img
+                    src={MyImage}
+                    alt="Muzaffarbek Mustafayev"
+                    className="h-[25rem] w-full object-cover sm:h-[28rem]"
+                    loading="lazy"
+                  />
+
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/85 via-slate-900/30 to-transparent p-5">
+                    <p className="font-display text-xl font-semibold text-white">{t("home.role")}</p>
+                    <p className="mt-1 text-sm text-slate-200">
+                      {t("home.location", { defaultValue: "Based in Uzbekistan" })}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-3 dark:border-slate-700/70 dark:bg-slate-900/70">
+                    <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                      {t("home.focus", { defaultValue: "Focus" })}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-100">React + Node.js</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-3 dark:border-slate-700/70 dark:bg-slate-900/70">
+                    <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                      {t("home.contact", { defaultValue: "Contact" })}
+                    </p>
+                    <a
+                      href={`mailto:${socialMedias.email.path}`}
+                      className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 dark:text-teal-300"
+                    >
+                      <Mail size={14} />
+                      Email
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="glass-card absolute -left-6 bottom-8 hidden w-56 rounded-2xl p-3 lg:block">
+                <p className="text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
+                  Live build
+                </p>
+                <pre className="mt-2 overflow-hidden text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+{`> npm run dev
+> building API routes...
+> UI deployed successfully`}
+                </pre>
+              </div>
             </div>
           </div>
         </div>
-
-     
-
-        {/* Description (abzas bilan) */}
-        <p
-          className="
-            text-gray-700
-            dark:text-gray-300
-            text-sm
-            sm:text-base
-            leading-relaxed
-            text-left
-            lg:text-justify
-            mb-6
-            [text-indent:1.25em]
-            lg:[text-indent:1.75em]
-          "
-        >
-          {t("home.description")}
-        </p>
-
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-          <CVdownload />
-
-          <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
-            <a
-              href={socialMedias.github.path}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                p-3 rounded-full
-                bg-gray-200 dark:bg-gray-700
-                shadow-md
-                hover:-translate-y-1 hover:shadow-xl
-                transition
-              "
-            >
-              <Github className="w-5 h-5 text-gray-900 dark:text-gray-200" />
-            </a>
-
-            <a
-              href={socialMedias.linkedin.path}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                p-3 rounded-full
-                bg-gray-200 dark:bg-gray-700
-                shadow-md
-                hover:-translate-y-1 hover:shadow-xl
-                transition
-              "
-            >
-              <Linkedin className="w-5 h-5 text-blue-700 dark:text-blue-400" />
-            </a>
-<a
-              href={socialMedias.telegram.path}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                p-3 rounded-full
-                bg-gray-200 dark:bg-gray-700
-                shadow-md
-                hover:-translate-y-1 hover:shadow-xl
-                transition
-              "
-            >
-              <TelegramIcon size={20} />
-            </a>
-            <a
-              href={socialMedias.youtube.path}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                p-3 rounded-full
-                bg-gray-200 dark:bg-gray-700
-                shadow-md
-                hover:-translate-y-1 hover:shadow-xl
-                transition
-              "
-            >
-              <Youtube className="w-5 h-5 text-red-600 dark:text-red-400" />
-            </a>
-
-            
-          </div>
-        </div>
-        </div>
-
-        {/* ================= DESKTOP IMAGE ================= */}
-        <div className="relative hidden lg:block w-80 h-80 xl:w-96 xl:h-96 justify-self-center">
-          <div
-            className="
-              absolute inset-0 rounded-full
-              motion-reduce:animate-none
-            "
-            style={{
-              background:
-                "conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)",
-              transform: `rotate(${rotation}deg)`,
-            }}
-          >
-            <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full shadow-inner" />
-          </div>
-
-          <div
-            className="
-              absolute
-              inset-6
-              rounded-full
-              overflow-hidden
-              border
-              border-white
-              dark:border-gray-800
-              shadow-xl
-            "
-          >
-            <img
-              src={MyImage}
-              alt="Muzaffarbek Mustafayev"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
