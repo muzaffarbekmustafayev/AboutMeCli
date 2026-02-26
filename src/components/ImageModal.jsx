@@ -26,9 +26,9 @@ const ImageModal = ({ image, title, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-4 sm:p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-50 bg-slate-950/85 p-2 backdrop-blur-sm sm:p-6" onClick={onClose}>
       <div
-        className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-slate-200/20 bg-slate-900/85 shadow-2xl"
+        className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-200/20 bg-slate-900/85 shadow-2xl sm:rounded-3xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-3 border-b border-slate-700/70 px-4 py-3 sm:px-5">
@@ -39,12 +39,12 @@ const ImageModal = ({ image, title, onClose }) => {
             <p className="text-xs text-slate-400">Press ESC to close</p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <a
               href={image}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
               title="Open in new tab"
             >
               <ExternalLink size={16} />
@@ -53,7 +53,7 @@ const ImageModal = ({ image, title, onClose }) => {
             <button
               type="button"
               onClick={handleDownload}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
               title="Download image"
             >
               <Download size={16} />
@@ -62,7 +62,7 @@ const ImageModal = ({ image, title, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
               title="Close"
             >
               <X size={16} />

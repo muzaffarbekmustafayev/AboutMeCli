@@ -87,7 +87,7 @@ function Home() {
         path="/"
       />
 
-      <section className="section-shell relative min-h-screen overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8">
+      <section className="section-shell relative min-h-screen overflow-hidden px-4 pt-24 pb-14 sm:px-6 sm:pt-28 sm:pb-16 lg:px-8 lg:pt-32">
         <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-teal-500/20 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-16 right-0 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl" />
 
@@ -98,7 +98,7 @@ function Home() {
               {t("home.availability", { defaultValue: "Available for new projects" })}
             </div>
 
-            <h1 className="mt-6 font-display text-4xl leading-tight text-slate-900 dark:text-slate-100 sm:text-5xl xl:text-6xl">
+            <h1 className="mt-5 font-display text-[2rem] leading-tight text-slate-900 dark:text-slate-100 sm:mt-6 sm:text-5xl xl:text-6xl">
               {t("home.greeting")}
               <span className="mt-2 block brand-gradient">
                 {t("home.headline", { defaultValue: "I design systems that people enjoy using." })}
@@ -109,12 +109,12 @@ function Home() {
               {t("home.description")}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <CVdownload />
 
               <Link
                 to="/contact"
-                className="control-surface inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-200"
+                className="control-surface inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-200"
               >
                 {t("home.contactCta", { defaultValue: "Start a conversation" })}
                 <ArrowRight size={16} />
@@ -166,7 +166,7 @@ function Home() {
                   <img
                     src={MyImage}
                     alt="Muzaffarbek Mustafayev"
-                    className="h-[25rem] w-full object-cover sm:h-[28rem]"
+                    className="h-[22rem] w-full object-cover sm:h-[28rem]"
                     loading="lazy"
                   />
 

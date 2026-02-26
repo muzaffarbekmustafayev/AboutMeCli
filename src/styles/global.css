@@ -207,6 +207,20 @@ h6,
   }
 }
 
+@keyframes routeLoadingBar {
+  0% {
+    transform: translateX(-140%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+.route-loading-bar {
+  animation: routeLoadingBar 1s ease-in-out infinite;
+}
+
 @media (max-width: 768px) {
   .section-shell::before {
     background-size: 36px 36px;
@@ -217,6 +231,26 @@ h6,
     width: 18rem;
     height: 18rem;
     opacity: 0.3;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass-card {
+    backdrop-filter: blur(12px);
+  }
+
+  .control-surface,
+  .primary-cta,
+  .social-icon-button {
+    min-height: 44px;
+  }
+}
+
+@media (hover: none) {
+  .social-icon-button:hover,
+  .primary-cta:hover {
+    transform: none;
+    box-shadow: inherit;
   }
 }
 

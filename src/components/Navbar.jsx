@@ -19,6 +19,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -123,30 +134,39 @@ const MobileMenu = ({ open, close, isActive, t }) => {
   if (!open) return null;
 
   return (
-    <div className="lg:hidden mx-2 sm:mx-4 mt-2 rounded-2xl glass-card overflow-hidden">
-      <div className="p-4 space-y-2 max-h-[calc(100dvh-6rem)] overflow-y-auto">
-        {menuItems.map(({ key, path }) => {
-          const active = isActive(path);
+    <div className="fixed inset-0 z-40 lg:hidden">
+      <button
+        type="button"
+        aria-label="Close menu"
+        className="absolute inset-0 bg-slate-950/35 backdrop-blur-[2px]"
+        onClick={close}
+      />
 
-          return (
-            <Link
-              key={key}
-              to={path}
-              onClick={close}
-              className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-all ${
-                active
-                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white"
-                  : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              }`}
-            >
-              <span>{t(`menu.${key}`)}</span>
-              <span aria-hidden="true">&gt;</span>
-            </Link>
-          );
-        })}
+      <div className="absolute left-2 right-2 top-[4.4rem] max-h-[calc(100dvh-5.2rem)] overflow-hidden rounded-2xl glass-card shadow-2xl sm:left-4 sm:right-4 sm:top-[4.8rem]">
+        <div className="p-4 space-y-2 overflow-y-auto max-h-[calc(100dvh-5.2rem)]">
+          {menuItems.map(({ key, path }) => {
+            const active = isActive(path);
 
-        <div className="pt-3 border-t border-slate-200/70 dark:border-slate-700/80">
-          <LangToggle />
+            return (
+              <Link
+                key={key}
+                to={path}
+                onClick={close}
+                className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-all ${
+                  active
+                    ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white"
+                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                }`}
+              >
+                <span>{t(`menu.${key}`)}</span>
+                <span aria-hidden="true">&gt;</span>
+              </Link>
+            );
+          })}
+
+          <div className="pt-3 border-t border-slate-200/70 dark:border-slate-700/80">
+            <LangToggle />
+          </div>
         </div>
       </div>
     </div>

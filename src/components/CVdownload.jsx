@@ -18,7 +18,7 @@ function CVDownload() {
     <button
       type="button"
       onClick={handleDownload}
-      className="primary-cta inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+      className="primary-cta inline-flex min-h-12 w-full items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold transition-all duration-300 sm:w-auto"
     >
       <Download size={20} />
       <span>{t("resume.download")}</span>
