@@ -269,7 +269,7 @@ const Contact = () => {
                     <Mail className="text-blue-600 dark:text-blue-400" size={24} />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Email</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{t("contact.email")}</p>
                     <p className="font-semibold text-gray-900 dark:text-white break-all">{emailAddress}</p>
                   </div>
                 </a>
@@ -282,7 +282,7 @@ const Contact = () => {
                     <Phone className="text-green-600 dark:text-green-400" size={24} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Phone</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{t("contact.phone")}</p>
                     <p className="font-semibold text-gray-900 dark:text-white">{phoneNumber}</p>
                   </div>
                 </a>

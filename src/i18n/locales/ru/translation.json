@@ -23,12 +23,33 @@
       "uz": "Узбекский",
       "en": "Английский",
       "ru": "Русский"
+    },
+    "navigation": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "backToTop": "Back to top"
     }
   },
   "home": {
     "greeting": "Здравствуйте, меня зовут Музаффарбек Мустафаев",
     "role": "Software Engineer",
-    "description": "Я создаю надёжные и удобные веб-приложения, которые решают реальные задачи. Для меня каждый проект — это не просто код, а работающая система."
+    "description": "Я создаю надёжные и удобные веб-приложения, которые решают реальные задачи. Для меня каждый проект — это не просто код, а работающая система.",
+    "title": "Home",
+    "availability": "Available for new projects",
+    "headline": "I design systems that people enjoy using.",
+    "contactCta": "Start a conversation",
+    "location": "Based in Uzbekistan",
+    "focus": "Focus",
+    "contact": "Contact",
+    "liveBuild": "Live build",
+    "highlight": {
+      "architecture": "Clean Architecture",
+      "architectureDesc": "Scalable frontend and backend structure for long-term growth.",
+      "ux": "User-Centered UX",
+      "uxDesc": "Fast, accessible interfaces with purposeful interaction patterns.",
+      "delivery": "Production Delivery",
+      "deliveryDesc": "From idea to deployment with performance and reliability in focus."
+    }
   },
   "about": {
     "title": "Обо мне",
@@ -39,7 +60,8 @@
     "interests": "Я стремлюсь упрощать сложные задачи, обеспечивать безопасность и постоянно улучшать системы. Развитие — мой ежедневный принцип.",
     "missionLabel": "Цель",
     "mission": "Моя цель — стать инженером, создающим простые, но мощные и надёжные системы, приносящие реальную пользу пользователям.",
-    "techTitle": "Функциональные возможности, которые я создаю"
+    "techTitle": "Функциональные возможности, которые я создаю",
+    "description": "Learn more about me"
   },
   "resume": {
     "role": "Fullstack разработчик",
@@ -67,23 +89,30 @@
     "projects": {
       "title": "Системы, которые я создаю",
       "ai": "Интеллектуальные сервисы для взаимодействия с пользователями и автоматизации процессов",
-      "face": "Решения для безопасной идентификации личности и контроля доступа"
+      "face": "Решения для безопасной идентификации личности и контроля доступа",
+      "aiTitle": "AI Chat Platform",
+      "faceTitle": "Face ID Login System",
+      "live": "Live"
     },
     "skills": {
-      "title": "Ключевые возможности"
+      "title": "Ключевые возможности",
+      "frontend": "Frontend",
+      "backend": "Backend"
     },
     "education": {
       "title": "Образование",
       "degree": "Бакалавр программной инженерии",
       "school": "Самаркандский государственный университет",
-      "desc": "Обучение, ориентированное на практическое решение задач, системное мышление и реальные проекты"
+      "desc": "Обучение, ориентированное на практическое решение задач, системное мышление и реальные проекты",
+      "period": "2022 - Present"
     },
     "languages": {
       "title": "Языки",
       "uz": "Узбекский (родной)",
       "en": "Английский (свободно)",
       "ru": "Русский (профессионально)"
-    }
+    },
+    "footer": "(c) {{year}} Muzaffarbek Mustafayev. All rights reserved."
   },
   "contact": {
     "title": "Связаться со мной",
@@ -95,7 +124,22 @@
     "emailPlaceholder": "Ваш адрес электронной почты",
     "message": "Ваше сообщение",
     "send": "Отправить",
-    "success": "Ваше сообщение успешно отправлено!"
+    "success": "Ваше сообщение успешно отправлено!",
+    "namePlaceholder": "Your name",
+    "messagePlaceholder": "Your message...",
+    "sending": "Sending...",
+    "successDemo": "Demo mode: Message received!",
+    "error": "Failed to send message. Please try again.",
+    "infoTitle": "Contact Information",
+    "socialTitle": "Follow Me",
+    "errors": {
+      "name": "Name is required",
+      "email": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "message": "Message is required",
+      "messageShort": "Message too short",
+      "validation": "Please fix the errors"
+    }
   },
   "portfolio": {
     "pageTitle": "Мои проекты",
@@ -108,7 +152,6 @@
         "description": "Визуализация цветка, который непрерывно растет и изменяется.",
         "features": [
           "Можно просматривать и взаимодействовать без регистрации",
-       
           "Поддерживаются основные возможности JavaScript",
           "Красивый и динамичный цветочный паттерн"
         ]
@@ -166,7 +209,14 @@
     "github": "GitHub",
     "liveDemo": "Live Demo",
     "details": "Details",
-    "close": "Close"
+    "close": "Close",
+    "search": "Search projects...",
+    "allTech": "All Technologies",
+    "showing": "Showing",
+    "projects": "projects",
+    "noResults": "No projects found",
+    "features": "Features",
+    "technologies": "Technologies"
   },
   "blog": {
     "eyebrow": "Блог",
@@ -254,12 +304,36 @@
       "advanced": "Продвинутый",
       "intermediate": "Средний"
     },
-    "footer": "Я ценю чистый код, масштабируемую архитектуру и долгосрочные решения выше краткосрочных хаков."
+    "footer": "Я ценю чистый код, масштабируемую архитектуру и долгосрочные решения выше краткосрочных хаков.",
+    "description": "My technical skills"
   },
   "notFound": {
     "code": "404",
     "title": "Страница не найдена",
     "description": "Похоже, страница, которую вы ищете, исчезла, словно слова, унесённые ветром. Возможно, стоит вернуться назад и выбрать другой путь.",
     "backHome": "Вернуться на главную"
+  },
+  "certificates": {
+    "eyebrow": "Certificates",
+    "title": "My",
+    "titleAccent": "certificates",
+    "subtitle": "Place certificate images inside public/certificates and manage the list through public/certificates/certificates.json.",
+    "pageSubtitle": "Professional certificates and achievements.",
+    "refresh": "Refresh",
+    "certificate": "Certificate",
+    "preview": "Preview",
+    "viewCredential": "View credential",
+    "viewImage": "Open image",
+    "empty": "No certificates added yet.",
+    "emptyDescription": "New certificates will appear here soon.",
+    "error": "Could not load certificates list.",
+    "errorDescription": "Please try refreshing the page.",
+    "setupHint": "Create or populate public/certificates/certificates.json.",
+    "unknownYear": "N/A",
+    "stats": {
+      "total": "Total Certificates",
+      "issuers": "Issuers",
+      "latestYear": "Latest Year"
+    }
   }
 }

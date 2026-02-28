@@ -23,12 +23,33 @@
       "uz": "Uzbek",
       "en": "English",
       "ru": "Russian"
+    },
+    "navigation": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "backToTop": "Back to top"
     }
   },
   "home": {
     "greeting": "Hi, I'm Muzaffarbek Mustafayev",
     "role": "Software Engineer",
-    "description": "I build reliable and user-focused web applications that solve real problems. For me, every project is not just code — it is a working system."
+    "description": "I build reliable and user-focused web applications that solve real problems. For me, every project is not just code — it is a working system.",
+    "title": "Home",
+    "availability": "Available for new projects",
+    "headline": "I design systems that people enjoy using.",
+    "contactCta": "Start a conversation",
+    "location": "Based in Uzbekistan",
+    "focus": "Focus",
+    "contact": "Contact",
+    "liveBuild": "Live build",
+    "highlight": {
+      "architecture": "Clean Architecture",
+      "architectureDesc": "Scalable frontend and backend structure for long-term growth.",
+      "ux": "User-Centered UX",
+      "uxDesc": "Fast, accessible interfaces with purposeful interaction patterns.",
+      "delivery": "Production Delivery",
+      "deliveryDesc": "From idea to deployment with performance and reliability in focus."
+    }
   },
   "about": {
     "title": "About Me",
@@ -39,7 +60,8 @@
     "interests": "I value simplifying complex problems, ensuring security, and continuously improving systems. Growth is a daily discipline for me.",
     "missionLabel": "Mission",
     "mission": "My goal is to become an engineer who creates simple yet powerful and reliable systems that deliver real value to users.",
-    "techTitle": "Functionalities I Can Build"
+    "techTitle": "Functionalities I Can Build",
+    "description": "Learn more about me"
   },
   "resume": {
     "role": "Fullstack Developer",
@@ -67,23 +89,30 @@
     "projects": {
       "title": "Systems I Can Build",
       "ai": "Intelligent services that interact with users and automate processes",
-      "face": "Security-focused identity verification and access control solutions"
+      "face": "Security-focused identity verification and access control solutions",
+      "aiTitle": "AI Chat Platform",
+      "faceTitle": "Face ID Login System",
+      "live": "Live"
     },
     "skills": {
-      "title": "Core Capabilities"
+      "title": "Core Capabilities",
+      "frontend": "Frontend",
+      "backend": "Backend"
     },
     "education": {
       "title": "Education",
       "degree": "Bachelor in Software Engineering",
       "school": "Samarkand State University",
-      "desc": "Education focused on practical problem-solving, structured thinking, and real-world projects"
+      "desc": "Education focused on practical problem-solving, structured thinking, and real-world projects",
+      "period": "2022 - Present"
     },
     "languages": {
       "title": "Languages",
       "uz": "Uzbek (Native)",
       "en": "English (Fluent)",
       "ru": "Russian (Professional)"
-    }
+    },
+    "footer": "(c) {{year}} Muzaffarbek Mustafayev. All rights reserved."
   },
   "contact": {
     "title": "Get in Touch",
@@ -95,7 +124,22 @@
     "emailPlaceholder": "Your Email Address",
     "message": "Your Message",
     "send": "Send Message",
-    "success": "Your message has been sent successfully!"
+    "success": "Your message has been sent successfully!",
+    "namePlaceholder": "Your name",
+    "messagePlaceholder": "Your message...",
+    "sending": "Sending...",
+    "successDemo": "Demo mode: Message received!",
+    "error": "Failed to send message. Please try again.",
+    "infoTitle": "Contact Information",
+    "socialTitle": "Follow Me",
+    "errors": {
+      "name": "Name is required",
+      "email": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "message": "Message is required",
+      "messageShort": "Message too short",
+      "validation": "Please fix the errors"
+    }
   },
   "portfolio": {
     "pageTitle": "My Projects",
@@ -112,7 +156,6 @@
         "description": "A continuously growing and morphing flower-like visualization.",
         "features": [
           "Can be viewed and interacted with without registration",
-       
           "Core JavaScript features are supported",
           "Beautiful and dynamic flower form"
         ]
@@ -166,7 +209,14 @@
         "desc": "Automating repetitive tasks to simplify workflows and improve efficiency."
       }
     },
-    "note": "Each system is tailored to real project requirements."
+    "note": "Each system is tailored to real project requirements.",
+    "search": "Search projects...",
+    "allTech": "All Technologies",
+    "showing": "Showing",
+    "projects": "projects",
+    "noResults": "No projects found",
+    "features": "Features",
+    "technologies": "Technologies"
   },
   "blog": {
     "eyebrow": "Blog",
@@ -254,12 +304,36 @@
       "advanced": "Advanced",
       "intermediate": "Intermediate"
     },
-    "footer": "I value clean code, scalable architecture, and long-term solutions over short-lived hacks."
+    "footer": "I value clean code, scalable architecture, and long-term solutions over short-lived hacks.",
+    "description": "My technical skills"
   },
   "notFound": {
     "code": "404",
     "title": "Page not found",
     "description": "The page you are looking for seems to have vanished like words whispered to the wind. Perhaps it is time to return and choose another path.",
     "backHome": "Back to home"
+  },
+  "certificates": {
+    "eyebrow": "Certificates",
+    "title": "My",
+    "titleAccent": "certificates",
+    "subtitle": "Place certificate images inside public/certificates and manage the list through public/certificates/certificates.json.",
+    "pageSubtitle": "Professional certificates and achievements.",
+    "refresh": "Refresh",
+    "certificate": "Certificate",
+    "preview": "Preview",
+    "viewCredential": "View credential",
+    "viewImage": "Open image",
+    "empty": "No certificates added yet.",
+    "emptyDescription": "New certificates will appear here soon.",
+    "error": "Could not load certificates list.",
+    "errorDescription": "Please try refreshing the page.",
+    "setupHint": "Create or populate public/certificates/certificates.json.",
+    "unknownYear": "N/A",
+    "stats": {
+      "total": "Total Certificates",
+      "issuers": "Issuers",
+      "latestYear": "Latest Year"
+    }
   }
 }

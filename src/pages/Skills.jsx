@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Autoplay,
   Navigation,
-  Pagination,
   EffectCoverflow,
+  A11y,
+  Keyboard,
 } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
@@ -21,7 +22,6 @@ import {
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
 const SKILLS = [
@@ -60,6 +60,8 @@ function Skills() {
     category === "all"
       ? SKILLS
       : SKILLS.filter((skill) => skill.category === category);
+  const canNavigate = filteredSkills.length > 1;
+  const shouldLoop = filteredSkills.length > 3;
 
   useEffect(() => {
     swiperRef.current?.slideToLoop(0);
@@ -67,120 +69,132 @@ function Skills() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={t("skills.title", { defaultValue: "Skills" })}
         description={t("skills.description", { defaultValue: "My technical skills" })}
         path="/skills"
       />
-    <section className="section-shell max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
-      {/* TITLE */}
-      <div className="text-center mb-10">
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold brand-gradient">
-          {t("skills.title")}
-        </h2>
-        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          {t("skills.subtitle")}
-        </p>
-      </div>
+      <section className="section-shell max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
+        <div className="text-center mb-10">
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold brand-gradient">
+            {t("skills.title")}
+          </h2>
+          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            {t("skills.subtitle")}
+          </p>
+        </div>
 
-      {/* FILTER */}
-      <div className="flex flex-wrap justify-center gap-3 mb-14">
-        <Filter className="w-5 h-5 text-gray-500 self-center" />
-        {categories.map((c) => (
+        <div className="flex flex-wrap justify-center gap-3 mb-14">
+          <Filter className="w-5 h-5 text-gray-500 self-center" />
+          {categories.map((c) => (
+            <button
+              key={c}
+              onClick={() => setCategory(c)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                category === c
+                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-lg scale-105"
+                  : "control-surface text-slate-700 dark:text-slate-300 hover:bg-teal-100/80 hover:text-teal-700 dark:hover:bg-teal-900/30 dark:hover:text-teal-200 hover:scale-105"
+              }`}
+            >
+              {t(`skills.categories.${c}`)}
+            </button>
+          ))}
+        </div>
+
+        <div className="relative">
           <button
-            key={c}
-            onClick={() => setCategory(c)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-              category === c
-                ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-lg scale-105"
-                : "control-surface text-slate-700 dark:text-slate-300 hover:scale-105"
-            }`}
+            ref={prevRef}
+            type="button"
+            aria-label={t("skills.prevSlide", { defaultValue: "Previous skill" })}
+            disabled={!canNavigate}
+            className="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 z-10
+            w-12 h-12 rounded-full control-surface
+            opacity-100 transition flex items-center justify-center
+            disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {t(`skills.categories.${c}`)}
+            <ChevronLeft />
           </button>
-        ))}
-      </div>
 
-      {/* SLIDER */}
-      <div className="relative group">
-        {/* NAV */}
-        <button
-          ref={prevRef}
-          className="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 z-10
-          w-12 h-12 rounded-full control-surface
-          opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
-        >
-          <ChevronLeft />
-        </button>
+          <button
+            ref={nextRef}
+            type="button"
+            aria-label={t("skills.nextSlide", { defaultValue: "Next skill" })}
+            disabled={!canNavigate}
+            className="absolute right-0 top-1/2 translate-x-8 -translate-y-1/2 z-10
+            w-12 h-12 rounded-full control-surface
+            opacity-100 transition flex items-center justify-center
+            disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <ChevronRight />
+          </button>
 
-        <button
-          ref={nextRef}
-          className="absolute right-0 top-1/2 translate-x-8 -translate-y-1/2 z-10
-          w-12 h-12 rounded-full control-surface
-          opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
-        >
-          <ChevronRight />
-        </button>
+          <div className="overflow-hidden rounded-3xl">
+            <Swiper
+              modules={[Autoplay, Navigation, EffectCoverflow, A11y, Keyboard]}
+              effect="coverflow"
+              centeredSlides
+              grabCursor
+              slidesPerView="auto"
+              spaceBetween={16}
+              coverflowEffect={{
+                rotate: 26,
+                stretch: 0,
+                depth: 130,
+                modifier: 1,
+                slideShadows: false,
+              }}
+              autoplay={
+                canNavigate
+                  ? { delay: 2800, pauseOnMouseEnter: true, disableOnInteraction: false }
+                  : false
+              }
+              keyboard={{ enabled: true, onlyInViewport: true }}
+              a11y={{ enabled: true }}
+              watchOverflow
+              speed={650}
+              loop={shouldLoop}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+              }}
+              className="pb-14"
+            >
+              {filteredSkills.map((skill) => {
+                const Icon = skill.icon;
 
-        <Swiper
-          modules={[Autoplay, Navigation, Pagination, EffectCoverflow]}
-          effect="coverflow"
-          centeredSlides
-          grabCursor
-          slidesPerView="auto"
-          coverflowEffect={{
-            rotate: 35,
-            stretch: 0,
-            depth: 180,
-            modifier: 1,
-            slideShadows: false,
-          }}
-          autoplay={{ delay: 2800, pauseOnMouseEnter: true }}
-          pagination={{ clickable: true }}
-          loop
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          className="pb-14"
-        >
-          {filteredSkills.map((skill, index) => {
-            const Icon = skill.icon;
+                return (
+                  <SwiperSlide key={skill.name} className="!w-[230px] sm:!w-[250px] lg:!w-[280px]">
+                    <div
+                      className="
+                        glass-card relative h-60 rounded-2xl
+                        flex flex-col items-center justify-center
+                        shadow-xl transition-all duration-300
+                      "
+                    >
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-amber-500/10 opacity-100" />
 
-            return (
-              <SwiperSlide key={index} className="!w-[260px]">
-                <div
-                  className="
-                    glass-card group relative h-60 rounded-2xl
-                    flex flex-col items-center justify-center
-                    shadow-xl transition-all duration-300
-                    hover:shadow-cyan-500/20
-                  "
-                >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition" />
+                      <Icon className={`w-16 h-16 mb-4 ${skill.color}`} />
 
-                  <Icon className={`w-16 h-16 mb-4 ${skill.color}`} />
+                      <h3 className="font-semibold text-lg">
+                        {skill.name}
+                      </h3>
 
-                  <h3 className="font-semibold text-lg">
-                    {skill.name}
-                  </h3>
+                      <span className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        {t(`skills.levels.${skill.level}`)}
+                      </span>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        </div>
 
-                  <span className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    {t(`skills.levels.${skill.level}`)}
-                  </span>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
-
-      {/* FOOTER */}
-      <p className="mt-20 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-        {t("skills.footer")}
-      </p>
-    </section>
+        <p className="mt-20 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          {t("skills.footer")}
+        </p>
+      </section>
     </>
   );
 }

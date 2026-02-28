@@ -52,7 +52,12 @@ export default function Navbar() {
             </div>
 
             <ThemeToggle />
-            <Burger open={menuOpen} toggle={() => setMenuOpen((prev) => !prev)} />
+            <Burger
+              open={menuOpen}
+              toggle={() => setMenuOpen((prev) => !prev)}
+              openLabel={t("ui.navigation.openMenu")}
+              closeLabel={t("ui.navigation.closeMenu")}
+            />
           </div>
         </div>
       </div>
@@ -109,10 +114,10 @@ const DesktopMenu = ({ t, isActive }) => (
   </div>
 );
 
-const Burger = ({ open, toggle }) => (
+const Burger = ({ open, toggle, openLabel, closeLabel }) => (
   <button
     onClick={toggle}
-    aria-label="Toggle menu"
+    aria-label={open ? closeLabel : openLabel}
     aria-expanded={open}
     className="lg:hidden control-surface h-11 w-11 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200"
   >
@@ -137,7 +142,7 @@ const MobileMenu = ({ open, close, isActive, t }) => {
     <div className="fixed inset-0 z-40 lg:hidden">
       <button
         type="button"
-        aria-label="Close menu"
+        aria-label={t("ui.navigation.closeMenu")}
         className="absolute inset-0 bg-slate-950/35 backdrop-blur-[2px]"
         onClick={close}
       />

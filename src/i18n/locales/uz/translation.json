@@ -23,12 +23,33 @@
       "uz": "O‘zbekcha",
       "en": "Inglizcha",
       "ru": "Ruscha"
+    },
+    "navigation": {
+      "openMenu": "Menyuni ochish",
+      "closeMenu": "Menyuni yopish",
+      "backToTop": "Yuqoriga qaytish"
     }
   },
   "home": {
     "greeting": "Salom, men Muzaffarbek Mustafayevman",
     "role": "Software Engineer",
-    "description": "Men real muammolarni hal qiladigan, foydalanuvchi uchun qulay va barqaror web ilovalar yarataman. Har bir loyiha men uchun faqat kod emas — bu ishlaydigan tizim."
+    "description": "Men real muammolarni hal qiladigan, foydalanuvchi uchun qulay va barqaror web ilovalar yarataman. Har bir loyiha men uchun faqat kod emas — bu ishlaydigan tizim.",
+    "title": "Bosh sahifa",
+    "availability": "Yangi loyihalar uchun ochiqman",
+    "headline": "Foydalanuvchilarga yoqadigan tizimlar yarataman.",
+    "contactCta": "Suhbatni boshlash",
+    "location": "Uzbekistonda faoliyat yuritaman",
+    "focus": "Asosiy yo`nalish",
+    "contact": "Aloqa",
+    "liveBuild": "Jonli build",
+    "highlight": {
+      "architecture": "Toza arxitektura",
+      "architectureDesc": "Uzoq muddatli o`sish uchun kengayadigan frontend va backend tuzilmasi.",
+      "ux": "Foydalanuvchi markazida UX",
+      "uxDesc": "Maqsadli interaksiya bilan tez va qulay interfeyslar.",
+      "delivery": "Production yetkazib berish",
+      "deliveryDesc": "G`oyadan deploygacha: tezlik va ishonchlilik doimo markazda."
+    }
   },
   "about": {
     "title": "Men haqimda",
@@ -39,7 +60,8 @@
     "interests": "Men murakkab muammolarni soddalashtirishni, xavfsizlikni ta’minlashni va tizimlarni doimiy rivojlantirishni muhim deb bilaman. O‘sish — bu mening kundalik odatim.",
     "missionLabel": "Maqsad",
     "mission": "Mening maqsadim — foydalanuvchiga haqiqiy qiymat beradigan, sodda, lekin kuchli va ishonchli tizimlar yaratadigan muhandis bo‘lish.",
-    "techTitle": "Men yarata oladigan funksionalliklar"
+    "techTitle": "Men yarata oladigan funksionalliklar",
+    "description": "Men haqimda batafsil"
   },
   "resume": {
     "role": "Fullstack dasturchi",
@@ -67,23 +89,30 @@
     "projects": {
       "title": "Yarata oladigan tizimlar",
       "ai": "Foydalanuvchi bilan muloqot qiluvchi va jarayonlarni avtomatlashtiruvchi aqlli xizmatlar",
-      "face": "Xavfsizlikka yo‘naltirilgan shaxsni aniqlash va tizimga kirish yechimlari"
+      "face": "Xavfsizlikka yo‘naltirilgan shaxsni aniqlash va tizimga kirish yechimlari",
+      "aiTitle": "AI Chat Platform",
+      "faceTitle": "Face ID Login System",
+      "live": "Jonli"
     },
     "skills": {
-      "title": "Asosiy imkoniyatlarim"
+      "title": "Asosiy imkoniyatlarim",
+      "frontend": "Frontend",
+      "backend": "Backend"
     },
     "education": {
       "title": "Ta’lim",
       "degree": "Dasturiy injiniring (Bakalavr)",
       "school": "Samarqand davlat universiteti",
-      "desc": "Amaliy muammolarni yechish, tizimli fikrlash va real loyihalar bilan ishlashga yo‘naltirilgan ta’lim"
+      "desc": "Amaliy muammolarni yechish, tizimli fikrlash va real loyihalar bilan ishlashga yo‘naltirilgan ta’lim",
+      "period": "2022 - Hozirgacha"
     },
     "languages": {
       "title": "Tillar",
       "uz": "O‘zbek (ona tili)",
       "en": "Ingliz (erkin muloqot)",
       "ru": "Rus (professional daraja)"
-    }
+    },
+    "footer": "(c) {{year}} Muzaffarbek Mustafayev. Barcha huquqlar himoyalangan."
   },
   "contact": {
     "title": "Bog‘lanish",
@@ -95,7 +124,22 @@
     "emailPlaceholder": "Email manzilingiz",
     "message": "Xabaringiz",
     "send": "Yuborish",
-    "success": "Xabaringiz muvaffaqiyatli yuborildi!"
+    "success": "Xabaringiz muvaffaqiyatli yuborildi!",
+    "namePlaceholder": "Ismingiz",
+    "messagePlaceholder": "Xabaringiz...",
+    "sending": "Yuborilmoqda...",
+    "successDemo": "Demo rejim: Xabaringiz qabul qilindi!",
+    "error": "Xabar yuborilmadi. Qayta urinib ko`ring.",
+    "infoTitle": "Aloqa ma`lumotlari",
+    "socialTitle": "Meni kuzating",
+    "errors": {
+      "name": "Ism kiritilishi shart",
+      "email": "Email kiritilishi shart",
+      "emailInvalid": "Email formati noto`g`ri",
+      "message": "Xabar kiritilishi shart",
+      "messageShort": "Xabar juda qisqa",
+      "validation": "Iltimos, xatolarni to`g`rilang"
+    }
   },
   "portfolio": {
     "pageTitle": "Mening Loyihalarim",
@@ -112,7 +156,6 @@
         "description": "Davomiy o‘sib boruvchi va o‘zgaruvchan gul shaklidagi vizualizatsiya.",
         "features": [
           "Foydalanuvchi ro‘yxatdan o‘tmasdan ko'rish va o‘zaro ta’sir qilish imkoniyati",
-         
           "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
           "Chiroyli va o‘zgaruvchan gul shakli"
         ]
@@ -166,7 +209,14 @@
         "desc": "Takroriy ishlarni avtomatlashtirish va tizim ishini soddalashtirish."
       }
     },
-    "note": "Har bir tizim real loyiha talablariga moslab ishlab chiqiladi."
+    "note": "Har bir tizim real loyiha talablariga moslab ishlab chiqiladi.",
+    "search": "Loyihalarni qidirish...",
+    "allTech": "Barcha texnologiyalar",
+    "showing": "Ko`rsatilmoqda",
+    "projects": "ta loyiha",
+    "noResults": "Loyiha topilmadi",
+    "features": "Imkoniyatlar",
+    "technologies": "Texnologiyalar"
   },
   "blog": {
     "eyebrow": "Blog",
@@ -240,16 +290,27 @@
     ]
   },
   "certificates": {
-    "eyebrow": "Certificates",
+    "eyebrow": "Sertifikatlar",
     "title": "Mening",
     "titleAccent": "sertifikatlarim",
     "subtitle": "Sertifikat rasmlarini `public/certificates` ichiga joylang va ro'yxatni `public/certificates/certificates.json` orqali boshqaring.",
     "refresh": "Yangilash",
     "certificate": "Sertifikat",
     "viewImage": "Rasmni ochish",
-    "empty": "Hozircha sertifikatlar qo'shilmagan.",
-    "error": "Sertifikatlar ro'yxatini o'qib bo'lmadi.",
-    "setupHint": "`public/certificates/certificates.json` faylini yarating yoki to'ldiring."
+    "empty": "Hozircha sertifikatlar qo`shilmagan.",
+    "error": "Sertifikatlar ro`yxatini yuklab bo`lmadi.",
+    "setupHint": "`public/certificates/certificates.json` faylini yarating yoki to'ldiring.",
+    "pageSubtitle": "Professional sertifikatlar va yutuqlar.",
+    "preview": "Ko`rish",
+    "viewCredential": "Credentialni ochish",
+    "emptyDescription": "Yangi sertifikatlar tez orada shu yerda chiqadi.",
+    "errorDescription": "Iltimos, sahifani qayta yangilang.",
+    "unknownYear": "N/A",
+    "stats": {
+      "total": "Jami sertifikat",
+      "issuers": "Beruvchi tashkilotlar",
+      "latestYear": "So`nggi yil"
+    }
   },
   "skills": {
     "title": "Ko‘nikmalar va texnologiyalar",
@@ -266,7 +327,8 @@
       "advanced": "Yuqori",
       "intermediate": "O‘rta"
     },
-    "footer": "Men qisqa muddatli yechimlardan ko‘ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman."
+    "footer": "Men qisqa muddatli yechimlardan ko‘ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman.",
+    "description": "Texnik ko`nikmalarim"
   },
   "notFound": {
     "code": "404",

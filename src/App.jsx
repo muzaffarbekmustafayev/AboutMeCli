@@ -6,6 +6,7 @@ import { ToastProvider } from './contexts/ToastContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import BackToTop from './components/BackToTop';
+import MouseTrail from './components/MouseTrail';
 import AppRoutes from './routes/AppRoutes';
 import { useTranslation } from 'react-i18next';
 
@@ -56,6 +57,7 @@ const RouterShell = () => {
   return (
     <div className="app-shell min-h-screen transition-colors duration-500">
       <RouteTransitionLoader />
+      <MouseTrail />
       <Navbar />
       <AppRoutes />
       <BackToTop />

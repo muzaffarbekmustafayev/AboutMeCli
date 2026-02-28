@@ -170,12 +170,14 @@ const Resume = () => {
 
               <div className="space-y-6">
                 <Project
-                  title="AI Chat Platform"
+                  title={t("resume.projects.aiTitle", { defaultValue: "AI Chat Platform" })}
                   desc={t("resume.projects.ai")}
+                  liveLabel={t("resume.projects.live", { defaultValue: "Live" })}
                 />
                 <Project
-                  title="Face ID Login System"
+                  title={t("resume.projects.faceTitle", { defaultValue: "Face ID Login System" })}
                   desc={t("resume.projects.face")}
+                  liveLabel={t("resume.projects.live", { defaultValue: "Live" })}
                 />
               </div>
             </section>
@@ -195,8 +197,8 @@ const Resume = () => {
                 </h2>
               </div>
 
-              <SkillGroup title="Frontend" items={["React","Redux","React Router","TailwindCSS","TypeScript"]} />
-              <SkillGroup title="Backend" items={["Node.js","Express","MongoDB","MySQL","REST API"]} />
+              <SkillGroup title={t("resume.skills.frontend", { defaultValue: "Frontend" })} items={["React","Redux","React Router","TailwindCSS","TypeScript"]} />
+              <SkillGroup title={t("resume.skills.backend", { defaultValue: "Backend" })} items={["Node.js","Express","MongoDB","MySQL","REST API"]} />
             </section>
 
             {/* EDUCATION */}
@@ -214,7 +216,7 @@ const Resume = () => {
                 {t("resume.education.degree")}
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {t("resume.education.school")} • 2022 – Present
+                {t("resume.education.school")} • {t("resume.education.period", { defaultValue: "2022 - Present" })}
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                 {t("resume.education.desc")}
@@ -235,7 +237,10 @@ const Resume = () => {
         </div>
 
         <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400 text-sm">
-          © {new Date().getFullYear()} Muzaffarbek Mustafayev. All rights reserved.
+          {t("resume.footer", {
+            defaultValue: "© {{year}} Muzaffarbek Mustafayev. All rights reserved.",
+            year: new Date().getFullYear(),
+          })}
         </footer>
       </div>
     </div>
@@ -246,12 +251,12 @@ export default Resume;
 
 /* ===== HELPERS (DIZAYNGA TEGILMAGAN) ===== */
 
-const Project = ({ title, desc }) => (
+const Project = ({ title, desc, liveLabel }) => (
   <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-500 transition-colors">
     <div className="flex justify-between items-start mb-3">
       <h3 className="text-lg font-semibold">{title}</h3>
       <span className="flex items-center gap-1 text-sm text-teal-600 dark:text-teal-400">
-        Live <ExternalLink size={14} />
+        {liveLabel} <ExternalLink size={14} />
       </span>
     </div>
     <p className="text-gray-600 dark:text-gray-300">{desc}</p>

@@ -165,14 +165,6 @@ function Certificates() {
             />
           </div>
 
-          <button
-            type="button"
-            onClick={fetchCertificates}
-            className="primary-cta mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold"
-          >
-            <RefreshCw size={16} />
-            {t("certificates.refresh")}
-          </button>
         </header>
 
         {loading && (

@@ -195,7 +195,7 @@ function Home() {
                       className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 dark:text-teal-300"
                     >
                       <Mail size={14} />
-                      Email
+                      {t("contact.email")}
                     </a>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ function Home() {
 
               <div className="glass-card absolute -left-6 bottom-8 hidden w-56 rounded-2xl p-3 lg:block">
                 <p className="text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
-                  Live build
+                  {t("home.liveBuild", { defaultValue: "Live build" })}
                 </p>
                 <pre className="mt-2 overflow-hidden text-xs leading-relaxed text-slate-700 dark:text-slate-300">
 {`> npm run dev
