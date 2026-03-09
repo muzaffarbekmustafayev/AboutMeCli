@@ -6,7 +6,7 @@
     "home": "Главная",
     "about": "Обо мне",
     "portfolio": "Проекты",
-    "skills": "Возможности",
+    "skills": "Навыки",
     "resume": "Резюме",
     "certificates": "Сертификаты",
     "contact": "Контакты"
@@ -14,7 +14,7 @@
   "ui": {
     "loading": "Загрузка...",
     "theme": {
-      "switchToDark": "Переключить на темную тему",
+      "switchToDark": "Переключить на тёмную тему",
       "switchToLight": "Переключить на светлую тему"
     },
     "language": {
@@ -25,47 +25,47 @@
       "ru": "Русский"
     },
     "navigation": {
-      "openMenu": "Open menu",
-      "closeMenu": "Close menu",
-      "backToTop": "Back to top"
+      "openMenu": "Открыть меню",
+      "closeMenu": "Закрыть меню",
+      "backToTop": "Наверх"
     }
   },
   "home": {
     "greeting": "Здравствуйте, меня зовут Музаффарбек Мустафаев",
     "role": "Software Engineer",
     "description": "Я создаю надёжные и удобные веб-приложения, которые решают реальные задачи. Для меня каждый проект — это не просто код, а работающая система.",
-    "title": "Home",
-    "availability": "Available for new projects",
-    "headline": "I design systems that people enjoy using.",
-    "contactCta": "Start a conversation",
-    "location": "Based in Uzbekistan",
-    "focus": "Focus",
-    "contact": "Contact",
-    "liveBuild": "Live build",
+    "title": "Главная",
+    "availability": "Открыт для новых проектов",
+    "headline": "Я проектирую системы, которыми люди с удовольствием пользуются.",
+    "contactCta": "Начать разговор",
+    "location": "Работаю из Узбекистана",
+    "focus": "Фокус",
+    "contact": "Контакт",
+    "liveBuild": "Живая сборка",
     "highlight": {
-      "architecture": "Clean Architecture",
-      "architectureDesc": "Scalable frontend and backend structure for long-term growth.",
-      "ux": "User-Centered UX",
-      "uxDesc": "Fast, accessible interfaces with purposeful interaction patterns.",
-      "delivery": "Production Delivery",
-      "deliveryDesc": "From idea to deployment with performance and reliability in focus."
+      "architecture": "Чистая архитектура",
+      "architectureDesc": "Масштабируемая структура frontend и backend для долгосрочного роста.",
+      "ux": "UX, ориентированный на пользователя",
+      "uxDesc": "Быстрые, доступные интерфейсы с продуманными паттернами взаимодействия.",
+      "delivery": "Production-доставка",
+      "deliveryDesc": "От идеи до развёртывания с фокусом на производительность и надёжность."
     }
   },
   "about": {
     "title": "Обо мне",
     "quote": "Я не просто пишу код — я создаю работающие решения.",
-    "intro": "Меня зовут Музаффарбек Мустафаев. Я Software Engineer и студент 4 курса Самаркандского государственного университета.",
+    "intro": "Меня зовут Музаффарбек Мустафаев. Я Junior Software Engineer, специализирующийся на frontend и backend разработке, и студент 4 курса Самаркандского государственного университета.",
     "stack": "Я проектирую и реализую веб-системы, ориентированные на потребности бизнеса и пользователей. Каждое решение направлено на удобство, надёжность и долгосрочную ценность.",
     "experience": "У меня есть опыт работы с пользователями, управления данными, контроля уровней доступа и построения безопасных, масштабируемых систем.",
     "interests": "Я стремлюсь упрощать сложные задачи, обеспечивать безопасность и постоянно улучшать системы. Развитие — мой ежедневный принцип.",
     "missionLabel": "Цель",
     "mission": "Моя цель — стать инженером, создающим простые, но мощные и надёжные системы, приносящие реальную пользу пользователям.",
     "techTitle": "Функциональные возможности, которые я создаю",
-    "description": "Learn more about me"
+    "description": "Узнать больше обо мне"
   },
   "resume": {
-    "role": "Fullstack разработчик",
-    "stack": "Разработчик веб-систем",
+    "role": "Junior Software Engineer",
+    "stack": "Frontend & Backend Engineer",
     "location": "Самарканд, Узбекистан",
     "download": "Скачать резюме",
     "downloadAlert": "Резюме загружено!",
@@ -76,8 +76,8 @@
     "experience": {
       "title": "Практический опыт",
       "role": "Software Engineer",
-      "company": "Samarkand State University",
-      "period": "2023 – настоящее время",
+      "company": "Самаркандский государственный университет",
+      "period": "2023 — настоящее время",
       "tasks": [
         "Создание процессов регистрации и входа пользователей",
         "Управление правами доступа для разных ролей",
@@ -92,27 +92,27 @@
       "face": "Решения для безопасной идентификации личности и контроля доступа",
       "aiTitle": "AI Chat Platform",
       "faceTitle": "Face ID Login System",
-      "live": "Live"
+      "live": "Демо"
     },
     "skills": {
       "title": "Ключевые возможности",
-      "frontend": "Frontend",
-      "backend": "Backend"
+      "frontend": "Frontend Engineering",
+      "backend": "Backend Engineering"
     },
     "education": {
       "title": "Образование",
       "degree": "Бакалавр программной инженерии",
       "school": "Самаркандский государственный университет",
       "desc": "Обучение, ориентированное на практическое решение задач, системное мышление и реальные проекты",
-      "period": "2022 - Present"
+      "period": "2022 - 2026 ожидается"
     },
     "languages": {
       "title": "Языки",
       "uz": "Узбекский (родной)",
-      "en": "Английский (свободно)",
-      "ru": "Русский (профессионально)"
+      "en": "Английский (средний)",
+      "ru": "Русский (средний)"
     },
-    "footer": "(c) {{year}} Muzaffarbek Mustafayev. All rights reserved."
+    "footer": "(c) {{year}} Музаффарбек Мустафаев. Все права защищены."
   },
   "contact": {
     "title": "Связаться со мной",
@@ -125,31 +125,35 @@
     "message": "Ваше сообщение",
     "send": "Отправить",
     "success": "Ваше сообщение успешно отправлено!",
-    "namePlaceholder": "Your name",
-    "messagePlaceholder": "Your message...",
-    "sending": "Sending...",
-    "successDemo": "Demo mode: Message received!",
-    "error": "Failed to send message. Please try again.",
-    "infoTitle": "Contact Information",
-    "socialTitle": "Follow Me",
+    "namePlaceholder": "Ваше имя",
+    "messagePlaceholder": "Ваше сообщение...",
+    "sending": "Отправка...",
+    "successDemo": "Демо-режим: Сообщение получено!",
+    "error": "Не удалось отправить сообщение. Попробуйте снова.",
+    "infoTitle": "Контактная информация",
+    "socialTitle": "Подписывайтесь",
     "errors": {
-      "name": "Name is required",
-      "email": "Email is required",
-      "emailInvalid": "Invalid email format",
-      "message": "Message is required",
-      "messageShort": "Message too short",
-      "validation": "Please fix the errors"
+      "name": "Имя обязательно",
+      "email": "Email обязателен",
+      "emailInvalid": "Неверный формат email",
+      "message": "Сообщение обязательно",
+      "messageShort": "Сообщение слишком короткое",
+      "validation": "Пожалуйста, исправьте ошибки"
     }
   },
   "portfolio": {
-    "pageTitle": "Мои проекты",
+    "pageTitle": "Мои Проекты",
     "pageSubtitle": "Реальные проекты, реализованные от идеи до результата с практическими технологиями",
     "projectLabel": "Проект",
+    "github": "GitHub",
     "downloadZip": "Скачать ZIP",
+    "liveDemo": "Живое демо",
+    "details": "Подробнее",
+    "close": "Закрыть",
     "items": {
       "infinityFlower": {
         "title": "Infinity Flower",
-        "description": "Визуализация цветка, который непрерывно растет и изменяется.",
+        "description": "Визуализация цветка, который непрерывно растёт и изменяется.",
         "features": [
           "Можно просматривать и взаимодействовать без регистрации",
           "Поддерживаются основные возможности JavaScript",
@@ -186,7 +190,7 @@
       }
     },
     "title": "Системы, которые я создаю",
-    "subtitle": "Я разрабатываю надежные и масштабируемые системы для решения реальных задач",
+    "subtitle": "Я разрабатываю надёжные и масштабируемые системы для решения реальных задач",
     "systems": {
       "auth": {
         "title": "Системы управления пользователями",
@@ -206,17 +210,13 @@
       }
     },
     "note": "Каждая система разрабатывается под реальные требования проекта.",
-    "github": "GitHub",
-    "liveDemo": "Live Demo",
-    "details": "Details",
-    "close": "Close",
-    "search": "Search projects...",
-    "allTech": "All Technologies",
-    "showing": "Showing",
-    "projects": "projects",
-    "noResults": "No projects found",
-    "features": "Features",
-    "technologies": "Technologies"
+    "search": "Поиск проектов...",
+    "allTech": "Все технологии",
+    "showing": "Показано",
+    "projects": "проектов",
+    "noResults": "Проекты не найдены",
+    "features": "Возможности",
+    "technologies": "Технологии"
   },
   "blog": {
     "eyebrow": "Блог",
@@ -231,7 +231,7 @@
     "readMore": "Читать дальше",
     "topicsTitle": "Рекомендованные темы",
     "newsletter": {
-      "title": "Newsletter",
+      "title": "Рассылка",
       "description": "Один короткий и полезный выпуск каждую неделю.",
       "placeholder": "Ваш email",
       "cta": "Записаться"
@@ -261,7 +261,7 @@
       },
       {
         "title": "SEO готовность портфолио",
-        "excerpt": "Улучшайте видимость с помощью мета-тегов, семантической верстки и структурированных данных.",
+        "excerpt": "Улучшайте видимость с помощью мета-тегов, семантической вёрстки и структурированных данных.",
         "date": "2024-09-30",
         "readTime": "7 мин чтения",
         "category": "SEO",
@@ -305,7 +305,7 @@
       "intermediate": "Средний"
     },
     "footer": "Я ценю чистый код, масштабируемую архитектуру и долгосрочные решения выше краткосрочных хаков.",
-    "description": "My technical skills"
+    "description": "Мои технические навыки"
   },
   "notFound": {
     "code": "404",
@@ -314,26 +314,26 @@
     "backHome": "Вернуться на главную"
   },
   "certificates": {
-    "eyebrow": "Certificates",
-    "title": "My",
-    "titleAccent": "certificates",
-    "subtitle": "Place certificate images inside public/certificates and manage the list through public/certificates/certificates.json.",
-    "pageSubtitle": "Professional certificates and achievements.",
-    "refresh": "Refresh",
-    "certificate": "Certificate",
-    "preview": "Preview",
-    "viewCredential": "View credential",
-    "viewImage": "Open image",
-    "empty": "No certificates added yet.",
-    "emptyDescription": "New certificates will appear here soon.",
-    "error": "Could not load certificates list.",
-    "errorDescription": "Please try refreshing the page.",
-    "setupHint": "Create or populate public/certificates/certificates.json.",
-    "unknownYear": "N/A",
+    "eyebrow": "Сертификаты",
+    "title": "Мои",
+    "titleAccent": "сертификаты",
+    "subtitle": "Разместите изображения сертификатов в public/certificates и управляйте списком через public/certificates/certificates.json.",
+    "pageSubtitle": "Профессиональные сертификаты и достижения.",
+    "refresh": "Обновить",
+    "certificate": "Сертификат",
+    "preview": "Просмотр",
+    "viewCredential": "Посмотреть credential",
+    "viewImage": "Открыть изображение",
+    "empty": "Сертификаты пока не добавлены.",
+    "emptyDescription": "Новые сертификаты появятся здесь в ближайшее время.",
+    "error": "Не удалось загрузить список сертификатов.",
+    "errorDescription": "Пожалуйста, обновите страницу.",
+    "setupHint": "Создайте или заполните public/certificates/certificates.json.",
+    "unknownYear": "Н/Д",
     "stats": {
-      "total": "Total Certificates",
-      "issuers": "Issuers",
-      "latestYear": "Latest Year"
+      "total": "Всего сертификатов",
+      "issuers": "Организаций",
+      "latestYear": "Последний год"
     }
   }
 }

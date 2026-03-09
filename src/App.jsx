@@ -45,7 +45,7 @@ const RouteTransitionLoader = () => {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="glass-card rounded-2xl px-5 py-3 shadow-xl">
           <div className="h-2 w-40 overflow-hidden rounded-full bg-slate-200/80 dark:bg-slate-700/70">
-            <div className="route-loading-bar h-full w-1/2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400" />
+            <div className="route-loading-bar h-full w-1/2 rounded-full bg-gradient-to-r from-blue-700 to-blue-500" />
           </div>
         </div>
       </div>

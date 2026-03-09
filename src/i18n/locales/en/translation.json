@@ -54,63 +54,63 @@
   "about": {
     "title": "About Me",
     "quote": "I don't just write code — I build solutions that work.",
-    "intro": "My name is Muzaffarbek Mustafayev. I am a Software Engineer and a 4-year student at Samarkand State University.",
-    "stack": "I design and implement web systems tailored to business and user needs. Every decision I make focuses on usability, reliability, and long-term value.",
-    "experience": "I have experience working with users, managing data, controlling access levels, and building secure, scalable systems.",
-    "interests": "I value simplifying complex problems, ensuring security, and continuously improving systems. Growth is a daily discipline for me.",
+    "intro": "My name is Muzaffarbek Mustafayev. I am a Junior Software Engineer focused on frontend and backend engineering, and a Software Engineering student at Samarkand State University.",
+    "stack": "I build practical web systems with React.js and Node.js, focusing on clean structure, usability, maintainability, and business value.",
+    "experience": "I have hands-on experience building full-stack applications, connecting frontend interfaces with backend services, managing access levels, and developing secure, scalable systems.",
+    "interests": "I value simplifying complex problems, improving system quality, and continuously learning modern software engineering practices. Growth is a daily discipline for me.",
     "missionLabel": "Mission",
     "mission": "My goal is to become an engineer who creates simple yet powerful and reliable systems that deliver real value to users.",
-    "techTitle": "Functionalities I Can Build",
+    "techTitle": "Frontend & Backend Engineering Focus",
     "description": "Learn more about me"
   },
   "resume": {
-    "role": "Fullstack Developer",
-    "stack": "Web systems developer",
+    "role": "Junior Software Engineer",
+    "stack": "Frontend & Backend Engineer",
     "location": "Samarkand, Uzbekistan",
     "download": "Download Resume",
     "downloadAlert": "Resume downloaded!",
     "summary": {
       "title": "Professional Summary",
-      "text": "I build secure, user-friendly, and scalable web applications aligned with business and user needs. Practical value and results are always my top priority."
+      "text": "Motivated Junior Software Engineer seeking to apply and grow practical skills in frontend and backend engineering. I build clean, maintainable, and user-focused web applications with React.js, Node.js, and modern API-driven workflows."
     },
     "experience": {
       "title": "Practical Experience",
-      "role": "Software Engineer",
+      "role": "Junior Software Engineer",
       "company": "Samarkand State University",
       "period": "2023 – Present",
       "tasks": [
-        "Building user registration and authentication flows",
-        "Managing permissions and access levels for different user roles",
-        "Organizing creation, editing, and deletion of data",
-        "Establishing reliable communication between frontend and backend",
-        "Designing clear and scalable system architectures for large projects"
+        "Built and maintained academic and personal web applications using React.js, Node.js, and MongoDB",
+        "Implemented authentication and authorization workflows with JWT",
+        "Integrated frontend interfaces with backend services and RESTful APIs",
+        "Managed role-based access control and structured data operations",
+        "Tested APIs with Postman and documented endpoints with Swagger"
       ]
     },
     "projects": {
-      "title": "Systems I Can Build",
-      "ai": "Intelligent services that interact with users and automate processes",
-      "face": "Security-focused identity verification and access control solutions",
-      "aiTitle": "AI Chat Platform",
-      "faceTitle": "Face ID Login System",
+      "title": "Project Directions",
+      "ai": "Frontend and backend web applications built with React.js, Node.js, and database integration for real use cases.",
+      "face": "Authentication, role-based access, and secure API-centered systems focused on maintainability and scale.",
+      "aiTitle": "Full-Stack Web Applications",
+      "faceTitle": "Authentication & API Systems",
       "live": "Live"
     },
     "skills": {
       "title": "Core Capabilities",
-      "frontend": "Frontend",
-      "backend": "Backend"
+      "frontend": "Frontend Engineering",
+      "backend": "Backend Engineering"
     },
     "education": {
       "title": "Education",
       "degree": "Bachelor in Software Engineering",
       "school": "Samarkand State University",
-      "desc": "Education focused on practical problem-solving, structured thinking, and real-world projects",
-      "period": "2022 - Present"
+      "desc": "Currently pursuing a bachelor's degree focused on programming, software engineering, analytical thinking, and practical project work.",
+      "period": "2022 - 2026 Expected"
     },
     "languages": {
       "title": "Languages",
       "uz": "Uzbek (Native)",
-      "en": "English (Fluent)",
-      "ru": "Russian (Professional)"
+      "en": "English (Intermediate)",
+      "ru": "Russian (Intermediate)"
     },
     "footer": "(c) {{year}} Muzaffarbek Mustafayev. All rights reserved."
   },

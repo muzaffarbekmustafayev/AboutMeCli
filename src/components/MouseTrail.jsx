@@ -99,7 +99,7 @@ function MouseTrail() {
         return (
           <span
             key={dot.id}
-            className="absolute h-3 w-3 rounded-full bg-teal-400"
+            className="absolute h-3 w-3 rounded-full bg-blue-400"
             style={{
               left: dot.x,
               top: dot.y,
@@ -112,7 +112,7 @@ function MouseTrail() {
 
       {follower.ready && (
         <span
-          className="absolute h-6 w-6 rounded-full border border-cyan-300 bg-cyan-300/25 shadow-[0_0_24px_rgba(34,211,238,0.45)]"
+          className="absolute h-6 w-6 rounded-full border border-blue-300 bg-blue-300/25 shadow-[0_0_24px_rgba(59,130,246,0.35)]"
           style={{
             left: follower.x,
             top: follower.y,

@@ -1,21 +1,17 @@
 import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { projects } from "../data/projects";
-import { Github, ExternalLink, Code2, X, Download, Search, Filter } from "lucide-react";
+import { Github, ExternalLink, Code2, X, Download, Search, Filter, Sparkles, FolderKanban, CheckCircle2 } from "lucide-react";
 import SEO from "../components/SEO";
 
 const ProjectImage = ({ src, alt, loadingLabel }) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
-  const handleImageReady = () => {
-    setIsImageLoading(false);
-  };
-
   return (
-    <div className="relative h-60 overflow-hidden bg-slate-100 dark:bg-slate-900" aria-busy={isImageLoading}>
+    <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900" aria-busy={isImageLoading}>
       {isImageLoading && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-200/70 dark:bg-slate-800/70">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-teal-500/80 border-t-transparent" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-50 dark:bg-slate-800/50">
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-blue-500/80 border-t-transparent" />
           <span className="sr-only">{loadingLabel}</span>
         </div>
       )}
@@ -24,13 +20,13 @@ const ProjectImage = ({ src, alt, loadingLabel }) => {
         src={src}
         alt={alt}
         loading="lazy"
-        onLoad={handleImageReady}
-        onError={handleImageReady}
-        className={`h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 ${
+        onLoad={() => setIsImageLoading(false)}
+        onError={() => setIsImageLoading(false)}
+        className={`h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105 ${
           isImageLoading ? "opacity-0" : "opacity-100"
         }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 };
@@ -41,14 +37,12 @@ const Portfolio = () => {
   const [selectedTech, setSelectedTech] = useState("all");
   const { t } = useTranslation();
 
-  // Get all unique technologies
   const allTechnologies = useMemo(() => {
     const techs = new Set();
     projects.forEach(p => p.technologies?.forEach(t => techs.add(t)));
     return ["all", ...Array.from(techs)];
   }, []);
 
-  // Filter projects
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
       const title = t(`portfolio.items.${project.id}.title`, { defaultValue: project.title });
@@ -66,248 +60,244 @@ const Portfolio = () => {
   }, [searchTerm, selectedTech, t]);
 
   return (
-    <section className="section-shell min-h-screen px-4 pt-24 pb-16 transition-colors duration-500 sm:pt-28 sm:pb-24">
+    <>
       <SEO 
         title={t("portfolio.pageTitle")}
         description={t("portfolio.pageSubtitle")}
         path="/portfolio"
       />
 
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-10 text-center sm:mb-12">
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-            <span className="font-display brand-gradient">
-              {t("portfolio.pageTitle")}
-            </span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-400 sm:mt-6 sm:text-lg">
-            {t("portfolio.pageSubtitle")}
-          </p>
-        </div>
-
-        {/* Search and Filter */}
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input
-              type="text"
-              placeholder={t("portfolio.search", { defaultValue: "Search projects..." })}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-xl glass-card focus:ring-2 focus:ring-teal-500 outline-none"
-            />
-          </div>
+      <section className="section-shell min-h-screen px-4 pt-28 pb-20 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
+        <div className="mx-auto w-full max-w-7xl">
           
-          <div className="relative w-full sm:w-auto">
-            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <select
-              value={selectedTech}
-              onChange={(e) => setSelectedTech(e.target.value)}
-              className="w-full min-w-0 cursor-pointer appearance-none rounded-xl glass-card py-3 pl-12 pr-8 outline-none focus:ring-2 focus:ring-teal-500 sm:min-w-[220px]"
-            >
-              {allTechnologies.map(tech => (
-                <option key={tech} value={tech}>
-                  {tech === "all" ? t("portfolio.allTech", { defaultValue: "All Technologies" }) : tech}
-                </option>
-              ))}
-            </select>
+          {/* Header */}
+          <header className="mb-16 space-y-4 max-w-3xl">
+            <div className="hero-badge">
+              <Sparkles size={14} />
+              {t("portfolio.projectLabel")}
+            </div>
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
+              {t("portfolio.pageTitle")}
+            </h1>
+            <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("portfolio.pageSubtitle")}
+            </p>
+          </header>
+
+          {/* Controls */}
+          <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+              <input
+                type="text"
+                placeholder={t("portfolio.search")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full rounded-full border border-slate-100 bg-white py-3.5 pl-12 pr-6 text-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
+              />
+            </div>
+            
+            <div className="relative">
+              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+              <select
+                value={selectedTech}
+                onChange={(e) => setSelectedTech(e.target.value)}
+                className="w-full min-w-[220px] cursor-pointer appearance-none rounded-full border border-slate-100 bg-white py-3.5 pl-12 pr-10 text-sm outline-none focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
+              >
+                {allTechnologies.map(tech => (
+                  <option key={tech} value={tech}>
+                    {tech === "all" ? t("portfolio.allTech") : tech}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
+
+          {/* Results Count */}
+          <div className="mb-10 flex items-center gap-3">
+            <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400">
+              <FolderKanban size={20} />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400 leading-none mb-1">Portfolio</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                {t("portfolio.showing")} {filteredProjects.length} {t("portfolio.projects")}
+              </p>
+            </div>
+          </div>
+
+          {/* Grid */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => {
+              const projectTitle = t(`portfolio.items.${project.id}.title`, { defaultValue: project.title });
+              const projectDescription = t(`portfolio.items.${project.id}.description`, { defaultValue: project.description });
+
+              return (
+                <article
+                  key={project.id}
+                  className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40"
+                >
+                  <ProjectImage
+                    src={project.images?.[0]}
+                    alt={projectTitle}
+                    loadingLabel={t("ui.loading")}
+                  />
+
+                  <div className="flex flex-1 flex-col p-8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(59,130,246,0.1)]" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                        {t("portfolio.projectLabel")}
+                      </span>
+                    </div>
+
+                    <h3 className="mb-3 text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">
+                      {projectTitle}
+                    </h3>
+
+                    <p className="mb-8 line-clamp-3 text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                      {projectDescription}
+                    </p>
+
+                    <div className="mb-8 flex flex-wrap gap-2">
+                      {project.technologies?.slice(0, 3).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="rounded-xl bg-slate-50 px-4 py-1.5 text-xs font-bold text-slate-500 dark:bg-slate-800/50 dark:text-slate-400"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies?.length > 3 && (
+                        <span className="rounded-xl bg-blue-50 px-4 py-1.5 text-xs font-bold text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-50 dark:border-slate-800/50">
+                      <button
+                        onClick={() => setActiveProject(project)}
+                        className="text-sm font-bold uppercase tracking-wider text-blue-600 hover:text-blue-700 dark:text-blue-400"
+                      >
+                        {t("portfolio.details")}
+                      </button>
+                      
+                      <div className="flex gap-5 text-slate-400">
+                        {project.links?.github && (
+                          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                            <Github size={22} />
+                          </a>
+                        )}
+                        {project.links?.live && (
+                          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+                            <ExternalLink size={22} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="py-24 text-center">
+              <p className="text-xl text-slate-400">{t("portfolio.noResults")}</p>
+            </div>
+          )}
         </div>
 
-        {/* Results count */}
-        <p className="mb-6 text-sm text-gray-600 dark:text-gray-400">
-          {t("portfolio.showing", { defaultValue: "Showing" })} {filteredProjects.length} {t("portfolio.projects", { defaultValue: "projects" })}
-        </p>
-
-        {/* Projects Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {filteredProjects.map((project) => {
-            const projectTitle = t(`portfolio.items.${project.id}.title`, {
-              defaultValue: project.title,
-            });
-            const projectDescription = t(`portfolio.items.${project.id}.description`, {
-              defaultValue: project.description,
-            });
-
-            return (
-              <div
-                key={project.id}
-                className="group glass-card relative flex flex-col rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/20"
+        {/* Modal */}
+        {activeProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
+            <div className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-2xl dark:border-slate-800 dark:bg-slate-900 sm:p-12">
+              <button
+                onClick={() => setActiveProject(null)}
+                className="absolute right-8 top-8 rounded-full p-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
               >
-                <ProjectImage
-                  src={project.images?.[0]}
-                  alt={projectTitle}
-                  loadingLabel={t("ui.loading", { defaultValue: "Loading..." })}
-                />
+                <X size={28} />
+              </button>
 
-                <div className="relative z-10 flex flex-grow flex-col p-5 sm:p-6 lg:p-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Code2 size={16} className="text-teal-500" />
-                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      {t("portfolio.projectLabel")}
-                    </span>
+              <div className="space-y-10">
+                <header>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-2 w-2 rounded-full bg-blue-500" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-500">Project Details</span>
                   </div>
+                  <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+                    {t(`portfolio.items.${activeProject.id}.title`, { defaultValue: activeProject.title })}
+                  </h2>
+                </header>
 
-                  <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
-                    {projectTitle}
-                  </h3>
+                <div className="aspect-video overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-800 shadow-inner">
+                  <img src={activeProject.images?.[0]} alt="" className="h-full w-full object-cover" />
+                </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed line-clamp-3">
-                    {projectDescription}
+                <div className="space-y-8">
+                  <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                    {t(`portfolio.items.${activeProject.id}.description`, { defaultValue: activeProject.description })}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies?.slice(0, 4).map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies?.length > 4 && (
-                      <span className="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
+                  <div className="space-y-5">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">
+                      {t("portfolio.features")}
+                    </h3>
+                    <ul className="grid gap-4 text-base text-slate-600 dark:text-slate-400 sm:grid-cols-2">
+                      {(t(`portfolio.items.${activeProject.id}.features`, {
+                        returnObjects: true,
+                        defaultValue: activeProject.features,
+                      }) || []).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 size={20} className="mt-1 text-blue-500 shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="mt-auto flex flex-wrap gap-2 sm:gap-3">
-                    {project.links?.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 dark:bg-white dark:text-gray-900"
-                      >
-                        <Github size={16} />
-                        {t("portfolio.github")}
-                      </a>
-                    )}
-
-                    {project.links?.live && (
-                      <a
-                        href={project.links.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105"
-                      >
-                        <ExternalLink size={16} />
-                        {t("portfolio.liveDemo")}
-                      </a>
-                    )}
-
-                    {project.links?.zip && (
-                      <a
-                        href={project.links.zip}
-                        download
-                        className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold transition-colors hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
-                      >
-                        <Download size={16} />
-                        {t("portfolio.downloadZip")}
-                      </a>
-                    )}
+                  <div className="space-y-5">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">
+                      {t("portfolio.technologies")}
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {activeProject.technologies?.map((tech, idx) => (
+                        <span key={idx} className="control-surface rounded-full px-5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  <button
-                    onClick={() => setActiveProject(project)}
-                    className="mt-4 text-teal-600 dark:text-teal-400 font-semibold hover:underline text-sm"
-                  >
-                    {t("portfolio.details")} {"->"}
-                  </button>
                 </div>
-              </div>
-            );
-          })}
-        </div>
 
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              {t("portfolio.noResults", { defaultValue: "No projects found" })}
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* Project Modal */}
-      {activeProject && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-2 backdrop-blur-sm sm:items-center sm:p-4">
-          <div className="glass-card relative max-h-[92dvh] w-full overflow-y-auto rounded-t-2xl shadow-2xl sm:max-w-4xl sm:rounded-2xl">
-            <button
-              onClick={() => setActiveProject(null)}
-              className="sticky top-3 float-right mr-3 rounded-full bg-gray-200 p-2 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 sm:top-4 sm:mr-4"
-            >
-              <X size={20} />
-            </button>
-
-            <div className="p-5 pt-12 sm:p-8 sm:pt-8">
-              <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                {t(`portfolio.items.${activeProject.id}.title`, { defaultValue: activeProject.title })}
-              </h2>
-
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {t(`portfolio.items.${activeProject.id}.description`, { defaultValue: activeProject.description })}
-              </p>
-
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                {t("portfolio.features", { defaultValue: "Features" })}
-              </h3>
-              <ul className="list-disc list-inside mb-6 space-y-2 text-gray-600 dark:text-gray-300">
-                {(t(`portfolio.items.${activeProject.id}.features`, {
-                  returnObjects: true,
-                  defaultValue: activeProject.features,
-                }) || []).map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
-                ))}
-              </ul>
-
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                {t("portfolio.technologies", { defaultValue: "Technologies" })}
-              </h3>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {activeProject.technologies?.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-4 py-2 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                {activeProject.links?.github && (
-                  <a
-                    href={activeProject.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:scale-105 transition-transform font-semibold"
-                  >
-                    <Github size={20} />
-                    {t("portfolio.github")}
-                  </a>
-                )}
-
-                {activeProject.links?.live && (
-                  <a
-                    href={activeProject.links.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-teal-600 text-white hover:scale-105 transition-transform font-semibold"
-                  >
-                    <ExternalLink size={20} />
-                    {t("portfolio.liveDemo")}
-                  </a>
-                )}
+                <div className="flex flex-wrap gap-4 pt-10 border-t border-slate-50 dark:border-slate-800">
+                  {activeProject.links?.github && (
+                    <a href={activeProject.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-base font-bold text-white transition-transform hover:scale-105 dark:bg-white dark:text-slate-900 shadow-xl shadow-slate-900/20">
+                      <Github size={22} />
+                      {t("portfolio.github")}
+                    </a>
+                  )}
+                  {activeProject.links?.live && (
+                    <a href={activeProject.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-4 text-base font-bold text-white transition-transform hover:scale-105 shadow-xl shadow-blue-600/20">
+                      <ExternalLink size={22} />
+                      {t("portfolio.liveDemo")}
+                    </a>
+                  )}
+                  {activeProject.links?.zip && (
+                    <a href={activeProject.links.zip} download className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white px-8 py-4 text-base font-bold text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 shadow-sm">
+                      <Download size={22} />
+                      {t("portfolio.downloadZip")}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
+    </>
   );
 };
 
 export default Portfolio;
-

@@ -8,6 +8,7 @@ import {
   Eye,
   FolderX,
   RefreshCw,
+  Sparkles
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ImageModal from "../components/ImageModal";
@@ -40,11 +41,6 @@ const extractYear = (value, timestamp) => {
   return yearMatch ? yearMatch[0] : "";
 };
 
-const toExternalLink = (value) => {
-  if (!value || typeof value !== "string") return "";
-  return /^https?:\/\//i.test(value.trim()) ? value.trim() : "";
-};
-
 const normalizeCertificate = (item, index) => {
   const payload = typeof item === "string" ? { image: item } : item;
   if (!payload || typeof payload !== "object") return null;
@@ -60,7 +56,7 @@ const normalizeCertificate = (item, index) => {
     title: payload.title || filenameToTitle(image),
     issuer: payload.issuer || "",
     date: payload.date || "",
-    link: toExternalLink(payload.link || payload.url || payload.credentialUrl),
+    link: payload.link || payload.url || payload.credentialUrl || "",
     timestamp,
     year: extractYear(payload.date, timestamp),
   };
@@ -68,7 +64,6 @@ const normalizeCertificate = (item, index) => {
 
 function Certificates() {
   const { t } = useTranslation();
-
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -77,20 +72,16 @@ function Certificates() {
   const fetchCertificates = useCallback(async () => {
     setLoading(true);
     setError("");
-
     try {
       const response = await fetch(CERTIFICATES_MANIFEST, { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
       const raw = await response.json();
       const list = Array.isArray(raw) ? raw : raw.certificates;
-      if (!Array.isArray(list)) throw new Error("Manifest format is invalid");
-
+      if (!Array.isArray(list)) throw new Error("Invalid format");
       const normalized = list
         .map(normalizeCertificate)
         .filter(Boolean)
         .sort((a, b) => b.timestamp - a.timestamp || a.title.localeCompare(b.title));
-
       setCertificates(normalized);
     } catch {
       setCertificates([]);
@@ -104,259 +95,153 @@ function Certificates() {
     fetchCertificates();
   }, [fetchCertificates]);
 
-  const hasCertificates = certificates.length > 0;
-  const totalIssuers = useMemo(() => {
-    return new Set(certificates.map((item) => item.issuer).filter(Boolean)).size;
+  const totalIssuers = useMemo(() => new Set(certificates.map(c => c.issuer).filter(Boolean)).size, [certificates]);
+  const latestYear = useMemo(() => {
+    const years = certificates.map(c => c.year).filter(Boolean).sort((a, b) => Number(b) - Number(a));
+    return years[0] || "N/A";
   }, [certificates]);
 
-  const latestYear = useMemo(() => {
-    const years = certificates
-      .map((item) => item.year)
-      .filter(Boolean)
-      .sort((a, b) => Number(b) - Number(a));
-
-    return years[0] || t("certificates.unknownYear", { defaultValue: "N/A" });
-  }, [certificates, t]);
-
   return (
-    <section className="section-shell min-h-screen px-4 pt-28 pb-20">
-      <SEO
-        title={t("certificates.title")}
-        description={t("certificates.pageSubtitle", { defaultValue: "Professional certificates and achievements." })}
-        path="/certificates"
-      />
-
+    <>
+      <SEO title={t("certificates.title")} description={t("certificates.pageSubtitle")} path="/certificates" />
+      
       {selectedImage && (
-        <ImageModal
-          key={selectedImage.id}
-          image={selectedImage.image}
-          title={selectedImage.title}
-          onClose={() => setSelectedImage(null)}
+        <ImageModal 
+          image={selectedImage.image} 
+          title={selectedImage.title} 
+          onClose={() => setSelectedImage(null)} 
         />
       )}
 
-      <div className="mx-auto max-w-6xl">
-        <header className="text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-teal-300/60 bg-teal-100/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700 dark:border-teal-700/60 dark:bg-teal-900/30 dark:text-teal-200">
-            <Award size={14} />
-            {t("certificates.eyebrow")}
-          </p>
+      <section className="section-shell min-h-screen px-4 pt-28 pb-20 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
+        <div className="mx-auto w-full max-w-7xl">
+          
+          {/* Header */}
+          <header className="mb-16 space-y-4 text-center sm:text-left">
+            <div className="hero-badge">
+              <Sparkles size={14} />
+              {t("certificates.eyebrow")}
+            </div>
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
+              {t("certificates.title")} <span className="text-blue-600">{t("certificates.titleAccent")}</span>
+            </h1>
+            <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 max-w-3xl">
+              {t("certificates.pageSubtitle")}
+            </p>
 
-          <h1 className="mt-5 font-display text-4xl font-extrabold text-slate-900 dark:text-slate-100 sm:text-5xl">
-            {t("certificates.title")} <span className="brand-gradient">{t("certificates.titleAccent")}</span>
-          </h1>
+            {/* Stats */}
+            <div className="mt-12 flex flex-wrap justify-center sm:justify-start gap-6">
+              <StatCard label="Total" value={certificates.length} />
+              <StatCard label="Issuers" value={totalIssuers} />
+              <StatCard label="Latest" value={latestYear} />
+            </div>
+          </header>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base text-slate-600 dark:text-slate-400 sm:text-lg">
-            {t("certificates.pageSubtitle", { defaultValue: "Professional certificates and achievements." })}
-          </p>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <StatCard
-              label={t("certificates.stats.total", { defaultValue: "Total Certificates" })}
-              value={String(certificates.length)}
-            />
-            <StatCard
-              label={t("certificates.stats.issuers", { defaultValue: "Issuers" })}
-              value={String(totalIssuers)}
-            />
-            <StatCard
-              label={t("certificates.stats.latestYear", { defaultValue: "Latest Year" })}
-              value={latestYear}
-            />
-          </div>
-
-        </header>
-
-        {loading && (
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <article key={index} className="glass-card overflow-hidden rounded-3xl">
-                <div className="aspect-[4/3] animate-pulse bg-slate-200/70 dark:bg-slate-800/70" />
-                <div className="space-y-3 p-5">
-                  <div className="h-5 w-3/4 animate-pulse rounded bg-slate-200/70 dark:bg-slate-800/70" />
-                  <div className="h-4 w-full animate-pulse rounded bg-slate-200/70 dark:bg-slate-800/70" />
-                  <div className="h-4 w-2/3 animate-pulse rounded bg-slate-200/70 dark:bg-slate-800/70" />
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-
-        {!loading && error && (
-          <StatePanel
-            icon={<AlertTriangle className="h-6 w-6" />}
-            title={error}
-            description={t("certificates.errorDescription", { defaultValue: "Please try refreshing the page." })}
-            actionLabel={t("certificates.refresh", { defaultValue: "Refresh" })}
-            onAction={fetchCertificates}
-            danger
-          />
-        )}
-
-        {!loading && !error && !hasCertificates && (
-          <StatePanel
-            icon={<FolderX className="h-6 w-6" />}
-            title={t("certificates.empty")}
-            description={t("certificates.emptyDescription", { defaultValue: "New certificates will appear here soon." })}
-            actionLabel={t("certificates.refresh", { defaultValue: "Refresh" })}
-            onAction={fetchCertificates}
-          />
-        )}
-
-        {!loading && !error && certificates.length > 0 && (
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {certificates.map((certificate) => (
-              <article key={certificate.id} className="group glass-card overflow-hidden rounded-3xl">
-                <CertificateImageButton
-                  certificate={certificate}
-                  onPreview={setSelectedImage}
-                  loadingLabel={t("ui.loading", { defaultValue: "Loading..." })}
-                  badgeLabel={t("certificates.certificate", { defaultValue: "Certificate" })}
-                />
-
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-display text-lg font-bold text-slate-900 dark:text-slate-100">
-                      {certificate.title}
-                    </h3>
-
-                    {certificate.year && (
-                      <span className="inline-flex shrink-0 rounded-full border border-teal-300/60 bg-teal-100/70 px-2.5 py-1 text-xs font-semibold text-teal-700 dark:border-teal-700/60 dark:bg-teal-900/30 dark:text-teal-200">
-                        {certificate.year}
-                      </span>
-                    )}
+          {/* Grid */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {loading ? (
+              Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+            ) : error ? (
+              <ErrorState title={error} onRetry={fetchCertificates} />
+            ) : certificates.length === 0 ? (
+              <EmptyState title={t("certificates.empty")} onRetry={fetchCertificates} />
+            ) : (
+              certificates.map((cert) => (
+                <article key={cert.id} className="group relative overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-4 transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800 shadow-inner">
+                    <img src={cert.image} alt={cert.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 transition-opacity group-hover:opacity-100">
+                      <button onClick={() => setSelectedImage(cert)} className="rounded-full bg-white/20 p-4 text-white backdrop-blur-md hover:bg-white/30 transition-colors">
+                        <Eye size={24} />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                    <p className="inline-flex items-center gap-2">
-                      <Award size={15} className="text-teal-600 dark:text-teal-300" />
-                      {t("certificates.certificate", { defaultValue: "Certificate" })}
-                    </p>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 line-clamp-2 leading-tight">
+                        {cert.title}
+                      </h3>
+                      {cert.year && (
+                        <span className="shrink-0 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                          {cert.year}
+                        </span>
+                      )}
+                    </div>
 
-                    {certificate.issuer && (
-                      <p className="inline-flex items-center gap-2">
-                        <Building2 size={15} className="text-cyan-600 dark:text-cyan-300" />
-                        {certificate.issuer}
-                      </p>
-                    )}
+                    <div className="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                      {cert.issuer && (
+                        <div className="flex items-center gap-3">
+                          <Building2 size={16} className="text-slate-400" />
+                          <span className="truncate font-medium">{cert.issuer}</span>
+                        </div>
+                      )}
+                      {cert.date && (
+                        <div className="flex items-center gap-3">
+                          <CalendarDays size={16} className="text-slate-400" />
+                          <span className="font-medium">{cert.date}</span>
+                        </div>
+                      )}
+                    </div>
 
-                    {certificate.date && (
-                      <p className="inline-flex items-center gap-2">
-                        <CalendarDays size={15} className="text-amber-600 dark:text-amber-300" />
-                        {certificate.date}
-                      </p>
-                    )}
+                    <div className="mt-8 flex gap-3">
+                      <a 
+                        href={cert.link || cert.image} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-slate-100 bg-slate-50 py-3 text-xs font-bold uppercase tracking-widest text-slate-600 hover:bg-blue-50 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:bg-blue-900/30 dark:hover:text-blue-400 transition-colors shadow-sm"
+                      >
+                        {cert.link ? "Verify" : "View"}
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
                   </div>
-
-                  <div className="mt-5 flex flex-wrap items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedImage(certificate)}
-                      className="control-surface inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 transition hover:-translate-y-0.5 dark:text-slate-200"
-                    >
-                      <Eye size={14} />
-                      {t("certificates.preview", { defaultValue: "Preview" })}
-                    </button>
-
-                    <a
-                      href={certificate.link || certificate.image}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-teal-300/70 bg-teal-100/70 px-3 py-2 text-xs font-semibold text-teal-700 transition hover:-translate-y-0.5 dark:border-teal-700/60 dark:bg-teal-900/30 dark:text-teal-200"
-                    >
-                      {certificate.link
-                        ? t("certificates.viewCredential", { defaultValue: "View credential" })
-                        : t("certificates.viewImage", { defaultValue: "Open image" })}
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))
+            )}
           </div>
-        )}
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
 
 const StatCard = ({ label, value }) => (
-  <div className="glass-card rounded-2xl px-4 py-3 text-left">
-    <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">{label}</p>
-    <p className="mt-1 font-display text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
+  <div className="glass-card rounded-2xl px-8 py-4 dark:border-slate-800 shadow-sm min-w-[140px]">
+    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{label}</p>
+    <p className="text-3xl font-extrabold text-slate-900 dark:text-white">{value}</p>
   </div>
 );
 
-const StatePanel = ({ icon, title, description, actionLabel, onAction, danger = false }) => (
-  <div className="glass-card mt-10 rounded-3xl p-8 text-center sm:p-10">
-    <div
-      className={`mx-auto flex h-12 w-12 items-center justify-center rounded-xl ${
-        danger
-          ? "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300"
-          : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
-      }`}
-    >
-      {icon}
+const SkeletonCard = () => (
+  <div className="rounded-[2rem] border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="aspect-[4/3] animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-800" />
+    <div className="p-6 space-y-5">
+      <div className="h-6 w-3/4 animate-pulse rounded bg-slate-100 dark:bg-slate-800" />
+      <div className="h-4 w-1/2 animate-pulse rounded bg-slate-100 dark:bg-slate-800" />
     </div>
+  </div>
+);
 
-    <p className={`mt-4 text-lg font-semibold ${danger ? "text-red-600 dark:text-red-300" : "text-slate-800 dark:text-slate-100"}`}>
-      {title}
-    </p>
-    <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400">{description}</p>
-
-    <button
-      type="button"
-      onClick={onAction}
-      className="primary-cta mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-    >
-      <RefreshCw size={15} />
-      {actionLabel}
+const ErrorState = ({ title, onRetry }) => (
+  <div className="col-span-full py-32 text-center">
+    <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-red-50 text-red-400 dark:bg-red-900/20">
+      <AlertTriangle size={40} />
+    </div>
+    <p className="text-xl font-bold text-slate-900 dark:text-white">{title}</p>
+    <button onClick={onRetry} className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-3 text-sm font-bold text-white dark:bg-white dark:text-slate-900">
+      <RefreshCw size={18} /> Retry
     </button>
   </div>
 );
 
-const CertificateImageButton = ({ certificate, onPreview, loadingLabel, badgeLabel }) => {
-  const [isImageLoading, setIsImageLoading] = useState(true);
-
-  const handleImageReady = () => {
-    setIsImageLoading(false);
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={() => onPreview(certificate)}
-      className="relative block w-full overflow-hidden text-left"
-      aria-busy={isImageLoading}
-    >
-      <div className="relative aspect-[4/3] bg-slate-100 dark:bg-slate-900">
-        {isImageLoading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-200/70 dark:bg-slate-800/70">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-teal-500/80 border-t-transparent" />
-            <span className="sr-only">{loadingLabel}</span>
-          </div>
-        )}
-
-        <img
-          src={certificate.image}
-          alt={certificate.title}
-          loading="lazy"
-          onLoad={handleImageReady}
-          onError={handleImageReady}
-          className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.05] ${
-            isImageLoading ? "opacity-0" : "opacity-100"
-          }`}
-        />
-      </div>
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent px-4 py-4">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/25 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
-          <Award size={12} />
-          {badgeLabel}
-        </div>
-      </div>
-    </button>
-  );
-};
+const EmptyState = ({ title }) => (
+  <div className="col-span-full py-32 text-center">
+    <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 text-slate-300 dark:bg-slate-800/50">
+      <FolderX size={40} />
+    </div>
+    <p className="text-xl text-slate-400">{title}</p>
+  </div>
+);
 
 export default Certificates;

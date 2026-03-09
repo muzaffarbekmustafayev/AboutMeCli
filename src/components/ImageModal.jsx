@@ -75,7 +75,7 @@ const ImageModal = ({ image, title, onClose }) => {
             <div className="relative">
               {imageLoading && (
                 <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-slate-900/65">
-                  <div className="h-10 w-10 animate-spin rounded-full border-2 border-teal-400 border-t-transparent" />
+                  <div className="h-10 w-10 animate-spin rounded-full border-2 border-blue-400 border-t-transparent" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}

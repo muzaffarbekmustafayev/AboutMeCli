@@ -40,7 +40,7 @@ const LangToggle = () => {
               px-3 py-1.5 text-sm font-semibold rounded-lg transition-all duration-300
               ${
                 isActive
-                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow"
+                  ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow"
                   : "text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/70"
               }
             `}

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Mail,
   Phone,
@@ -11,282 +12,224 @@ import {
   Award,
   Calendar,
   ChevronRight,
-  Youtube
+  Youtube,
+  Sparkles,
+  Globe
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
 import { socialMedias } from "../data/socialMedias";
 import CVDownload from "../components/CVdownload";
+
 const Resume = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="section-shell min-h-screen transition-colors duration-300 text-gray-800 dark:text-gray-200">
-
-      <div className="max-w-4xl mx-auto mt-20 px-4 py-8 sm:px-6 lg:px-8">
-
-        {/* HEADER */}
-        <div className="mb-12">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
-            <div className="flex-1">
-              <h1 className="font-display text-4xl font-bold mb-2 brand-gradient">
-                Muzaffarbek Mustafayev
-              </h1>
-
-              <div className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400 mb-4">
-                <Briefcase size={20} />
-                <span>{t("resume.role")}</span>
-                <span className="mx-2">•</span>
-                <Code size={20} />
-                <span>{t("resume.stack")}</span>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="mailto:muzaffarbekmustafayev@gmail.com"
-                  className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg transition-shadow"
-                >
-                  <Mail size={18} />
-                  <span className="text-sm">muzaffarbekmustafayev@gmail.com</span>
-                </a>
-
-                <a
-                  href={`tel:${socialMedias.phone.path}`}
-                  className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg transition-shadow"
-                >
-                  <Phone size={18} />
-                  <span className="text-sm">{socialMedias.phone.path}</span>
-                </a>
-
-                <div className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg">
-                  <MapPin size={18} />
-                  <span className="text-sm">{t("resume.location")}</span>
-                </div>
-              </div>
+    <div className="section-shell min-h-screen transition-colors duration-300 text-slate-700 dark:text-slate-300">
+      <SEO title="Resume" description="My professional background" path="/resume" />
+      
+      <div className="max-w-7xl mx-auto px-4 py-28 sm:px-6 sm:pt-32">
+        
+        {/* Header Section */}
+        <header className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="space-y-5">
+            <div className="hero-badge">
+              <Sparkles size={14} />
+              Professional Profile
             </div>
-
+            <h1 className="font-display text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl lg:text-7xl">
+              Muzaffarbek Mustafayev
+            </h1>
+            <div className="flex flex-wrap items-center gap-6 text-lg text-slate-500 dark:text-slate-400">
+              <span className="flex items-center gap-2 font-semibold"><Briefcase size={20} className="text-blue-500" /> {t("resume.role")}</span>
+              <span className="hidden sm:inline text-slate-200 dark:text-slate-800">|</span>
+              <span className="flex items-center gap-2 font-semibold"><Code size={20} className="text-blue-500" /> {t("resume.stack")}</span>
+              <span className="hidden sm:inline text-slate-200 dark:text-slate-800">|</span>
+              <span className="flex items-center gap-2 font-semibold"><MapPin size={20} className="text-blue-500" /> {t("resume.location")}</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
             <CVDownload />
           </div>
+        </header>
 
-          {/* SOCIAL */}
-          <div className="flex gap-4">
-            <a
-              href={socialMedias.linkedin.path}
-              className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg transition-shadow"
-            >
-              <Linkedin size={18} />
-              <span className="text-sm">LinkedIn</span>
-            </a>
-
-            <a
-              href={socialMedias.github.path}
-              className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg transition-shadow"
-            >
-              <Github size={18} />
-              <span className="text-sm">GitHub</span>
-            </a>
-
-            <a
-              href={socialMedias.youtube.path}
-              className="glass-card flex items-center gap-2 px-4 py-2 rounded-lg transition-shadow"
-            >
-              <Youtube size={18} />
-              <span className="text-sm">YouTube</span>
-            </a>
-          </div>
-        </div>
-
-        {/* GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-          {/* LEFT */}
-          <div className="lg:col-span-2 space-y-8">
-
-            {/* SUMMARY */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                  <Award size={24} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <h2 className="text-2xl font-bold">
-                  {t("resume.summary.title")}
-                </h2>
-              </div>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
+          
+          {/* Main Content */}
+          <main className="space-y-16">
+            
+            {/* Summary */}
+            <section>
+              <SectionHeader icon={<Award size={24} />} title={t("resume.summary.title")} />
+              <p className="mt-8 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
                 {t("resume.summary.text")}
               </p>
             </section>
 
-            {/* EXPERIENCE */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-                  <Briefcase size={24} className="text-green-600 dark:text-green-400" />
+            {/* Experience */}
+            <section>
+              <SectionHeader icon={<Briefcase size={24} />} title={t("resume.experience.title")} />
+              <div className="mt-10 space-y-12">
+                <div className="relative pl-10 pb-6">
+                  <div className="absolute left-0 top-2 h-full w-0.5 bg-slate-100 dark:bg-slate-800" />
+                  <div className="absolute -left-[5px] top-2 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_6px_rgba(59,130,246,0.1)]" />
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("resume.experience.role")}</h3>
+                    <span className="control-surface rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">{t("resume.experience.period")}</span>
+                  </div>
+                  <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">{t("resume.experience.company")}</p>
+                  
+                  <ul className="space-y-4">
+                    {t("resume.experience.tasks", { returnObjects: true }).map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+                        <ChevronRight size={20} className="mt-1 text-blue-500 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h2 className="text-2xl font-bold">
-                  {t("resume.experience.title")}
-                </h2>
-              </div>
-
-              <div className="relative pl-8">
-                <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-teal-500"></div>
-                <div className="absolute left-[7px] top-6 w-0.5 h-full bg-gradient-to-b from-teal-500 to-transparent"></div>
-
-                <h3 className="text-xl font-semibold mb-1">
-                  {t("resume.experience.role")}
-                </h3>
-
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="text-teal-600 dark:text-teal-400 font-medium">
-                    {t("resume.experience.company")}
-                  </span>
-                  <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
-                    <Calendar size={14} />
-                    {t("resume.experience.period")}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  {t("resume.experience.tasks", { returnObjects: true }).map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <ChevronRight size={16} className="text-teal-500 mt-1 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </section>
 
-            {/* PROJECTS */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30">
-                  <Code size={24} className="text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <h2 className="text-2xl font-bold">
-                  {t("resume.projects.title")}
-                </h2>
+            {/* Featured Projects */}
+            <section>
+              <SectionHeader icon={<Code size={24} />} title={t("resume.projects.title")} />
+              <div className="mt-10 grid gap-8 sm:grid-cols-2">
+                <ProjectCard 
+                  title={t("resume.projects.aiTitle")} 
+                  desc={t("resume.projects.ai")} 
+                  label={t("resume.projects.live")} 
+                />
+                <ProjectCard 
+                  title={t("resume.projects.faceTitle")} 
+                  desc={t("resume.projects.face")} 
+                  label={t("resume.projects.live")} 
+                />
               </div>
+            </section>
+          </main>
 
+          {/* Sidebar */}
+          <aside className="space-y-16">
+            
+            {/* Contact Information */}
+            <section className="glass-card rounded-[2.5rem] p-8 shadow-sm">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Direct Contact</h3>
               <div className="space-y-6">
-                <Project
-                  title={t("resume.projects.aiTitle", { defaultValue: "AI Chat Platform" })}
-                  desc={t("resume.projects.ai")}
-                  liveLabel={t("resume.projects.live", { defaultValue: "Live" })}
-                />
-                <Project
-                  title={t("resume.projects.faceTitle", { defaultValue: "Face ID Login System" })}
-                  desc={t("resume.projects.face")}
-                  liveLabel={t("resume.projects.live", { defaultValue: "Live" })}
-                />
-              </div>
-            </section>
-          </div>
-
-          {/* RIGHT */}
-          <div className="space-y-8">
-
-            {/* SKILLS */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                  <Code size={24} className="text-orange-600 dark:text-orange-400" />
+                <ContactItem icon={<Mail size={18} />} label="Email" value="muzaffarbekmustafayev@gmail.com" href="mailto:muzaffarbekmustafayev@gmail.com" />
+                <ContactItem icon={<Phone size={18} />} label="Phone" value={socialMedias.phone.path} href={`tel:${socialMedias.phone.path}`} />
+                <div className="flex gap-4 pt-6">
+                  <SocialIcon href={socialMedias.linkedin.path} icon={<Linkedin size={22} />} />
+                  <SocialIcon href={socialMedias.github.path} icon={<Github size={22} />} />
+                  <SocialIcon href={socialMedias.youtube.path} icon={<Youtube size={22} />} />
                 </div>
-                <h2 className="text-2xl font-bold">
-                  {t("resume.skills.title")}
-                </h2>
               </div>
-
-              <SkillGroup title={t("resume.skills.frontend", { defaultValue: "Frontend" })} items={["React","Redux","React Router","TailwindCSS","TypeScript"]} />
-              <SkillGroup title={t("resume.skills.backend", { defaultValue: "Backend" })} items={["Node.js","Express","MongoDB","MySQL","REST API"]} />
             </section>
 
-            {/* EDUCATION */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
-                  <GraduationCap size={24} className="text-indigo-600 dark:text-indigo-400" />
-                </div>
-                <h2 className="text-2xl font-bold">
-                  {t("resume.education.title")}
-                </h2>
+            {/* Technical Skills */}
+            <section>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">{t("resume.skills.title")}</h3>
+              <div className="space-y-10">
+                <SkillSet title={t("resume.skills.frontend")} items={["React", "JS (ES6+)", "TS", "Redux", "Tailwind"]} />
+                <SkillSet title={t("resume.skills.backend")} items={["Node.js", "Express", "Python", "FastAPI", "MongoDB"]} />
               </div>
-
-              <h3 className="text-lg font-semibold mb-1">
-                {t("resume.education.degree")}
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                {t("resume.education.school")} • {t("resume.education.period", { defaultValue: "2022 - Present" })}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-                {t("resume.education.desc")}
-              </p>
             </section>
 
-            {/* LANGUAGES */}
-            <section className="glass-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="text-2xl font-bold mb-6">
-                {t("resume.languages.title")}
-              </h2>
-
-              <LangBar label={t("resume.languages.uz")} value="100%" />
-              <LangBar label={t("resume.languages.en")} value="80%" />
-              <LangBar label={t("resume.languages.ru")} value="75%" />
+            {/* Education */}
+            <section>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">{t("resume.education.title")}</h3>
+              <div className="space-y-4">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">{t("resume.education.degree")}</h4>
+                <p className="text-sm font-bold text-blue-500 uppercase tracking-widest">{t("resume.education.period")}</p>
+                <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed">{t("resume.education.school")}</p>
+              </div>
             </section>
-          </div>
+
+            {/* Languages */}
+            <section>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">{t("resume.languages.title")}</h3>
+              <div className="space-y-6">
+                <LanguageProgress label={t("resume.languages.uz")} value="100%" />
+                <LanguageProgress label={t("resume.languages.en")} value="80%" />
+                <LanguageProgress label={t("resume.languages.ru")} value="75%" />
+              </div>
+            </section>
+
+          </aside>
         </div>
 
-        <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400 text-sm">
-          {t("resume.footer", {
-            defaultValue: "© {{year}} Muzaffarbek Mustafayev. All rights reserved.",
-            year: new Date().getFullYear(),
-          })}
+        <footer className="mt-28 border-t border-slate-100 pt-12 text-center dark:border-slate-800">
+          <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
+            {t("resume.footer", { year: new Date().getFullYear() })}
+          </p>
         </footer>
       </div>
     </div>
   );
 };
 
-export default Resume;
-
-/* ===== HELPERS (DIZAYNGA TEGILMAGAN) ===== */
-
-const Project = ({ title, desc, liveLabel }) => (
-  <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-500 transition-colors">
-    <div className="flex justify-between items-start mb-3">
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <span className="flex items-center gap-1 text-sm text-teal-600 dark:text-teal-400">
-        {liveLabel} <ExternalLink size={14} />
-      </span>
-    </div>
-    <p className="text-gray-600 dark:text-gray-300">{desc}</p>
+const SectionHeader = ({ icon, title }) => (
+  <div className="flex items-center gap-5 border-b border-slate-100 pb-4 dark:border-slate-800">
+    <div className="text-blue-600 dark:text-blue-400">{icon}</div>
+    <h2 className="text-lg font-extrabold uppercase tracking-widest text-slate-900 dark:text-slate-100">{title}</h2>
   </div>
 );
 
-const SkillGroup = ({ title, items }) => (
-  <div className="mb-6">
-    <h3 className="font-semibold mb-3 text-lg">{title}</h3>
-    <div className="flex flex-wrap gap-2">
-      {items.map((i) => (
-        <span
-          key={i}
-          className="px-3 py-2 rounded-lg bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300"
-        >
-          {i}
+const ProjectCard = ({ title, desc, label }) => (
+  <div className="group glass-card rounded-[2rem] p-8 transition-all hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-blue-500/10">
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">{title}</h3>
+      <ExternalLink size={20} className="text-slate-300 group-hover:text-blue-500 transition-colors" />
+    </div>
+    <p className="text-base leading-relaxed text-slate-500 dark:text-slate-400">{desc}</p>
+    <div className="mt-6 inline-flex rounded-full bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
+      {label}
+    </div>
+  </div>
+);
+
+const ContactItem = ({ icon, label, value, href }) => (
+  <div className="space-y-2">
+    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{label}</p>
+    <a href={href} className="flex items-center gap-4 text-base font-semibold text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-500 dark:bg-blue-900/30">
+        {icon}
+      </div>
+      {value}
+    </a>
+  </div>
+);
+
+const SocialIcon = ({ href, icon }) => (
+  <a href={href} className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-100 bg-white text-slate-400 hover:border-blue-200 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900 dark:hover:text-blue-400 transition-all shadow-sm">
+    {icon}
+  </a>
+);
+
+const SkillSet = ({ title, items }) => (
+  <div className="space-y-5">
+    <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">{title}</h4>
+    <div className="flex flex-wrap gap-2.5">
+      {items.map(item => (
+        <span key={item} className="control-surface rounded-full px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 shadow-sm">
+          {item}
         </span>
       ))}
     </div>
   </div>
 );
 
-const LangBar = ({ label, value }) => (
-  <div className="mb-4">
-    <div className="flex justify-between mb-1">
-      <span className="font-medium">{label}</span>
-      <span className="text-gray-500 dark:text-gray-400">{value}</span>
+const LanguageProgress = ({ label, value }) => (
+  <div className="space-y-3">
+    <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
+      <span className="text-slate-500 dark:text-slate-400">{label}</span>
+      <span className="text-blue-600 dark:text-blue-400">{value}</span>
     </div>
-    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-      <div className="bg-teal-600 h-2 rounded-full" style={{ width: value }} />
+    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 shadow-inner">
+      <div className="h-full bg-gradient-to-r from-blue-700 to-blue-500" style={{ width: value }} />
     </div>
   </div>
 );
+
+export default Resume;

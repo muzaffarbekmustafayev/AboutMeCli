@@ -1,71 +1,84 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Autoplay,
-  Navigation,
-  EffectCoverflow,
-  A11y,
-  Keyboard,
-} from "swiper/modules";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination, EffectCoverflow, Keyboard } from "swiper/modules";
 import SEO from "../components/SEO";
-
 import {
-  Code,
+  Code2,
   Database,
+  Layout,
+  Settings,
+  Terminal,
+  Cpu,
   Zap,
-  Filter,
+  Layers,
+  Sparkles,
+  Search,
+  CheckCircle2,
   ChevronLeft,
-  ChevronRight,
-  Wrench,
+  ChevronRight
 } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
 const SKILLS = [
-  { name: "React.js", icon: Code, category: "frontend", level: "expert", color: "text-blue-500" },
-  { name: "JavaScript", icon: Code, category: "frontend", level: "advanced", color: "text-yellow-500" },
-  { name: "TypeScript", icon: Code, category: "frontend", level: "intermediate", color: "text-blue-600" },
-  { name: "Tailwind CSS", icon: Zap, category: "frontend", level: "expert", color: "text-cyan-500" },
-  { name: "Next.js", icon: Zap, category: "frontend", level: "intermediate", color: "text-gray-700 dark:text-gray-200" },
+  { name: "React.js", category: "frontend", level: "expert", icon: <Layout size={20} /> },
+  { name: "JavaScript", category: "frontend", level: "advanced", icon: <Code2 size={20} /> },
+  { name: "TypeScript", category: "frontend", level: "intermediate", icon: <Code2 size={20} /> },
+  { name: "Tailwind CSS", category: "frontend", level: "expert", icon: <Zap size={20} /> },
+  { name: "Next.js", category: "frontend", level: "intermediate", icon: <Layers size={20} /> },
 
-  { name: "Node.js", icon: Database, category: "backend", level: "advanced", color: "text-green-500" },
-  { name: "Express.js", icon: Code, category: "backend", level: "advanced", color: "text-gray-600 dark:text-gray-300" },
-  { name: "REST API", icon: Zap, category: "backend", level: "expert", color: "text-green-600" },
-  { name: "JWT Auth", icon: Wrench, category: "backend", level: "advanced", color: "text-purple-500" },
+  { name: "Node.js", category: "backend", level: "advanced", icon: <Settings size={20} /> },
+  { name: "Express.js", category: "backend", level: "advanced", icon: <Terminal size={20} /> },
+  { name: "REST API", category: "backend", level: "expert", icon: <Zap size={20} /> },
+  { name: "JWT Auth", category: "backend", level: "advanced", icon: <Cpu size={20} /> },
 
-  { name: "MongoDB", icon: Database, category: "database", level: "advanced", color: "text-green-600" },
-  { name: "MySQL", icon: Database, category: "database", level: "intermediate", color: "text-blue-600" },
-  { name: "Firebase", icon: Zap, category: "database", level: "intermediate", color: "text-yellow-500" },
+  { name: "MongoDB", category: "database", level: "advanced", icon: <Database size={20} /> },
+  { name: "MySQL", category: "database", level: "intermediate", icon: <Database size={20} /> },
+  { name: "Firebase", category: "database", level: "intermediate", icon: <Zap size={20} /> },
 
-  { name: "Git", icon: Wrench, category: "tools", level: "advanced", color: "text-orange-500" },
-  { name: "GitHub", icon: Wrench, category: "tools", level: "expert", color: "text-gray-700 dark:text-gray-200" },
-  { name: "Postman", icon: Wrench, category: "tools", level: "advanced", color: "text-orange-400" },
-  { name: "Vite", icon: Zap, category: "tools", level: "intermediate", color: "text-purple-500" },
+  { name: "Git", category: "tools", level: "advanced", icon: <Settings size={20} /> },
+  { name: "GitHub", category: "tools", level: "expert", icon: <Terminal size={20} /> },
+  { name: "Postman", category: "tools", level: "advanced", icon: <Search size={20} /> },
+  { name: "Vite", category: "tools", level: "intermediate", icon: <Zap size={20} /> },
 ];
 
-const categories = ["all", "frontend", "backend", "database", "tools"];
+const categoryConfig = {
+  all: { icon: <Layers size={16} />, label: "All Tech" },
+  frontend: { icon: <Layout size={16} />, label: "Frontend" },
+  backend: { icon: <Settings size={16} />, label: "Backend" },
+  database: { icon: <Database size={16} />, label: "Database" },
+  tools: { icon: <Terminal size={16} />, label: "Tools" },
+};
 
 function Skills() {
   const { t } = useTranslation();
-
-  const [category, setCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const swiperRef = useRef(null);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
 
-  const filteredSkills =
-    category === "all"
-      ? SKILLS
-      : SKILLS.filter((skill) => skill.category === category);
-  const canNavigate = filteredSkills.length > 1;
-  const shouldLoop = filteredSkills.length > 3;
+  const filteredSkills = useMemo(() => {
+    return SKILLS.filter(skill => {
+      const matchesCategory = activeCategory === "all" || skill.category === activeCategory;
+      const matchesSearch = skill.name.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
+
+  const stats = useMemo(() => ({
+    total: SKILLS.length,
+    expert: SKILLS.filter(s => s.level === "expert").length,
+    advanced: SKILLS.filter(s => s.level === "advanced").length,
+  }), []);
 
   useEffect(() => {
-    swiperRef.current?.slideToLoop(0);
-  }, [category]);
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+    }
+  }, [activeCategory, searchQuery]);
 
   return (
     <>
@@ -74,126 +87,171 @@ function Skills() {
         description={t("skills.description", { defaultValue: "My technical skills" })}
         path="/skills"
       />
-      <section className="section-shell max-w-7xl mx-auto px-6 py-24 text-gray-800 dark:text-gray-200 overflow-hidden">
-        <div className="text-center mb-10">
-          <h2 className="font-display text-4xl md:text-5xl font-extrabold brand-gradient">
-            {t("skills.title")}
-          </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {t("skills.subtitle")}
-          </p>
-        </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-14">
-          <Filter className="w-5 h-5 text-gray-500 self-center" />
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setCategory(c)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                category === c
-                  ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-lg scale-105"
-                  : "control-surface text-slate-700 dark:text-slate-300 hover:bg-teal-100/80 hover:text-teal-700 dark:hover:bg-teal-900/30 dark:hover:text-teal-200 hover:scale-105"
-              }`}
-            >
-              {t(`skills.categories.${c}`)}
-            </button>
-          ))}
-        </div>
+      <section id="skills" className="section-shell min-h-screen px-4 pt-28 pb-20 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
+        <div className="mx-auto w-full max-w-7xl">
+          
+          {/* Header */}
+          <header className="mb-16 space-y-4 max-w-3xl">
+            <div className="hero-badge">
+              <Sparkles size={14} />
+              Stack
+            </div>
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
+              {t("skills.title")}
+            </h1>
+            <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              {t("skills.subtitle")}
+            </p>
+          </header>
 
-        <div className="relative">
-          <button
-            ref={prevRef}
-            type="button"
-            aria-label={t("skills.prevSlide", { defaultValue: "Previous skill" })}
-            disabled={!canNavigate}
-            className="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 z-10
-            w-12 h-12 rounded-full control-surface
-            opacity-100 transition flex items-center justify-center
-            disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft />
-          </button>
-
-          <button
-            ref={nextRef}
-            type="button"
-            aria-label={t("skills.nextSlide", { defaultValue: "Next skill" })}
-            disabled={!canNavigate}
-            className="absolute right-0 top-1/2 translate-x-8 -translate-y-1/2 z-10
-            w-12 h-12 rounded-full control-surface
-            opacity-100 transition flex items-center justify-center
-            disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            <ChevronRight />
-          </button>
-
-          <div className="overflow-hidden rounded-3xl">
-            <Swiper
-              modules={[Autoplay, Navigation, EffectCoverflow, A11y, Keyboard]}
-              effect="coverflow"
-              centeredSlides
-              grabCursor
-              slidesPerView="auto"
-              spaceBetween={16}
-              coverflowEffect={{
-                rotate: 26,
-                stretch: 0,
-                depth: 130,
-                modifier: 1,
-                slideShadows: false,
-              }}
-              autoplay={
-                canNavigate
-                  ? { delay: 2800, pauseOnMouseEnter: true, disableOnInteraction: false }
-                  : false
-              }
-              keyboard={{ enabled: true, onlyInViewport: true }}
-              a11y={{ enabled: true }}
-              watchOverflow
-              speed={650}
-              loop={shouldLoop}
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-              onBeforeInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-              }}
-              className="pb-14"
-            >
-              {filteredSkills.map((skill) => {
-                const Icon = skill.icon;
-
-                return (
-                  <SwiperSlide key={skill.name} className="!w-[230px] sm:!w-[250px] lg:!w-[280px]">
-                    <div
-                      className="
-                        glass-card relative h-60 rounded-2xl
-                        flex flex-col items-center justify-center
-                        shadow-xl transition-all duration-300
-                      "
-                    >
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-amber-500/10 opacity-100" />
-
-                      <Icon className={`w-16 h-16 mb-4 ${skill.color}`} />
-
-                      <h3 className="font-semibold text-lg">
-                        {skill.name}
-                      </h3>
-
-                      <span className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        {t(`skills.levels.${skill.level}`)}
-                      </span>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+          {/* Stats Bar */}
+          <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <div className="glass-card rounded-2xl p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Total</p>
+              <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.total}</p>
+            </div>
+            <div className="glass-card rounded-2xl p-6 shadow-sm border-blue-500/10">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Expert</p>
+              <p className="mt-2 text-3xl font-extrabold text-blue-600 dark:text-blue-400">{stats.expert}</p>
+            </div>
+            <div className="glass-card rounded-2xl p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Advanced</p>
+              <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.advanced}</p>
+            </div>
+            <div className="hidden glass-card rounded-2xl p-6 shadow-sm sm:block">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Status</p>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Active</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <p className="mt-20 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          {t("skills.footer")}
-        </p>
+          {/* Controls - Standardized to match Navbar item style */}
+          <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="control-surface rounded-full p-1.5 flex flex-wrap items-center gap-1 shadow-lg">
+              {Object.entries(categoryConfig).map(([key, config]) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveCategory(key)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                    activeCategory === key
+                      ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-md"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
+                  }`}
+                >
+                  {config.icon}
+                  {t(`skills.categories.${key}`, { defaultValue: config.label })}
+                </button>
+              ))}
+            </div>
+
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <input
+                type="text"
+                placeholder="Search tech..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-full border border-slate-100 bg-white py-3 pl-12 pr-6 text-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
+              />
+            </div>
+          </div>
+
+          {/* Carousel */}
+          <div className="group relative">
+            <button className="swiper-prev absolute -left-14 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-400 shadow-lg transition-all hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900 lg:flex">
+              <ChevronLeft size={24} />
+            </button>
+            <button className="swiper-next absolute -right-14 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white text-slate-400 shadow-lg transition-all hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900 lg:flex">
+              <ChevronRight size={24} />
+            </button>
+
+            <Swiper
+              modules={[Autoplay, Navigation, Pagination, EffectCoverflow, Keyboard]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 }
+              }}
+              navigation={{
+                prevEl: ".swiper-prev",
+                nextEl: ".swiper-next",
+              }}
+              pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              keyboard={{ enabled: true }}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              className="!pb-16"
+            >
+              {filteredSkills.map((skill) => (
+                <SwiperSlide key={skill.name}>
+                  <div className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg transition-transform group-hover:scale-110">
+                        {skill.icon}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <CheckCircle2 size={14} className={skill.level === 'expert' ? 'text-blue-500' : 'text-slate-300 dark:text-slate-700'} />
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                          {t(`skills.levels.${skill.level}`)}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-slate-100">
+                      {skill.name}
+                    </h3>
+                    
+                    <div className="mt-6 flex items-center gap-2">
+                      <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 shadow-inner">
+                        <div 
+                          className={`h-full rounded-full bg-gradient-to-r from-blue-700 to-blue-500 transition-all duration-1000 ${
+                            skill.level === 'expert' ? 'w-full' : skill.level === 'advanced' ? 'w-[80%]' : 'w-[60%]'
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            
+            <div className="swiper-pagination-custom mt-6 flex justify-center gap-2" />
+          </div>
+
+          {/* Empty State */}
+          {filteredSkills.length === 0 && (
+            <div className="py-24 text-center">
+              <p className="text-lg text-slate-400">No skills found matching your search.</p>
+            </div>
+          )}
+
+          {/* Footer Note */}
+          <footer className="mt-20 border-t border-slate-100 pt-12 dark:border-slate-800">
+            <div className="rounded-[2.5rem] bg-slate-50 p-10 dark:bg-slate-800/30">
+              <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+                <div className="space-y-3">
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">Learning Path</h4>
+                  <p className="max-w-md text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                    {t("skills.footer")}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["System Architecture", "Scalable UI", "API Design"].map(tag => (
+                    <span key={tag} className="control-surface rounded-full px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 shadow-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </footer>
+
+        </div>
       </section>
     </>
   );

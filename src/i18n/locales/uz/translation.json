@@ -6,7 +6,7 @@
     "home": "Bosh sahifa",
     "about": "Men haqimda",
     "portfolio": "Loyihalar",
-    "skills": "Imkoniyatlarim",
+    "skills": "Ko'nikmalar",
     "resume": "Rezyume",
     "certificates": "Sertifikatlar",
     "contact": "Aloqa"
@@ -14,13 +14,13 @@
   "ui": {
     "loading": "Yuklanmoqda...",
     "theme": {
-      "switchToDark": "Qorong‘i rejimga o‘tish",
-      "switchToLight": "Yorug‘ rejimga o‘tish"
+      "switchToDark": "Qorong'i rejimga o'tish",
+      "switchToLight": "Yorug' rejimga o'tish"
     },
     "language": {
       "select": "Tilni tanlang",
       "switchTo": "Tilni {{language}} ga almashtirish",
-      "uz": "O‘zbekcha",
+      "uz": "O'zbekcha",
       "en": "Inglizcha",
       "ru": "Ruscha"
     },
@@ -39,84 +39,84 @@
     "headline": "Foydalanuvchilarga yoqadigan tizimlar yarataman.",
     "contactCta": "Suhbatni boshlash",
     "location": "Uzbekistonda faoliyat yuritaman",
-    "focus": "Asosiy yo`nalish",
+    "focus": "Asosiy yo'nalish",
     "contact": "Aloqa",
     "liveBuild": "Jonli build",
     "highlight": {
       "architecture": "Toza arxitektura",
-      "architectureDesc": "Uzoq muddatli o`sish uchun kengayadigan frontend va backend tuzilmasi.",
+      "architectureDesc": "Uzoq muddatli o'sish uchun kengayadigan frontend va backend tuzilmasi.",
       "ux": "Foydalanuvchi markazida UX",
       "uxDesc": "Maqsadli interaksiya bilan tez va qulay interfeyslar.",
       "delivery": "Production yetkazib berish",
-      "deliveryDesc": "G`oyadan deploygacha: tezlik va ishonchlilik doimo markazda."
+      "deliveryDesc": "G'oyadan deploygacha: tezlik va ishonchlilik doimo markazda."
     }
   },
   "about": {
     "title": "Men haqimda",
     "quote": "Men kod yozmayman — men ishlaydigan yechimlar yarataman.",
-    "intro": "Mening ismim Muzaffarbek Mustafayev. Men Software Engineer va Samarqand davlat universitetining 4-bosqich talabasi.",
-    "stack": "Men biznes va foydalanuvchi ehtiyojlariga mos keladigan web tizimlarni loyihalayman va amalga oshiraman. Har bir qarorim qulaylik, ishonchlilik va uzoq muddatli foydalanishga qaratilgan.",
-    "experience": "Men foydalanuvchilar bilan ishlash, ma’lumotlarni boshqarish, ruxsat darajalarini nazorat qilish va tizimlarni xavfsiz hamda kengaytiriladigan tarzda qurish bo‘yicha tajribaga egaman.",
-    "interests": "Men murakkab muammolarni soddalashtirishni, xavfsizlikni ta’minlashni va tizimlarni doimiy rivojlantirishni muhim deb bilaman. O‘sish — bu mening kundalik odatim.",
+    "intro": "Mening ismim Muzaffarbek Mustafayev. Men frontend va backend engineering yo'nalishida rivojlanayotgan Junior Software Engineer hamda Samarqand davlat universiteti talabasiyman.",
+    "stack": "Men React.js va Node.js yordamida amaliy web tizimlar quraman. Har bir qarorim toza arxitektura, qulay foydalanish, qo'llab-quvvatlash va biznes qiymatiga qaratilgan.",
+    "experience": "Men full-stack ilovalar yaratish, frontend va backend qismlarini ulash, ruxsat darajalarini boshqarish va xavfsiz, kengayadigan tizimlar qurish bo'yicha amaliy tajribaga egaman.",
+    "interests": "Men murakkab muammolarni soddalashtirishni, tizim sifatini oshirishni va zamonaviy dasturiy injiniring yondashuvlarini doimiy o'rganishni muhim deb bilaman. O'sish mening kundalik odatim.",
     "missionLabel": "Maqsad",
-    "mission": "Mening maqsadim — foydalanuvchiga haqiqiy qiymat beradigan, sodda, lekin kuchli va ishonchli tizimlar yaratadigan muhandis bo‘lish.",
-    "techTitle": "Men yarata oladigan funksionalliklar",
+    "mission": "Mening maqsadim — foydalanuvchiga haqiqiy qiymat beradigan, sodda, lekin kuchli va ishonchli tizimlar yaratadigan muhandis bo'lish.",
+    "techTitle": "Frontend va Backend Engineering yo'nalishim",
     "description": "Men haqimda batafsil"
   },
   "resume": {
-    "role": "Fullstack dasturchi",
-    "stack": "Web tizimlar ishlab chiquvchi",
-    "location": "Samarqand, O‘zbekiston",
+    "role": "Junior Software Engineer",
+    "stack": "Frontend va Backend Engineer",
+    "location": "Samarqand, O'zbekiston",
     "download": "Rezyumeni yuklab olish",
     "downloadAlert": "Rezyume yuklandi!",
     "summary": {
       "title": "Professional xulosa",
-      "text": "Men foydalanuvchi va biznes ehtiyojlariga mos keladigan, xavfsiz, qulay va barqaror web ilovalar ishlab chiqaman. Loyihalarda natija va amaliy foyda birinchi o‘rinda turadi."
+      "text": "Men frontend va backend engineering yo'nalishida amaliy ko'nikmalarini chuqurlashtirishni istagan Junior Software Engineerman. React.js, Node.js va API-driven yondashuvlar bilan toza, qo'llab-quvvatlanadigan va foydalanuvchi markazidagi web ilovalar yarataman."
     },
     "experience": {
       "title": "Amaliy tajriba",
-      "role": "Software Engineer",
-      "company": "Samarkand State University",
-      "period": "2023 – hozir",
+      "role": "Junior Software Engineer",
+      "company": "Samarqand davlat universiteti",
+      "period": "2023 — hozir",
       "tasks": [
-        "Foydalanuvchilarni ro‘yxatdan o‘tkazish va tizimga kirish jarayonlarini yaratish",
-        "Turli darajadagi foydalanuvchilar uchun ruxsat va cheklovlarni boshqarish",
-        "Ma’lumotlarni yaratish, tahrirlash va o‘chirish jarayonlarini tashkil etish",
-        "Frontend va backend o‘rtasida aniq va ishonchli aloqa o‘rnatish",
-        "Katta loyihalar uchun tushunarli va kengaytiriladigan tizim tuzilmasini qurish"
+        "React.js, Node.js va MongoDB yordamida akademik va shaxsiy web ilovalar yaratdim va rivojlantirdim",
+        "JWT asosida autentifikatsiya va avtorizatsiya jarayonlarini joriy qildim",
+        "Frontend interfeyslarini backend servislar va RESTful API lar bilan integratsiya qildim",
+        "Role-based access control va ma'lumotlar oqimini boshqarish ustida ishladim",
+        "Postman bilan API larni test qildim va Swagger orqali endpointlarni hujjatlashtirdim"
       ]
     },
     "projects": {
-      "title": "Yarata oladigan tizimlar",
-      "ai": "Foydalanuvchi bilan muloqot qiluvchi va jarayonlarni avtomatlashtiruvchi aqlli xizmatlar",
-      "face": "Xavfsizlikka yo‘naltirilgan shaxsni aniqlash va tizimga kirish yechimlari",
-      "aiTitle": "AI Chat Platform",
-      "faceTitle": "Face ID Login System",
+      "title": "Loyiha yo'nalishlari",
+      "ai": "React.js, Node.js va ma'lumotlar bazasi integratsiyasi bilan real ehtiyojlarga mos full-stack web ilovalar.",
+      "face": "Autentifikatsiya, role-based access va qo'llab-quvvatlanadigan xavfsiz API markazli tizimlar.",
+      "aiTitle": "Full-Stack Web Ilovalar",
+      "faceTitle": "Authentication va API Tizimlari",
       "live": "Jonli"
     },
     "skills": {
       "title": "Asosiy imkoniyatlarim",
-      "frontend": "Frontend",
-      "backend": "Backend"
+      "frontend": "Frontend Engineering",
+      "backend": "Backend Engineering"
     },
     "education": {
-      "title": "Ta’lim",
+      "title": "Ta'lim",
       "degree": "Dasturiy injiniring (Bakalavr)",
       "school": "Samarqand davlat universiteti",
-      "desc": "Amaliy muammolarni yechish, tizimli fikrlash va real loyihalar bilan ishlashga yo‘naltirilgan ta’lim",
-      "period": "2022 - Hozirgacha"
+      "desc": "Hozirda dasturlash, dasturiy injiniring, analitik fikrlash va amaliy loyihalar yo'nalishida bakalavr ta'limini davom ettirmoqdaman.",
+      "period": "2022 - 2026 kutilmoqda"
     },
     "languages": {
       "title": "Tillar",
-      "uz": "O‘zbek (ona tili)",
-      "en": "Ingliz (erkin muloqot)",
-      "ru": "Rus (professional daraja)"
+      "uz": "O'zbek (ona tili)",
+      "en": "Ingliz (o'rta, texnik o'qish va muloqot)",
+      "ru": "Rus (o'rta)"
     },
     "footer": "(c) {{year}} Muzaffarbek Mustafayev. Barcha huquqlar himoyalangan."
   },
   "contact": {
-    "title": "Bog‘lanish",
-    "subtitle": "Loyiha, hamkorlik yoki savollar bo‘yicha bemalol murojaat qiling",
+    "title": "Bog'lanish",
+    "subtitle": "Loyiha, hamkorlik yoki savollar bo'yicha bemalol murojaat qiling",
     "email": "Email",
     "phone": "Telefon",
     "formTitle": "Xabar yuborish",
@@ -129,21 +129,21 @@
     "messagePlaceholder": "Xabaringiz...",
     "sending": "Yuborilmoqda...",
     "successDemo": "Demo rejim: Xabaringiz qabul qilindi!",
-    "error": "Xabar yuborilmadi. Qayta urinib ko`ring.",
-    "infoTitle": "Aloqa ma`lumotlari",
+    "error": "Xabar yuborilmadi. Qayta urinib ko'ring.",
+    "infoTitle": "Aloqa ma'lumotlari",
     "socialTitle": "Meni kuzating",
     "errors": {
       "name": "Ism kiritilishi shart",
       "email": "Email kiritilishi shart",
-      "emailInvalid": "Email formati noto`g`ri",
+      "emailInvalid": "Email formati noto'g'ri",
       "message": "Xabar kiritilishi shart",
       "messageShort": "Xabar juda qisqa",
-      "validation": "Iltimos, xatolarni to`g`rilang"
+      "validation": "Iltimos, xatolarni to'g'rilang"
     }
   },
   "portfolio": {
     "pageTitle": "Mening Loyihalarim",
-    "pageSubtitle": "G‘oyadan amalga oshirilgan real loyihalar va amaliy texnologiyalar",
+    "pageSubtitle": "G'oyadan amalga oshirilgan real loyihalar va amaliy texnologiyalar",
     "projectLabel": "Loyiha",
     "github": "GitHub",
     "downloadZip": "ZIP yuklab olish",
@@ -153,20 +153,20 @@
     "items": {
       "infinityFlower": {
         "title": "Infinity Flower",
-        "description": "Davomiy o‘sib boruvchi va o‘zgaruvchan gul shaklidagi vizualizatsiya.",
+        "description": "Davomiy o'sib boruvchi va o'zgaruvchan gul shaklidagi vizualizatsiya.",
         "features": [
-          "Foydalanuvchi ro‘yxatdan o‘tmasdan ko'rish va o‘zaro ta’sir qilish imkoniyati",
-          "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
-          "Chiroyli va o‘zgaruvchan gul shakli"
+          "Foydalanuvchi ro'yxatdan o'tmasdan ko'rish va o'zaro ta'sir qilish imkoniyati",
+          "Asosiy JavaScript funksiyalari qo'llab-quvvatlanadi",
+          "Chiroyli va o'zgaruvchan gul shakli"
         ]
       },
       "jsCompiler": {
         "title": "JS Compiler",
-        "description": "JavaScript kodini bajaruvchi va natijalarni ko‘rsatuvchi tizim.",
+        "description": "JavaScript kodini bajaruvchi va natijalarni ko'rsatuvchi tizim.",
         "features": [
-          "Foydalanuvchi ro‘yxatdan o‘tmasdan kod yozishi va bajarishi mumkin",
+          "Foydalanuvchi ro'yxatdan o'tmasdan kod yozishi va bajarishi mumkin",
           "Real-time compiler",
-          "Asosiy JavaScript funksiyalari qo‘llab-quvvatlanadi",
+          "Asosiy JavaScript funksiyalari qo'llab-quvvatlanadi",
           "Natijalar darhol"
         ]
       },
@@ -174,7 +174,7 @@
         "title": "WormGPT",
         "description": "AI asosida JavaScript kodini yozishga yordam beruvchi tizim.",
         "features": [
-          "Foydalanuvchi ro‘yxatdan o‘tmasdan kod yozishi va bajarishi mumkin",
+          "Foydalanuvchi ro'yxatdan o'tmasdan kod yozishi va bajarishi mumkin",
           "Real-time chat",
           "Natijalar darhol"
         ]
@@ -183,7 +183,7 @@
         "title": "Text To Voice",
         "description": "Matnni ovozga aylantiruvchi ilova. Foydalanuvchilar matn kiritsa, u ovozga aylantiriladi.",
         "features": [
-          "Foydalanuvchi ro‘yxatdan o‘tmasdan matn kiritishi va natijani eshitishi mumkin",
+          "Foydalanuvchi ro'yxatdan o'tmasdan matn kiritishi va natijani eshitishi mumkin",
           "Real-time ovozga aylantirish",
           "Asosiy JavaScript funksiyalari ishlatilgan"
         ]
@@ -194,14 +194,14 @@
     "systems": {
       "auth": {
         "title": "Foydalanuvchi tizimlari",
-        "desc": "Ro‘yxatdan o‘tish, tizimga kirish, foydalanuvchi rollari va ruxsatlarni boshqarish."
+        "desc": "Ro'yxatdan o'tish, tizimga kirish, foydalanuvchi rollari va ruxsatlarni boshqarish."
       },
       "security": {
-        "title": "Xavfsizlikka yo‘naltirilgan yechimlar",
-        "desc": "Ma’lumotlarni himoyalash, ruxsatlarni nazorat qilish va xavfsiz ishlash muhitini ta’minlash."
+        "title": "Xavfsizlikka yo'naltirilgan yechimlar",
+        "desc": "Ma'lumotlarni himoyalash, ruxsatlarni nazorat qilish va xavfsiz ishlash muhitini ta'minlash."
       },
       "management": {
-        "title": "Ma’lumotlarni boshqarish tizimlari",
+        "title": "Ma'lumotlarni boshqarish tizimlari",
         "desc": "Yaratish, tahrirlash va boshqarish jarayonlari aniq va qulay tashkil etilgan tizimlar."
       },
       "automation": {
@@ -212,7 +212,7 @@
     "note": "Har bir tizim real loyiha talablariga moslab ishlab chiqiladi.",
     "search": "Loyihalarni qidirish...",
     "allTech": "Barcha texnologiyalar",
-    "showing": "Ko`rsatilmoqda",
+    "showing": "Ko'rsatilmoqda",
     "projects": "ta loyiha",
     "noResults": "Loyiha topilmadi",
     "features": "Imkoniyatlar",
@@ -222,24 +222,24 @@
     "eyebrow": "Blog",
     "title": "Fikrlar, tajribalar va",
     "titleAccent": "amaliy yechimlar",
-    "subtitle": "Front-end, dizayn va ishlab chiqish jarayoni bo‘yicha yangi maqolalar, mini qo‘llanmalar va real tajribalar.",
+    "subtitle": "Front-end, dizayn va ishlab chiqish jarayoni bo'yicha yangi maqolalar, mini qo'llanmalar va real tajribalar.",
     "weekly": {
       "title": "Haftalik yangiliklar",
       "description": "Eng ommabop mavzular, yangi maqolalar va qisqa tavsiyalar.",
-      "cta": "Obuna bo‘lish"
+      "cta": "Obuna bo'lish"
     },
-    "readMore": "O‘qishni davom ettirish",
+    "readMore": "O'qishni davom ettirish",
     "topicsTitle": "Tavsiya etilgan mavzular",
     "newsletter": {
       "title": "Newsletter",
       "description": "Haftasiga bir marta qisqa, foydali kontent yuboramiz.",
       "placeholder": "Email manzilingiz",
-      "cta": "Ro‘yxatdan o‘tish"
+      "cta": "Ro'yxatdan o'tish"
     },
     "posts": [
       {
         "title": "React komponentlarini tizimli qurish",
-        "excerpt": "Komponentlarni toza, qayta ishlatiladigan va oson sinovdan o‘tkaziladigan qilib tuzish bo‘yicha amaliy yondashuvlar.",
+        "excerpt": "Komponentlarni toza, qayta ishlatiladigan va oson sinovdan o'tkaziladigan qilib tuzish bo'yicha amaliy yondashuvlar.",
         "date": "2024-11-02",
         "readTime": "6 daqiqa",
         "category": "React",
@@ -261,7 +261,7 @@
       },
       {
         "title": "Portfolio saytingizni SEOga tayyorlash",
-        "excerpt": "Meta taglar, semantik HTML va ma’lumot tuzilmasi orqali ko‘rinuvchanlikni oshirish usullari.",
+        "excerpt": "Meta taglar, semantik HTML va ma'lumot tuzilmasi orqali ko'rinuvchanlikni oshirish usullari.",
         "date": "2024-09-30",
         "readTime": "7 daqiqa",
         "category": "SEO",
@@ -274,12 +274,12 @@
     "topics": [
       {
         "title": "Front-end checklist",
-        "description": "Har bir loyiha uchun eng muhim tekshiruvlar ro‘yxati.",
-        "badge": "Qo‘llanma"
+        "description": "Har bir loyiha uchun eng muhim tekshiruvlar ro'yxati.",
+        "badge": "Qo'llanma"
       },
       {
         "title": "Tailwind CSS bilan dizayn tizimi",
-        "description": "Tokenlar, rang palitrasi va komponentlar uyg‘unligi.",
+        "description": "Tokenlar, rang palitrasi va komponentlar uyg'unligi.",
         "badge": "Dizayn"
       },
       {
@@ -289,51 +289,51 @@
       }
     ]
   },
-  "certificates": {
-    "eyebrow": "Sertifikatlar",
-    "title": "Mening",
-    "titleAccent": "sertifikatlarim",
-    "subtitle": "Sertifikat rasmlarini `public/certificates` ichiga joylang va ro'yxatni `public/certificates/certificates.json` orqali boshqaring.",
-    "refresh": "Yangilash",
-    "certificate": "Sertifikat",
-    "viewImage": "Rasmni ochish",
-    "empty": "Hozircha sertifikatlar qo`shilmagan.",
-    "error": "Sertifikatlar ro`yxatini yuklab bo`lmadi.",
-    "setupHint": "`public/certificates/certificates.json` faylini yarating yoki to'ldiring.",
-    "pageSubtitle": "Professional sertifikatlar va yutuqlar.",
-    "preview": "Ko`rish",
-    "viewCredential": "Credentialni ochish",
-    "emptyDescription": "Yangi sertifikatlar tez orada shu yerda chiqadi.",
-    "errorDescription": "Iltimos, sahifani qayta yangilang.",
-    "unknownYear": "N/A",
-    "stats": {
-      "total": "Jami sertifikat",
-      "issuers": "Beruvchi tashkilotlar",
-      "latestYear": "So`nggi yil"
-    }
-  },
   "skills": {
-    "title": "Ko‘nikmalar va texnologiyalar",
+    "title": "Ko'nikmalar va texnologiyalar",
     "subtitle": "Zamonaviy va kengaytiriladigan web ilovalar yaratishda foydalanadigan vositalarim.",
     "categories": {
       "all": "Barchasi",
       "frontend": "Frontend",
       "backend": "Backend",
-      "database": "Ma’lumotlar bazasi",
+      "database": "Ma'lumotlar bazasi",
       "tools": "Vositalar"
     },
     "levels": {
       "expert": "Mutaxassis",
       "advanced": "Yuqori",
-      "intermediate": "O‘rta"
+      "intermediate": "O'rta"
     },
-    "footer": "Men qisqa muddatli yechimlardan ko‘ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman.",
-    "description": "Texnik ko`nikmalarim"
+    "footer": "Men qisqa muddatli yechimlardan ko'ra toza kod, kengaytiriladigan arxitektura va uzoq muddatli yechimlarni qadrlayman.",
+    "description": "Texnik ko'nikmalarim"
   },
   "notFound": {
     "code": "404",
     "title": "Sahifa topilmadi",
-    "description": "Siz izlagan manzil shamolga aytilgan so‘zdek g‘oyib bo‘lgan ko‘rinadi. Balki orqaga qaytib, yo‘lni boshqatdan tanlarmiz?",
+    "description": "Siz izlagan manzil shamolga aytilgan so'zdek g'oyib bo'lgan ko'rinadi. Balki orqaga qaytib, yo'lni boshqatdan tanlarmiz?",
     "backHome": "Asosiy sahifaga qaytish"
+  },
+  "certificates": {
+    "eyebrow": "Sertifikatlar",
+    "title": "Mening",
+    "titleAccent": "sertifikatlarim",
+    "subtitle": "Sertifikat rasmlarini `public/certificates` ichiga joylang va ro'yxatni `public/certificates/certificates.json` orqali boshqaring.",
+    "pageSubtitle": "Professional sertifikatlar va yutuqlar.",
+    "refresh": "Yangilash",
+    "certificate": "Sertifikat",
+    "preview": "Ko'rish",
+    "viewCredential": "Credentialni ochish",
+    "viewImage": "Rasmni ochish",
+    "empty": "Hozircha sertifikatlar qo'shilmagan.",
+    "emptyDescription": "Yangi sertifikatlar tez orada shu yerda chiqadi.",
+    "error": "Sertifikatlar ro'yxatini yuklab bo'lmadi.",
+    "errorDescription": "Iltimos, sahifani qayta yangilang.",
+    "setupHint": "`public/certificates/certificates.json` faylini yarating yoki to'ldiring.",
+    "unknownYear": "N/A",
+    "stats": {
+      "total": "Jami sertifikat",
+      "issuers": "Beruvchi tashkilotlar",
+      "latestYear": "So'nggi yil"
+    }
   }
 }

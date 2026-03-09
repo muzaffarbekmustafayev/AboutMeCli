@@ -35,10 +35,10 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 z-50 w-full px-2 sm:px-4">
       <div
-        className={`mx-auto mt-2 sm:mt-3 max-w-7xl rounded-2xl transition-all duration-500 ${
+        className={`nav-panel mx-auto mt-2 sm:mt-3 max-w-7xl rounded-2xl transition-all duration-500 ${
           scrolled
             ? "glass-card control-surface px-3 py-2 sm:px-4"
-            : "bg-transparent px-1 py-2"
+            : "border border-transparent bg-white/30 px-1 py-2 backdrop-blur-sm dark:bg-slate-950/10"
         }`}
       >
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-4">
@@ -74,7 +74,7 @@ export default function Navbar() {
 
 const Logo = ({ t }) => (
   <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
-    <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-600 to-cyan-500 text-white shadow-lg shadow-teal-700/30">
+    <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/25">
       <span className="font-display text-sm font-bold">M</span>
       <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
     </div>
@@ -92,7 +92,7 @@ const Logo = ({ t }) => (
 
 const DesktopMenu = ({ t, isActive }) => (
   <div className="hidden lg:flex items-center justify-center">
-    <div className="control-surface rounded-full p-1.5 flex items-center gap-1">
+    <div className="control-surface rounded-full p-1.5 flex items-center gap-1 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
       {menuItems.map(({ key, path }) => {
         const active = isActive(path);
 
@@ -102,7 +102,7 @@ const DesktopMenu = ({ t, isActive }) => (
             to={path}
             className={`px-3 xl:px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
               active
-                ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-md"
+                ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-md"
                 : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
             }`}
           >
@@ -159,7 +159,7 @@ const MobileMenu = ({ open, close, isActive, t }) => {
                 onClick={close}
                 className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-all ${
                   active
-                    ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white"
+                    ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white"
                     : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                 }`}
               >

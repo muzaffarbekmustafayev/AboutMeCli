@@ -19,7 +19,7 @@ const ThemeToggle = () => {
         flex items-center justify-center
         h-11 w-11 rounded-xl
         control-surface
-        text-slate-700 dark:text-amber-300
+        text-slate-700 dark:text-blue-300
         transition-all duration-300 hover:-translate-y-0.5
         active:scale-95
       "

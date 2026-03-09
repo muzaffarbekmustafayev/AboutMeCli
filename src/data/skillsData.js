@@ -12,7 +12,7 @@ const SKILLS = [
   { name: "React.js", icon: Code, category: "frontend", level: "Expert", color: "text-blue-500" },
   { name: "JavaScript", icon: Code, category: "frontend", level: "Advanced", color: "text-yellow-500" },
   { name: "TypeScript", icon: Code, category: "frontend", level: "Intermediate", color: "text-blue-600" },
-  { name: "Tailwind CSS", icon: Zap, category: "frontend", level: "Expert", color: "text-cyan-500" },
+  { name: "Tailwind CSS", icon: Zap, category: "frontend", level: "Expert", color: "text-sky-500" },
   { name: "Next.js", icon: Zap, category: "frontend", level: "Intermediate", color: "text-gray-700 dark:text-gray-200" },
 
   { name: "Node.js", icon: Database, category: "backend", level: "Advanced", color: "text-green-500" },
