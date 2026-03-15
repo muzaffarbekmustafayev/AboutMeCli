@@ -1,0 +1,17 @@
+{
+  "name": "Muzaffar Mustafayev | Software Engineer",
+  "short_name": "Muzaffar",
+  "description": "Professional Software Engineer Portfolio",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#0f172a",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "start_url": "/"
+}
