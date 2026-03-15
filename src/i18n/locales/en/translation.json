@@ -151,6 +151,96 @@
     "details": "Details",
     "close": "Close",
     "items": {
+      "denoiseVoices": {
+        "title": "Denoise Voices",
+        "description": "A system that separates clean voices from background noise.",
+        "features": [
+          "Users can denoise audio without registration",
+          "Real-time voice separation",
+          "Built with core JavaScript functionality"
+        ]
+      },
+      "weatherApp": {
+        "title": "Weather App",
+        "description": "A web app that shows real-time weather data based on user location.",
+        "features": [
+          "Users can enter their location to get weather data",
+          "Real-time weather information",
+          "Fetches data via external weather API"
+        ]
+      },
+      "TextToVoice": {
+        "title": "Text To Voice",
+        "description": "An app that converts text into speech so users can input text and hear the output.",
+        "features": [
+          "Users can enter text and listen to speech output without registration",
+          "Real-time text-to-speech conversion",
+          "Built with core JavaScript functionality"
+        ]
+      },
+      "snakeGame": {
+        "title": "Snake Game",
+        "description": "A classic Snake game where users can test their reflexes and skills.",
+        "features": [
+          "Users control the snake in real time",
+          "Real-time gameplay",
+          "Built with core JavaScript and React"
+        ]
+      },
+      "ticTacToe": {
+        "title": "Tic Tac Toe Game",
+        "description": "A classic Tic Tac Toe game for two players.",
+        "features": [
+          "X and O players control their moves in real time",
+          "Real-time gameplay",
+          "Built with core JavaScript logic"
+        ]
+      },
+      "flappyBird": {
+        "title": "Flappy Bird Game",
+        "description": "A classic Flappy Bird game where users tap to keep the bird flying.",
+        "features": [
+          "Users control the bird in real time",
+          "Real-time gameplay",
+          "Built with React and Canvas"
+        ]
+      },
+      "breakoutGame": {
+        "title": "Breakout Game",
+        "description": "A classic Breakout game where users break bricks with a ball.",
+        "features": [
+          "Users control the paddle in real time",
+          "Real-time gameplay",
+          "Built with React and Canvas"
+        ]
+      },
+      "wormGPT": {
+        "title": "WormGPT",
+        "description": "An AI-assisted system that helps write JavaScript code.",
+        "features": [
+          "Users can write and run code without registration",
+          "Real-time chat",
+          "Instant output"
+        ]
+      },
+      "chessGame": {
+        "title": "Chess Game",
+        "description": "A chess game where users can play against an AI engine.",
+        "features": [
+          "Users control their pieces in real time",
+          "Real-time gameplay",
+          "Play against an AI engine opponent"
+        ]
+      },
+      "emailSender": {
+        "title": "Email Message Sender",
+        "description": "An app for sending email messages directly from the terminal.",
+        "features": [
+          "Users can send email messages",
+          "Real-time message sending",
+          "Built with core JavaScript functionality"
+        ]
+      },
       "infinityFlower": {
         "title": "Infinity Flower",
         "description": "A continuously growing and morphing flower-like visualization.",
@@ -170,22 +260,22 @@
           "Instant output"
         ]
       },
-      "wormGPT": {
-        "title": "WormGPT",
-        "description": "An AI-assisted system that helps write JavaScript code.",
+      "countdownTimer": {
+        "title": "Countdown Timer",
+        "description": "A countdown timer app where users can set a target time and watch it count down.",
         "features": [
-          "Users can write and run code without registration",
-          "Real-time chat",
-          "Instant output"
+          "Users can set a countdown time",
+          "Real-time countdown",
+          "Built with React and JavaScript"
         ]
       },
-      "TextToVoice": {
-        "title": "Text To Voice",
-        "description": "An app that converts text into speech so users can input text and hear the output.",
+      "calculator": {
+        "title": "Calculator",
+        "description": "A modern, minimalistic calculator built with React and Tailwind CSS featuring a glassmorphism UI.",
         "features": [
-          "Users can enter text and listen to speech output without registration",
-          "Real-time text-to-speech conversion",
-          "Built with core JavaScript functionality"
+          "Clean glassmorphism interface",
+          "Supports basic arithmetic: addition, subtraction, multiplication, division",
+          "Real-time calculation results"
         ]
       }
     },

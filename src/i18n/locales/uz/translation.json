@@ -151,6 +151,96 @@
     "details": "Batafsil",
     "close": "Yopish",
     "items": {
+      "denoiseVoices": {
+        "title": "Denoise Voices",
+        "description": "Ovozlarni shovqindan tozalovchi tizim.",
+        "features": [
+          "Foydalanuvchi ro'yxatdan o'tmasdan ovozni tozalashi mumkin",
+          "Real-time ovozlarni ajratish",
+          "Asosiy JavaScript funksiyalari ishlatilgan"
+        ]
+      },
+      "weatherApp": {
+        "title": "Weather App",
+        "description": "Foydalanuvchi joylashuviga qarab real vaqtda ob-havo ma'lumotlarini ko'rsatuvchi ilova.",
+        "features": [
+          "Foydalanuvchi joylashuvini kiritib ob-havo ma'lumotlarini olishi mumkin",
+          "Real-time ob-havo ma'lumotlari",
+          "Tashqi ob-havo API orqali ma'lumot olish"
+        ]
+      },
+      "TextToVoice": {
+        "title": "Text To Voice",
+        "description": "Matnni ovozga aylantiruvchi ilova. Foydalanuvchilar matn kiritsa, u ovozga aylantiriladi.",
+        "features": [
+          "Foydalanuvchi ro'yxatdan o'tmasdan matn kiritishi va natijani eshitishi mumkin",
+          "Real-time ovozga aylantirish",
+          "Asosiy JavaScript funksiyalari ishlatilgan"
+        ]
+      },
+      "snakeGame": {
+        "title": "Snake Game",
+        "description": "Klassik Snake o'yini. Foydalanuvchilar o'z malakalarini sinab ko'rishlari mumkin.",
+        "features": [
+          "Foydalanuvchi o'yin davomida ilon harakatini boshqaradi",
+          "Real-time o'yin",
+          "JavaScript va React yordamida qurilgan"
+        ]
+      },
+      "ticTacToe": {
+        "title": "Tic Tac Toe Game",
+        "description": "Klassik Tic Tac Toe o'yini. Ikki o'yinchi uchun.",
+        "features": [
+          "X va O o'yinchilar o'z harakatlarini real vaqtda boshqaradi",
+          "Real-time o'yin",
+          "Asosiy JavaScript mantiqi ishlatilgan"
+        ]
+      },
+      "flappyBird": {
+        "title": "Flappy Bird Game",
+        "description": "Klassik Flappy Bird o'yini. Foydalanuvchilar qushni uchirish uchun bosishlari kerak.",
+        "features": [
+          "Foydalanuvchi qushni real vaqtda boshqaradi",
+          "Real-time o'yin",
+          "React va Canvas yordamida qurilgan"
+        ]
+      },
+      "breakoutGame": {
+        "title": "Breakout Game",
+        "description": "Klassik Breakout o'yini. Foydalanuvchilar to'p bilan g'ishtlarni sindiradi.",
+        "features": [
+          "Foydalanuvchi taxtachani real vaqtda boshqaradi",
+          "Real-time o'yin",
+          "React va Canvas yordamida qurilgan"
+        ]
+      },
+      "wormGPT": {
+        "title": "WormGPT",
+        "description": "AI asosida JavaScript kodini yozishga yordam beruvchi tizim.",
+        "features": [
+          "Foydalanuvchi ro'yxatdan o'tmasdan kod yozishi va bajarishi mumkin",
+          "Real-time chat",
+          "Natijalar darhol"
+        ]
+      },
+      "chessGame": {
+        "title": "Chess Game",
+        "description": "Shaxmat o'yini. Foydalanuvchilar AI dvigateliga qarshi o'ynashlari mumkin.",
+        "features": [
+          "Foydalanuvchi donalarini real vaqtda boshqaradi",
+          "Real-time o'yin",
+          "AI dvigatel raqibiga qarshi o'ynash imkoniyati"
+        ]
+      },
+      "emailSender": {
+        "title": "Email Message Sender",
+        "description": "Terminaldan to'g'ridan-to'g'ri elektron pochta xabarlarini yuboruvchi ilova.",
+        "features": [
+          "Foydalanuvchi elektron pochta xabarini yuborishi mumkin",
+          "Real-time xabar yuborish",
+          "Asosiy JavaScript funksiyalari ishlatilgan"
+        ]
+      },
       "infinityFlower": {
         "title": "Infinity Flower",
         "description": "Davomiy o'sib boruvchi va o'zgaruvchan gul shaklidagi vizualizatsiya.",
@@ -170,22 +260,22 @@
           "Natijalar darhol"
         ]
       },
-      "wormGPT": {
-        "title": "WormGPT",
-        "description": "AI asosida JavaScript kodini yozishga yordam beruvchi tizim.",
+      "countdownTimer": {
+        "title": "Countdown Timer",
+        "description": "Foydalanuvchilar vaqtni belgilab, orqaga hisoblashni kuzatishi mumkin bo'lgan taymer ilovasi.",
         "features": [
-          "Foydalanuvchi ro'yxatdan o'tmasdan kod yozishi va bajarishi mumkin",
-          "Real-time chat",
-          "Natijalar darhol"
+          "Foydalanuvchi hisoblash vaqtini o'rnatishi mumkin",
+          "Real-time hisoblash",
+          "React va JavaScript yordamida qurilgan"
         ]
       },
-      "TextToVoice": {
-        "title": "Text To Voice",
-        "description": "Matnni ovozga aylantiruvchi ilova. Foydalanuvchilar matn kiritsa, u ovozga aylantiriladi.",
+      "calculator": {
+        "title": "Calculator",
+        "description": "React va Tailwind CSS yordamida qurilgan zamonaviy, minimalistik kalkulyator. Glassmorphism dizayni bilan.",
         "features": [
-          "Foydalanuvchi ro'yxatdan o'tmasdan matn kiritishi va natijani eshitishi mumkin",
-          "Real-time ovozga aylantirish",
-          "Asosiy JavaScript funksiyalari ishlatilgan"
+          "Toza glassmorphism interfeysi",
+          "Asosiy arifmetik amallar: qo'shish, ayirish, ko'paytirish, bo'lish",
+          "Real-time hisoblash natijalari"
         ]
       }
     },

@@ -45,8 +45,8 @@ const Portfolio = () => {
 
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
-      const title = t(`portfolio.items.${project.id}.title`, { defaultValue: project.title });
-      const description = t(`portfolio.items.${project.id}.description`, { defaultValue: project.description });
+      const title = t(`portfolio.items.${project.i18nKey ?? project.id}.title`, { defaultValue: project.title });
+      const description = t(`portfolio.items.${project.i18nKey ?? project.id}.description`, { defaultValue: project.description });
       
       const matchesSearch = searchTerm === "" || 
         title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -129,8 +129,8 @@ const Portfolio = () => {
           {/* Grid */}
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => {
-              const projectTitle = t(`portfolio.items.${project.id}.title`, { defaultValue: project.title });
-              const projectDescription = t(`portfolio.items.${project.id}.description`, { defaultValue: project.description });
+              const projectTitle = t(`portfolio.items.${project.i18nKey ?? project.id}.title`, { defaultValue: project.title });
+              const projectDescription = t(`portfolio.items.${project.i18nKey ?? project.id}.description`, { defaultValue: project.description });
 
               return (
                 <article
@@ -227,7 +227,7 @@ const Portfolio = () => {
                     <span className="text-xs font-bold uppercase tracking-widest text-blue-500">Project Details</span>
                   </div>
                   <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
-                    {t(`portfolio.items.${activeProject.id}.title`, { defaultValue: activeProject.title })}
+                    {t(`portfolio.items.${activeProject.i18nKey ?? activeProject.id}.title`, { defaultValue: activeProject.title })}
                   </h2>
                 </header>
 
@@ -237,7 +237,7 @@ const Portfolio = () => {
 
                 <div className="space-y-8">
                   <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-                    {t(`portfolio.items.${activeProject.id}.description`, { defaultValue: activeProject.description })}
+                    {t(`portfolio.items.${activeProject.i18nKey ?? activeProject.id}.description`, { defaultValue: activeProject.description })}
                   </p>
 
                   <div className="space-y-5">
@@ -245,7 +245,7 @@ const Portfolio = () => {
                       {t("portfolio.features")}
                     </h3>
                     <ul className="grid gap-4 text-base text-slate-600 dark:text-slate-400 sm:grid-cols-2">
-                      {(t(`portfolio.items.${activeProject.id}.features`, {
+                      {(t(`portfolio.items.${activeProject.i18nKey ?? activeProject.id}.features`, {
                         returnObjects: true,
                         defaultValue: activeProject.features,
                       }) || []).map((feature, idx) => (
