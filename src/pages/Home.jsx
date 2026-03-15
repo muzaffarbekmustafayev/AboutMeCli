@@ -136,7 +136,7 @@ function Home() {
               {t("home.availability", { defaultValue: "Available for new projects" })}
             </div>
 
-            <h1 className="mt-5 font-display text-[2rem] leading-tight text-slate-900 dark:text-slate-100 sm:mt-6 sm:text-5xl xl:text-6xl">
+            <h1 className="mt-5 font-display text-[2.25rem] leading-[1.15] text-slate-900 dark:text-slate-100 sm:mt-6 sm:text-5xl xl:text-6xl">
               {t("home.greeting")}
               <span className="mt-2 block brand-gradient">
                 {t("home.headline", { defaultValue: "I design systems that people enjoy using." })}
@@ -147,7 +147,7 @@ function Home() {
               {t("home.description")}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
               {quickStats.map((item) => (
                 <div key={item.label} className="metric-pill">
                   <span className="metric-pill__value">{item.value}</span>
@@ -161,14 +161,14 @@ function Home() {
 
               <Link
                 to="/contact"
-                className="control-surface inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-100"
+                className="control-surface inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-100"
               >
                 {t("home.contactCta", { defaultValue: "Start a conversation" })}
                 <ArrowRight size={16} />
               </Link>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 grid gap-3 grid-cols-1 sm:grid-cols-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
@@ -192,7 +192,7 @@ function Home() {
               ))}
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="mt-8 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {highlights.map((item) => (
                 <div key={item.title} className="glass-card feature-panel rounded-2xl p-4">
                   <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-500/10">
@@ -208,7 +208,7 @@ function Home() {
               ))}
             </div>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid gap-3 grid-cols-1 sm:grid-cols-2">
               {focusCards.map((item) => (
                 <div key={item.title} className="editorial-card rounded-[1.7rem] p-5">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-white dark:bg-blue-500">

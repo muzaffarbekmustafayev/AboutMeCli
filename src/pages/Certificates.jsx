@@ -130,7 +130,7 @@ function Certificates() {
             </p>
 
             {/* Stats */}
-            <div className="mt-12 flex flex-wrap justify-center sm:justify-start gap-6">
+            <div className="mt-12 grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-start sm:gap-6">
               <StatCard label="Total" value={certificates.length} />
               <StatCard label="Issuers" value={totalIssuers} />
               <StatCard label="Latest" value={latestYear} />
@@ -138,7 +138,7 @@ function Certificates() {
           </header>
 
           {/* Grid */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {loading ? (
               Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
             ) : error ? (

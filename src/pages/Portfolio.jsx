@@ -85,7 +85,7 @@ const Portfolio = () => {
           </header>
 
           {/* Controls */}
-          <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
@@ -93,7 +93,7 @@ const Portfolio = () => {
                 placeholder={t("portfolio.search")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-full border border-slate-100 bg-white py-3.5 pl-12 pr-6 text-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
+                className="w-full rounded-full border border-slate-100 bg-white py-3 pl-12 pr-6 text-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
               />
             </div>
             
@@ -102,7 +102,7 @@ const Portfolio = () => {
               <select
                 value={selectedTech}
                 onChange={(e) => setSelectedTech(e.target.value)}
-                className="w-full min-w-[220px] cursor-pointer appearance-none rounded-full border border-slate-100 bg-white py-3.5 pl-12 pr-10 text-sm outline-none focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
+                className="w-full sm:min-w-[220px] cursor-pointer appearance-none rounded-full border border-slate-100 bg-white py-3 pl-12 pr-10 text-sm outline-none focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
               >
                 {allTechnologies.map(tech => (
                   <option key={tech} value={tech}>

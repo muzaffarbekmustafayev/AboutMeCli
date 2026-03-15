@@ -99,66 +99,66 @@ const Contact = () => {
             </p>
           </header>
 
-          <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
+          <div className="grid gap-16 lg:grid-cols-[1fr_420px] items-start">
             
             {/* Form */}
-            <div className="glass-card rounded-[2.5rem] p-8 shadow-sm sm:p-12">
-              <div className="mb-12 flex items-center gap-5">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20">
-                  <MessageSquare size={28} />
+            <div className="order-2 lg:order-1">
+              <div className="mb-10 flex items-center gap-5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
+                  <MessageSquare size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{t("contact.formTitle")}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{t("contact.formTitle")}</h2>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-10">
-                <div className="grid gap-8 sm:grid-cols-2">
-                  <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.name")}</label>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2.5">
+                    <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.name")}</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={t("contact.namePlaceholder")}
-                      className="w-full rounded-2xl border border-slate-100 bg-slate-50/50 px-6 py-4 text-base outline-none transition-all focus:border-blue-500 focus:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:text-white dark:focus:border-blue-500 dark:focus:bg-slate-800 shadow-sm"
+                      className="w-full border-b-2 border-slate-200 bg-transparent py-3 text-base outline-none transition-all focus:border-blue-500 dark:border-slate-800 dark:text-white dark:focus:border-blue-500"
                     />
-                    {errors.name && <p className="text-sm font-medium text-red-500 pl-2">{errors.name}</p>}
+                    {errors.name && <p className="text-xs font-medium text-red-500">{errors.name}</p>}
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.email")}</label>
+                  <div className="space-y-2.5">
+                    <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.email")}</label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={t("contact.emailPlaceholder")}
-                      className="w-full rounded-2xl border border-slate-100 bg-slate-50/50 px-6 py-4 text-base outline-none transition-all focus:border-blue-500 focus:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:text-white dark:focus:border-blue-500 dark:focus:bg-slate-800 shadow-sm"
+                      className="w-full border-b-2 border-slate-200 bg-transparent py-3 text-base outline-none transition-all focus:border-blue-500 dark:border-slate-800 dark:text-white dark:focus:border-blue-500"
                     />
-                    {errors.email && <p className="text-sm font-medium text-red-500 pl-2">{errors.email}</p>}
+                    {errors.email && <p className="text-xs font-medium text-red-500">{errors.email}</p>}
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.message")}</label>
+                <div className="space-y-2.5">
+                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.message")}</label>
                   <textarea
-                    rows={6}
+                    rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t("contact.messagePlaceholder")}
-                    className="w-full resize-none rounded-2xl border border-slate-100 bg-slate-50/50 px-6 py-4 text-base outline-none transition-all focus:border-blue-500 focus:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:text-white dark:focus:border-blue-500 dark:focus:bg-slate-800 shadow-sm"
+                    className="w-full resize-none border-b-2 border-slate-200 bg-transparent py-3 text-base outline-none transition-all focus:border-blue-500 dark:border-slate-800 dark:text-white dark:focus:border-blue-500"
                   />
-                  {errors.message && <p className="text-sm font-medium text-red-500 pl-2">{errors.message}</p>}
+                  {errors.message && <p className="text-xs font-medium text-red-500">{errors.message}</p>}
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group flex w-full items-center justify-center gap-4 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-600 px-10 py-5 text-lg font-bold text-white transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/30 disabled:opacity-50 active:scale-[0.98]"
+                  className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-slate-900 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-blue-600 disabled:opacity-50 dark:bg-white dark:text-slate-900 dark:hover:bg-blue-500 dark:hover:text-white"
                 >
                   {loading ? (
-                    <div className="h-6 w-6 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
                   ) : (
                     <>
                       {t("contact.send")}
-                      <ArrowRight size={24} className="transition-transform group-hover:translate-x-2" />
+                      <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </button>
@@ -166,32 +166,32 @@ const Contact = () => {
             </div>
 
             {/* Sidebar info */}
-            <div className="space-y-10">
+            <div className="space-y-12 order-1 lg:order-2">
               {/* Direct Contact */}
-              <div className="rounded-[2.5rem] bg-slate-100/50 p-10 dark:bg-slate-800/30">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-10">Direct Contact</h3>
+              <div className="space-y-8">
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t("contact.sidebarTitle", { defaultValue: "Direct Details" })}</h3>
                 <div className="space-y-10">
-                  <ContactLink icon={<Mail size={24} />} label={t("contact.email")} value={socialMedias.email.path} href={`mailto:${socialMedias.email.path}`} />
-                  <ContactLink icon={<Phone size={24} />} label={t("contact.phone")} value={socialMedias.phone.path} href={`tel:${socialMedias.phone.path.replace(/\s+/g, "")}`} />
+                  <ContactLink icon={<Mail size={20} />} label={t("contact.email")} value={socialMedias.email.path} href={`mailto:${socialMedias.email.path}`} />
+                  <ContactLink icon={<Phone size={20} />} label={t("contact.phone")} value={socialMedias.phone.path} href={`tel:${socialMedias.phone.path.replace(/\s+/g, "")}`} />
                 </div>
               </div>
 
               {/* Socials Grid */}
-              <div className="glass-card rounded-[2.5rem] p-10 shadow-sm">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Social Ecosystem</h3>
-                <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-8">
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t("contact.socialTitle", { defaultValue: "Social Connect" })}</h3>
+                <div className="grid grid-cols-2 gap-6">
                   {socialLinks.map((social) => (
                     <a
                       key={social.key}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-all hover:border-blue-100 hover:bg-white dark:border-slate-800 dark:bg-slate-800/30 dark:hover:border-blue-900/30 dark:hover:bg-slate-800"
+                      className="group flex items-center gap-4 transition-all"
                     >
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-900 ${social.color}`}>
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-800 ${social.color}`}>
                         {social.icon}
                       </div>
-                      <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{social.label}</span>
+                      <span className="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 transition-colors">{social.label}</span>
                     </a>
                   ))}
                 </div>
@@ -206,13 +206,13 @@ const Contact = () => {
 };
 
 const ContactLink = ({ icon, label, value, href }) => (
-  <div className="group space-y-4">
+  <div className="group space-y-3">
     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">{label}</p>
-    <a href={href} className="flex items-center gap-5">
-      <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-white text-blue-600 shadow-xl transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-900 dark:group-hover:bg-blue-500">
-        {icon}
+    <a href={href} className="flex items-center gap-4">
+      <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white text-blue-600 shadow-lg transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-900 dark:group-hover:bg-blue-500">
+        {React.cloneElement(icon, { size: 20 })}
       </div>
-      <span className="text-base font-bold text-slate-900 dark:text-slate-100 break-all">{value}</span>
+      <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 break-all leading-tight">{value}</span>
     </a>
   </div>
 );

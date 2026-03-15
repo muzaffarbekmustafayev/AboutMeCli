@@ -126,7 +126,7 @@ function About() {
             
             <div className="space-y-16">
               {/* Mission & Key Info */}
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
                 <div className="glass-card rounded-2xl p-6 shadow-sm">
                   <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                     <Target size={18} />
@@ -148,7 +148,7 @@ function About() {
               </div>
 
               {/* Pillars */}
-              <div className="grid gap-6 sm:grid-cols-3">
+              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {pillars.map((item) => (
                   <div key={item.title} className="group glass-card rounded-2xl p-6 transition-all hover:translate-y-[-4px]">
                     <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20 transition-transform group-hover:scale-110">

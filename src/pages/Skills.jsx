@@ -129,13 +129,13 @@ function Skills() {
           </div>
 
           {/* Controls - Standardized to match Navbar item style */}
-          <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-            <div className="control-surface rounded-full p-1.5 flex flex-wrap items-center gap-1 shadow-lg">
+          <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="control-surface rounded-full p-1.5 flex items-center gap-1 shadow-lg overflow-x-auto no-scrollbar max-w-full">
               {Object.entries(categoryConfig).map(([key, config]) => (
                 <button
                   key={key}
                   onClick={() => setActiveCategory(key)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
                     activeCategory === key
                       ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-md"
                       : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
