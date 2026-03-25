@@ -35,10 +35,10 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 z-50 w-full px-2 sm:px-4">
       <div
-        className={`nav-panel mx-auto mt-2 sm:mt-3 max-w-7xl rounded-2xl transition-all duration-500 ${
+        className={`mx-auto mt-2 sm:mt-3 max-w-7xl rounded-2xl transition-all duration-500 ${
           scrolled
-            ? "glass-card control-surface px-3 py-2 sm:px-4"
-            : "border border-transparent bg-white/30 px-1 py-2 backdrop-blur-sm dark:bg-slate-950/10"
+            ? "border border-slate-200/50 bg-white/40 px-3 py-2 sm:px-4 backdrop-blur-md shadow-sm dark:border-slate-800/50 dark:bg-slate-900/40"
+            : "border border-transparent bg-transparent px-1 py-2"
         }`}
       >
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-4">

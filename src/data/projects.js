@@ -5,7 +5,7 @@ export const projects = [
     technologies: ["Node.js", "Terminal", "Voice Filtering"],
     links: {
       github: "https://github.com/muzaffarbekmustafayev/denoise-voices.git",
-      zip: "/public/projects/zips/denoise-voices.zip",
+      zip: "/projects/zips/denoise-voices.zip",
     },
     images: ["../projects/demo/denoise-voices.png"],
   },
@@ -16,7 +16,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/weather.git",
       live: "https://weather-five-chi-39.vercel.app/",
-      zip: "/public/projects/zips/weather.zip",
+      zip: "/projects/zips/weather.zip",
     },
     images: ["../projects/demo/weather-app.png"],
   },
@@ -26,7 +26,7 @@ export const projects = [
     technologies: ["Node.js", "JS", "Terminal"],
     links: {
       github: "https://github.com/muzaffarbekmustafayev/TextToVoice.git",
-      zip: "/public/projects/zips/TextToVoice-main.zip",
+      zip: "/projects/zips/TextToVoice-main.zip",
     },
     images: ["../projects/demo/TextToVoice.jpg"],
   },
@@ -37,7 +37,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/snake-game.git",
       live: "https://snake-game-ten-umber.vercel.app/",
-      zip: "/public/projects/zips/snake-game.zip",
+      zip: "/projects/zips/snake-game.zip",
     },
     images: ["../projects/demo/snake-game.png"],
   },
@@ -48,7 +48,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/tic-tac-toe.git",
       live: "https://tic-tac-toe-henna-eta-47.vercel.app/",
-      zip: "/public/projects/zips/tic-tac-toe.zip",
+      zip: "/projects/zips/tic-tac-toe.zip",
     },
     images: ["../projects/demo/tic-tac-toe.png"],
   },
@@ -59,7 +59,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/flappy-bird.git",
       live: "https://flappy-bird-k3wa.vercel.app/",
-      zip: "/public/projects/zips/flappy-bird.zip",
+      zip: "/projects/zips/flappy-bird.zip",
     },
     images: ["../projects/demo/flappy-bird.png"],
   },
@@ -70,7 +70,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/breakout-game.git",
       live: "https://breakout-game-pied.vercel.app/",
-      zip: "/public/projects/zips/breakout-game.zip",
+      zip: "/projects/zips/breakout-game.zip",
     },
     images: ["../projects/demo/breakout-game.png"],
   },
@@ -80,7 +80,7 @@ export const projects = [
     technologies: ["Node.js", "JS", "Express", "Api-Key"],
     links: {
       github: "https://github.com/muzaffarbekmustafayev/WormGPT.git",
-      zip: "/public/projects/zips/WormGPT-main.zip",
+      zip: "/projects/zips/WormGPT-main.zip",
     },
     images: ["../projects/demo/worm_gpt.png"],
   },
@@ -91,7 +91,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/chess.git",
       live: "https://chess-pi-virid.vercel.app/",
-      zip: "/public/projects/zips/chess-game.zip",
+      zip: "/projects/zips/chess-game.zip",
     },
     images: ["../projects/demo/chess-game.png"],
   },
@@ -101,7 +101,7 @@ export const projects = [
     technologies: ["Node.js", "JS", "Terminal"],
     links: {
       github: "https://github.com/muzaffarbekmustafayev/Email.git",
-      zip: "/public/projects/zips/Email-main.zip",
+      zip: "/projects/zips/Email-main.zip",
     },
     images: ["../projects/demo/email.jpg"],
   },
@@ -112,7 +112,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/infinityFlower.git",
       live: "https://infinity-flower.vercel.app/",
-      zip: "/public/projects/zips/infinityFlower-main.zip",
+      zip: "/projects/zips/infinityFlower-main.zip",
     },
     images: ["../projects/demo/infinity_flower.png"],
   },
@@ -123,7 +123,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/JScompiler.git",
       live: "https://glittery-sorbet-571888.netlify.app/",
-      zip: "/public/projects/zips/JScompiler-main.zip",
+      zip: "/projects/zips/JScompiler-main.zip",
     },
     images: ["../projects/demo/js_compiler.png"],
   },
@@ -134,7 +134,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/CountdownTimer.git",
       live: "https://countdown-timer-steel-nu.vercel.app/",
-      zip: "/public/projects/zips/CountdownTimer-main.zip",
+      zip: "/projects/zips/CountdownTimer-main.zip",
     },
     images: ["../projects/demo/Countdown-timer.jpg"],
   },
@@ -145,7 +145,7 @@ export const projects = [
     links: {
       github: "https://github.com/muzaffarbekmustafayev/Calculator.git",
       live: "https://calculator-nine-azure-90.vercel.app/",
-      zip: "/public/projects/zips/calculator.zip",
+      zip: "/projects/zips/calculator.zip",
     },
     images: ["../projects/demo/calculator.png"],
   },
