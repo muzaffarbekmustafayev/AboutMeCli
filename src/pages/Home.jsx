@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import {
   ArrowRight,
   Briefcase,
@@ -21,6 +21,8 @@ import MyImage from "../assets/USER.jpg";
 import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
+import { projects } from "../data/projects";
+import { SKILLS } from "../data/skillsData";
 
 const socialLinks = [
   {
@@ -49,8 +51,51 @@ const socialLinks = [
   },
 ];
 
+const TERMINAL_LINES = [
+  "> npm run dev",
+  "> compiling src...",
+  `> ${projects.length} projects loaded`,
+  `> ${SKILLS.length} skills indexed`,
+  "> ready on localhost:5173",
+];
+
+function useTerminalTyping(lines) {
+  const [displayed, setDisplayed] = useState([]);
+  const [lineIdx, setLineIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+
+  useEffect(() => {
+    if (lineIdx >= lines.length) return;
+
+    const current = lines[lineIdx];
+
+    if (charIdx < current.length) {
+      const t = setTimeout(() => {
+        setCharIdx((c) => c + 1);
+      }, 28);
+      return () => clearTimeout(t);
+    }
+
+    const t = setTimeout(() => {
+      setDisplayed((d) => [...d, current]);
+      setLineIdx((l) => l + 1);
+      setCharIdx(0);
+    }, 320);
+    return () => clearTimeout(t);
+  }, [lineIdx, charIdx, lines]);
+
+  const currentPartial = lineIdx < lines.length ? lines[lineIdx].slice(0, charIdx) : null;
+
+  return { displayed, currentPartial };
+}
+
 function Home() {
   const { t } = useTranslation();
+
+  const expertCount = useMemo(() => SKILLS.filter((s) => s.level === "expert").length, []);
+  const advancedCount = useMemo(() => SKILLS.filter((s) => s.level === "advanced").length, []);
+
+  const { displayed: termLines, currentPartial } = useTerminalTyping(TERMINAL_LINES);
 
   const highlights = useMemo(
     () => [
@@ -82,19 +127,19 @@ function Home() {
   const quickStats = useMemo(
     () => [
       {
-        value: "5+",
-        label: t("home.stat.projects", { defaultValue: "Shipping products" }),
+        value: `${projects.length}+`,
+        label: t("home.stat.projects", { defaultValue: "Shipped projects" }),
       },
       {
-        value: "24/7",
-        label: t("home.stat.support", { defaultValue: "Async collaboration" }),
+        value: `${SKILLS.length}`,
+        label: t("home.stat.skills", { defaultValue: "Technologies" }),
       },
       {
-        value: "UX",
-        label: t("home.stat.quality", { defaultValue: "Clarity before complexity" }),
+        value: `${expertCount + advancedCount}`,
+        label: t("home.stat.quality", { defaultValue: "Expert & Advanced skills" }),
       },
     ],
-    [t]
+    [t, expertCount, advancedCount]
   );
 
   const focusCards = useMemo(
@@ -303,16 +348,40 @@ function Home() {
                     </span>
                   </div>
                 </div>
+
+                <div className="mt-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 dark:border-slate-700/70 dark:bg-slate-900/60">
+                  <p className="mb-2 text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                    {t("home.topStack", { defaultValue: "Top stack" })}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {SKILLS.filter((s) => s.level === "expert").map((s) => (
+                      <span
+                        key={s.name}
+                        className="inline-flex items-center gap-1 rounded-lg bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"
+                      >
+                        {s.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="glass-card absolute -left-6 bottom-8 hidden w-56 rounded-2xl p-3 lg:block">
                 <p className="text-[11px] uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
                   {t("home.liveBuild", { defaultValue: "Live build" })}
                 </p>
-                <pre className="mt-2 overflow-hidden text-xs leading-relaxed text-slate-700 dark:text-slate-300">
-{`> npm run dev
-> building API routes...
-> UI deployed successfully`}
+                <pre className="mt-2 overflow-hidden text-xs leading-relaxed text-slate-700 dark:text-slate-300" aria-live="polite">
+                  {termLines.map((line, i) => (
+                    <span key={i} className="block">
+                      <span className={line.startsWith("> ready") ? "text-green-500 dark:text-green-400" : ""}>{line}</span>
+                    </span>
+                  ))}
+                  {currentPartial !== null && (
+                    <span className="block">
+                      {currentPartial}
+                      <span className="animate-pulse">▋</span>
+                    </span>
+                  )}
                 </pre>
               </div>
             </div>

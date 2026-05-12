@@ -83,19 +83,19 @@ function Skills() {
 
           {/* Stats Bar */}
           <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <div className="glass-card rounded-2xl p-6 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/20 cursor-default">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.total")}</p>
               <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.total}</p>
             </div>
-            <div className="glass-card rounded-2xl p-6 shadow-sm border-blue-500/10">
+            <div className="glass-card rounded-2xl p-6 shadow-sm border-blue-500/10 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/30 cursor-default">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.expert")}</p>
               <p className="mt-2 text-3xl font-extrabold text-blue-600 dark:text-blue-400">{stats.expert}</p>
             </div>
-            <div className="glass-card rounded-2xl p-6 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/20 cursor-default">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.advanced")}</p>
               <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.advanced}</p>
             </div>
-            <div className="hidden glass-card rounded-2xl p-6 shadow-sm sm:block">
+            <div className="hidden glass-card rounded-2xl p-6 shadow-sm sm:block transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-default">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.status")}</p>
               <div className="mt-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -165,9 +165,9 @@ function Skills() {
             >
               {filteredSkills.map((skill) => (
                 <SwiperSlide key={skill.name}>
-                  <div className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40">
+                  <div className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 transition-all duration-250 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900/40">
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg transition-transform group-hover:scale-110">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg transition-shadow duration-200 group-hover:shadow-blue-600/30">
                         {skill.icon}
                       </div>
                       <div className="flex items-center gap-1.5">
@@ -218,7 +218,7 @@ function Skills() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {(t("skills.learningTags", { returnObjects: true }) || ["System Architecture", "Scalable UI", "API Design"]).map(tag => (
-                    <span key={tag} className="control-surface rounded-full px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 shadow-sm">
+                    <span key={tag} className="control-surface rounded-full px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-400 dark:hover:border-blue-500/40 cursor-default">
                       {tag}
                     </span>
                   ))}

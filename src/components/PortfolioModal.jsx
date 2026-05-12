@@ -90,13 +90,13 @@ const PortfolioModal = ({ project, onClose, t }) => {
 
             <div className="flex flex-col gap-3 border-t border-slate-50 pt-8 dark:border-slate-800 sm:flex-row sm:flex-wrap sm:gap-4 sm:pt-10">
               {project.links?.github && (
-                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-transform hover:scale-105 dark:bg-white dark:text-slate-900 sm:justify-start sm:px-8 sm:py-4 sm:text-base">
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 rounded-2xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-900/20 transition-all hover:-translate-y-0.5 dark:bg-white dark:text-slate-900 sm:justify-start sm:px-8 sm:py-4 sm:text-base">
                   <Github size={20} className="sm:size-[22px]" />
                   {t("portfolio.github")}
                 </a>
               )}
               {project.links?.live && (
-                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 rounded-2xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-600/20 transition-transform hover:scale-105 sm:justify-start sm:px-8 sm:py-4 sm:text-base">
+                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 rounded-2xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-0.5 sm:justify-start sm:px-8 sm:py-4 sm:text-base">
                   <ExternalLink size={20} className="sm:size-[22px]" />
                   {t("portfolio.liveDemo")}
                 </a>

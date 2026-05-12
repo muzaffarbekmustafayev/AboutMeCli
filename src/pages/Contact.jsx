@@ -189,9 +189,9 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 transition-all"
+                      className="group flex items-center gap-4 transition-all duration-200 hover:-translate-y-0.5"
                     >
-                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-800 ${social.color}`}>
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 transition-all duration-200 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-md group-hover:shadow-blue-500/20 dark:bg-slate-800 ${social.color}`}>
                         {social.icon}
                       </div>
                       <span className="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 transition-colors">{social.label}</span>
@@ -211,11 +211,11 @@ const Contact = () => {
 const ContactLink = ({ icon, label, value, href }) => (
   <div className="group space-y-3">
     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">{label}</p>
-    <a href={href} className="flex items-center gap-4">
-      <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white text-blue-600 shadow-lg transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-900 dark:group-hover:bg-blue-500">
+    <a href={href} className="flex items-center gap-4 transition-all duration-200 hover:-translate-y-0.5">
+      <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white text-blue-600 shadow-lg transition-all duration-200 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-blue-500/25 dark:bg-slate-900 dark:group-hover:bg-blue-500">
         {React.cloneElement(icon, { size: 20 })}
       </div>
-      <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 break-all leading-tight">{value}</span>
+      <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 break-all leading-tight transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">{value}</span>
     </a>
   </div>
 );

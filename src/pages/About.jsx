@@ -151,7 +151,7 @@ function About() {
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {pillars.map((item) => (
                   <div key={item.title} className="group glass-card rounded-2xl p-6 transition-all hover:translate-y-[-4px]">
-                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20 transition-transform group-hover:scale-110">
+                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20">
                       {item.icon}
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">{item.title}</h3>
@@ -174,7 +174,7 @@ function About() {
                 </div>
                 <div className="flex flex-wrap justify-center gap-3">
                   {technologies.map((tech) => (
-                    <span key={tech} className="control-surface rounded-full px-5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all hover:scale-105">
+                    <span key={tech} className="control-surface rounded-full px-5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-400 dark:hover:border-blue-500/40 cursor-default">
                       {tech}
                     </span>
                   ))}
@@ -188,11 +188,11 @@ function About() {
                 </h2>
                 <div className="space-y-10">
                   {journey.map((item, idx) => (
-                    <div key={idx} className="relative flex gap-8 pb-4">
+                    <div key={idx} className="group relative flex gap-8 pb-4">
                       {idx !== journey.length - 1 && (
                         <div className="absolute left-[23px] top-12 h-full w-0.5 bg-slate-100 dark:bg-slate-800" />
                       )}
-                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20">
+                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-700/20 transition-colors duration-200 group-hover:shadow-blue-600/30">
                         <span className="text-sm font-bold">{idx + 1}</span>
                       </div>
                       <div className="pt-1">
@@ -223,9 +223,9 @@ function About() {
               <div className="space-y-6">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Foundation</h3>
                 {technicalBackground.map((item) => (
-                  <div key={item.title} className="glass-card rounded-3xl p-6 shadow-sm">
+                  <div key={item.title} className="glass-card rounded-3xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-blue-500/20 cursor-default">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 transition-colors duration-200">
                         {item.icon}
                       </div>
                       <span className="text-base font-bold text-slate-900 dark:text-slate-100">{item.title}</span>
@@ -242,7 +242,7 @@ function About() {
                 <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Focus Areas</h3>
                 <div className="flex flex-wrap gap-2">
                   {["Architecture", "Clean Code", "Security", "Scalability", "UX"].map(tag => (
-                    <span key={tag} className="control-surface rounded-full px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-300">#{tag}</span>
+                    <span key={tag} className="control-surface rounded-full px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-400 dark:hover:border-blue-500/40 cursor-default">#{tag}</span>
                   ))}
                 </div>
               </div>

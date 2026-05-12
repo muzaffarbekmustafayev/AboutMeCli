@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Mail,
   Phone,
@@ -190,10 +190,10 @@ const ProjectCard = ({ title, desc, label }) => (
 );
 
 const ContactItem = ({ icon, label, value, href }) => (
-  <div className="space-y-2">
+  <div className="group space-y-2">
     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{label}</p>
-    <a href={href} className="flex items-center gap-4 text-base font-semibold text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-500 dark:bg-blue-900/30">
+    <a href={href} className="flex items-center gap-4 text-base font-semibold text-slate-700 transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400">
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-500 transition-all duration-200 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-md group-hover:shadow-blue-500/20 dark:bg-blue-900/30">
         {icon}
       </div>
       {value}
@@ -202,7 +202,7 @@ const ContactItem = ({ icon, label, value, href }) => (
 );
 
 const SocialIcon = ({ href, icon }) => (
-  <a href={href} className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-100 bg-white text-slate-400 hover:border-blue-200 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900 dark:hover:text-blue-400 transition-all shadow-sm">
+  <a href={href} className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-100 bg-white text-slate-400 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:text-blue-600 hover:shadow-md hover:shadow-blue-500/15 dark:border-slate-800 dark:bg-slate-900 dark:hover:text-blue-400">
     {icon}
   </a>
 );
@@ -212,7 +212,7 @@ const SkillSet = ({ title, items }) => (
     <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight uppercase">{title}</h4>
     <div className="flex flex-wrap gap-2.5">
       {items.map(item => (
-        <span key={item} className="control-surface rounded-full px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 shadow-sm">
+        <span key={item} className="control-surface rounded-full px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-400 dark:hover:border-blue-500/40 cursor-default">
           {item}
         </span>
       ))}
@@ -220,16 +220,40 @@ const SkillSet = ({ title, items }) => (
   </div>
 );
 
-const LanguageProgress = ({ label, value }) => (
-  <div className="space-y-3">
-    <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
-      <span className="text-slate-500 dark:text-slate-400">{label}</span>
-      <span className="text-blue-600 dark:text-blue-400">{value}</span>
+const LanguageProgress = ({ label, value }) => {
+  const [width, setWidth] = useState("0%");
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setWidth(value);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return (
+    <div className="space-y-3" ref={ref}>
+      <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
+        <span className="text-slate-500 dark:text-slate-400">{label}</span>
+        <span className="text-blue-600 dark:text-blue-400">{value}</span>
+      </div>
+      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 shadow-inner">
+        <div
+          className="h-full bg-gradient-to-r from-blue-700 to-blue-500 transition-[width] duration-1000 ease-out"
+          style={{ width }}
+        />
+      </div>
     </div>
-    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 shadow-inner">
-      <div className="h-full bg-gradient-to-r from-blue-700 to-blue-500" style={{ width: value }} />
-    </div>
-  </div>
-);
+  );
+};
 
 export default Resume;
