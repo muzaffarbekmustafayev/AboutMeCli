@@ -168,7 +168,7 @@ function Skills() {
                   <div className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 transition-all duration-250 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900/40">
                     <div className="flex items-center justify-between">
                       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg transition-shadow duration-200 group-hover:shadow-blue-600/30">
-                        {skill.icon}
+                        <skill.Icon size={20} />
                       </div>
                       <div className="flex items-center gap-1.5">
                         <CheckCircle2 size={14} className={skill.level === 'expert' ? 'text-blue-500' : 'text-slate-300 dark:text-slate-700'} />
