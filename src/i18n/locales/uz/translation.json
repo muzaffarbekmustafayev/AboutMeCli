@@ -116,6 +116,8 @@
   },
   "contact": {
     "title": "Bog'lanish",
+    "badge": "Bog'laning",
+    "sidebarTitle": "To'g'ridan bog'lanish",
     "subtitle": "Loyiha, hamkorlik yoki savollar bo'yicha bemalol murojaat qiling",
     "email": "Email",
     "phone": "Telefon",
@@ -381,7 +383,19 @@
   },
   "skills": {
     "title": "Ko'nikmalar va texnologiyalar",
+    "badge": "Stack",
     "subtitle": "Zamonaviy va kengaytiriladigan web ilovalar yaratishda foydalanadigan vositalarim.",
+    "search": "Texnologiyani qidirish...",
+    "empty": "Qidiruvga mos ko'nikma topilmadi.",
+    "learningPath": "O'rganish yo'li",
+    "learningTags": ["Tizim arxitekturasi", "Kengaytiriladigan UI", "API dizayni"],
+    "stats": {
+      "total": "Jami",
+      "expert": "Mutaxassis",
+      "advanced": "Yuqori",
+      "status": "Holat",
+      "active": "Faol"
+    },
     "categories": {
       "all": "Barchasi",
       "frontend": "Frontend",

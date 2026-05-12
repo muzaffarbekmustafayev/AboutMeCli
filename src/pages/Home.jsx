@@ -22,38 +22,35 @@ import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
 
+const socialLinks = [
+  {
+    href: socialMedias.github.path,
+    label: "GitHub",
+    tone: "text-slate-700 dark:text-slate-200",
+    icon: <Github className="h-4 w-4" />,
+  },
+  {
+    href: socialMedias.linkedin.path,
+    label: "LinkedIn",
+    tone: "text-blue-700 dark:text-blue-400",
+    icon: <Linkedin className="h-4 w-4" />,
+  },
+  {
+    href: socialMedias.telegram.path,
+    label: "Telegram",
+    tone: "text-sky-700 dark:text-sky-400",
+    icon: <TelegramIcon size={16} color="currentColor" />,
+  },
+  {
+    href: socialMedias.youtube.path,
+    label: "YouTube",
+    tone: "text-rose-700 dark:text-rose-400",
+    icon: <Youtube className="h-4 w-4" />,
+  },
+];
+
 function Home() {
   const { t } = useTranslation();
-
-  const socialLinks = useMemo(
-    () => [
-      {
-        href: socialMedias.github.path,
-        label: "GitHub",
-        tone: "text-slate-700 dark:text-slate-200",
-        icon: <Github className="h-4 w-4" />,
-      },
-      {
-        href: socialMedias.linkedin.path,
-        label: "LinkedIn",
-        tone: "text-blue-700 dark:text-blue-400",
-        icon: <Linkedin className="h-4 w-4" />,
-      },
-      {
-        href: socialMedias.telegram.path,
-        label: "Telegram",
-        tone: "text-sky-700 dark:text-sky-400",
-        icon: <TelegramIcon size={16} color="currentColor" />,
-      },
-      {
-        href: socialMedias.youtube.path,
-        label: "YouTube",
-        tone: "text-rose-700 dark:text-rose-400",
-        icon: <Youtube className="h-4 w-4" />,
-      },
-    ],
-    []
-  );
 
   const highlights = useMemo(
     () => [
@@ -239,7 +236,9 @@ function Home() {
                       src={MyImage}
                       alt="Muzaffarbek Mustafayev"
                       className="h-[22rem] w-full object-cover sm:h-[28rem]"
-                      loading="lazy"
+                      width={480}
+                      height={448}
+                      fetchpriority="high"
                     />
 
                     <div className="profile-frame__corner" />

@@ -1,15 +1,13 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination, EffectCoverflow, Keyboard } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, Keyboard } from "swiper/modules";
 import SEO from "../components/SEO";
 import {
-  Code2,
   Database,
   Layout,
   Settings,
   Terminal,
-  Cpu,
   Zap,
   Layers,
   Sparkles,
@@ -18,40 +16,18 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
+import { SKILLS } from "../data/skillsData";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
-
-const SKILLS = [
-  { name: "React.js", category: "frontend", level: "expert", icon: <Layout size={20} /> },
-  { name: "JavaScript", category: "frontend", level: "advanced", icon: <Code2 size={20} /> },
-  { name: "TypeScript", category: "frontend", level: "intermediate", icon: <Code2 size={20} /> },
-  { name: "Tailwind CSS", category: "frontend", level: "expert", icon: <Zap size={20} /> },
-  { name: "Next.js", category: "frontend", level: "intermediate", icon: <Layers size={20} /> },
-
-  { name: "Node.js", category: "backend", level: "advanced", icon: <Settings size={20} /> },
-  { name: "Express.js", category: "backend", level: "advanced", icon: <Terminal size={20} /> },
-  { name: "REST API", category: "backend", level: "expert", icon: <Zap size={20} /> },
-  { name: "JWT Auth", category: "backend", level: "advanced", icon: <Cpu size={20} /> },
-
-  { name: "MongoDB", category: "database", level: "advanced", icon: <Database size={20} /> },
-  { name: "MySQL", category: "database", level: "intermediate", icon: <Database size={20} /> },
-  { name: "Firebase", category: "database", level: "intermediate", icon: <Zap size={20} /> },
-
-  { name: "Git", category: "tools", level: "advanced", icon: <Settings size={20} /> },
-  { name: "GitHub", category: "tools", level: "expert", icon: <Terminal size={20} /> },
-  { name: "Postman", category: "tools", level: "advanced", icon: <Search size={20} /> },
-  { name: "Vite", category: "tools", level: "intermediate", icon: <Zap size={20} /> },
-];
 
 const categoryConfig = {
-  all: { icon: <Layers size={16} />, label: "All Tech" },
-  frontend: { icon: <Layout size={16} />, label: "Frontend" },
-  backend: { icon: <Settings size={16} />, label: "Backend" },
-  database: { icon: <Database size={16} />, label: "Database" },
-  tools: { icon: <Terminal size={16} />, label: "Tools" },
+  all: { icon: <Layers size={16} />, label: "skills.categories.all" },
+  frontend: { icon: <Layout size={16} />, label: "skills.categories.frontend" },
+  backend: { icon: <Settings size={16} />, label: "skills.categories.backend" },
+  database: { icon: <Database size={16} />, label: "skills.categories.database" },
+  tools: { icon: <Terminal size={16} />, label: "skills.categories.tools" },
 };
 
 function Skills() {
@@ -83,19 +59,19 @@ function Skills() {
   return (
     <>
       <SEO
-        title={t("skills.title", { defaultValue: "Skills" })}
-        description={t("skills.description", { defaultValue: "My technical skills" })}
+        title={t("skills.title")}
+        description={t("skills.description")}
         path="/skills"
       />
 
       <section id="skills" className="section-shell min-h-screen px-4 pt-28 pb-20 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
         <div className="mx-auto w-full max-w-7xl">
-          
+
           {/* Header */}
           <header className="mb-16 space-y-4 max-w-3xl">
             <div className="hero-badge">
               <Sparkles size={14} />
-              Stack
+              {t("skills.badge")}
             </div>
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
               {t("skills.title")}
@@ -108,27 +84,27 @@ function Skills() {
           {/* Stats Bar */}
           <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
             <div className="glass-card rounded-2xl p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Total</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.total")}</p>
               <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.total}</p>
             </div>
             <div className="glass-card rounded-2xl p-6 shadow-sm border-blue-500/10">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Expert</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.expert")}</p>
               <p className="mt-2 text-3xl font-extrabold text-blue-600 dark:text-blue-400">{stats.expert}</p>
             </div>
             <div className="glass-card rounded-2xl p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Advanced</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.advanced")}</p>
               <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.advanced}</p>
             </div>
             <div className="hidden glass-card rounded-2xl p-6 shadow-sm sm:block">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Status</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.status")}</p>
               <div className="mt-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Active</span>
+                <span className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-widest">{t("skills.stats.active")}</span>
               </div>
             </div>
           </div>
 
-          {/* Controls - Standardized to match Navbar item style */}
+          {/* Controls */}
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="control-surface rounded-full p-1.5 flex items-center gap-1 shadow-lg overflow-x-auto no-scrollbar max-w-full">
               {Object.entries(categoryConfig).map(([key, config]) => (
@@ -142,7 +118,7 @@ function Skills() {
                   }`}
                 >
                   {config.icon}
-                  {t(`skills.categories.${key}`, { defaultValue: config.label })}
+                  {t(config.label)}
                 </button>
               ))}
             </div>
@@ -151,7 +127,7 @@ function Skills() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input
                 type="text"
-                placeholder="Search tech..."
+                placeholder={t("skills.search")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full rounded-full border border-slate-100 bg-white py-3 pl-12 pr-6 text-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 shadow-sm"
@@ -169,7 +145,7 @@ function Skills() {
             </button>
 
             <Swiper
-              modules={[Autoplay, Navigation, Pagination, EffectCoverflow, Keyboard]}
+              modules={[Autoplay, Navigation, Pagination, Keyboard]}
               spaceBetween={24}
               slidesPerView={1}
               breakpoints={{
@@ -201,14 +177,14 @@ function Skills() {
                         </span>
                       </div>
                     </div>
-                    
+
                     <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-slate-100">
                       {skill.name}
                     </h3>
-                    
+
                     <div className="mt-6 flex items-center gap-2">
                       <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 shadow-inner">
-                        <div 
+                        <div
                           className={`h-full rounded-full bg-gradient-to-r from-blue-700 to-blue-500 transition-all duration-1000 ${
                             skill.level === 'expert' ? 'w-full' : skill.level === 'advanced' ? 'w-[80%]' : 'w-[60%]'
                           }`}
@@ -219,14 +195,14 @@ function Skills() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            
+
             <div className="swiper-pagination-custom mt-6 flex justify-center gap-2" />
           </div>
 
           {/* Empty State */}
           {filteredSkills.length === 0 && (
             <div className="py-24 text-center">
-              <p className="text-lg text-slate-400">No skills found matching your search.</p>
+              <p className="text-lg text-slate-400">{t("skills.empty")}</p>
             </div>
           )}
 
@@ -235,13 +211,13 @@ function Skills() {
             <div className="rounded-[2.5rem] bg-slate-50 p-10 dark:bg-slate-800/30">
               <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
                 <div className="space-y-3">
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">Learning Path</h4>
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">{t("skills.learningPath")}</h4>
                   <p className="max-w-md text-base leading-relaxed text-slate-500 dark:text-slate-400">
                     {t("skills.footer")}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["System Architecture", "Scalable UI", "API Design"].map(tag => (
+                  {(t("skills.learningTags", { returnObjects: true }) || ["System Architecture", "Scalable UI", "API Design"]).map(tag => (
                     <span key={tag} className="control-surface rounded-full px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 shadow-sm">
                       {tag}
                     </span>
