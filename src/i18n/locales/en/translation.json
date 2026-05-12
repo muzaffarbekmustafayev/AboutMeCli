@@ -116,6 +116,8 @@
   },
   "contact": {
     "title": "Get in Touch",
+    "badge": "Get In Touch",
+    "sidebarTitle": "Direct Details",
     "subtitle": "Feel free to contact me for projects, collaboration, or any questions",
     "email": "Email",
     "phone": "Phone",
@@ -381,7 +383,19 @@
   },
   "skills": {
     "title": "Skills & Technologies",
+    "badge": "Stack",
     "subtitle": "Tools and technologies I use to build scalable, modern web applications.",
+    "search": "Search tech...",
+    "empty": "No skills found matching your search.",
+    "learningPath": "Learning Path",
+    "learningTags": ["System Architecture", "Scalable UI", "API Design"],
+    "stats": {
+      "total": "Total",
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "status": "Status",
+      "active": "Active"
+    },
     "categories": {
       "all": "All",
       "frontend": "Frontend",

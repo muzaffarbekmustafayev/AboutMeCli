@@ -1,31 +1,35 @@
+import React from "react";
 import {
-  Code,
+  Code2,
   Database,
+  Layout,
+  Settings,
+  Terminal,
+  Cpu,
   Zap,
-  Filter,
-  ChevronLeft,
-  ChevronRight,
+  Layers,
+  Search,
   Wrench,
 } from "lucide-react";
 
-const SKILLS = [
-  { name: "React.js", icon: Code, category: "frontend", level: "Expert", color: "text-blue-500" },
-  { name: "JavaScript", icon: Code, category: "frontend", level: "Advanced", color: "text-yellow-500" },
-  { name: "TypeScript", icon: Code, category: "frontend", level: "Intermediate", color: "text-blue-600" },
-  { name: "Tailwind CSS", icon: Zap, category: "frontend", level: "Expert", color: "text-sky-500" },
-  { name: "Next.js", icon: Zap, category: "frontend", level: "Intermediate", color: "text-gray-700 dark:text-gray-200" },
+export const SKILLS = [
+  { name: "React.js", category: "frontend", level: "expert", icon: <Layout size={20} /> },
+  { name: "JavaScript", category: "frontend", level: "advanced", icon: <Code2 size={20} /> },
+  { name: "TypeScript", category: "frontend", level: "intermediate", icon: <Code2 size={20} /> },
+  { name: "Tailwind CSS", category: "frontend", level: "expert", icon: <Zap size={20} /> },
+  { name: "Next.js", category: "frontend", level: "intermediate", icon: <Layers size={20} /> },
 
-  { name: "Node.js", icon: Database, category: "backend", level: "Advanced", color: "text-green-500" },
-  { name: "Express.js", icon: Code, category: "backend", level: "Advanced", color: "text-gray-600 dark:text-gray-300" },
-  { name: "REST API", icon: Zap, category: "backend", level: "Expert", color: "text-green-600" },
-  { name: "JWT Auth", icon: Wrench, category: "backend", level: "Advanced", color: "text-purple-500" },
+  { name: "Node.js", category: "backend", level: "advanced", icon: <Settings size={20} /> },
+  { name: "Express.js", category: "backend", level: "advanced", icon: <Terminal size={20} /> },
+  { name: "REST API", category: "backend", level: "expert", icon: <Zap size={20} /> },
+  { name: "JWT Auth", category: "backend", level: "advanced", icon: <Cpu size={20} /> },
 
-  { name: "MongoDB", icon: Database, category: "database", level: "Advanced", color: "text-green-600" },
-  { name: "MySQL", icon: Database, category: "database", level: "Intermediate", color: "text-blue-600" },
-  { name: "Firebase", icon: Zap, category: "database", level: "Intermediate", color: "text-yellow-500" },
+  { name: "MongoDB", category: "database", level: "advanced", icon: <Database size={20} /> },
+  { name: "MySQL", category: "database", level: "intermediate", icon: <Database size={20} /> },
+  { name: "Firebase", category: "database", level: "intermediate", icon: <Zap size={20} /> },
 
-  { name: "Git", icon: Wrench, category: "tools", level: "Advanced", color: "text-orange-500" },
-  { name: "GitHub", icon: Wrench, category: "tools", level: "Expert", color: "text-gray-700 dark:text-gray-200" },
-  { name: "Postman", icon: Wrench, category: "tools", level: "Advanced", color: "text-orange-400" },
-  { name: "Vite", icon: Zap, category: "tools", level: "Intermediate", color: "text-purple-500" },
+  { name: "Git", category: "tools", level: "advanced", icon: <Wrench size={20} /> },
+  { name: "GitHub", category: "tools", level: "expert", icon: <Terminal size={20} /> },
+  { name: "Postman", category: "tools", level: "advanced", icon: <Search size={20} /> },
+  { name: "Vite", category: "tools", level: "intermediate", icon: <Zap size={20} /> },
 ];

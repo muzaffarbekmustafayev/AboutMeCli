@@ -89,7 +89,7 @@ const Contact = () => {
           <header className="mb-16 space-y-4 text-center sm:text-left">
             <div className="hero-badge">
               <Sparkles size={14} />
-              Get In Touch
+              {t("contact.badge")}
             </div>
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
               {t("contact.title")}
@@ -113,8 +113,9 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div className="space-y-2.5">
-                    <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.name")}</label>
+                    <label htmlFor="contact-name" className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.name")}</label>
                     <input
+                      id="contact-name"
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -124,8 +125,9 @@ const Contact = () => {
                     {errors.name && <p className="text-xs font-medium text-red-500">{errors.name}</p>}
                   </div>
                   <div className="space-y-2.5">
-                    <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.email")}</label>
+                    <label htmlFor="contact-email" className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.email")}</label>
                     <input
+                      id="contact-email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -137,8 +139,9 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2.5">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.message")}</label>
+                  <label htmlFor="contact-message" className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{t("contact.message")}</label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
