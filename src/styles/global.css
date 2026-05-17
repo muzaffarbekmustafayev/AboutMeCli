@@ -12,8 +12,8 @@
 }
 
 .dark {
-  --page-bg: #0b1020;
-  --page-surface: rgba(15, 23, 42, 0.82);
+  --page-bg: #080d1a;
+  --page-surface: rgba(8, 13, 26, 0.82);
   --page-stroke: rgba(96, 165, 250, 0.16);
   --text-primary: #e5eefb;
   --text-secondary: #9aa8bf;
@@ -37,7 +37,8 @@ body {
 }
 
 .dark body {
-  background-image: linear-gradient(180deg, #0b1020 0%, #121933 100%);
+  background-color: #080d1a;
+  background-image: none;
 }
 
 h1,
@@ -281,7 +282,7 @@ h6,
   position: relative;
   padding: 0.85rem;
   border-radius: 2rem;
-  background: linear-gradient(145deg, rgba(37, 99, 235, 0.16), rgba(249, 115, 22, 0.08));
+  background: transparent;
   transition:
     transform 280ms ease,
     box-shadow 280ms ease;
@@ -304,7 +305,7 @@ h6,
   position: absolute;
   inset: 0;
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.48);
+  border: 1px solid transparent;
   pointer-events: none;
 }
 
@@ -374,11 +375,11 @@ h6,
 }
 
 .dark .profile-frame {
-  background: linear-gradient(145deg, rgba(59, 130, 246, 0.18), rgba(249, 115, 22, 0.08));
+  background: transparent;
 }
 
 .dark .profile-frame__outline {
-  border-color: rgba(148, 163, 184, 0.16);
+  border-color: transparent;
 }
 
 .dark .profile-chip {

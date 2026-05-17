@@ -11,18 +11,22 @@ import {
   MoveRight,
   Rocket,
   Sparkles,
+  Terminal,
   Youtube,
+  Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
 
-import MyImage from "../assets/USER.png";
+import MyImageDark from "../assets/USERDark.png";
+import MyImageLight from "../assets/USERLight.png";
 import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
 import { projects } from "../data/projects";
 import { SKILLS } from "../data/skillsData";
+import { useTheme } from "../contexts/ThemeContext";
 
 const socialLinks = [
   {
@@ -91,6 +95,8 @@ function useTerminalTyping(lines) {
 
 function Home() {
   const { t } = useTranslation();
+  const { isDark } = useTheme();
+  const MyImage = isDark ? MyImageDark : MyImageLight;
 
   const expertCount = useMemo(() => SKILLS.filter((s) => s.level === "expert").length, []);
   const advancedCount = useMemo(() => SKILLS.filter((s) => s.level === "advanced").length, []);
@@ -269,95 +275,85 @@ function Home() {
 
           <div className="lg:col-span-5">
             <div className="relative mx-auto w-full max-w-md lg:ml-auto">
-              <div className="absolute inset-x-6 -top-2 h-24 rounded-[2rem] bg-blue-200/50 blur-2xl dark:bg-blue-500/10" />
-
-              <div className="glass-card relative rounded-[2.2rem] p-5 sm:p-6">
-                <div className="profile-frame">
-                  <div className="profile-frame__glow" />
-                  <div className="profile-frame__outline" />
-
-                  <div className="relative overflow-hidden rounded-[1.7rem] border border-white/50 dark:border-slate-700/60">
-                    <img
-                      src={MyImage}
-                      alt="Muzaffarbek Mustafayev"
-                      className="h-[22rem] w-full object-cover sm:h-[28rem]"
-                      width={480}
-                      height={448}
-                      fetchpriority="high"
-                    />
-
-                    <div className="profile-frame__corner" />
-
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/85 via-slate-900/30 to-transparent p-5">
-                      <p className="font-display text-xl font-semibold text-white">{t("home.role")}</p>
-                      <p className="mt-1 text-sm text-slate-200">
-                        {t("home.location", { defaultValue: "Based in Uzbekistan" })}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="profile-chip profile-chip--top">
-                    <span className="profile-chip__dot" />
-                    {t("home.availability", { defaultValue: "Available for new projects" })}
-                  </div>
-
-                  <div className="profile-chip profile-chip--bottom">
-                    <span className="text-[11px] uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                      {t("home.focus", { defaultValue: "Focus" })}
-                    </span>
-                    <span className="mt-1 block font-display text-sm font-semibold text-slate-900 dark:text-slate-100">
-                      UI + Full Stack
-                    </span>
-                  </div>
+              <div>
+                <div>
+                  <img
+                    src={MyImage}
+                    alt="Muzaffarbek Mustafayev"
+                    className="h-[22rem] w-full object-cover sm:h-[28rem]"
+                    width={480}
+                    height={448}
+                    fetchpriority="high"
+                    style={{
+                      WebkitMaskImage: "radial-gradient(ellipse 75% 65% at 50% 38%, black 20%, transparent 90%)",
+                      maskImage: "radial-gradient(ellipse 50% 65% at 50% 39%, black 20%, transparent 95%)",
+                    }}
+                  />
                 </div>
+              </div>
 
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-3 dark:border-slate-700/70 dark:bg-slate-900/70">
-                    <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
-                      {t("home.focus", { defaultValue: "Focus" })}
+                {/* Stats row */}
+                <div className="mt-5 grid grid-cols-2 gap-2.5">
+                  <div className="group relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 px-4 py-3.5 dark:border-white/[0.06] dark:bg-white/[0.03]">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                      {t("home.focus", { defaultValue: "Stack" })}
                     </p>
-                    <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-100">React + Node.js</p>
+                    <p className="mt-1.5 font-mono text-sm font-semibold text-slate-800 dark:text-slate-100">
+                      React · Node.js
+                    </p>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-3 dark:border-slate-700/70 dark:bg-slate-900/70">
-                    <p className="text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                  <div className="group relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 px-4 py-3.5 dark:border-white/[0.06] dark:bg-white/[0.03]">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
                       {t("home.contact", { defaultValue: "Contact" })}
                     </p>
                     <a
                       href={`mailto:${socialMedias.email.path}`}
-                      className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-blue-700 dark:text-blue-300"
+                      className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
                     >
-                      <Mail size={14} />
-                      {t("contact.email")}
+                      <Mail size={12} />
+                      Email
                     </a>
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-[1.6rem] border border-slate-200/70 bg-white/75 p-4 dark:border-slate-700/70 dark:bg-slate-900/70">
+                {/* Current mode */}
+                <div className="mt-2.5 relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 px-4 py-4 dark:border-white/[0.06] dark:bg-white/[0.03]">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
-                        {t("home.currentMode", { defaultValue: "Current mode" })}
-                      </p>
-                      <p className="mt-1 font-display text-lg font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                          {t("home.currentMode", { defaultValue: "Current mode" })}
+                        </p>
+                      </div>
+                      <p className="font-display text-sm font-semibold leading-snug text-slate-800 dark:text-slate-100">
                         {t("home.currentModeValue", { defaultValue: "Building thoughtful digital products" })}
                       </p>
                     </div>
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white shadow-lg shadow-blue-600/20">
-                      <MoveRight size={18} />
+                    <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600/10 text-blue-500 dark:bg-blue-500/10 dark:text-blue-400">
+                      <Zap size={16} />
                     </span>
                   </div>
                 </div>
 
-                <div className="mt-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 dark:border-slate-700/70 dark:bg-slate-900/60">
-                  <p className="mb-2 text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
-                    {t("home.topStack", { defaultValue: "Top stack" })}
-                  </p>
+                {/* Top stack */}
+                <div className="mt-2.5 relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 px-4 py-3.5 dark:border-white/[0.06] dark:bg-white/[0.03]">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <Terminal size={11} className="text-slate-400 dark:text-slate-500" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                      {t("home.topStack", { defaultValue: "Top stack" })}
+                    </p>
+                  </div>
                   <div className="flex flex-wrap gap-1.5">
                     {SKILLS.filter((s) => s.level === "expert").map((s) => (
                       <span
                         key={s.name}
-                        className="inline-flex items-center gap-1 rounded-lg bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"
+                        className="inline-flex items-center rounded-md border border-blue-200/60 bg-blue-50/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-blue-700 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300"
                       >
                         {s.name}
                       </span>
@@ -386,7 +382,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
       </section>
     </>
   );
