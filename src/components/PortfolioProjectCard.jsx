@@ -19,11 +19,10 @@ const ProjectImage = ({ src, alt, loadingLabel }) => {
         loading="lazy"
         onLoad={() => setIsImageLoading(false)}
         onError={() => setIsImageLoading(false)}
-        className={`h-full w-full object-cover transition duration-700 ease-out group-hover:brightness-105 ${
+        className={`h-full w-full object-cover transition duration-500 ease-out ${
           isImageLoading ? "opacity-0" : "opacity-100"
         }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 };
@@ -33,7 +32,7 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
   const projectDescription = t(`portfolio.items.${project.i18nKey ?? project.id}.description`, { defaultValue: project.description });
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white transition-all duration-250 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900/40">
+    <article className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/8 dark:border-slate-800 dark:bg-slate-900/40">
       <ProjectImage
         src={project.images?.[0]}
         alt={projectTitle}
@@ -60,7 +59,7 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
           {project.technologies?.slice(0, 3).map((tech, idx) => (
             <span
               key={idx}
-              className="rounded-xl bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-500 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:text-blue-600 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:bg-blue-900/30 dark:hover:text-blue-400 sm:px-4 sm:py-1.5 sm:text-xs cursor-default"
+              className="rounded-xl bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-500 dark:bg-slate-800/50 dark:text-slate-400 sm:px-4 sm:py-1.5 sm:text-xs cursor-default"
             >
               {tech}
             </span>
@@ -83,12 +82,12 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
 
           <div className="flex gap-4 text-slate-400 sm:gap-5">
             {project.links?.github && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="transition-all duration-200 hover:-translate-y-0.5 hover:text-slate-900 dark:hover:text-white">
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-slate-900 dark:hover:text-white">
                 <Github size={20} className="sm:size-[22px]" />
               </a>
             )}
             {project.links?.live && (
-              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600">
+              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-blue-600">
                 <ExternalLink size={20} className="sm:size-[22px]" />
               </a>
             )}

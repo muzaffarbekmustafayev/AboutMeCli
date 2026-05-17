@@ -1,7 +1,8 @@
 // src/routes/AppRoutes.jsx
 
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 // Lazy loading for better performance
 const Home = lazy(() => import('../pages/Home'));
@@ -15,7 +16,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -24,8 +25,7 @@ const AppRoutes = () => {
         <Route path="/resume" element={<Resume />} />
         <Route path="/certificates" element={<Certificates />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

@@ -149,7 +149,7 @@ function Certificates() {
               certificates.map((cert) => (
                 <article key={cert.id} className="group relative overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-4 transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800 shadow-inner">
-                    <img src={cert.image} alt={cert.title} className="h-full w-full object-cover transition duration-500 group-hover:brightness-105" />
+                    <img src={cert.image} alt={cert.title} className="h-full w-full object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 transition-opacity group-hover:opacity-100">
                       <button onClick={() => setSelectedImage(cert)} className="rounded-full bg-white/20 p-4 text-white backdrop-blur-md hover:bg-white/30 transition-colors">
                         <Eye size={24} />

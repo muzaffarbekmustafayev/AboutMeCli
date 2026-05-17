@@ -35,11 +35,14 @@ const Button = ({
     lg: "px-5 py-3 text-lg sm:px-6 sm:py-3.5",
   };
 
+  // type faqat native button/input uchun berilsin — Link (<a>) ga o'tmasligi kerak
+  const nativeProps = Component === "button" ? { type } : {};
+
   return (
     <Component
-      type={type}
-      to={to} // Link uchun ishlaydi
-      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${widthClass} ${className} 
+      {...nativeProps}
+      to={to}
+      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${widthClass} ${className}
                  disabled:opacity-60 disabled:cursor-not-allowed group relative`}
       disabled={disabled || loading}
       onClick={onClick}

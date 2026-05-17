@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
 
-import MyImage from "../assets/USER.jpg";
+import MyImage from "../assets/USER.png";
 import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";

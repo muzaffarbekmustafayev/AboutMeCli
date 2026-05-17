@@ -136,18 +136,30 @@ const Burger = ({ open, toggle, openLabel, closeLabel }) => (
 );
 
 const MobileMenu = ({ open, close, isActive, t }) => {
-  if (!open) return null;
-
   return (
-    <div className="fixed inset-0 z-40 lg:hidden">
+    <div
+      className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
+        open ? "pointer-events-auto" : "pointer-events-none"
+      }`}
+      aria-hidden={!open}
+    >
+      {/* Backdrop */}
       <button
         type="button"
         aria-label={t("ui.navigation.closeMenu")}
-        className="absolute inset-0 bg-slate-950/35 backdrop-blur-[2px]"
+        tabIndex={open ? 0 : -1}
+        className={`absolute inset-0 bg-slate-950/35 backdrop-blur-[2px] transition-opacity duration-300 ${
+          open ? "opacity-100" : "opacity-0"
+        }`}
         onClick={close}
       />
 
-      <div className="absolute left-2 right-2 top-[4.4rem] max-h-[calc(100dvh-5.2rem)] overflow-hidden rounded-2xl glass-card shadow-2xl sm:left-4 sm:right-4 sm:top-[4.8rem]">
+      {/* Menu panel */}
+      <div
+        className={`absolute left-2 right-2 top-[4.4rem] max-h-[calc(100dvh-5.2rem)] overflow-hidden rounded-2xl glass-card shadow-2xl sm:left-4 sm:right-4 sm:top-[4.8rem] transition-all duration-300 ${
+          open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+        }`}
+      >
         <div className="p-4 space-y-2 overflow-y-auto max-h-[calc(100dvh-5.2rem)]">
           {menuItems.map(({ key, path }) => {
             const active = isActive(path);
@@ -157,7 +169,8 @@ const MobileMenu = ({ open, close, isActive, t }) => {
                 key={key}
                 to={path}
                 onClick={close}
-                className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-all ${
+                tabIndex={open ? 0 : -1}
+                className={`flex items-center justify-between p-3.5 rounded-xl text-sm font-semibold transition-colors ${
                   active
                     ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white"
                     : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
