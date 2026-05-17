@@ -5,4 +5,8 @@ export default defineConfig({
   plugins: [react()],
 
   base: "/",   // 🔥 MUHIM: routing va refresh uchun
+
+  build: {
+    target: "esnext",   // top-level await uchun zamonaviy target
+  },
 });
