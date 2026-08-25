@@ -298,8 +298,8 @@ function Home() {
                   height={448}
                   fetchPriority="high"
                   style={{
-                    WebkitMaskImage: "radial-gradient(ellipse 65% 65% at 50% 40%, black 40%, transparent 100%)",
-                    maskImage: "radial-gradient(ellipse 65% 65% at 50% 40%, black 40%, transparent 100%)",
+                    WebkitMaskImage: "radial-gradient(ellipse 55% 55% at 50% 40%, black 15%, transparent 85%)",
+                    maskImage: "radial-gradient(ellipse 55% 55% at 50% 40%, black 15%, transparent 85%)",
                   }}
                 />
               </div>
