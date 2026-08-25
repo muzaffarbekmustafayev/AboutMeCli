@@ -1,23 +1,9 @@
 import React from "react";
 
-const  Loading = () => {
+const Loading = () => {
   return (
-    <span className="absolute left-0 bottom-0 w-full h-[2px] overflow-hidden">
-      <span className="block h-full w-full bg-current animate-line" />
-      <style jsx>{`
-        @keyframes line-move {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-
-        .animate-line {
-          animation: line-move 1.2s linear infinite;
-        }
-      `}</style>
+    <span className="absolute left-0 bottom-0 h-[2px] w-full overflow-hidden bg-slate-200/50 dark:bg-slate-800/50">
+      <span className="block h-full w-1/2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 route-loading-bar" />
     </span>
   );
 };

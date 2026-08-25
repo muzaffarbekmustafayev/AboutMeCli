@@ -68,7 +68,7 @@ const Portfolio = () => {
                 placeholder={t("portfolio.search")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-full border border-slate-100 bg-white py-3 pl-12 pr-6 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200"
+                className="form-control w-full rounded-2xl py-3 pl-12 pr-6 text-sm"
               />
             </div>
             
@@ -77,7 +77,7 @@ const Portfolio = () => {
               <select
                 value={selectedTech}
                 onChange={(e) => setSelectedTech(e.target.value)}
-                className="w-full cursor-pointer appearance-none rounded-full border border-slate-100 bg-white py-3 pl-12 pr-10 text-sm shadow-sm outline-none focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-200 sm:min-w-[220px]"
+                className="form-control w-full cursor-pointer appearance-none rounded-2xl py-3 pl-12 pr-10 text-sm sm:min-w-[220px]"
               >
                 {allTechnologies.map(tech => (
                   <option key={tech} value={tech}>

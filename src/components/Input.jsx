@@ -83,8 +83,9 @@ const Input = forwardRef(({
             ${iconPadding}
             ${widthClass}
             ${getStatusStyles()}
+            border
             bg-white dark:bg-gray-800
-            rounded-lg
+            rounded-2xl
             transition-all duration-200
             placeholder:text-gray-400 dark:placeholder:text-gray-500
             focus:outline-none focus:ring-2

@@ -17,14 +17,15 @@ const ThemeToggle = () => {
       aria-pressed={isDark}
       className="
         flex items-center justify-center
-        h-11 w-11 rounded-xl
-        control-surface
+        h-9 w-9 sm:h-10 sm:w-10 rounded-full
+        bg-slate-200/60 dark:bg-white/[0.06]
+        backdrop-blur-xl
         text-slate-700 dark:text-blue-300
-        transition-all duration-300 hover:-translate-y-0.5
-        active:scale-95
+        transition-all duration-300 hover:scale-105 hover:bg-slate-300/60 dark:hover:bg-white/[0.12]
+        active:scale-95 shadow-sm
       "
     >
-      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
     </button>
   );
 };

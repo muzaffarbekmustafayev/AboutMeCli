@@ -5,6 +5,6 @@ export const menuItems = [
   { key: "skills", path: "/skills", label: "Skills" },
   { key: "resume", path: "/resume", label: "CV / Resume" },
   { key: "certificates", path: "/certificates", label: "Certificates" },
+  { key: "articles", path: "/articles", label: "Articles" },
   { key: "contact", path: "/contact", label: "Contact" }
-
 ];  

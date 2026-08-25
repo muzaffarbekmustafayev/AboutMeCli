@@ -200,7 +200,8 @@ const Select = forwardRef(({
             ${sizes[size]}
             ${widthClass}
             ${getStatusStyles()}
-            rounded-lg
+            border
+            rounded-2xl
             transition-all duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
             cursor-pointer
@@ -268,7 +269,7 @@ const Select = forwardRef(({
               absolute z-50 mt-1 ${widthClass}
               bg-white dark:bg-gray-800
               border border-gray-200 dark:border-gray-700
-              rounded-lg shadow-xl
+              rounded-2xl shadow-xl
               max-h-64 overflow-y-auto
               animate-slideDown
             `}
@@ -282,7 +283,7 @@ const Select = forwardRef(({
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Qidirish..."
-                    className="w-full px-3 py-2 pl-9 text-sm bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                    className="w-full px-3 py-2 pl-9 text-sm bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                     onClick={(e) => e.stopPropagation()}
                     autoFocus
                   />

@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "role": "Software Engineer"
+    "role": "Senior Software Engineer"
   },
   "menu": {
     "home": "Home",
@@ -9,6 +9,7 @@
     "skills": "Skills",
     "resume": "Resume",
     "certificates": "Certificates",
+    "articles": "Articles",
     "contact": "Contact"
   },
   "ui": {
@@ -32,85 +33,129 @@
   },
   "home": {
     "greeting": "Hi, I'm Muzaffarbek Mustafayev",
-    "role": "Software Engineer",
-    "description": "I build reliable and user-focused web applications that solve real problems. For me, every project is not just code — it is a working system.",
+    "role": "Senior Software Engineer",
+    "description": "Architecting resilient full-stack systems, real-time communications (WebRTC, Node.js, Python), and applied Speech AI & LLM solutions with proven scalability.",
     "title": "Home",
-    "availability": "Available for new projects",
-    "headline": "I design systems that people enjoy using.",
-    "contactCta": "Start a conversation",
-    "location": "Based in Uzbekistan",
-    "focus": "Focus",
+    "availability": "Senior Software Engineer · AI & Systems",
+    "headline": "Engineering scalable architectures, real-time systems, and AI platforms.",
+    "contactCta": "Discuss a Project",
+    "location": "Uzbekistan & Russia",
+    "focus": "Core Stack",
     "contact": "Contact",
     "liveBuild": "Live build",
+    "socialCta": "Open profile",
+    "stat": {
+      "projects": "Shipped projects",
+      "skills": "Technologies",
+      "quality": "Expert & Advanced skills"
+    },
+    "focusCard": {
+      "build": "Product-Minded Architecture",
+      "buildDesc": "Connecting complex business objectives with clean, resilient delivery.",
+      "direction": "Technical Strategy & Vision",
+      "directionDesc": "Resilient foundations, scalable patterns, and hardened infrastructure."
+    },
     "highlight": {
-      "architecture": "Clean Architecture",
-      "architectureDesc": "Scalable frontend and backend structure for long-term growth.",
-      "ux": "User-Centered UX",
-      "uxDesc": "Fast, accessible interfaces with purposeful interaction patterns.",
-      "delivery": "Production Delivery",
-      "deliveryDesc": "From idea to deployment with performance and reliability in focus."
+      "architecture": "Systems Architecture",
+      "architectureDesc": "High-throughput, resilient modular architecture built for sustained scale.",
+      "ux": "Extreme Performance",
+      "uxDesc": "Sub-second API latency and streamlined real-time user experiences.",
+      "delivery": "Production Reliability",
+      "deliveryDesc": "Automated CI/CD, secure Linux infrastructure, and hardened deployments."
     }
   },
   "about": {
     "title": "About Me",
-    "quote": "I don't just write code — I build solutions that work.",
-    "intro": "My name is Muzaffarbek Mustafayev. I am a Junior Software Engineer focused on frontend and backend engineering, and a Software Engineering student at Samarkand State University.",
-    "stack": "I build practical web systems with React.js and Node.js, focusing on clean structure, usability, maintainability, and business value.",
-    "experience": "I have hands-on experience building full-stack applications, connecting frontend interfaces with backend services, managing access levels, and developing secure, scalable systems.",
-    "interests": "I value simplifying complex problems, improving system quality, and continuously learning modern software engineering practices. Growth is a daily discipline for me.",
-    "missionLabel": "Mission",
-    "mission": "My goal is to become an engineer who creates simple yet powerful and reliable systems that deliver real value to users.",
-    "techTitle": "Frontend & Backend Engineering Focus",
+    "quote": "True engineering is transforming complex business challenges into simple, resilient architectures.",
+    "intro": "I am Muzaffarbek Mustafayev, a Senior Software Engineer specializing in scalable web ecosystems, real-time media streaming, and artificial intelligence (ASR & LLM) integrations.",
+    "stack": "Leveraging React, Next.js, Node.js, Python (FastAPI), and cloud-native infrastructure to engineer robust, high-availability products.",
+    "experience": "Extensive experience designing full-stack microservices, low-latency WebRTC streams, Uzbek speech recognition (ASR) pipelines, and managing Linux server operations.",
+    "interests": "Passionate about distributed system reliability, cybersecurity, hardware mechatronics, and advancing speech technology research.",
+    "missionLabel": "Engineering Philosophy",
+    "mission": "To architect intelligent, enterprise-grade software systems that deliver measurable business impact with clean, maintainable code.",
+    "techTitle": "Engineering & Architecture Specialties",
     "description": "Learn more about me"
   },
   "resume": {
-    "role": "Junior Software Engineer",
-    "stack": "Frontend & Backend Engineer",
-    "location": "Samarkand, Uzbekistan",
+    "role": "Senior Software Engineer | AI & Systems Researcher",
+    "stack": "React, Next.js, Node.js, Python, ASR, WebRTC, Linux",
+    "location": "Samarkand, Uzbekistan | Tomsk, Russia",
+    "portfolio": "muzaffarbek.uz",
     "download": "Download Resume",
     "downloadAlert": "Resume downloaded!",
     "summary": {
       "title": "Professional Summary",
-      "text": "Motivated Junior Software Engineer seeking to apply and grow practical skills in frontend and backend engineering. I build clean, maintainable, and user-focused web applications with React.js, Node.js, and modern API-driven workflows."
+      "text": "Senior Software Engineer and Master's researcher specializing in scalable distributed architectures, real-time WebRTC media streams, and Speech AI (ASR) machine learning models. Backed by a rigorous foundation in Mathematics and Physics — particularly Differential Equations (ODEs/PDEs), mathematical analysis, and competitive science Olympiad achievements — empowering high-precision algorithmic optimization, digital signal processing, dynamic systems modeling, and mechatronics. Currently pursuing an M.Sc. in Mechatronics and Robotics at Tomsk State University on a State Budget Grant."
     },
     "experience": {
-      "title": "Practical Experience",
-      "role": "Junior Software Engineer",
-      "company": "Samarkand State University",
-      "period": "2023 – Present",
+      "title": "Engineering & Research Activity",
+      "role": "Senior Software Engineer & ASR Researcher",
+      "company": "Samarkand State University / TSU",
+      "period": "2022 – Present",
       "tasks": [
-        "Built and maintained academic and personal web applications using React.js, Node.js, and MongoDB",
-        "Implemented authentication and authorization workflows with JWT",
-        "Integrated frontend interfaces with backend services and RESTful APIs",
-        "Managed role-based access control and structured data operations",
-        "Tested APIs with Postman and documented endpoints with Swagger"
+        "Conducted comparative benchmark analysis on Whisper, Wav2Vec 2.0, and VOSK models for the Uzbek language; published datasets and papers on Zenodo (DOI: 10.5281/zenodo.21299321)",
+        "Engineered Sammeet, a real-time WebRTC & WebSocket video-conferencing platform deployed on Linux with Nginx reverse proxy and SSL encryption",
+        "Architected scalable Full-Stack platforms and RESTful APIs using React, Next.js, Node.js, and MongoDB/PostgreSQL",
+        "Developed automated AI Telegram assistants utilizing grammY (Node.js) and Gemini / Claude LLM APIs for automated document analysis",
+        "Launched award-winning HealthTech (RuralDoc Connect) and Accessibility (Tourism for Everyone) platforms"
       ]
     },
     "projects": {
-      "title": "Project Directions",
-      "ai": "Frontend and backend web applications built with React.js, Node.js, and database integration for real use cases.",
-      "face": "Authentication, role-based access, and secure API-centered systems focused on maintainability and scale.",
-      "aiTitle": "Full-Stack Web Applications",
-      "faceTitle": "Authentication & API Systems",
-      "live": "Live"
+      "title": "Key Projects & Scientific Research",
+      "asrTitle": "Uzbek Speech-to-Text (ASR) Research",
+      "asrDesc": "Comparative benchmark of Whisper, Wav2Vec 2.0, and VOSK models using Mozilla Common Voice datasets, published on Zenodo (DOI: 10.5281/zenodo.21299321).",
+      "sammeetTitle": "Sammeet (Real-Time Video Conferencing)",
+      "sammeetDesc": "Full-mesh real-time audio/video platform built on WebRTC, Simple-Peer, and WebSockets. Production-deployed with Nginx and SSL.",
+      "tourismTitle": "Tourism for Everyone (Accessible Tourism)",
+      "tourismDesc": "Interactive mapping and route accessibility web platform designed for travelers with disabilities and specialized transit requirements.",
+      "ruralTitle": "RuralDoc Connect (HealthTech)",
+      "ruralDesc": "Rural telemedicine and mobile medical brigade routing optimization system (Startup Wars participant).",
+      "aiBotsTitle": "AI & Telegram Automation Bots",
+      "aiBotsDesc": "Intelligent automated assistants powered by Node.js (grammY) and LLM APIs for automated document parsing and workflow synthesis.",
+      "live": "Active Project"
     },
     "skills": {
-      "title": "Core Capabilities",
-      "frontend": "Frontend Engineering",
-      "backend": "Backend Engineering"
+      "title": "Technical Skills",
+      "frontend": "Frontend & Mobile",
+      "backend": "Backend & Realtime",
+      "ai": "AI, ML & ASR",
+      "database": "Database & Storage",
+      "math": "Mathematics & Foundations",
+      "robotics": "Robotics & Hardware",
+      "devops": "DevOps & Cloud"
     },
     "education": {
-      "title": "Education",
-      "degree": "Bachelor in Software Engineering",
-      "school": "Samarkand State University",
-      "desc": "Currently pursuing a bachelor's degree focused on programming, software engineering, analytical thinking, and practical project work.",
-      "period": "2022 - 2026 Expected"
+      "title": "Education Chronology",
+      "tsu": {
+        "degree": "Master of Science (State Budget Grant)",
+        "school": "Tomsk State University (TSU) — Tomsk, Russia",
+        "major": "Mechatronics and Robotics",
+        "period": "2026 – Present"
+      },
+      "samdu": {
+        "degree": "Bachelor of Science",
+        "school": "Samarkand State University (SamDU) — Samarkand, Uzbekistan",
+        "major": "Software Engineering (Faculty of AI & Digital Technologies) · Programming & Math Olympiad Participant",
+        "period": "2022 – 2026"
+      },
+      "lyceum": {
+        "degree": "Academic Lyceum Diploma",
+        "school": "Samarkand State University Academic Lyceum",
+        "major": "Exact Sciences (Mathematics & Physics) · Science Olympiad Participant",
+        "period": "2020 – 2022"
+      },
+      "school": {
+        "degree": "General Secondary Certificate",
+        "school": "Secondary School No. 38 — Oqdaryo district, Samarkand region",
+        "major": "Mathematics, Physics & Informatics Olympiad Participant",
+        "period": "2011 – 2019"
+      }
     },
     "languages": {
       "title": "Languages",
       "uz": "Uzbek (Native)",
-      "en": "English (Intermediate)",
-      "ru": "Russian (Intermediate)"
+      "en": "English (CEFR B2)",
+      "ru": "Russian (Fluent / Professional)"
     },
     "footer": "(c) {{year}} Muzaffarbek Mustafayev. All rights reserved."
   },
@@ -398,10 +443,15 @@
     },
     "categories": {
       "all": "All",
+      "ai": "AI & Telegram Bots",
+      "fullstack": "Full-Stack",
       "frontend": "Frontend",
-      "backend": "Backend",
+      "mobile": "Mobile (React Native)",
+      "backend": "Backend & API",
+      "devops": "DevOps & Cloud",
+      "sysadmin": "SysAdmin & Security",
       "database": "Database",
-      "tools": "Tools"
+      "tools": "Tools & Testing"
     },
     "levels": {
       "expert": "Expert",
@@ -438,6 +488,37 @@
       "total": "Total Certificates",
       "issuers": "Issuers",
       "latestYear": "Latest Year"
+    }
+  },
+  "articles": {
+    "pageTitle": "Articles & Technical Insights",
+    "pageSubtitle": "My thoughts, experiences, and deep dives into AI, Financial Systems, and Modern Full-Stack Engineering.",
+    "badge": "Articles & Thoughts",
+    "search": "Search articles...",
+    "allCategories": "All",
+    "allTags": "All tags",
+    "showing": "Showing:",
+    "count": "articles",
+    "readArticle": "Read Article",
+    "noResults": "No articles found matching your criteria",
+    "latestArticles": "Latest Articles",
+    "latestSubtitle": "Recent notes on AI, architecture, frontend performance, and building reliable systems.",
+    "viewAll": "View all articles",
+    "readTime": "{{count}} min read",
+    "copyCode": "Copy",
+    "copiedCode": "Copied!",
+    "nextArticle": "Next Recommended Read",
+    "readNext": "Read",
+    "share": "Share",
+    "copied": "Article link copied!",
+    "copyUnavailable": "Copy is unavailable in this browser",
+    "close": "Close",
+    "openArticle": "Open article",
+    "categories": {
+      "ai": "AI & ML",
+      "architecture": "Architecture",
+      "frontend": "Frontend",
+      "bestPractices": "Best Practices"
     }
   }
 }

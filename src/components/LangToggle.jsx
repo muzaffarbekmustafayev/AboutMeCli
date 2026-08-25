@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 
 const languages = [
+  { code: "uz", label: "UZ", labelKey: "ui.language.uz" },
   { code: "en", label: "EN", labelKey: "ui.language.en" },
-  { code: "ru", label: "RU", labelKey: "ui.language.ru" },
-  { code: "uz", label: "UZ", labelKey: "ui.language.uz" }
+  { code: "ru", label: "RU", labelKey: "ui.language.ru" }
 ];
 
 const getBaseLanguage = (lang = "") => lang.split("-")[0].toLowerCase();
@@ -22,7 +22,7 @@ const LangToggle = () => {
     <div
       role="group"
       aria-label={t("ui.language.select")}
-      className="control-surface inline-flex items-center rounded-xl p-1"
+      className="inline-flex items-center rounded-full bg-slate-200/60 p-1 backdrop-blur-xl dark:bg-white/[0.06]"
     >
       {languages.map((lang) => {
         const isActive = activeLanguage === lang.code;
@@ -37,11 +37,11 @@ const LangToggle = () => {
             aria-pressed={isActive}
             title={languageName}
             className={`
-              px-3 py-1.5 text-sm font-semibold rounded-lg transition-all duration-300
+              rounded-full px-2.5 py-1 text-xs font-bold transition-all duration-200
               ${
                 isActive
-                  ? "bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow"
-                  : "text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/70"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               }
             `}
           >

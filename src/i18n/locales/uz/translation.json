@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "role": "Software Engineer"
+    "role": "Senior Software Engineer"
   },
   "menu": {
     "home": "Bosh sahifa",
@@ -9,6 +9,7 @@
     "skills": "Ko'nikmalar",
     "resume": "Rezyume",
     "certificates": "Sertifikatlar",
+    "articles": "Maqolalar",
     "contact": "Aloqa"
   },
   "ui": {
@@ -32,85 +33,129 @@
   },
   "home": {
     "greeting": "Salom, men Muzaffarbek Mustafayevman",
-    "role": "Software Engineer",
-    "description": "Men real muammolarni hal qiladigan, foydalanuvchi uchun qulay va barqaror web ilovalar yarataman. Har bir loyiha men uchun faqat kod emas — bu ishlaydigan tizim.",
+    "role": "Senior Software Engineer",
+    "description": "Kengaytiriladigan, yuqori unumdor arxitekturalar, real vaqtli tizimlar (WebRTC, Node.js, Python) hamda amaliy AI yechimlarini loyihalayman va boshqaraman.",
     "title": "Bosh sahifa",
-    "availability": "Yangi loyihalar uchun ochiqman",
-    "headline": "Foydalanuvchilarga yoqadigan tizimlar yarataman.",
-    "contactCta": "Suhbatni boshlash",
-    "location": "Uzbekistonda faoliyat yuritaman",
-    "focus": "Asosiy yo'nalish",
+    "availability": "Senior Software Engineer · AI & Systems",
+    "headline": "Masshtablanuvchi, mustahkam tizimlar va AI arxitekturalarini yarataman.",
+    "contactCta": "Loyihani muhokama qilish",
+    "location": "O'zbekiston & Rossiya",
+    "focus": "Asosiy Stack",
     "contact": "Aloqa",
     "liveBuild": "Jonli build",
+    "socialCta": "Profilni ochish",
+    "stat": {
+      "projects": "Ishlab chiqilgan loyihalar",
+      "skills": "Texnologiyalar",
+      "quality": "Expert & Advanced ko'nikmalar"
+    },
+    "focusCard": {
+      "build": "Biznesga yo'naltirilgan arxitektura",
+      "buildDesc": "Biznes maqsadlarini toza va mustahkam yechimlar bilan bog'laydigan tizimlar.",
+      "direction": "Aniq texnik strategiya",
+      "directionDesc": "Barqaror poydevor, xavfsiz arxitektura va uzoq muddatli qiymat."
+    },
     "highlight": {
-      "architecture": "Toza arxitektura",
-      "architectureDesc": "Uzoq muddatli o'sish uchun kengayadigan frontend va backend tuzilmasi.",
-      "ux": "Foydalanuvchi markazida UX",
-      "uxDesc": "Maqsadli interaksiya bilan tez va qulay interfeyslar.",
-      "delivery": "Production yetkazib berish",
-      "deliveryDesc": "G'oyadan deploygacha: tezlik va ishonchlilik doimo markazda."
+      "architecture": "Tizim Arxitekturasi",
+      "architectureDesc": "Yuqori yuklamalarga chidamli, modulli va toza arxitektura poydevori.",
+      "ux": "Maksimal Unumdorlik",
+      "uxDesc": "Millisekundlarda ishlovchi tezkor API va optimallashtirilgan yechimlar.",
+      "delivery": "Ishonchli Yetkazish",
+      "deliveryDesc": "G'oyadan xavfsiz production deploygacha mustahkam muhandislik."
     }
   },
   "about": {
     "title": "Men haqimda",
-    "quote": "Men kod yozmayman — men ishlaydigan yechimlar yarataman.",
-    "intro": "Mening ismim Muzaffarbek Mustafayev. Men frontend va backend engineering yo'nalishida rivojlanayotgan Junior Software Engineer hamda Samarqand davlat universiteti talabasiyman.",
-    "stack": "Men React.js va Node.js yordamida amaliy web tizimlar quraman. Har bir qarorim toza arxitektura, qulay foydalanish, qo'llab-quvvatlash va biznes qiymatiga qaratilgan.",
-    "experience": "Men full-stack ilovalar yaratish, frontend va backend qismlarini ulash, ruxsat darajalarini boshqarish va xavfsiz, kengayadigan tizimlar qurish bo'yicha amaliy tajribaga egaman.",
-    "interests": "Men murakkab muammolarni soddalashtirishni, tizim sifatini oshirishni va zamonaviy dasturiy injiniring yondashuvlarini doimiy o'rganishni muhim deb bilaman. O'sish mening kundalik odatim.",
-    "missionLabel": "Maqsad",
-    "mission": "Mening maqsadim — foydalanuvchiga haqiqiy qiymat beradigan, sodda, lekin kuchli va ishonchli tizimlar yaratadigan muhandis bo'lish.",
-    "techTitle": "Frontend va Backend Engineering yo'nalishim",
+    "quote": "Haqiqiy muhandislik — murakkab biznes jarayonlarini sodda va barqaror tizimga aylantirishdir.",
+    "intro": "Mening ismim Muzaffarbek Mustafayev. Men kengaytiriladigan web ekotizimlar, real vaqtli video aloqa va sun'iy intellekt (ASR/LLM) yechimlarini loyihalaydigan Senior Software Engineerman.",
+    "stack": "React, Next.js, Node.js, Python (FastAPI) hamda cloud-native infratuzilmalardan foydalanib, biznes uchun uzoq muddatli va mustahkam mahsulotlar yarataman.",
+    "experience": "Full-stack ekotizimlar, WebRTC oqimlari, nutqni matnga aylantirish (ASR) modellari va mikroxizmatlar arxitekturasini loyihalash hamda serverlarni boshqarish bo'yicha boy amaliy tajribaga egaman.",
+    "interests": "Tizim unumdorligini optimallashtirish, kiberxavfsizlik, taqsimlangan tizimlar va nutq texnologiyalarini o'rganish bo'yicha ilmiy izlanishlar olib boraman.",
+    "missionLabel": "Muhandislik falsafasi",
+    "mission": "Mening maqsadim — yuqori yuklamalarga bardosh beradigan, toza kodli va biznesga maksimal foyda keltiradigan intellektual tizimlarni barpo etish.",
+    "techTitle": "Muhandislik va Arxitektura yo'nalishlarim",
     "description": "Men haqimda batafsil"
   },
   "resume": {
-    "role": "Junior Software Engineer",
-    "stack": "Frontend va Backend Engineer",
-    "location": "Samarqand, O'zbekiston",
+    "role": "Senior Software Engineer | AI & Systems Researcher",
+    "stack": "React, Next.js, Node.js, Python, ASR, WebRTC, Linux",
+    "location": "Samarqand, O'zbekiston | Tomsk, Rossiya",
+    "portfolio": "muzaffarbek.uz",
     "download": "Rezyumeni yuklab olish",
     "downloadAlert": "Rezyume yuklandi!",
     "summary": {
       "title": "Professional xulosa",
-      "text": "Men frontend va backend engineering yo'nalishida amaliy ko'nikmalarini chuqurlashtirishni istagan Junior Software Engineerman. React.js, Node.js va API-driven yondashuvlar bilan toza, qo'llab-quvvatlanadigan va foydalanuvchi markazidagi web ilovalar yarataman."
+      "text": "Full-Stack tizimlar arxitekturasi, real vaqtli WebRTC platformalari va sun'iy intellekt (ASR / Speech-to-Text) modellarini loyihalashga ixtisoslashgan Senior Software Engineer va tadqiqotchi. Matematika va fizika bo'yicha mustahkam fundamental bilimlar, ayniqsa differensial tenglamalar (ODE/PDE), matematik analiz va fan olimpiadalari tajribasi tufayli murakkab algoritmlar, signal tahlili, dinamik tizimlar modellashtirish va mexatronikani yuqori aniqlikda ishlab chiqaman. Hozirda Tomsk davlat universitetida Mexatronika va robototexnika yo'nalishida davlat granti asosida magistratura ta'limini olmoqdaman."
     },
     "experience": {
-      "title": "Amaliy tajriba",
-      "role": "Junior Software Engineer",
-      "company": "Samarqand davlat universiteti",
-      "period": "2023 — hozir",
+      "title": "Muhandislik va Ilmiy Faoliyat",
+      "role": "Senior Software Engineer & ASR Tadqiqotchisi",
+      "company": "Samarqand davlat universiteti / TSU",
+      "period": "2022 — hozirgacha",
       "tasks": [
-        "React.js, Node.js va MongoDB yordamida akademik va shaxsiy web ilovalar yaratdim va rivojlantirdim",
-        "JWT asosida autentifikatsiya va avtorizatsiya jarayonlarini joriy qildim",
-        "Frontend interfeyslarini backend servislar va RESTful API lar bilan integratsiya qildim",
-        "Role-based access control va ma'lumotlar oqimini boshqarish ustida ishladim",
-        "Postman bilan API larni test qildim va Swagger orqali endpointlarni hujjatlashtirdim"
+        "O'zbek tili uchun Whisper, Wav2Vec 2.0 va VOSK modellarini solishtirma tahlil qildim va ilmiy maqolalarni Zenodo platformasida nashr etdim (DOI: 10.5281/zenodo.21299321)",
+        "WebRTC, Simple-Peer va WebSockets arxitekturasida Sammeet real vaqtli audio/video konferensiya tizimini ishlab chiqdim va Linux Nginx serverida deploy qildim",
+        "React, Next.js, Node.js va MongoDB/PostgreSQL yordamida scalable Full-Stack tizimlar va API larni yaratdim",
+        "grammY (Node.js) va Gemini / Claude LLM API lari asosida hujjatlarni tahlil qiluvchi AI telegram botlarini avtomatlashtirdim",
+        "HealthTech (RuralDoc Connect) va Inklyuziv turizm (Tourism for Everyone) startap loyihalarini muvaffaqiyatli ishlab chiqdim"
       ]
     },
     "projects": {
-      "title": "Loyiha yo'nalishlari",
-      "ai": "React.js, Node.js va ma'lumotlar bazasi integratsiyasi bilan real ehtiyojlarga mos full-stack web ilovalar.",
-      "face": "Autentifikatsiya, role-based access va qo'llab-quvvatlanadigan xavfsiz API markazli tizimlar.",
-      "aiTitle": "Full-Stack Web Ilovalar",
-      "faceTitle": "Authentication va API Tizimlari",
-      "live": "Jonli"
+      "title": "Asosiy Loyihalar va Ilmiy Faoliyat",
+      "asrTitle": "O'zbek tili ASR tadqiqotlari (Speech-to-Text)",
+      "asrDesc": "Mozilla Common Voice ochiq ma'lumotlar to'plami asosida Whisper, Wav2Vec2 va VOSK modellarining solishtirma tahlili hamda Zenodo nashri (DOI: 10.5281/zenodo.21299321).",
+      "sammeetTitle": "Sammeet (Real-time Video-konferensiya)",
+      "sammeetDesc": "WebRTC, Simple-Peer va WebSockets asosida real vaqtda audio/video uzatuvchi tizim. Linux serverida Nginx va SSL bilan to'liq deploy qilingan.",
+      "tourismTitle": "Tourism for Everyone (Inklyuziv Turizm)",
+      "tourismDesc": "Imkoniyati cheklangan shaxslar uchun qulay marshrutlash va interaktiv xaritalarni taqdim etuvchi veb-platforma.",
+      "ruralTitle": "RuralDoc Connect (HealthTech)",
+      "ruralDesc": "Qishloq joylarida telemeditsina va tibbiy brigadalarning harakatlanish yo'nalishlarini optimallashtirish tizimi (Startup Wars ishtirokchisi).",
+      "aiBotsTitle": "AI & Telegram Avtomatlashtirish Botlari",
+      "aiBotsDesc": "Node.js (grammY) va LLM API'lari asosida hujjatlarni tahlil qiluvchi va avtomatlashtiruvchi intellektual yordamchilar.",
+      "live": "Faol Loyiha"
     },
     "skills": {
-      "title": "Asosiy imkoniyatlarim",
-      "frontend": "Frontend Engineering",
-      "backend": "Backend Engineering"
+      "title": "Texnik Ko'nikmalar",
+      "frontend": "Frontend & Mobile",
+      "backend": "Backend & Realtime",
+      "ai": "AI, ML & ASR",
+      "database": "Ma'lumotlar bazasi",
+      "math": "Matematika & Fundamental Fanlar",
+      "robotics": "Robototexnika & Hardware",
+      "devops": "DevOps & Server"
     },
     "education": {
-      "title": "Ta'lim",
-      "degree": "Dasturiy injiniring (Bakalavr)",
-      "school": "Samarqand davlat universiteti",
-      "desc": "Hozirda dasturlash, dasturiy injiniring, analitik fikrlash va amaliy loyihalar yo'nalishida bakalavr ta'limini davom ettirmoqdaman.",
-      "period": "2022 - 2026 kutilmoqda"
+      "title": "Ta'lim Xronologiyasi",
+      "tsu": {
+        "degree": "Magistratura (Davlat granti / Budget)",
+        "school": "Tomsk davlat universiteti (TSU) — Tomsk, Rossiya",
+        "major": "Mexatronika va robototexnika",
+        "period": "2026 — hozirgacha"
+      },
+      "samdu": {
+        "degree": "Bakalavr",
+        "school": "Sharof Rashidov nomidagi Samarqand davlat universiteti (SamDU)",
+        "major": "Dasturiy injiniring (Sun'iy intellekt va raqamli texnologiyalar fakulteti) · Dasturlash va matematika olimpiadalari ishtirokchisi",
+        "period": "2022 — 2026"
+      },
+      "lyceum": {
+        "degree": "Akademik litsey diplomi",
+        "school": "Samarqand davlat universiteti Akademik litseyi",
+        "major": "Aniq fanlar (Matematika va Fizika) · Fan olimpiadalari ishtirokchisi",
+        "period": "2020 — 2022"
+      },
+      "school": {
+        "degree": "Umumiy o'rta ta'lim",
+        "school": "38-umumiy o'rta ta'lim maktabi — Samarqand viloyati, Oqdaryo tumani",
+        "major": "Matematika, fizika va informatika fan olimpiadalari",
+        "period": "2011 — 2019"
+      }
     },
     "languages": {
       "title": "Tillar",
-      "uz": "O'zbek (ona tili)",
-      "en": "Ingliz (o'rta, texnik o'qish va muloqot)",
-      "ru": "Rus (o'rta)"
+      "uz": "O'zbek tili (ona tili)",
+      "en": "Ingliz tili (CEFR B2)",
+      "ru": "Rus tili"
     },
     "footer": "(c) {{year}} Muzaffarbek Mustafayev. Barcha huquqlar himoyalangan."
   },
@@ -398,10 +443,15 @@
     },
     "categories": {
       "all": "Barchasi",
+      "ai": "AI & Telegram Botlar",
+      "fullstack": "Full-Stack",
       "frontend": "Frontend",
-      "backend": "Backend",
+      "mobile": "Mobile (React Native)",
+      "backend": "Backend & API",
+      "devops": "DevOps & Cloud",
+      "sysadmin": "SysAdmin & Xavfsizlik",
       "database": "Ma'lumotlar bazasi",
-      "tools": "Vositalar"
+      "tools": "Vositalar & Test"
     },
     "levels": {
       "expert": "Mutaxassis",
@@ -438,6 +488,37 @@
       "total": "Jami sertifikat",
       "issuers": "Beruvchi tashkilotlar",
       "latestYear": "So'nggi yil"
+    }
+  },
+  "articles": {
+    "pageTitle": "Maqolalar va Texnik Maqolalar",
+    "pageSubtitle": "Dasturlash, Sun'iy Intellekt, Moliya Tizimlari va Arxitektura bo'yicha shaxsiy tajriba hamda tahlillarim.",
+    "badge": "Maqolalar & Fikrlar",
+    "search": "Maqolalarni qidirish...",
+    "allCategories": "Barchasi",
+    "allTags": "Barcha teglar",
+    "showing": "Ko'rsatilmoqda:",
+    "count": "ta maqola",
+    "readArticle": "Maqolani o'qish",
+    "noResults": "Hech qanday maqola topilmadi",
+    "latestArticles": "So'nggi Maqolalar",
+    "latestSubtitle": "Sun'iy intellekt, tizimlar arxitekturasi, frontend unumdorligi va ishonchli web injiniring bo'yicha tahlillar.",
+    "viewAll": "Barcha maqolalarni ko'rish",
+    "readTime": "{{count}} daqiqa o'qish",
+    "copyCode": "Kodni nusxalash",
+    "copiedCode": "Nusxalandi!",
+    "nextArticle": "Keyingi tavsiya etilgan maqola",
+    "readNext": "O'qish",
+    "share": "Ulashish",
+    "copied": "Maqola havolasi nusxalandi!",
+    "copyUnavailable": "Ushbu brauzerda nusxalash imkonsiz",
+    "close": "Yopish",
+    "openArticle": "Maqolani ochish",
+    "categories": {
+      "ai": "AI & ML",
+      "architecture": "Arxitektura",
+      "frontend": "Frontend",
+      "bestPractices": "Best Practices"
     }
   }
 }

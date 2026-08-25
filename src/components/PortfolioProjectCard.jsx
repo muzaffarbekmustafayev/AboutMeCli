@@ -5,7 +5,7 @@ const ProjectImage = ({ src, alt, loadingLabel }) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   return (
-    <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900" aria-busy={isImageLoading}>
+    <div className="image-zoom-frame relative aspect-video bg-slate-100 dark:bg-slate-900" aria-busy={isImageLoading}>
       {isImageLoading && (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-50 dark:bg-slate-800/50">
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-blue-500/80 border-t-transparent" />
@@ -19,10 +19,11 @@ const ProjectImage = ({ src, alt, loadingLabel }) => {
         loading="lazy"
         onLoad={() => setIsImageLoading(false)}
         onError={() => setIsImageLoading(false)}
-        className={`h-full w-full object-cover transition duration-500 ease-out ${
+        className={`image-zoom-media h-full w-full object-cover transition duration-500 ease-out ${
           isImageLoading ? "opacity-0" : "opacity-100"
         }`}
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 };
@@ -32,7 +33,7 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
   const projectDescription = t(`portfolio.items.${project.i18nKey ?? project.id}.description`, { defaultValue: project.description });
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/8 dark:border-slate-800 dark:bg-slate-900/40">
+    <article className="interactive-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white/85 transition-all duration-300 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/10 active:scale-[0.98] dark:border-slate-800 dark:bg-slate-900/55">
       <ProjectImage
         src={project.images?.[0]}
         alt={projectTitle}
@@ -73,8 +74,9 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
 
         <div className="mt-auto flex items-center justify-between border-t border-slate-50 pt-5 dark:border-slate-800/50 sm:pt-6">
           <button
+            type="button"
             onClick={() => onClick(project)}
-            className="group/btn flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-blue-600 transition-all duration-200 hover:gap-2 hover:text-blue-700 dark:text-blue-400 sm:text-sm"
+            className="group/btn flex items-center gap-1 rounded-2xl text-xs font-bold uppercase tracking-wider text-blue-600 transition-all duration-200 hover:gap-2 hover:text-blue-700 active:scale-95 dark:text-blue-400 sm:text-sm"
           >
             {t("portfolio.details")}
             <ExternalLink size={13} className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -82,12 +84,12 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
 
           <div className="flex gap-4 text-slate-400 sm:gap-5">
             {project.links?.github && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-slate-900 dark:hover:text-white">
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:text-slate-900 active:scale-95 dark:hover:text-white">
                 <Github size={20} className="sm:size-[22px]" />
               </a>
             )}
             {project.links?.live && (
-              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-blue-600">
+              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 active:scale-95">
                 <ExternalLink size={20} className="sm:size-[22px]" />
               </a>
             )}

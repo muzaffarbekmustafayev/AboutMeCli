@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 const RouteTransitionLoader = () => {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [progress, setProgress] = useState(0);
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -23,13 +23,18 @@ const RouteTransitionLoader = () => {
     }
 
     setIsVisible(true);
-    setIsActive(true);
+    setProgress(30);
 
-    const finishTimer = window.setTimeout(() => setIsActive(false), 380);
-    const hideTimer = window.setTimeout(() => setIsVisible(false), 580);
+    const stepTimer = window.setTimeout(() => setProgress(75), 100);
+    const completeTimer = window.setTimeout(() => setProgress(100), 280);
+    const hideTimer = window.setTimeout(() => {
+      setIsVisible(false);
+      setProgress(0);
+    }, 480);
 
     return () => {
-      window.clearTimeout(finishTimer);
+      window.clearTimeout(stepTimer);
+      window.clearTimeout(completeTimer);
       window.clearTimeout(hideTimer);
     };
   }, [location.pathname]);
@@ -38,24 +43,27 @@ const RouteTransitionLoader = () => {
 
   return (
     <div
-      className={`pointer-events-none fixed inset-0 z-[70] transition-opacity duration-200 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+      className="pointer-events-none fixed top-0 left-0 right-0 z-[100] h-[2.5px] overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-slate-950/8 backdrop-blur-[1px] dark:bg-slate-950/25" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="glass-card rounded-2xl px-5 py-3 shadow-xl">
-          <div className="h-2 w-40 overflow-hidden rounded-full bg-slate-200/80 dark:bg-slate-700/70">
-            <div className="route-loading-bar h-full w-1/2 rounded-full bg-gradient-to-r from-blue-700 to-blue-500" />
-          </div>
-        </div>
-      </div>
+      <div
+        className="h-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 shadow-[0_0_12px_rgba(59,130,246,0.9)] transition-all duration-200 ease-out"
+        style={{
+          width: `${progress}%`,
+          opacity: progress === 100 ? 0 : 1,
+          transitionProperty: 'width, opacity',
+        }}
+      />
     </div>
   );
 };
 
+import TechBackground from './components/TechBackground';
+
 const RouterShell = () => {
   return (
     <div className="app-shell min-h-screen transition-colors duration-500">
+      <TechBackground />
       <RouteTransitionLoader />
       <MouseTrail />
       <Navbar />

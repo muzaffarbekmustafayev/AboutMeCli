@@ -21,9 +21,9 @@ const Card = ({
   
   const roundedClasses = {
     none: '',
-    sm: 'rounded',
-    md: 'rounded-lg',
-    lg: 'rounded-xl',
+    sm: 'rounded-xl',
+    md: 'rounded-2xl',
+    lg: 'rounded-2xl',
     xl: 'rounded-2xl',
     full: 'rounded-full',
   };
@@ -45,7 +45,7 @@ const Card = ({
     : 'bg-white dark:bg-gray-800';
   
   const hoverClass = hoverable 
-    ? 'transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer'
+    ? 'transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-[0.98] cursor-pointer'
     : '';
   
   return (

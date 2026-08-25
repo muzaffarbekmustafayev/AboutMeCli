@@ -19,7 +19,7 @@ const Button = ({
   ...props
 }) => {
   const baseClasses =
-    "relative inline-flex items-center justify-center font-medium rounded-md transition-all select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500";
+    "relative inline-flex items-center justify-center font-medium rounded-2xl transition-all select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 active:scale-95";
 
   const variants = {
     primary: "bg-indigo-600 hover:bg-indigo-700 text-white",
