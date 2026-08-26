@@ -178,13 +178,13 @@ export default function GitHubActivity() {
     const diffSec = Math.floor((Date.now() - date.getTime()) / 1000);
     const lang = i18n.language || "uz";
 
-    if (diffSec < 60) return lang === "uz" ? "hozirgina" : lang === "ru" ? "только что" : "just now";
+    if (diffSec < 60) return t("github.time.justNow");
     const min = Math.floor(diffSec / 60);
-    if (min < 60) return lang === "uz" ? `${min} daqiqa oldin` : lang === "ru" ? `${min} мин назад` : `${min}m ago`;
+    if (min < 60) return t("github.time.minsAgo", { count: min });
     const hrs = Math.floor(min / 60);
-    if (hrs < 24) return lang === "uz" ? `${hrs} soat oldin` : lang === "ru" ? `${hrs} ч назад` : `${hrs}h ago`;
+    if (hrs < 24) return t("github.time.hrsAgo", { count: hrs });
     const days = Math.floor(hrs / 24);
-    if (days < 30) return lang === "uz" ? `${days} kun oldin` : lang === "ru" ? `${days} дн назад` : `${days}d ago`;
+    if (days < 30) return t("github.time.daysAgo", { count: days });
     return date.toLocaleDateString();
   };
 
@@ -197,15 +197,15 @@ export default function GitHubActivity() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-blue-600 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300">
               <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-              Live GitHub Sync
+              {t("github.liveSync")}
             </div>
             
             <h2 className="mt-4 font-display text-3xl font-extrabold text-slate-900 dark:text-slate-100 sm:text-4xl">
-              GitHub Faoliyati &amp; Jonli Grafigi
+              {t("github.title")}
             </h2>
             
             <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">
-              Real vaqtda GitHub hisobidan olinadigan yillik faoliyat matritsasi va so'nggi commitlar.
+              {t("github.description")}
             </p>
           </div>
 
@@ -217,7 +217,7 @@ export default function GitHubActivity() {
               className="inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
               <Github size={16} />
-              <span>GitHub Profil</span>
+              <span>{t("github.profile")}</span>
               <ExternalLink size={14} />
             </a>
           </div>
@@ -234,10 +234,10 @@ export default function GitHubActivity() {
               </div>
               <div>
                 <span className="font-display text-lg font-bold text-slate-900 dark:text-slate-100">
-                  {totalCount} ta contribution
+                  {totalCount} {t("github.contributions")}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 block">
-                  {selectedYear === "last" ? "Oxirgi 1 yilda" : `${selectedYear}-yilda`}
+                  {selectedYear === "last" ? t("github.lastYear") : t("github.inYear", { year: selectedYear })}
                 </span>
               </div>
             </div>
@@ -254,7 +254,7 @@ export default function GitHubActivity() {
                       : "border border-slate-200/80 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300 dark:hover:bg-white/[0.08]"
                   }`}
                 >
-                  {y === "last" ? "So'nggi 1 yil" : y}
+                  {y === "last" ? t("github.last1YearTab") : y}
                 </button>
               ))}
             </div>
@@ -311,7 +311,7 @@ export default function GitHubActivity() {
                             onMouseEnter={(e) => {
                               const rect = e.currentTarget.getBoundingClientRect();
                               setTooltip({
-                                text: `${day.count} ta contribution · ${day.date}`,
+                                text: `${day.count} ${t("github.contributions")} · ${day.date}`,
                                 x: rect.left + rect.width / 2,
                                 y: rect.top - 32
                               });
@@ -334,18 +334,18 @@ export default function GitHubActivity() {
                   rel="noreferrer"
                   className="hover:underline text-[11px] text-slate-400 hover:text-blue-500"
                 >
-                  Contributions hisoblash qoidalari
+                  {t("github.rules")}
                 </a>
 
                 <div className="flex items-center gap-1.5 text-[11px] font-mono">
-                  <span>Less</span>
+                  <span>{t("github.less")}</span>
                   {[0, 1, 2, 3, 4].map((lvl) => (
                     <span
                       key={lvl}
                       className={`h-2.5 w-2.5 rounded-[2px] border dark:${LEVEL_COLORS_DARK[lvl]} ${LEVEL_COLORS_LIGHT[lvl]}`}
                     />
                   ))}
-                  <span>More</span>
+                  <span>{t("github.more")}</span>
                 </div>
               </div>
 
@@ -361,7 +361,7 @@ export default function GitHubActivity() {
                 <GitCommit size={18} />
               </div>
               <h3 className="font-display text-xl font-bold text-slate-900 dark:text-slate-100">
-                So'nggi Commitlar &amp; Pushlar
+                {t("github.latestCommits")}
               </h3>
             </div>
             <span className="font-mono text-xs font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1">
@@ -417,7 +417,7 @@ export default function GitHubActivity() {
                       </span>
                     ) : (
                       <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
-                        <CheckCircle2 size={13} /> Active
+                        <CheckCircle2 size={13} /> {t("github.active")}
                       </span>
                     )}
 
@@ -427,7 +427,7 @@ export default function GitHubActivity() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                     >
-                      <span>Repo</span>
+                      <span>{t("github.repo")}</span>
                       <ExternalLink size={13} />
                     </a>
                   </div>

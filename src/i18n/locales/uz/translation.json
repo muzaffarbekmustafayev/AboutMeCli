@@ -613,7 +613,29 @@
       "ai": "AI & ML",
       "architecture": "Arxitektura",
       "frontend": "Frontend",
-      "bestPractices": "Best Practices"
+      "bestPractices": "Eng Yaxshi Amaliyotlar"
+    }
+  },
+  "github": {
+    "liveSync": "Live GitHub Sync",
+    "title": "GitHub Faoliyati & Jonli Grafigi",
+    "description": "Real vaqtda GitHub hisobidan olinadigan yillik faoliyat matritsasi va so'nggi commitlar.",
+    "profile": "GitHub Profil",
+    "contributions": "ta contribution",
+    "lastYear": "Oxirgi 1 yilda",
+    "inYear": "{{year}}-yilda",
+    "last1YearTab": "So'nggi 1 yil",
+    "rules": "Contributions hisoblash qoidalari",
+    "less": "Kam",
+    "more": "Ko'p",
+    "latestCommits": "So'nggi Commitlar & Pushlar",
+    "repo": "Repo",
+    "active": "Faol",
+    "time": {
+      "justNow": "hozirgina",
+      "minsAgo": "{{count}} daqiqa oldin",
+      "hrsAgo": "{{count}} soat oldin",
+      "daysAgo": "{{count}} kun oldin"
     }
   }
 }

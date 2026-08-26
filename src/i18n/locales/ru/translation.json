@@ -613,7 +613,29 @@
       "ai": "AI & ML",
       "architecture": "Архитектура",
       "frontend": "Фронтенд",
-      "bestPractices": "Best Practices"
+      "bestPractices": "Лучшие практики"
+    }
+  },
+  "github": {
+    "liveSync": "Live GitHub Sync",
+    "title": "GitHub Активность и График",
+    "description": "Годовая матрица активности и последние коммиты, получаемые напрямую из GitHub в реальном времени.",
+    "profile": "Профиль GitHub",
+    "contributions": "контрибуций",
+    "lastYear": "За последний год",
+    "inYear": "В {{year}} году",
+    "last1YearTab": "Последний 1 год",
+    "rules": "Как засчитываются контрибуции",
+    "less": "Меньше",
+    "more": "Больше",
+    "latestCommits": "Последние Коммиты и Пуши",
+    "repo": "Репозиторий",
+    "active": "Активен",
+    "time": {
+      "justNow": "только что",
+      "minsAgo": "{{count}} мин назад",
+      "hrsAgo": "{{count}} ч назад",
+      "daysAgo": "{{count}} дн назад"
     }
   }
 }

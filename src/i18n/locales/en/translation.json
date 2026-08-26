@@ -615,5 +615,27 @@
       "frontend": "Frontend",
       "bestPractices": "Best Practices"
     }
+  },
+  "github": {
+    "liveSync": "Live GitHub Sync",
+    "title": "GitHub Activity & Live Graph",
+    "description": "Annual activity matrix and recent commits fetched directly from GitHub in real-time.",
+    "profile": "GitHub Profile",
+    "contributions": "contributions",
+    "lastYear": "Last 1 year",
+    "inYear": "In {{year}}",
+    "last1YearTab": "Last 1 year",
+    "rules": "How contributions are counted",
+    "less": "Less",
+    "more": "More",
+    "latestCommits": "Latest Commits & Pushes",
+    "repo": "Repo",
+    "active": "Active",
+    "time": {
+      "justNow": "just now",
+      "minsAgo": "{{count}}m ago",
+      "hrsAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    }
   }
 }
