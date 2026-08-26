@@ -67,32 +67,7 @@ function Home() {
   const expertCount = useMemo(() => SKILLS.filter((s) => s.level === "expert").length, []);
   const advancedCount = useMemo(() => SKILLS.filter((s) => s.level === "advanced").length, []);
 
-  const highlights = useMemo(
-    () => [
-      {
-        icon: <Code2 className="h-4 w-4 text-blue-600 dark:text-blue-300" />,
-        title: t("home.highlight.architecture", { defaultValue: "Clean Architecture" }),
-        desc: t("home.highlight.architectureDesc", {
-          defaultValue: "Scalable frontend and backend structure for long-term growth.",
-        }),
-      },
-      {
-        icon: <Globe2 className="h-4 w-4 text-sky-600 dark:text-sky-300" />,
-        title: t("home.highlight.ux", { defaultValue: "User-Centered UX" }),
-        desc: t("home.highlight.uxDesc", {
-          defaultValue: "Fast, accessible interfaces with purposeful interaction patterns.",
-        }),
-      },
-      {
-        icon: <Rocket className="h-4 w-4 text-orange-500 dark:text-orange-300" />,
-        title: t("home.highlight.delivery", { defaultValue: "Production Delivery" }),
-        desc: t("home.highlight.deliveryDesc", {
-          defaultValue: "From idea to deployment with performance and reliability in focus.",
-        }),
-      },
-    ],
-    [t]
-  );
+
 
   const quickStats = useMemo(
     () => [
@@ -112,25 +87,7 @@ function Home() {
     [t, expertCount, advancedCount]
   );
 
-  const focusCards = useMemo(
-    () => [
-      {
-        icon: <Briefcase className="h-4 w-4" />,
-        title: t("home.focusCard.build", { defaultValue: "Product-minded build" }),
-        desc: t("home.focusCard.buildDesc", {
-          defaultValue: "Interfaces that connect business goals with clean delivery.",
-        }),
-      },
-      {
-        icon: <Compass className="h-4 w-4" />,
-        title: t("home.focusCard.direction", { defaultValue: "Clear technical direction" }),
-        desc: t("home.focusCard.directionDesc", {
-          defaultValue: "Strong foundations, calmer UX, and fewer fragile decisions.",
-        }),
-      },
-    ],
-    [t]
-  );
+
 
   return (
     <>
@@ -206,37 +163,7 @@ function Home() {
               ))}
             </div>
 
-            <div className="mt-8 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {highlights.map((item) => (
-                <div key={item.title} className="glass-card feature-panel rounded-2xl p-4">
-                  <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-500/10">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-display text-sm font-semibold text-slate-900 dark:text-slate-100">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
 
-            <div className="mt-4 grid gap-3 grid-cols-1 sm:grid-cols-2">
-              {focusCards.map((item) => (
-                <div key={item.title} className="editorial-card rounded-[1.7rem] p-5">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-white dark:bg-blue-500">
-                    {item.icon}
-                  </div>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-slate-900 dark:text-slate-100">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right Profile & Tech Column */}
