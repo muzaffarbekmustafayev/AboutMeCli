@@ -32,6 +32,7 @@
     }
   },
   "home": {
+    "currentModeValue": "O'ylangan raqamli mahsulotlar yaratyapman",
     "greeting": "Salom, men Muzaffarbek Mustafayevman",
     "role": "Senior Software Engineer",
     "description": "Kengaytiriladigan, yuqori unumdor arxitekturalar, real vaqtli tizimlar (WebRTC, Node.js, Python) hamda amaliy AI yechimlarini loyihalayman va boshqaraman.",
@@ -74,6 +75,52 @@
     "topStack": "Asosiy stack"
   },
   "about": {
+    "role": "Senior Software Engineer · AI & Systems Researcher",
+    "location": "Samarqand, O'zbekiston · Tomsk, Rossiya",
+    "languages": {
+      "uz": {
+        "name": "O'zbek tili",
+        "level": "Ona tili / Native",
+        "badge": "Native"
+      },
+      "en": {
+        "name": "Ingliz tili",
+        "level": "Professional working (CEFR B2)",
+        "badge": "CEFR B2"
+      },
+      "ru": {
+        "name": "Rus tili",
+        "level": "Professional working",
+        "badge": "Fluent"
+      }
+    },
+    "focus": {
+      "webrtc": "Real-time WebRTC & Audio/Video Streams",
+      "asr": "Speech-to-Text & ASR AI Engineering",
+      "architecture": "Full-Stack Architecture (React/Node/FastAPI)",
+      "hardware": "Mexatronika & Embedded Hardware"
+    },
+    "skills": {
+      "mathCategory": "Matematika & Fundamental Fanlar",
+      "mathItems": [
+        "Differensial tenglamalar (ODE/PDE)",
+        "Matematik analiz",
+        "Chiziqli algebra",
+        "Ehtimollar nazariyasi & Statistika",
+        "Diskret matematika & Graflar",
+        "Fizika & Mexatronika dinamikasi"
+      ],
+      "roboticsCategory": "Robototexnika & Hardware",
+      "roboticsItems": [
+        "Mexatronika asoslari",
+        "ESP32",
+        "Raspberry Pi Zero 2 W",
+        "Microcontroller interfacing",
+        "Sensors & Actuators"
+      ],
+      "title": "Texnik Ko'nikmalar & Stack",
+      "subtitle": "Frontend, Backend, AI/ASR, Robototexnika va DevOps"
+    },
     "title": "Men haqimda",
     "quote": "Haqiqiy muhandislik — murakkab biznes jarayonlarini sodda va barqaror tizimga aylantirishdir.",
     "intro": "Mening ismim Muzaffarbek Mustafayev. Men kengaytiriladigan web ekotizimlar, real vaqtli video aloqa va sun'iy intellekt (ASR/LLM) yechimlarini loyihalaydigan Senior Software Engineerman.",
@@ -89,10 +136,6 @@
       "subtitle": "Maktabdan boshlab Magistraturagacha bo'lgan ta'lim va olimpiadalar tarixi",
       "current": "Hozirda"
     },
-    "skills": {
-      "title": "Texnik Ko'nikmalar & Stack",
-      "subtitle": "Frontend, Backend, AI/ASR, Robototexnika va DevOps"
-    },
     "projects": {
       "title": "Asosiy Loyihalar va Ilmiy Faoliyat",
       "subtitle": "ASR tadqiqotlari, WebRTC oqimlari va amaliy tizimlar",
@@ -104,6 +147,51 @@
     }
   },
   "resume": {
+    "professionalProfile": "Professional Profil",
+    "projects": {
+      "labels": {
+        "asr": "Speech AI & Research",
+        "webrtc": "WebRTC & Video",
+        "tourism": "Inklyuziv Turizm",
+        "healthtech": "HealthTech Startup",
+        "llm": "LLM & Avtomatlashtirish"
+      },
+      "title": "Asosiy Loyihalar va Ilmiy Faoliyat",
+      "asrTitle": "O'zbek tili ASR tadqiqotlari (Speech-to-Text)",
+      "asrDesc": "Mozilla Common Voice ochiq ma'lumotlar to'plami asosida Whisper, Wav2Vec2 va VOSK modellarining solishtirma tahlili hamda Zenodo nashri (DOI: 10.5281/zenodo.21299321).",
+      "sammeetTitle": "Sammeet (Real-time Video-konferensiya)",
+      "sammeetDesc": "WebRTC, Simple-Peer va WebSockets asosida real vaqtda audio/video uzatuvchi tizim. Linux serverida Nginx va SSL bilan to'liq deploy qilingan.",
+      "tourismTitle": "Tourism for Everyone (Inklyuziv Turizm)",
+      "tourismDesc": "Imkoniyati cheklangan shaxslar uchun qulay marshrutlash va interaktiv xaritalarni taqdim etuvchi veb-platforma.",
+      "ruralTitle": "RuralDoc Connect (HealthTech)",
+      "ruralDesc": "Qishloq joylarida telemeditsina va tibbiy brigadalarning harakatlanish yo'nalishlarini optimallashtirish tizimi (Startup Wars ishtirokchisi).",
+      "aiBotsTitle": "AI & Telegram Avtomatlashtirish Botlari",
+      "aiBotsDesc": "Node.js (grammY) va LLM API'lari asosida hujjatlarni tahlil qiluvchi va avtomatlashtiruvchi intellektual yordamchilar.",
+      "live": "Faol Loyiha"
+    },
+    "skills": {
+      "mathItems": [
+        "Differensial tenglamalar (ODE/PDE)",
+        "Matematik analiz",
+        "Chiziqli algebra",
+        "Ehtimollar nazariyasi & Statistika",
+        "Diskret matematika",
+        "Fizika & Dinamika"
+      ],
+      "roboticsItems": [
+        "Mexatronika",
+        "ESP32",
+        "Raspberry Pi Zero 2 W"
+      ],
+      "title": "Texnik Ko'nikmalar",
+      "frontend": "Frontend & Mobile",
+      "backend": "Backend & Realtime",
+      "ai": "AI, ML & ASR",
+      "database": "Ma'lumotlar bazasi",
+      "math": "Matematika & Fundamental Fanlar",
+      "robotics": "Robototexnika & Hardware",
+      "devops": "DevOps & Server"
+    },
     "role": "Senior Software Engineer | AI & Systems Researcher",
     "stack": "React, Next.js, Node.js, Python, ASR, WebRTC, Linux",
     "location": "Samarqand, O'zbekiston | Tomsk, Rossiya",
@@ -126,30 +214,6 @@
         "grammY (Node.js) va Gemini / Claude LLM API lari asosida hujjatlarni tahlil qiluvchi AI telegram botlarini avtomatlashtirdim",
         "HealthTech (RuralDoc Connect) va Inklyuziv turizm (Tourism for Everyone) startap loyihalarini muvaffaqiyatli ishlab chiqdim"
       ]
-    },
-    "projects": {
-      "title": "Asosiy Loyihalar va Ilmiy Faoliyat",
-      "asrTitle": "O'zbek tili ASR tadqiqotlari (Speech-to-Text)",
-      "asrDesc": "Mozilla Common Voice ochiq ma'lumotlar to'plami asosida Whisper, Wav2Vec2 va VOSK modellarining solishtirma tahlili hamda Zenodo nashri (DOI: 10.5281/zenodo.21299321).",
-      "sammeetTitle": "Sammeet (Real-time Video-konferensiya)",
-      "sammeetDesc": "WebRTC, Simple-Peer va WebSockets asosida real vaqtda audio/video uzatuvchi tizim. Linux serverida Nginx va SSL bilan to'liq deploy qilingan.",
-      "tourismTitle": "Tourism for Everyone (Inklyuziv Turizm)",
-      "tourismDesc": "Imkoniyati cheklangan shaxslar uchun qulay marshrutlash va interaktiv xaritalarni taqdim etuvchi veb-platforma.",
-      "ruralTitle": "RuralDoc Connect (HealthTech)",
-      "ruralDesc": "Qishloq joylarida telemeditsina va tibbiy brigadalarning harakatlanish yo'nalishlarini optimallashtirish tizimi (Startup Wars ishtirokchisi).",
-      "aiBotsTitle": "AI & Telegram Avtomatlashtirish Botlari",
-      "aiBotsDesc": "Node.js (grammY) va LLM API'lari asosida hujjatlarni tahlil qiluvchi va avtomatlashtiruvchi intellektual yordamchilar.",
-      "live": "Faol Loyiha"
-    },
-    "skills": {
-      "title": "Texnik Ko'nikmalar",
-      "frontend": "Frontend & Mobile",
-      "backend": "Backend & Realtime",
-      "ai": "AI, ML & ASR",
-      "database": "Ma'lumotlar bazasi",
-      "math": "Matematika & Fundamental Fanlar",
-      "robotics": "Robototexnika & Hardware",
-      "devops": "DevOps & Server"
     },
     "education": {
       "title": "Ta'lim Xronologiyasi",
@@ -460,7 +524,11 @@
     "search": "Texnologiyani qidirish...",
     "empty": "Qidiruvga mos ko'nikma topilmadi.",
     "learningPath": "O'rganish yo'li",
-    "learningTags": ["Tizim arxitekturasi", "Kengaytiriladigan UI", "API dizayni"],
+    "learningTags": [
+      "Tizim arxitekturasi",
+      "Kengaytiriladigan UI",
+      "API dizayni"
+    ],
     "stats": {
       "total": "Jami",
       "expert": "Mutaxassis",

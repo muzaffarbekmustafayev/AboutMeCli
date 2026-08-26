@@ -32,6 +32,7 @@
     }
   },
   "home": {
+    "currentModeValue": "Создаю продуманные цифровые продукты",
     "greeting": "Здравствуйте, меня зовут Музаффарбек Мустафаев",
     "role": "Senior Software Engineer",
     "description": "Проектирую и создаю масштабируемые веб-архитектуры, системы реального времени (WebRTC, Node.js, Python) и прикладные AI-решения с акцентом на надежность и производительность.",
@@ -74,6 +75,52 @@
     "topStack": "Основной стек"
   },
   "about": {
+    "role": "Senior Software Engineer · AI & Systems Researcher",
+    "location": "Самарканд, Узбекистан · Томск, Россия",
+    "languages": {
+      "uz": {
+        "name": "Узбекский",
+        "level": "Родной",
+        "badge": "Native"
+      },
+      "en": {
+        "name": "Английский",
+        "level": "Профессиональный (CEFR B2)",
+        "badge": "CEFR B2"
+      },
+      "ru": {
+        "name": "Русский",
+        "level": "Свободный",
+        "badge": "Fluent"
+      }
+    },
+    "focus": {
+      "webrtc": "Real-time WebRTC & Audio/Video Streams",
+      "asr": "Speech-to-Text & ASR AI Engineering",
+      "architecture": "Full-Stack Architecture (React/Node/FastAPI)",
+      "hardware": "Мехатроника & Embedded Hardware"
+    },
+    "skills": {
+      "mathCategory": "Математика и Фундаментальные Науки",
+      "mathItems": [
+        "Дифференциальные уравнения (ODE/PDE)",
+        "Математический анализ",
+        "Линейная алгебра",
+        "Теория вероятностей и Статистика",
+        "Дискретная математика и Графы",
+        "Физика и Динамика мехатроники"
+      ],
+      "roboticsCategory": "Робототехника и Аппаратное обеспечение",
+      "roboticsItems": [
+        "Основы мехатроники",
+        "ESP32",
+        "Raspberry Pi Zero 2 W",
+        "Интерфейсы микроконтроллеров",
+        "Сенсоры и Актуаторы"
+      ],
+      "title": "Технические Навыки и Стек",
+      "subtitle": "Frontend, Backend, AI/ASR, Робототехника и DevOps"
+    },
     "title": "Обо мне",
     "quote": "Настоящая инженерия — это превращение сложных бизнес-задач в простые и надежные системы.",
     "intro": "Меня зовут Музаффарбек Мустафаев. Я Senior Software Engineer, специализирующийся на масштабируемых веб-экосистемах, потоковой передаче медиа в реальном времени и решениях на базе искусственного интеллекта (ASR/LLM).",
@@ -89,10 +136,6 @@
       "subtitle": "История образования и олимпиад со школы до магистратуры",
       "current": "В настоящее время"
     },
-    "skills": {
-      "title": "Технические Навыки и Стек",
-      "subtitle": "Frontend, Backend, AI/ASR, Робототехника и DevOps"
-    },
     "projects": {
       "title": "Основные Проекты и Научная Деятельность",
       "subtitle": "Исследования ASR, потоки WebRTC и прикладные системы",
@@ -104,6 +147,51 @@
     }
   },
   "resume": {
+    "professionalProfile": "Профессиональный Профиль",
+    "projects": {
+      "labels": {
+        "asr": "Speech AI & Research",
+        "webrtc": "WebRTC & Video",
+        "tourism": "Инклюзивный Туризм",
+        "healthtech": "HealthTech Startup",
+        "llm": "LLM & Автоматизация"
+      },
+      "title": "Ключевые Проекты и Исследования",
+      "asrTitle": "Исследования ASR для узбекского языка",
+      "asrDesc": "Сравнительный анализ моделей Whisper, Wav2Vec 2.0 и VOSK на датасете Mozilla Common Voice, опубликованный в Zenodo (DOI: 10.5281/zenodo.21299321).",
+      "sammeetTitle": "Sammeet (Видеоконференции реального времени)",
+      "sammeetDesc": "Система аудио/видео связи реального времени на WebRTC и WebSockets. Развернута на сервере Linux с Nginx и SSL.",
+      "tourismTitle": "Tourism for Everyone (Инклюзивный туризм)",
+      "tourismDesc": "Веб-платформа с интерактивными картами и адаптированными маршрутами для людей с ограниченными возможностями.",
+      "ruralTitle": "RuralDoc Connect (HealthTech)",
+      "ruralDesc": "Система телемедицины и оптимизации маршрутов мобильных медицинских бригад для сельской местности (участник Startup Wars).",
+      "aiBotsTitle": "AI & Telegram Боты Автоматизации",
+      "aiBotsDesc": "Интеллектуальные ассистенты на Node.js (grammY) и LLM API для анализа документов и автоматизации задач.",
+      "live": "Активный проект"
+    },
+    "skills": {
+      "mathItems": [
+        "Дифференциальные уравнения (ODE/PDE)",
+        "Математический анализ",
+        "Линейная алгебра",
+        "Теория вероятностей и Статистика",
+        "Дискретная математика",
+        "Физика и Динамика"
+      ],
+      "roboticsItems": [
+        "Мехатроника",
+        "ESP32",
+        "Raspberry Pi Zero 2 W"
+      ],
+      "title": "Технические Навыки",
+      "frontend": "Frontend & Mobile",
+      "backend": "Backend & Realtime",
+      "ai": "AI, ML & ASR",
+      "database": "Базы данных",
+      "math": "Математика и Фундаментальные Науки",
+      "robotics": "Робототехника & Hardware",
+      "devops": "DevOps & Сервер"
+    },
     "role": "Senior Software Engineer | Исследователь AI & Systems",
     "stack": "React, Next.js, Node.js, Python, ASR, WebRTC, Linux",
     "location": "Самарканд, Узбекистан | Томск, Россия",
@@ -126,30 +214,6 @@
         "Создал автоматизированных Telegram-ботов с LLM API (Gemini, Claude) на базе grammY для анализа документов",
         "Разработал платформы RuralDoc Connect (HealthTech) и Tourism for Everyone (Инклюзивный туризм)"
       ]
-    },
-    "projects": {
-      "title": "Ключевые Проекты и Исследования",
-      "asrTitle": "Исследования ASR для узбекского языка",
-      "asrDesc": "Сравнительный анализ моделей Whisper, Wav2Vec 2.0 и VOSK на датасете Mozilla Common Voice, опубликованный в Zenodo (DOI: 10.5281/zenodo.21299321).",
-      "sammeetTitle": "Sammeet (Видеоконференции реального времени)",
-      "sammeetDesc": "Система аудио/видео связи реального времени на WebRTC и WebSockets. Развернута на сервере Linux с Nginx и SSL.",
-      "tourismTitle": "Tourism for Everyone (Инклюзивный туризм)",
-      "tourismDesc": "Веб-платформа с интерактивными картами и адаптированными маршрутами для людей с ограниченными возможностями.",
-      "ruralTitle": "RuralDoc Connect (HealthTech)",
-      "ruralDesc": "Система телемедицины и оптимизации маршрутов мобильных медицинских бригад для сельской местности (участник Startup Wars).",
-      "aiBotsTitle": "AI & Telegram Боты Автоматизации",
-      "aiBotsDesc": "Интеллектуальные ассистенты на Node.js (grammY) и LLM API для анализа документов и автоматизации задач.",
-      "live": "Активный проект"
-    },
-    "skills": {
-      "title": "Технические Навыки",
-      "frontend": "Frontend & Mobile",
-      "backend": "Backend & Realtime",
-      "ai": "AI, ML & ASR",
-      "database": "Базы данных",
-      "math": "Математика и Фундаментальные Науки",
-      "robotics": "Робототехника & Hardware",
-      "devops": "DevOps & Сервер"
     },
     "education": {
       "title": "Хронология Образования",
@@ -460,7 +524,11 @@
     "search": "Поиск технологий...",
     "empty": "По вашему запросу ничего не найдено.",
     "learningPath": "Путь обучения",
-    "learningTags": ["Системная архитектура", "Масштабируемый UI", "Проектирование API"],
+    "learningTags": [
+      "Системная архитектура",
+      "Масштабируемый UI",
+      "Проектирование API"
+    ],
     "stats": {
       "total": "Всего",
       "expert": "Эксперт",

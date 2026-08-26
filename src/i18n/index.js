@@ -44,7 +44,7 @@ const persistLanguage = (language) => {
 export const initializeI18n = async () => {
   if (i18n.isInitialized) return i18n;
 
-  const initialLanguage = getStoredLanguage() || (await detectLanguageFromCountry());
+  const initialLanguage = getStoredLanguage() || DEFAULT_LANGUAGE;
 
   await i18n.use(initReactI18next).init({
     resources: {

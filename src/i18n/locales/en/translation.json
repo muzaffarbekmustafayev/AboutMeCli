@@ -32,6 +32,7 @@
     }
   },
   "home": {
+    "currentModeValue": "Building thoughtful digital products",
     "greeting": "Hi, I'm Muzaffarbek Mustafayev",
     "role": "Senior Software Engineer",
     "description": "Architecting resilient full-stack systems, real-time communications (WebRTC, Node.js, Python), and applied Speech AI & LLM solutions with proven scalability.",
@@ -74,6 +75,52 @@
     "topStack": "Top stack"
   },
   "about": {
+    "role": "Senior Software Engineer · AI & Systems Researcher",
+    "location": "Samarkand, Uzbekistan · Tomsk, Russia",
+    "languages": {
+      "uz": {
+        "name": "Uzbek",
+        "level": "Native",
+        "badge": "Native"
+      },
+      "en": {
+        "name": "English",
+        "level": "Professional working (CEFR B2)",
+        "badge": "CEFR B2"
+      },
+      "ru": {
+        "name": "Russian",
+        "level": "Professional working",
+        "badge": "Fluent"
+      }
+    },
+    "focus": {
+      "webrtc": "Real-time WebRTC & Audio/Video Streams",
+      "asr": "Speech-to-Text & ASR AI Engineering",
+      "architecture": "Full-Stack Architecture (React/Node/FastAPI)",
+      "hardware": "Mechatronics & Embedded Hardware"
+    },
+    "skills": {
+      "mathCategory": "Mathematics & Foundations",
+      "mathItems": [
+        "Differential Equations (ODE/PDE)",
+        "Mathematical Analysis",
+        "Linear Algebra",
+        "Probability Theory & Statistics",
+        "Discrete Math & Graphs",
+        "Physics & Mechatronics Dynamics"
+      ],
+      "roboticsCategory": "Robotics & Hardware",
+      "roboticsItems": [
+        "Mechatronics Basics",
+        "ESP32",
+        "Raspberry Pi Zero 2 W",
+        "Microcontroller interfacing",
+        "Sensors & Actuators"
+      ],
+      "title": "Technical Skills & Stack",
+      "subtitle": "Frontend, Backend, AI/ASR, Robotics and DevOps"
+    },
     "title": "About Me",
     "quote": "True engineering is transforming complex business challenges into simple, resilient architectures.",
     "intro": "I am Muzaffarbek Mustafayev, a Senior Software Engineer specializing in scalable web ecosystems, real-time media streaming, and artificial intelligence (ASR & LLM) integrations.",
@@ -89,10 +136,6 @@
       "subtitle": "History of education and olympiads from school to Master's degree",
       "current": "Present"
     },
-    "skills": {
-      "title": "Technical Skills & Stack",
-      "subtitle": "Frontend, Backend, AI/ASR, Robotics and DevOps"
-    },
     "projects": {
       "title": "Main Projects and Scientific Activity",
       "subtitle": "ASR research, WebRTC streams and applied systems",
@@ -104,6 +147,51 @@
     }
   },
   "resume": {
+    "professionalProfile": "Professional Profile",
+    "projects": {
+      "labels": {
+        "asr": "Speech AI & Research",
+        "webrtc": "WebRTC & Video",
+        "tourism": "Inclusive Tourism",
+        "healthtech": "HealthTech Startup",
+        "llm": "LLM & Automation"
+      },
+      "title": "Key Projects & Scientific Research",
+      "asrTitle": "Uzbek Speech-to-Text (ASR) Research",
+      "asrDesc": "Comparative benchmark of Whisper, Wav2Vec 2.0, and VOSK models using Mozilla Common Voice datasets, published on Zenodo (DOI: 10.5281/zenodo.21299321).",
+      "sammeetTitle": "Sammeet (Real-Time Video Conferencing)",
+      "sammeetDesc": "Full-mesh real-time audio/video platform built on WebRTC, Simple-Peer, and WebSockets. Production-deployed with Nginx and SSL.",
+      "tourismTitle": "Tourism for Everyone (Accessible Tourism)",
+      "tourismDesc": "Interactive mapping and route accessibility web platform designed for travelers with disabilities and specialized transit requirements.",
+      "ruralTitle": "RuralDoc Connect (HealthTech)",
+      "ruralDesc": "Rural telemedicine and mobile medical brigade routing optimization system (Startup Wars participant).",
+      "aiBotsTitle": "AI & Telegram Automation Bots",
+      "aiBotsDesc": "Intelligent automated assistants powered by Node.js (grammY) and LLM APIs for automated document parsing and workflow synthesis.",
+      "live": "Active Project"
+    },
+    "skills": {
+      "mathItems": [
+        "Differential Equations (ODE/PDE)",
+        "Mathematical Analysis",
+        "Linear Algebra",
+        "Probability Theory & Statistics",
+        "Discrete Math",
+        "Physics & Dynamics"
+      ],
+      "roboticsItems": [
+        "Mechatronics",
+        "ESP32",
+        "Raspberry Pi Zero 2 W"
+      ],
+      "title": "Technical Skills",
+      "frontend": "Frontend & Mobile",
+      "backend": "Backend & Realtime",
+      "ai": "AI, ML & ASR",
+      "database": "Database & Storage",
+      "math": "Mathematics & Foundations",
+      "robotics": "Robotics & Hardware",
+      "devops": "DevOps & Cloud"
+    },
     "role": "Senior Software Engineer | AI & Systems Researcher",
     "stack": "React, Next.js, Node.js, Python, ASR, WebRTC, Linux",
     "location": "Samarkand, Uzbekistan | Tomsk, Russia",
@@ -126,30 +214,6 @@
         "Developed automated AI Telegram assistants utilizing grammY (Node.js) and Gemini / Claude LLM APIs for automated document analysis",
         "Launched award-winning HealthTech (RuralDoc Connect) and Accessibility (Tourism for Everyone) platforms"
       ]
-    },
-    "projects": {
-      "title": "Key Projects & Scientific Research",
-      "asrTitle": "Uzbek Speech-to-Text (ASR) Research",
-      "asrDesc": "Comparative benchmark of Whisper, Wav2Vec 2.0, and VOSK models using Mozilla Common Voice datasets, published on Zenodo (DOI: 10.5281/zenodo.21299321).",
-      "sammeetTitle": "Sammeet (Real-Time Video Conferencing)",
-      "sammeetDesc": "Full-mesh real-time audio/video platform built on WebRTC, Simple-Peer, and WebSockets. Production-deployed with Nginx and SSL.",
-      "tourismTitle": "Tourism for Everyone (Accessible Tourism)",
-      "tourismDesc": "Interactive mapping and route accessibility web platform designed for travelers with disabilities and specialized transit requirements.",
-      "ruralTitle": "RuralDoc Connect (HealthTech)",
-      "ruralDesc": "Rural telemedicine and mobile medical brigade routing optimization system (Startup Wars participant).",
-      "aiBotsTitle": "AI & Telegram Automation Bots",
-      "aiBotsDesc": "Intelligent automated assistants powered by Node.js (grammY) and LLM APIs for automated document parsing and workflow synthesis.",
-      "live": "Active Project"
-    },
-    "skills": {
-      "title": "Technical Skills",
-      "frontend": "Frontend & Mobile",
-      "backend": "Backend & Realtime",
-      "ai": "AI, ML & ASR",
-      "database": "Database & Storage",
-      "math": "Mathematics & Foundations",
-      "robotics": "Robotics & Hardware",
-      "devops": "DevOps & Cloud"
     },
     "education": {
       "title": "Education Chronology",
@@ -460,7 +524,11 @@
     "search": "Search tech...",
     "empty": "No skills found matching your search.",
     "learningPath": "Learning Path",
-    "learningTags": ["System Architecture", "Scalable UI", "API Design"],
+    "learningTags": [
+      "System Architecture",
+      "Scalable UI",
+      "API Design"
+    ],
     "stats": {
       "total": "Total",
       "expert": "Expert",
