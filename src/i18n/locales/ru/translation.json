@@ -62,7 +62,16 @@
       "uxDesc": "Быстрые API с минимальной задержкой и оптимизированный UX.",
       "delivery": "Production-Надёжность",
       "deliveryDesc": "Автоматизированный CI/CD, безопасная инфраструктура Linux и стабильный deploy."
-    }
+    },
+    "terminal": {
+      "npmRunDev": "npm run dev",
+      "compiling": "компиляция src...",
+      "projectsLoaded": "проекты загружены",
+      "skillsIndexed": "навыки проиндексированы",
+      "ready": "готово на localhost:5173"
+    },
+    "currentMode": "Текущий режим",
+    "topStack": "Основной стек"
   },
   "about": {
     "title": "Обо мне",
@@ -74,7 +83,25 @@
     "missionLabel": "Инженерная философия",
     "mission": "Создавать интеллектуальные, высоконадежные системы с чистым кодом, приносящие долгосрочную ценность бизнесу.",
     "techTitle": "Инженерные и Архитектурные Компетенции",
-    "description": "Узнать больше обо мне"
+    "description": "Узнать больше обо мне",
+    "education": {
+      "title": "Хронология Обучения и Академические Этапы",
+      "subtitle": "История образования и олимпиад со школы до магистратуры",
+      "current": "В настоящее время"
+    },
+    "skills": {
+      "title": "Технические Навыки и Стек",
+      "subtitle": "Frontend, Backend, AI/ASR, Робототехника и DevOps"
+    },
+    "projects": {
+      "title": "Основные Проекты и Научная Деятельность",
+      "subtitle": "Исследования ASR, потоки WebRTC и прикладные системы",
+      "zenodo": "Статья на Zenodo"
+    },
+    "sidebar": {
+      "languages": "Языки",
+      "specialties": "Основная Специальность"
+    }
   },
   "resume": {
     "role": "Senior Software Engineer | Исследователь AI & Systems",

@@ -55,13 +55,7 @@ const socialLinks = [
   },
 ];
 
-const TERMINAL_LINES = [
-  { prefix: "❯", text: "npm run dev", tone: "text-blue-400 font-bold", icon: null },
-  { prefix: "⚡", text: "compiling src...", tone: "text-amber-300 font-medium", icon: null },
-  { prefix: "📦", text: `${projects.length} projects loaded`, tone: "text-sky-300 font-semibold", icon: null },
-  { prefix: "✨", text: `${SKILLS.length} skills indexed`, tone: "text-indigo-300 font-semibold", icon: null },
-  { prefix: "✓", text: "ready on localhost:5173", tone: "text-emerald-400 font-bold shadow-[0_0_12px_rgba(52,211,153,0.3)]", icon: null },
-];
+
 
 function useTerminalTyping(lines) {
   const [displayed, setDisplayed] = useState([]);
@@ -111,6 +105,14 @@ function Home() {
 
   const expertCount = useMemo(() => SKILLS.filter((s) => s.level === "expert").length, []);
   const advancedCount = useMemo(() => SKILLS.filter((s) => s.level === "advanced").length, []);
+
+  const TERMINAL_LINES = useMemo(() => [
+    { prefix: "❯", text: t("home.terminal.npmRunDev", { defaultValue: "npm run dev" }), tone: "text-blue-400 font-bold", icon: null },
+    { prefix: "⚡", text: t("home.terminal.compiling", { defaultValue: "compiling src..." }), tone: "text-amber-300 font-medium", icon: null },
+    { prefix: "📦", text: `${projects.length} ${t("home.terminal.projectsLoaded", { defaultValue: "projects loaded" })}`, tone: "text-sky-300 font-semibold", icon: null },
+    { prefix: "✨", text: `${SKILLS.length} ${t("home.terminal.skillsIndexed", { defaultValue: "skills indexed" })}`, tone: "text-indigo-300 font-semibold", icon: null },
+    { prefix: "✓", text: t("home.terminal.ready", { defaultValue: "ready on localhost:5173" }), tone: "text-emerald-400 font-bold shadow-[0_0_12px_rgba(52,211,153,0.3)]", icon: null },
+  ], [t]);
 
   const { displayed: termLines, currentLineItem, currentPartial } = useTerminalTyping(TERMINAL_LINES);
 
@@ -385,7 +387,7 @@ function Home() {
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/90 shadow-[0_0_6px_rgba(16,185,129,0.4)]" />
                   </div>
                   <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    bash · live build
+                    bash · {t("home.liveBuild", { defaultValue: "Live build" }).toLowerCase()}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] animate-pulse" />

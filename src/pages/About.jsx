@@ -261,10 +261,10 @@ function About() {
                   </div>
                   <div>
                     <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-100">
-                      Ta'lim Xronologiyasi &amp; Akademik Bosqichlar
+                      {t("about.education.title")}
                     </h2>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      Maktabdan boshlab Magistraturagacha bo'lgan ta'lim va olimpiadalar tarixi
+                      {t("about.education.subtitle")}
                     </p>
                   </div>
                 </div>
@@ -290,7 +290,7 @@ function About() {
                               </h3>
                               {edu.current && (
                                 <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
-                                  Hozirda
+                                  {t("about.education.current")}
                                 </span>
                               )}
                               <span className="inline-flex items-center rounded-lg bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700 dark:bg-blue-500/10 dark:text-blue-300">
@@ -341,10 +341,10 @@ function About() {
                   </div>
                   <div>
                     <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-100">
-                      Texnik Ko'nikmalar &amp; Stack
+                      {t("about.skills.title")}
                     </h2>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      Frontend, Backend, AI/ASR, Robototexnika va DevOps
+                      {t("about.skills.subtitle")}
                     </p>
                   </div>
                 </div>
@@ -387,10 +387,10 @@ function About() {
                   </div>
                   <div>
                     <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-100">
-                      Asosiy Loyihalar va Ilmiy Faoliyat
+                      {t("about.projects.title")}
                     </h2>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      ASR tadqiqotlari, WebRTC oqimlari va amaliy tizimlar
+                      {t("about.projects.subtitle")}
                     </p>
                   </div>
                 </div>
@@ -432,7 +432,7 @@ function About() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 font-semibold text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 transition-colors"
                           >
-                            <span>Zenodo Maqolasi</span>
+                            <span>{t("about.projects.zenodo")}</span>
                             <ExternalLink size={13} />
                           </a>
                         </div>
@@ -465,7 +465,7 @@ function About() {
               <div className="glass-card rounded-3xl p-6 shadow-sm">
                 <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-5">
                   <Globe2 size={18} />
-                  <h3 className="text-xs font-bold uppercase tracking-wider">Tillar / Languages</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider">{t("about.sidebar.languages")}</h3>
                 </div>
 
                 <div className="space-y-3">
@@ -493,7 +493,7 @@ function About() {
               {/* Focus Pillars Card */}
               <div className="glass-card rounded-3xl p-6 shadow-sm">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
-                  Asosiy Mutaxassislik
+                  {t("about.sidebar.specialties")}
                 </h3>
                 <div className="space-y-3 text-xs font-semibold text-slate-700 dark:text-slate-300">
                   <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03]">

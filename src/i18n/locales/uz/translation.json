@@ -62,7 +62,16 @@
       "uxDesc": "Millisekundlarda ishlovchi tezkor API va optimallashtirilgan yechimlar.",
       "delivery": "Ishonchli Yetkazish",
       "deliveryDesc": "G'oyadan xavfsiz production deploygacha mustahkam muhandislik."
-    }
+    },
+    "terminal": {
+      "npmRunDev": "npm run dev",
+      "compiling": "src kompilatsiya qilinmoqda...",
+      "projectsLoaded": "loyihalar yuklandi",
+      "skillsIndexed": "ko'nikmalar indekslandi",
+      "ready": "localhost:5173 da tayyor"
+    },
+    "currentMode": "Joriy rejim",
+    "topStack": "Asosiy stack"
   },
   "about": {
     "title": "Men haqimda",
@@ -74,7 +83,25 @@
     "missionLabel": "Muhandislik falsafasi",
     "mission": "Mening maqsadim — yuqori yuklamalarga bardosh beradigan, toza kodli va biznesga maksimal foyda keltiradigan intellektual tizimlarni barpo etish.",
     "techTitle": "Muhandislik va Arxitektura yo'nalishlarim",
-    "description": "Men haqimda batafsil"
+    "description": "Men haqimda batafsil",
+    "education": {
+      "title": "Ta'lim Xronologiyasi & Akademik Bosqichlar",
+      "subtitle": "Maktabdan boshlab Magistraturagacha bo'lgan ta'lim va olimpiadalar tarixi",
+      "current": "Hozirda"
+    },
+    "skills": {
+      "title": "Texnik Ko'nikmalar & Stack",
+      "subtitle": "Frontend, Backend, AI/ASR, Robototexnika va DevOps"
+    },
+    "projects": {
+      "title": "Asosiy Loyihalar va Ilmiy Faoliyat",
+      "subtitle": "ASR tadqiqotlari, WebRTC oqimlari va amaliy tizimlar",
+      "zenodo": "Zenodo Maqolasi"
+    },
+    "sidebar": {
+      "languages": "Tillar / Languages",
+      "specialties": "Asosiy Mutaxassislik"
+    }
   },
   "resume": {
     "role": "Senior Software Engineer | AI & Systems Researcher",

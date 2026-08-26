@@ -230,11 +230,11 @@ const Resume = () => {
             
             {/* Contact Information */}
             <section className="glass-card rounded-3xl p-6 sm:p-8 shadow-sm">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Aloqa / Contact</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">{t("menu.contact")}</h3>
               <div className="space-y-5">
                 <ContactItem icon={<Globe size={18} />} label="Portfolio" value="muzaffarbek.uz" href="https://muzaffarbek.uz" />
-                <ContactItem icon={<Mail size={18} />} label="Email" value="muzaffarbekmustafayev@gmail.com" href="mailto:muzaffarbekmustafayev@gmail.com" />
-                <ContactItem icon={<Phone size={18} />} label="Telefon" value={socialMedias.phone.path} href={`tel:${socialMedias.phone.path}`} />
+                <ContactItem icon={<Mail size={18} />} label={t("contact.email")} value="muzaffarbekmustafayev@gmail.com" href="mailto:muzaffarbekmustafayev@gmail.com" />
+                <ContactItem icon={<Phone size={18} />} label={t("contact.phone")} value={socialMedias.phone.path} href={`tel:${socialMedias.phone.path}`} />
                 <div className="flex gap-3 pt-4 border-t border-slate-200/50 dark:border-white/[0.06]">
                   <SocialIcon href={socialMedias.linkedin.path} icon={<Linkedin size={20} />} />
                   <SocialIcon href={socialMedias.github.path} icon={<Github size={20} />} />

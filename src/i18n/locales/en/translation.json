@@ -62,7 +62,16 @@
       "uxDesc": "Sub-second API latency and streamlined real-time user experiences.",
       "delivery": "Production Reliability",
       "deliveryDesc": "Automated CI/CD, secure Linux infrastructure, and hardened deployments."
-    }
+    },
+    "terminal": {
+      "npmRunDev": "npm run dev",
+      "compiling": "compiling src...",
+      "projectsLoaded": "projects loaded",
+      "skillsIndexed": "skills indexed",
+      "ready": "ready on localhost:5173"
+    },
+    "currentMode": "Current mode",
+    "topStack": "Top stack"
   },
   "about": {
     "title": "About Me",
@@ -74,7 +83,25 @@
     "missionLabel": "Engineering Philosophy",
     "mission": "To architect intelligent, enterprise-grade software systems that deliver measurable business impact with clean, maintainable code.",
     "techTitle": "Engineering & Architecture Specialties",
-    "description": "Learn more about me"
+    "description": "Learn more about me",
+    "education": {
+      "title": "Educational Timeline & Academic Stages",
+      "subtitle": "History of education and olympiads from school to Master's degree",
+      "current": "Present"
+    },
+    "skills": {
+      "title": "Technical Skills & Stack",
+      "subtitle": "Frontend, Backend, AI/ASR, Robotics and DevOps"
+    },
+    "projects": {
+      "title": "Main Projects and Scientific Activity",
+      "subtitle": "ASR research, WebRTC streams and applied systems",
+      "zenodo": "Zenodo Article"
+    },
+    "sidebar": {
+      "languages": "Languages",
+      "specialties": "Main Specialty"
+    }
   },
   "resume": {
     "role": "Senior Software Engineer | AI & Systems Researcher",
