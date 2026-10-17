@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ArrowRight,
   Calendar,
@@ -35,6 +35,7 @@ const formatDate = (value, language) => {
 };
 
 export default function ArticleCard({ article, t, language, onClick }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const copy = getArticleCopy(article, t, language);
   const badgeTheme =
     categoryThemeMap[article.categoryKey] ||
@@ -73,11 +74,18 @@ export default function ArticleCard({ article, t, language, onClick }) {
     >
       {/* Top Banner & Image Frame */}
       <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+        {!imageLoaded && (
+          <div className="absolute inset-0 z-0 bg-slate-200/80 dark:bg-slate-800/90 animate-pulse" />
+        )}
         <img
           src={article.image}
           alt={copy.title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          onLoad={() => setImageLoaded(true)}
+          className={`h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+            imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { 
   GitBranch, 
   GitCommit, 
@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 const GITHUB_USERNAME = "muzaffarbekmustafayev";
 const CONTRIBUTIONS_API = `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`;
 const REPOS_API = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=6`;
+const CACHE_TTL_MS = 1000 * 60 * 15; // 15 minutes cache
 
 const LEVEL_COLORS_DARK = [
   "bg-slate-900/90 border-slate-800/80", // Level 0 (no activity)
@@ -37,10 +38,10 @@ const FALLBACK_LATEST_COMMITS = [
     repoName: "AboutMeCli",
     repoFullName: "muzaffarbekmustafayev/AboutMeCli",
     repoUrl: "https://github.com/muzaffarbekmustafayev/AboutMeCli",
-    commitMsg: "feat(articles): integrate real scientific publications, DOI links, and ORCID profile",
-    sha: "836fea8",
+    commitMsg: "feat(articles): elevate card/modal responsiveness on mobile, improve prose semantics, and enhance git activity",
+    sha: "22acd59",
     date: new Date().toISOString(),
-    commitUrl: "https://github.com/muzaffarbekmustafayev/AboutMeCli/commit/836fea8",
+    commitUrl: "https://github.com/muzaffarbekmustafayev/AboutMeCli/commit/22acd59",
     branch: "main"
   },
   {
@@ -54,82 +55,138 @@ const FALLBACK_LATEST_COMMITS = [
     branch: "main"
   },
   {
-    repoName: "machine-learning-tsu",
-    repoFullName: "muzaffarbekmustafayev/machine-learning-tsu",
-    repoUrl: "https://github.com/muzaffarbekmustafayev/machine-learning-tsu",
-    commitMsg: "Add weights, models, and update laboratory archives",
-    sha: "aa9e987",
-    date: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-    commitUrl: "https://github.com/muzaffarbekmustafayev/machine-learning-tsu",
+    repoName: "uzbek-speech-recognition-model-comparison",
+    repoFullName: "muzaffarbekmustafayev/uzbek-speech-recognition-model-comparison",
+    repoUrl: "https://github.com/muzaffarbekmustafayev/uzbek-speech-recognition-model-comparison",
+    commitMsg: "Initial benchmark scripts for Whisper and Wav2Vec2 on Uzbek Common Voice",
+    sha: "6b2a8d1",
+    date: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
+    commitUrl: "https://github.com/muzaffarbekmustafayev/uzbek-speech-recognition-model-comparison",
     branch: "main"
   }
 ];
 
+// LocalStorage helpers with TTL
+const getStorageItem = (key) => {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const item = JSON.parse(raw);
+    return item;
+  } catch {
+    return null;
+  }
+};
+
+const setStorageItem = (key, data) => {
+  try {
+    localStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }));
+  } catch {
+    // Ignore storage quota errors
+  }
+};
+
 export default function GitHubActivity() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [selectedYear, setSelectedYear] = useState("last");
-  const [contributionsData, setContributionsData] = useState(null);
-  const [totalCount, setTotalCount] = useState(0);
-  const [recentCommits, setRecentCommits] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // Pre-hydrate state immediately from cache if available (0ms render time)
+  const [contributionsData, setContributionsData] = useState(() => {
+    const cached = getStorageItem(`gh_contrib_v2_last`);
+    return cached?.data?.contributions || null;
+  });
+
+  const [totalCount, setTotalCount] = useState(() => {
+    const cached = getStorageItem(`gh_contrib_v2_last`);
+    return cached?.data?.total || 0;
+  });
+
+  const [recentCommits, setRecentCommits] = useState(() => {
+    const cached = getStorageItem(`gh_commits_v2`);
+    if (cached?.data && Array.isArray(cached.data) && cached.data.length >= 3) {
+      return cached.data;
+    }
+    return FALLBACK_LATEST_COMMITS;
+  });
+
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastSyncedTime, setLastSyncedTime] = useState(() => {
+    const cached = getStorageItem(`gh_contrib_v2_last`);
+    return cached?.timestamp || null;
+  });
   const [tooltip, setTooltip] = useState(null);
 
-  // Fetch Contributions
-  const fetchContributions = async (year = "last") => {
-    try {
-      const cacheKey = `gh_contrib_${year}`;
-      const cached = sessionStorage.getItem(cacheKey);
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        setContributionsData(parsed.contributions);
-        setTotalCount(parsed.total || 0);
-        return;
-      }
+  // Fetch Contributions with timeout and graceful fallback
+  const fetchContributions = useCallback(async (year = "last", force = false) => {
+    const cacheKey = `gh_contrib_v2_${year}`;
+    const cached = getStorageItem(cacheKey);
 
-      const res = await fetch(`${CONTRIBUTIONS_API}?y=${year}`);
-      if (!res.ok) throw new Error("Failed to fetch contributions");
+    if (!force && cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+      setContributionsData(cached.data.contributions);
+      setTotalCount(cached.data.total);
+      return cached.data;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    try {
+      const res = await fetch(`${CONTRIBUTIONS_API}?y=${year}`, {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+
+      if (!res.ok) throw new Error("Contributions API response not OK");
       const data = await res.json();
       
       const contribs = data.contributions || [];
       const total = typeof data.total === "number" ? data.total : data.total?.[year] || contribs.reduce((acc, curr) => acc + curr.count, 0);
-      
+
       setContributionsData(contribs);
       setTotalCount(total);
-      sessionStorage.setItem(cacheKey, JSON.stringify({ contributions: contribs, total }));
+      setLastSyncedTime(Date.now());
+      setStorageItem(cacheKey, { contributions: contribs, total });
+      return { contributions: contribs, total };
     } catch (err) {
-      console.warn("Contributions fetch error:", err);
-    }
-  };
-
-  // Fetch Exact Latest 3 Commits Across User's Top Active Repositories
-  const fetchLatestCommits = async () => {
-    const cacheKey = "gh_latest_3_commits";
-    const cached = sessionStorage.getItem(cacheKey);
-    if (cached) {
-      try {
-        const parsed = JSON.parse(cached);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setRecentCommits(parsed);
-          return;
-        }
-      } catch {
-        // Continue to fetch
+      clearTimeout(timeoutId);
+      console.warn("Contributions background sync note:", err.message);
+      // Retain existing cache if available
+      if (cached?.data) {
+        setContributionsData(cached.data.contributions);
+        setTotalCount(cached.data.total);
       }
     }
+  }, []);
+
+  // Fetch Latest 3 Commits Across User's Top Repositories
+  const fetchLatestCommits = useCallback(async (force = false) => {
+    const cacheKey = "gh_commits_v2";
+    const cached = getStorageItem(cacheKey);
+
+    if (!force && cached && Date.now() - cached.timestamp < CACHE_TTL_MS && cached.data.length >= 3) {
+      setRecentCommits(cached.data);
+      return cached.data;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
 
     try {
       const reposRes = await fetch(REPOS_API, {
-        headers: { Accept: "application/vnd.github.v3+json" }
+        headers: { Accept: "application/vnd.github.v3+json" },
+        signal: controller.signal
       });
-      if (!reposRes.ok) throw new Error("Failed to fetch repos");
+      clearTimeout(timeoutId);
+
+      if (!reposRes.ok) throw new Error("Repos API not OK");
       const repos = await reposRes.json();
 
       if (!Array.isArray(repos) || repos.length === 0) {
         setRecentCommits(FALLBACK_LATEST_COMMITS);
-        return;
+        return FALLBACK_LATEST_COMMITS;
       }
 
-      // Take the top 3 most recently pushed repositories
+      // Query the top 3 most recently pushed repositories in parallel
       const topRepos = repos.slice(0, 3);
       const commitPromises = topRepos.map(async (repo) => {
         try {
@@ -180,19 +237,41 @@ export default function GitHubActivity() {
       const valid = fetched.filter(Boolean);
       const finalCommits = valid.length >= 3 ? valid.slice(0, 3) : FALLBACK_LATEST_COMMITS;
       setRecentCommits(finalCommits);
-      sessionStorage.setItem(cacheKey, JSON.stringify(finalCommits));
+      setStorageItem(cacheKey, finalCommits);
+      return finalCommits;
     } catch (err) {
-      console.warn("Commits fetch error:", err);
-      setRecentCommits(FALLBACK_LATEST_COMMITS);
+      clearTimeout(timeoutId);
+      console.warn("Commits background sync note:", err.message);
+      if (cached?.data && cached.data.length >= 3) {
+        setRecentCommits(cached.data);
+      } else {
+        setRecentCommits(FALLBACK_LATEST_COMMITS);
+      }
     }
-  };
+  }, []);
 
+  // Background sync on mount or year change
   useEffect(() => {
-    setLoading(true);
-    Promise.all([fetchContributions(selectedYear), fetchLatestCommits()]).finally(() => {
-      setLoading(false);
+    setIsSyncing(true);
+    Promise.allSettled([
+      fetchContributions(selectedYear, false),
+      fetchLatestCommits(false)
+    ]).finally(() => {
+      setIsSyncing(false);
     });
-  }, [selectedYear]);
+  }, [selectedYear, fetchContributions, fetchLatestCommits]);
+
+  // Manual force refresh
+  const handleManualRefresh = () => {
+    if (isSyncing) return;
+    setIsSyncing(true);
+    Promise.allSettled([
+      fetchContributions(selectedYear, true),
+      fetchLatestCommits(true)
+    ]).finally(() => {
+      setIsSyncing(false);
+    });
+  };
 
   // Group contributions into 7-day columns (weeks)
   const { weeks, monthLabels } = useMemo(() => {
@@ -267,8 +346,8 @@ export default function GitHubActivity() {
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-blue-600 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300">
-              <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-              {t("github.liveSync", { defaultValue: "Live GitHub Sync" })}
+              <span className={`h-2 w-2 rounded-full ${isSyncing ? "bg-amber-400 animate-spin" : "bg-sky-400 animate-pulse"} shadow-[0_0_8px_rgba(56,189,248,0.8)]`} />
+              <span>{isSyncing ? t("github.syncing", { defaultValue: "Sinxronlanmoqda..." }) : t("github.liveSync", { defaultValue: "Live GitHub Sync" })}</span>
             </div>
             
             <h2 className="mt-4 font-display text-3xl font-extrabold text-slate-900 dark:text-slate-100 sm:text-4xl">
@@ -281,11 +360,22 @@ export default function GitHubActivity() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={handleManualRefresh}
+              disabled={isSyncing}
+              className="inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/80 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-sm backdrop-blur-md transition-all hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:bg-slate-800 active:scale-95 disabled:opacity-50"
+              title="Yangilash"
+            >
+              <RefreshCw size={14} className={isSyncing ? "animate-spin text-blue-500" : ""} />
+              <span>{isSyncing ? t("github.syncing", { defaultValue: "Yuklanmoqda..." }) : t("github.refresh", { defaultValue: "Yangilash" })}</span>
+            </button>
+
             <a
               href={`https://github.com/${GITHUB_USERNAME}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+              className="inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 active:scale-95"
             >
               <Github size={16} />
               <span>{t("github.profile", { defaultValue: "GitHub Profil" })}</span>
@@ -305,7 +395,11 @@ export default function GitHubActivity() {
               </div>
               <div>
                 <span className="font-display text-lg font-bold text-slate-900 dark:text-slate-100">
-                  {totalCount} {t("github.contributions", { defaultValue: "ta contribution" })}
+                  {totalCount > 0 ? (
+                    `${totalCount} ${t("github.contributions", { defaultValue: "ta contribution" })}`
+                  ) : (
+                    <span className="inline-block h-5 w-32 rounded bg-slate-200 dark:bg-slate-800 animate-pulse align-middle" />
+                  )}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 block">
                   {selectedYear === "last" ? t("github.lastYear", { defaultValue: "Oxirgi 1 yilda" }) : t("github.inYear", { year: selectedYear, defaultValue: `${selectedYear}-yilda` })}
@@ -314,12 +408,12 @@ export default function GitHubActivity() {
             </div>
 
             {/* Year Selector Buttons */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
               {["last", "2026", "2025", "2024", "2023"].map((y) => (
                 <button
                   key={y}
                   onClick={() => setSelectedYear(y)}
-                  className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all ${
+                  className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all shrink-0 active:scale-95 ${
                     selectedYear === y
                       ? "bg-blue-600 text-white shadow-md shadow-blue-600/20 dark:bg-blue-500"
                       : "border border-slate-200/80 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300 dark:hover:bg-white/[0.08]"
@@ -335,67 +429,96 @@ export default function GitHubActivity() {
           <div className="overflow-x-auto pb-4 scrollbar-thin">
             <div className="min-w-[760px]">
               
-              {/* Months Header Labels */}
-              <div className="flex text-[11px] font-mono text-slate-400 mb-2 pl-8 relative h-4">
-                {monthLabels.map((m, idx) => (
-                  <span
-                    key={idx}
-                    className="absolute"
-                    style={{ left: `${m.weekIdx * 14.5 + 32}px` }}
-                  >
-                    {m.name}
-                  </span>
-                ))}
-              </div>
+              {/* If data is ready, render the interactive calendar */}
+              {weeks.length > 0 ? (
+                <>
+                  {/* Months Header Labels */}
+                  <div className="flex text-[11px] font-mono text-slate-400 mb-2 pl-8 relative h-4">
+                    {monthLabels.map((m, idx) => (
+                      <span
+                        key={idx}
+                        className="absolute"
+                        style={{ left: `${m.weekIdx * 14.5 + 32}px` }}
+                      >
+                        {m.name}
+                      </span>
+                    ))}
+                  </div>
 
-              {/* Grid: 7 Rows (Sun -> Sat) with Mon/Wed/Fri labels on left */}
-              <div className="flex gap-2">
-                {/* Weekday labels */}
-                <div className="flex flex-col justify-between text-[10px] font-mono text-slate-400 py-1 pr-1 select-none h-[106px]">
-                  <span className="opacity-0">Sun</span>
-                  <span>Mon</span>
-                  <span className="opacity-0">Tue</span>
-                  <span>Wed</span>
-                  <span className="opacity-0">Thu</span>
-                  <span>Fri</span>
-                  <span className="opacity-0">Sat</span>
-                </div>
-
-                {/* Grid Columns */}
-                <div className="flex gap-[3.5px]">
-                  {weeks.map((week, wIdx) => (
-                    <div key={wIdx} className="flex flex-col gap-[3.5px]">
-                      {week.map((day, dIdx) => {
-                        if (!day) {
-                          return (
-                            <div
-                              key={dIdx}
-                              className="h-3 w-3 rounded-[2.5px] bg-transparent"
-                            />
-                          );
-                        }
-
-                        const level = Math.min(day.level || 0, 4);
-                        return (
-                          <div
-                            key={day.date || dIdx}
-                            onMouseEnter={(e) => {
-                              const rect = e.currentTarget.getBoundingClientRect();
-                              setTooltip({
-                                text: `${day.count} ${t("github.contributions", { defaultValue: "contributions" })} · ${day.date}`,
-                                x: rect.left + rect.width / 2,
-                                y: rect.top - 32
-                              });
-                            }}
-                            onMouseLeave={() => setTooltip(null)}
-                            className={`h-3 w-3 rounded-[2.5px] border transition-all duration-150 hover:scale-125 cursor-pointer dark:${LEVEL_COLORS_DARK[level]} ${LEVEL_COLORS_LIGHT[level]}`}
-                          />
-                        );
-                      })}
+                  {/* Grid: 7 Rows (Sun -> Sat) with Mon/Wed/Fri labels on left */}
+                  <div className="flex gap-2">
+                    {/* Weekday labels */}
+                    <div className="flex flex-col justify-between text-[10px] font-mono text-slate-400 py-1 pr-1 select-none h-[106px]">
+                      <span className="opacity-0">Sun</span>
+                      <span>Mon</span>
+                      <span className="opacity-0">Tue</span>
+                      <span>Wed</span>
+                      <span className="opacity-0">Thu</span>
+                      <span>Fri</span>
+                      <span className="opacity-0">Sat</span>
                     </div>
-                  ))}
+
+                    {/* Grid Columns */}
+                    <div className="flex gap-[3.5px]">
+                      {weeks.map((week, wIdx) => (
+                        <div key={wIdx} className="flex flex-col gap-[3.5px]">
+                          {week.map((day, dIdx) => {
+                            if (!day) {
+                              return (
+                                <div
+                                  key={dIdx}
+                                  className="h-3 w-3 rounded-[2.5px] bg-transparent"
+                                />
+                              );
+                            }
+
+                            const level = Math.min(day.level || 0, 4);
+                            return (
+                              <div
+                                key={day.date || dIdx}
+                                onMouseEnter={(e) => {
+                                  const rect = e.currentTarget.getBoundingClientRect();
+                                  setTooltip({
+                                    text: `${day.count} ${t("github.contributions", { defaultValue: "contributions" })} · ${day.date}`,
+                                    x: rect.left + rect.width / 2,
+                                    y: rect.top - 32
+                                  });
+                                }}
+                                onMouseLeave={() => setTooltip(null)}
+                                className={`h-3 w-3 rounded-[2.5px] border transition-all duration-150 hover:scale-125 cursor-pointer dark:${LEVEL_COLORS_DARK[level]} ${LEVEL_COLORS_LIGHT[level]}`}
+                              />
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                /* Ultra-realistic pulsing skeleton matching exact calendar dimensions */
+                <div className="animate-pulse space-y-3">
+                  <div className="h-4 w-64 rounded bg-slate-200/70 dark:bg-slate-800/70 ml-8" />
+                  <div className="flex gap-2">
+                    <div className="flex flex-col justify-between text-[10px] font-mono text-slate-300 dark:text-slate-700 py-1 pr-1 select-none h-[106px]">
+                      <span>Mon</span>
+                      <span>Wed</span>
+                      <span>Fri</span>
+                    </div>
+                    <div className="flex gap-[3.5px]">
+                      {Array.from({ length: 52 }).map((_, cIdx) => (
+                        <div key={cIdx} className="flex flex-col gap-[3.5px]">
+                          {Array.from({ length: 7 }).map((_, rIdx) => (
+                            <div
+                              key={rIdx}
+                              className="h-3 w-3 rounded-[2.5px] bg-slate-200/80 dark:bg-slate-800/80"
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Footer: Legend & Info */}
               <div className="mt-5 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-200/50 dark:border-white/[0.05]">
@@ -443,8 +566,8 @@ export default function GitHubActivity() {
 
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1.5 bg-blue-50 dark:bg-blue-950/40 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-900/40">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
-                Live GitHub REST API
+                <span className={`h-1.5 w-1.5 rounded-full ${isSyncing ? "bg-amber-400" : "bg-emerald-500"} animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]`} />
+                {isSyncing ? "Updating..." : "Live GitHub Sync"}
               </span>
             </div>
           </div>

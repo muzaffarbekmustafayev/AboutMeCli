@@ -15,6 +15,7 @@ import ImageModal from "../components/ImageModal";
 import SEO from "../components/SEO";
 
 const CERTIFICATES_MANIFEST = "/certificates/certificates.json";
+const CERTIFICATES_CACHE_KEY = "certificates_manifest_cache_v2";
 const IMAGE_EXTENSIONS = /\.(png|jpe?g|webp|avif|svg)$/i;
 
 const toPublicCertificatePath = (value) => {
@@ -62,18 +63,66 @@ const normalizeCertificate = (item, index) => {
   };
 };
 
+const getCachedCertificates = () => {
+  try {
+    const raw = sessionStorage.getItem(CERTIFICATES_CACHE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+};
+
+const CertificateImage = ({ src, alt, onSelect }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 shadow-inner">
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-slate-200/80 dark:bg-slate-800 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        className={`h-full w-full object-cover transition-all duration-500 ${
+          isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 transition-opacity group-hover:opacity-100">
+        <button
+          type="button"
+          onClick={onSelect}
+          className="rounded-full bg-white/25 p-3.5 text-white backdrop-blur-md hover:bg-white/40 transition-transform active:scale-90"
+          aria-label="View full image"
+        >
+          <Eye size={22} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
 function Certificates() {
   const { t } = useTranslation();
-  const [certificates, setCertificates] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
+  // Instant load from cache if previously loaded
+  const [certificates, setCertificates] = useState(() => getCachedCertificates() || []);
+  const [loading, setLoading] = useState(() => !getCachedCertificates());
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const fetchCertificates = useCallback(async () => {
-    setLoading(true);
+  const fetchCertificates = useCallback(async (force = false) => {
+    const cached = getCachedCertificates();
+    if (!cached || force) {
+      setLoading(true);
+    }
     setError("");
+
     try {
-      const response = await fetch(CERTIFICATES_MANIFEST, { cache: "no-store" });
+      const response = await fetch(CERTIFICATES_MANIFEST);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const raw = await response.json();
       const list = Array.isArray(raw) ? raw : raw.certificates;
@@ -82,17 +131,25 @@ function Certificates() {
         .map(normalizeCertificate)
         .filter(Boolean)
         .sort((a, b) => b.timestamp - a.timestamp || a.title.localeCompare(b.title));
+      
       setCertificates(normalized);
+      try {
+        sessionStorage.setItem(CERTIFICATES_CACHE_KEY, JSON.stringify(normalized));
+      } catch {
+        // Ignore storage quota
+      }
     } catch {
-      setCertificates([]);
-      setError(t("certificates.error"));
+      if (!cached) {
+        setCertificates([]);
+        setError(t("certificates.error"));
+      }
     } finally {
       setLoading(false);
     }
   }, [t]);
 
   useEffect(() => {
-    fetchCertificates();
+    fetchCertificates(false);
   }, [fetchCertificates]);
 
   const totalIssuers = useMemo(() => new Set(certificates.map(c => c.issuer).filter(Boolean)).size, [certificates]);
@@ -139,23 +196,20 @@ function Certificates() {
 
           {/* Grid */}
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {loading ? (
+            {loading && certificates.length === 0 ? (
               Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
-            ) : error ? (
-              <ErrorState title={error} onRetry={fetchCertificates} />
+            ) : error && certificates.length === 0 ? (
+              <ErrorState title={error} onRetry={() => fetchCertificates(true)} />
             ) : certificates.length === 0 ? (
-              <EmptyState title={t("certificates.empty")} onRetry={fetchCertificates} />
+              <EmptyState title={t("certificates.empty")} onRetry={() => fetchCertificates(true)} />
             ) : (
               certificates.map((cert) => (
                 <article key={cert.id} className="group relative overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-4 transition-all hover:border-blue-200 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900/40">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800 shadow-inner">
-                    <img src={cert.image} alt={cert.title} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 transition-opacity group-hover:opacity-100">
-                      <button onClick={() => setSelectedImage(cert)} className="rounded-full bg-white/20 p-4 text-white backdrop-blur-md hover:bg-white/30 transition-colors">
-                        <Eye size={24} />
-                      </button>
-                    </div>
-                  </div>
+                  <CertificateImage
+                    src={cert.image}
+                    alt={cert.title}
+                    onSelect={() => setSelectedImage(cert)}
+                  />
 
                   <div className="p-6">
                     <div className="flex items-start justify-between gap-3 mb-4">
@@ -172,13 +226,13 @@ function Certificates() {
                     <div className="space-y-3 text-sm text-slate-500 dark:text-slate-400">
                       {cert.issuer && (
                         <div className="flex items-center gap-3">
-                          <Building2 size={16} className="text-slate-400" />
+                          <Building2 size={16} className="text-slate-400 shrink-0" />
                           <span className="truncate font-medium">{cert.issuer}</span>
                         </div>
                       )}
                       {cert.date && (
                         <div className="flex items-center gap-3">
-                          <CalendarDays size={16} className="text-slate-400" />
+                          <CalendarDays size={16} className="text-slate-400 shrink-0" />
                           <span className="font-medium">{cert.date}</span>
                         </div>
                       )}
@@ -189,7 +243,7 @@ function Certificates() {
                         href={cert.link || cert.image} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-slate-100 bg-slate-50 py-3 text-xs font-bold uppercase tracking-widest text-slate-600 hover:bg-blue-50 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:bg-blue-900/30 dark:hover:text-blue-400 transition-colors shadow-sm"
+                        className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-slate-100 bg-slate-50 py-3 text-xs font-bold uppercase tracking-widest text-slate-600 hover:bg-blue-50 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:bg-blue-900/30 dark:hover:text-blue-400 transition-colors shadow-sm active:scale-95"
                       >
                         {cert.link ? "Verify" : "View"}
                         <ExternalLink size={14} />

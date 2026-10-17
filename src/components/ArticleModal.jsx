@@ -240,6 +240,12 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
     }
   };
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [article?.id]);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 lg:p-8"
@@ -324,7 +330,19 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
         >
           {/* Header Hero Media */}
           <div className="relative mb-6 h-44 sm:h-64 lg:h-80 w-full overflow-hidden rounded-2xl bg-slate-100 shadow-md dark:bg-slate-800">
-            <img src={article.image} alt={copy.title} className="h-full w-full object-cover" />
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-slate-200/80 dark:bg-slate-800/90 animate-pulse" />
+            )}
+            <img
+              src={article.image}
+              alt={copy.title}
+              onLoad={() => setImageLoaded(true)}
+              className={`h-full w-full object-cover transition-all duration-500 ${
+                imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
             
             <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex flex-wrap items-center justify-between gap-2">

@@ -20,6 +20,35 @@ import LangToggle from "./LangToggle";
 import { menuItems } from "../data/menuItems";
 import { socialMedias } from "../data/socialMedias";
 
+const prefetchRoute = (path) => {
+  try {
+    switch (path) {
+      case "/about":
+        import("../pages/About");
+        break;
+      case "/portfolio":
+        import("../pages/Portfolio");
+        break;
+      case "/skills":
+        import("../pages/Skills");
+        break;
+      case "/certificates":
+        import("../pages/Certificates");
+        break;
+      case "/articles":
+        import("../pages/Articles");
+        break;
+      case "/contact":
+        import("../pages/Contact");
+        break;
+      default:
+        break;
+    }
+  } catch {
+    // Ignore prefetch error
+  }
+};
+
 export default function Navbar() {
   const { t } = useTranslation();
   const location = useLocation();
@@ -41,6 +70,16 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  // Idle prefetching for top pages so navigation feels instantaneous
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      prefetchRoute("/articles");
+      prefetchRoute("/portfolio");
+      prefetchRoute("/about");
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const isActive = (path) => {
     if (path === "/" && location.pathname !== "/") return false;
@@ -103,6 +142,8 @@ export default function Navbar() {
                 <Link
                   key={key}
                   to={path}
+                  onMouseEnter={() => prefetchRoute(path)}
+                  onFocus={() => prefetchRoute(path)}
                   className={`px-3.5 py-1.5 rounded-xl text-[13px] font-medium transition-all duration-150 ${
                     active
                       ? "bg-blue-600/10 text-blue-600 font-semibold dark:bg-blue-500/15 dark:text-blue-400"
@@ -196,6 +237,8 @@ const MobileMenu = ({ open, close, isActive, getMenuIcon, t }) => (
               key={key}
               to={path}
               onClick={close}
+              onTouchStart={() => prefetchRoute(path)}
+              onMouseEnter={() => prefetchRoute(path)}
               tabIndex={open ? 0 : -1}
               className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 ${
                 active
