@@ -184,7 +184,7 @@ export default function Articles() {
           </div>
 
           {/* Category Tabs */}
-          <div className="mb-6 flex flex-wrap items-center gap-2">
+          <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:flex-wrap">
             {allCategories.map((categoryKey) => {
               const active = selectedCategory === categoryKey;
               const count =
@@ -197,7 +197,7 @@ export default function Articles() {
                   type="button"
                   key={categoryKey}
                   onClick={() => setSelectedCategory(categoryKey)}
-                  className={`inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-xs font-bold transition-all duration-200 active:scale-95 ${
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-2xl px-4 py-2.5 text-xs font-bold transition-all duration-200 active:scale-95 ${
                     active
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25"
                       : "control-surface text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
@@ -218,7 +218,7 @@ export default function Articles() {
             })}
           </div>
 
-          <div className="mb-10 flex flex-wrap gap-2" aria-label={t("articles.tagFilter")}>
+          <div className="mb-10 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:flex-wrap" aria-label={t("articles.tagFilter")}>
             {allTags.slice(0, 9).map((tag) => {
               const active = selectedTag === tag;
 
@@ -227,7 +227,7 @@ export default function Articles() {
                   type="button"
                   key={tag}
                   onClick={() => setSelectedTag(tag)}
-                  className={`rounded-2xl px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
+                  className={`shrink-0 rounded-2xl px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
                     active
                       ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
                       : "control-surface text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-300"
@@ -253,7 +253,7 @@ export default function Articles() {
             </div>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
             {filteredArticles.map((article) => (
               <ArticleCard
                 key={article.id}

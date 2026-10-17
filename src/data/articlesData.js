@@ -40,32 +40,35 @@ export const articles = [
       "This scientific paper investigates the digitization mechanisms of regional tourism potential and the creation of an integrated digital ecosystem in the Navoiy region of Uzbekistan, focusing on the Nurota, Qiziltepa, and Xatirchi districts.",
     titles: {
       uz: "Mintaqaviy turizm salohiyatini raqamlashtirish mexanizmlari: Navoiy viloyati tarixiy ob'ektlarini raqamli ekotizimga integratsiyalash",
-      en: "DIGITIZATION MECHANISMS OF REGIONAL TOURISM POTENTIAL: INTEGRATION OF HISTORICAL OBJECTS IN NAVOIY REGION AND THE DIGITAL ECOSYSTEM",
+      en: "Digitization Mechanisms of Regional Tourism Potential: Integration of Historical Objects in Navoiy Region into the Digital Ecosystem",
       ru: "Механизмы цифровизации регионального туристического потенциала: интеграция исторических объектов Навоийской области в цифровую экосистему",
     },
     descriptions: {
-      uz: "Navoiy viloyatining Nurota, Qiziltepa va Xatirchi tumanlaridagi 42 ta tarixiy ob'ektni raqamlashtirish, WCAG 2.1 inklyuzivlik tamoyillari, MapLibre GL JS geonavigatsiyasi va Schema.org semantik ekotizimi.",
-      en: "Investigating digitization mechanisms of regional tourism potential, WCAG 2.1 accessibility, MapLibre GL JS geonavigation, and Schema.org metadata across 42 historical attractions in Navoiy region.",
-      ru: "Исследование механизмов цифровизации регионального турпотенциала, доступности по WCAG 2.1, геонавигации на MapLibre GL JS и семантической разметки Schema.org на примере 42 объектов Навоийской области.",
+      uz: "Navoiy viloyatining Nurota, Qiziltepa va Xatirchi tumanlaridagi 42 ta tarixiy ob'ektni raqamlashtirish, WCAG 2.1 inklyuzivlik mezonlari, MapLibre GL JS geonavigatsiyasi va Schema.org semantik ekotizimi tahlili.",
+      en: "An empirical investigation into regional tourism digitization, barrier-free accessibility guidelines (WCAG 2.1), MapLibre GL JS geonavigation, and semantic schema architectures across 42 historical monuments.",
+      ru: "Комплексное исследование механизмов цифровизации регионального турпотенциала, стандартов безбарьерной среды WCAG 2.1, геокартографии MapLibre GL JS и семантической разметки для 42 объектов наследия.",
     },
     category: "Raqamlashtirish & Turizm",
     categoryKey: "digitization",
+    badgeLabel: "Peer-Reviewed Journal",
     readTimeMinutes: 7,
     date: "2026-02-20",
     authors: "Asliddin Sayidqulov, Muzaffar Mustafayev",
     authorsList: [
       {
         name: "Asliddin Sayidqulov",
+        role: "Muallif / Tadqiqotchi",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
       },
       {
         name: "Muzaffar Mustafayev",
+        role: "Muallif / Dasturiy Arxitektor",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
         orcid: "0009-0000-8225-5370",
         orcidUrl: "https://orcid.org/0009-0000-8225-5370",
       },
     ],
-    affiliation: "Samarqand davlat universiteti (Sharof Rashidov nomidagi)",
+    affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
     affiliationEn: "Samarkand State University named after Sharof Rashidov",
     journal: "Science and Innovation (International Scientific Journal, ISSN: 2181-3337)",
     doi: "10.5281/zenodo.22027878",
@@ -99,36 +102,36 @@ export const articles = [
       uz: [
         {
           type: "heading",
-          text: "Annotatsiya va Tadqiqot Dolzarbligi",
+          text: "Annotatsiya va Muammoning Qo'yilishi",
         },
         {
           type: "paragraph",
-          text: "Ushbu ilmiy maqolada O'zbekistonning Navoiy viloyatidagi Nurota, Qiziltepa va Xatirchi tumanlari misolida mintaqaviy turizm salohiyatini raqamlashtirish mexanizmlari va integratsiyalashgan raqamli ekotizim yaratish masalalari chuqur tahlil qilingan. Jismoniy, ko'rish, eshitish va kognitiv cheklovlarga ega bo'lgan shaxslar, keksalar hamda oilaviy sayyohlar uchun to'siqsiz turizm (accessible tourism) muhitini yaratish bo'yicha WCAG 2.1 va POUR tamoyillariga asoslangan raqamli yechimlar ishlab chiqilgan.",
+          text: "Mazkur ilmiy tadqiqot Navoiy viloyatining Nurota, Qiziltepa va Xatirchi tumanlari misolida mintaqaviy turizm salohiyatini kompleks raqamlashtirish hamda yaxlit raqamli ekotizimni shakllantirish mexanizmlariga bag'ishlangan. Tadqiqotning asosiy maqsadi — harakatlanish imkoniyati cheklangan, ko'rish, eshitish va kognitiv sensor xususiyatlariga ega bo'lgan fuqarolar, keksalar va oilaviy sayyohlar uchun to'siqlardan xoli (accessible tourism) jozibador muhit yaratishdir.",
         },
         {
           type: "subheading",
-          text: "Arxitektura va WCAG 2.1 POUR Tamoyillari",
+          text: "WCAG 2.1 Standartlari va POUR Tamoyillari Asosidagi Arxitektura",
         },
         {
           type: "paragraph",
-          text: "Raqamli platformaning dasturiy ta'minot arxitekturasi barcha toifadagi foydalanuvchilar uchun qulaylikni ta'minlashga qaratilgan:",
+          text: "Platformaning dasturiy ta'minoti xalqaro veb-qulaylik qo'llanmasi (WCAG 2.1) mezonlariga qat'iy javob beruvchi to'rtta fundamental tamoyil asosida loyihalashtirildi:",
         },
         {
           type: "list",
           items: [
-            "Perceivable (Idrok etiluvchi): Har bir media va tasvir uchun aniq muqobil matnlar (alt tags), ovozli tavsiflar hamda yuqori kontrastli interfeys rejimlari.",
-            "Operable (Boshqariluvchi): Klaviaturadan to'liq boshqarish imkoniyati, qulay sensorli teginish zonalari (minimum 48x48px) va ekranni o'quvchi vositalar (Screen Readers) bilan to'liq uyg'unlik.",
-            "Understandable (Tushunarli): Intuitiv navigatsiya, barqaror vizual arxitektura va soddalashtirilgan kognitiv tushunish qatlamlari.",
-            "Robust (Barqaror): Har qanday qurilma, brauzer va yordamchi texnologiyalar (assistive technologies) bilan uzluksiz integratsiya.",
+            "Perceivable (Idrok etiluvchanlik): Foydalanuvchilar axborotni turli sensor kanallar orqali qabul qila olishlari uchun har bir grafik elementga semantik matnli tavsif (alt tag), yuqori kontrastli rejim va audio giydlar joriy etildi.",
+            "Operable (Boshqariluvchanlik): Sensorli ekranlar bilan bir qatorda klaviaturadan to'liq boshqaruv, kamida 48x48 piksel o'lchamdagi qulay teginish zonalari va ekran o'qish dasturlari (Screen Readers) bilan muammosiz ishlash kafolatlandi.",
+            "Understandable (Tushunarlilik): Sayyohning kognitiv yuklamasini minimumga tushiruvchi intuitiv interfeys va soddalashtirilgan ko'p tilli axborot iyerarxiyasi qurildi.",
+            "Robust (Barqarorlik): Mobil brauzerlardan tortib maxsus yordamchi texnologiyalargacha (assistive technologies) barcha qurilmalarda bir xil ishonchli ishlash ta'minlandi.",
           ],
         },
         {
           type: "subheading",
-          text: "Geonavigatsiya va Semantik Metadata",
+          text: "MapLibre GL JS Geonavigatsiyasi va Semantik JSON-LD",
         },
         {
           type: "paragraph",
-          text: "Tizimda MapLibre GL JS yordamida interaktiv vektorli xaritalash joriy etildi. Bu foydalanuvchining joylashuvini real vaqtda aniqlab, 42 ta tarixiy-madaniy ob'ektning kirish yo'llari, panduslar holati va sanitariya-gigiyena punktlarining mosligini interaktiv xaritada ko'rsatadi.",
+          text: "Tizimga MapLibre GL JS ochiq manbali kutubxonasi negizida yuqori tezlikda ishlovchi vektorli xaritalash integratsiya qilindi. Bu orqali 42 ta madaniy meros ob'ektining relyef xususiyatlari, qiyalik burchaklari, panduslar mavjudligi va maxsus infratuzilma holati real vaqtda sayyoh ekranida jonli namoyon bo'ladi.",
         },
         {
           type: "code",
@@ -144,7 +147,6 @@ export const articles = [
     "longitude": 65.6886
   },
   "isAccessibleForFree": true,
-  "publicAccess": true,
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
@@ -160,42 +162,42 @@ export const articles = [
         },
         {
           type: "paragraph",
-          text: "42 ta tarixiy ob'ektni xaritalashtirish natijasida raqamli ekotizim nafaqat inklyuzivlikni oshirdi, balki mintaqaviy iqtisodiy diversifikatsiyaga, mahalliy hamjamiyatlarni jalb qilishga hamda reabilitatsion turizmning fazoviy geografiyasini kengaytirishga xizmat qilishi isbotlandi.",
+          text: "42 ta tarixiy-madaniy meros ob'ektining fazoviy xaritalanishi natijasida hududda reabilitatsion va inklyuziv sayyohlik geografiyasi sezilarli darajada kengaydi. Bu esa mintaqaviy iqtisodiyotni diversifikatsiya qilish, mahalliy hunarmandlar va xizmat ko'rsatish sohalariga yangi sayyohlar oqimini jalb etish imkonini berdi.",
         },
         {
           type: "quote",
-          text: "Raqamli ekotizim madaniy meros ob'ektlariga teng huquqli kirish imkonini ta'minlab, mintaqaviy turizm salohiyatini yangi bosqichga olib chiqadi.",
+          text: "Raqamlashtirish — tarixiy merosni asrab-avaylash barobarida har bir inson uchun to'siqsiz madaniy muhit yaratishning eng samarali vositasidir.",
         },
       ],
       en: [
         {
           type: "heading",
-          text: "Abstract & Research Context",
+          text: "Abstract & Problem Statement",
         },
         {
           type: "paragraph",
-          text: "This scientific paper investigates the digitization mechanisms of regional tourism potential and the creation of an integrated digital ecosystem in the Navoiy region of Uzbekistan, focusing on the Nurota, Qiziltepa, and Xatirchi districts. To ensure accessible, barrier-free tourism for individuals with physical, visual, auditory, and cognitive impairments, seniors, and family travelers, digital solutions based on international Web Content Accessibility Guidelines (WCAG 2.1) and POUR principles were developed.",
+          text: "This scientific paper investigates the systematic digitization mechanisms of regional tourism potential and the deployment of an integrated digital ecosystem across the Nurota, Qiziltepa, and Xatirchi districts of the Navoiy region. The central objective is to eliminate environmental, physical, and informational barriers for individuals with motor, visual, auditory, and cognitive impairments, fostering fully inclusive regional tourism.",
         },
         {
           type: "subheading",
-          text: "Software Architecture & POUR Accessibility",
+          text: "Software Architecture & WCAG 2.1 POUR Compliance",
         },
         {
           type: "list",
           items: [
-            "Perceivable: Semantic markup with rich alt tags, multi-sensory feedback, and high contrast visibility options.",
-            "Operable: Keyboard-accessible UI controls with minimum 48x48px touch targets and full screen reader compatibility.",
-            "Understandable: Clear visual hierarchy, multilingual cognitive clarity, and error recovery guidance.",
-            "Robust: Strict HTML5/ARIA semantic compliance ensuring reliable support across assistive technologies.",
+            "Perceivable: Semantic markup with rich alt tags, high contrast visibility options, and multi-sensory assistive telemetry.",
+            "Operable: Total keyboard operability, large 48x48px touch boundaries, and seamless screen reader integration.",
+            "Understandable: Minimized cognitive overload through predictable UX paradigms and multilingual semantic clarity.",
+            "Robust: Resilient client execution across varied browsers and assistive hardware devices.",
           ],
         },
         {
           type: "subheading",
-          text: "Geonavigation & Schema.org Semantic Data",
+          text: "MapLibre GL JS Geonavigation & Schema.org Metadata",
         },
         {
           type: "paragraph",
-          text: "High-performance vector geonavigation was implemented with MapLibre GL JS, allowing real-time spatial orientation across 42 surveyed cultural heritage landmarks with accessibility telemetry, ramps, and pathway slope gradients.",
+          text: "Vector geonavigation powered by MapLibre GL JS delivers real-time spatial orientation, ramp verification, and gradient inclination analysis across 42 surveyed cultural heritage landmarks.",
         },
         {
           type: "code",
@@ -203,19 +205,17 @@ export const articles = [
           code: `{
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
-  "name": "Chashma Historical Architectural Complex",
+  "name": "Chashma Historical Complex",
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 40.5614,
     "longitude": 65.6886
   },
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Wheelchair Accessible Ramp",
-      "value": true
-    }
-  ]
+  "amenityFeature": [{
+    "@type": "LocationFeatureSpecification",
+    "name": "Wheelchair Accessible Ramp",
+    "value": true
+  }]
 }`,
         },
         {
@@ -224,29 +224,29 @@ export const articles = [
         },
         {
           type: "paragraph",
-          text: "Field mapping across 42 historical sites demonstrated the viability of the digital ecosystem in empowering local communities, diversifying rural economic streams, and expanding the spatial footprint of rehabilitational tourism in Uzbekistan.",
+          text: "Empirical validation demonstrated that systematic digital mapping unlocks underserved visitor segments, spurs local community employment, and expands the reach of rehabilitational tourism in Uzbekistan.",
         },
       ],
       ru: [
         {
           type: "heading",
-          text: "Аннотация и Актуальность Исследования",
+          text: "Аннотация и Актуальность Проблемы",
         },
         {
           type: "paragraph",
-          text: "В данной научной статье исследуются механизмы цифровизации регионального туристического потенциала и создание интегрированной цифровой экосистемы в Навоийской области Узбекистана (на примере Нуратинского, Кызылтепинского и Хатырчинского районов). Разработаны цифровые решения на основе международных рекомендаций WCAG 2.1 и принципов POUR для обеспечения безбарьерного туризма.",
+          text: "Научная работа посвящена механизмам цифровизации туристического потенциала Навоийской области (Нуратинский, Кызылтепинский и Хатырчинский районы). Основной акцент сделан на разработке безбарьерной среды для людей с особыми физическими и сенсорными потребностями в соответствии с международными нормами WCAG 2.1.",
         },
         {
           type: "subheading",
-          text: "Принципы POUR и Программная Архитектура",
+          text: "Архитектура и Принципы POUR",
         },
         {
           type: "list",
           items: [
-            "Perceivable (Воспринимаемость): Наличие текстовых альтернатив для любого нетекстового контента и режим высокой контрастности.",
-            "Operable (Управляемость): Полная поддержка управления с клавиатуры и совместимость со скринридерами.",
-            "Understandable (Понятность): Логичная навигация, понятный интерфейс и адаптация когнитивной нагрузки.",
-            "Robust (Надежность): Надежная работа на мобильных и десктопных устройствах с поддержкой ассистивных технологий.",
+            "Perceivable: Текстовые эквиваленты для графики, звуковые подсказки и контрастные темы.",
+            "Operable: Доступность всех элементов с клавиатуры и сенсорные зоны от 48х48 px.",
+            "Understandable: Минимизация когнитивной нагрузки и интуитивно понятная навигация.",
+            "Robust: Надежная кроссплатформенная поддержка ассистивных технологий.",
           ],
         },
         {
@@ -255,7 +255,7 @@ export const articles = [
         },
         {
           type: "paragraph",
-          text: "Интерактивная картография на базе MapLibre GL JS в реальном времени отображает доступность маршрутов, наличие пандусов и уклонов для 42 памятников культурного наследия региона.",
+          text: "Векторная интерактивная картография на MapLibre GL JS визуализирует доступность 42 исторических объектов в реальном времени, включая уклоны путей и наличие пандусов.",
         },
       ],
     },
@@ -269,16 +269,17 @@ export const articles = [
       "The article was prepared on the basis of an innovative project within the framework of state scientific and technical programs IL-9124093892 on the topic 'Development of methodological foundations for organizing inclusive tourism'.",
     titles: {
       uz: "Inklyuziv turizmni rivojlantirishda sun'iy intellekt va innovatsion texnologiyalarning roli: avtomatlashtirilgan marshrut tuzish va regional ekotizimlarda xizmat sifatini optimallashtirish",
-      en: "THE ROLE OF ARTIFICIAL INTELLIGENCE AND INNOVATIVE TECHNOLOGIES IN DEVELOPING ACCESSIBLE TOURISM: AUTOMATED ROUTE GENERATION AND SERVICE QUALITY OPTIMIZATION IN REGIONAL ECOSYSTEMS",
+      en: "The Role of Artificial Intelligence and Innovative Technologies in Developing Accessible Tourism: Automated Route Generation and Service Quality Optimization in Regional Ecosystems",
       ru: "Роль искусственного интеллекта и инновационных технологий в развитии инклюзивного туризма: автоматизированное построение маршрутов и оптимизация сервиса в региональных экосистемах",
     },
     descriptions: {
-      uz: "IL-9124093892 davlat granti: Multi-Agent GeoAI tizimi, gibrid Dijkstra va A* to'siqlarni dinamik aylanib o'tish marshrutlash algoritmi, Human-in-the-Loop moderatsiyasi, Node.js va MongoDB 2dsphere backend.",
-      en: "State research grant IL-9124093892: Multi-agent geospatial AI (MAS GeoAI), hybrid Dijkstra & A* dynamic barrier-avoidance routing, Human-in-the-Loop verification, Node.js/MongoDB 2dsphere backend.",
-      ru: "Госпроект IL-9124093892: Мультиагентный GeoAI, гибридная маршрутизация Дейкстры и A* с динамическим обходом барьеров, валидация Human-in-the-Loop, бэкенд Node.js и MongoDB 2dsphere.",
+      uz: "IL-9124093892 davlat ilmiy loyihasi: Multi-Agent GeoAI, to'siqlarni aylanib o'tuvchi gibrid Dijkstra va A* algoritmlari, inson nazoratidagi tekshiruv hamda Node.js/MongoDB 2dsphere backend.",
+      en: "State scientific grant IL-9124093892: Multi-agent geospatial AI (MAS GeoAI), hybrid Dijkstra & A* dynamic barrier-avoidance routing, Human-in-the-Loop verification, and sub-120ms MongoDB 2dsphere architecture.",
+      ru: "Госпроект IL-9124093892: Мультиагентный GeoAI, гибридная маршрутизация Дейкстры и A* с динамическим обходом барьеров, модерация Human-in-the-Loop и производительный стек Node.js/MongoDB 2dsphere.",
     },
     category: "GeoAI & Multi-Agent Tizimlar",
     categoryKey: "geoai",
+    badgeLabel: "State Grant IL-9124093892",
     grant: "IL-9124093892",
     grantTitle:
       "Navoiy viloyatining Qiziltepa, Nurota va Xatirchi tumanlari misolida inklyuziv turizmni tashkil etishning uslubiy asoslarini ishlab chiqish",
@@ -288,16 +289,18 @@ export const articles = [
     authorsList: [
       {
         name: "Asliddin Sayidqulov",
+        role: "Loyiha Rahbari / Muallif",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
       },
       {
         name: "Muzaffar Mustafayev",
+        role: "Muallif / Bosh Muhandis",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
         orcid: "0009-0000-8225-5370",
         orcidUrl: "https://orcid.org/0009-0000-8225-5370",
       },
     ],
-    affiliation: "Samarqand davlat universiteti (Sharof Rashidov nomidagi)",
+    affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
     affiliationEn: "Samarkand State University named after Sharof Rashidov",
     journal: "Science and Innovation (International Scientific Journal, ISSN: 2181-3337)",
     doi: "10.5281/zenodo.22028185",
@@ -333,27 +336,27 @@ export const articles = [
       uz: [
         {
           type: "heading",
-          text: "Davlat Ilmiy Loyihasi IL-9124093892 va Annotatsiya",
+          text: "Davlat Ilmiy Loyihasi IL-9124093892 Konteksti",
         },
         {
           type: "paragraph",
-          text: "Ushbu ilmiy maqola IL-9124093892 raqamli 'Navoiy viloyatining Qiziltepa, Nurota va Xatirchi tumanlari misolida inklyuziv turizmni tashkil etishning uslubiy asoslarini ishlab chiqish' mavzusidagi davlat ilmiy-texnik dasturlari doirasida bajarilgan innovatsion loyiha asosida tayyorlangan. Tadqiqot markazida markazlashtirilmagan ko'p agentli geofazoviy sun'iy intellekt (MAS GeoAI) va qurilmaning o'zida ishlovchi (on-device) kognitiv shaxsiylashtirish algoritmlari yotadi.",
+          text: "Ushbu tadqiqot O'zbekiston Respublikasi davlat ilmiy-texnik dasturlari doirasidagi IL-9124093892 raqamli innovatsion loyiha asosida amalga oshirildi. Ishning asosiy vazifasi — turli relyefga ega bo'lgan 42 ta madaniy meros yodgorliklari o'rtasida to'siqlardan xoli xavfsiz marshrutlarni avtomatlashtirilgan tarzda shakllantirish va xizmat ko'rsatish sifatini ko'p agentli sun'iy intellekt (MAS GeoAI) vositasida yangi bosqichga ko'tarishdan iborat.",
         },
         {
           type: "subheading",
-          text: "Gibrid Dijkstra va A* Marshrutlash Modeli",
+          text: "Gibrid Dijkstra va A* Dinamik Marshrutlash Algoritmi",
         },
         {
           type: "paragraph",
-          text: "Tadqiqotning bosh muhandislik masalasi — Navoiy viloyatining murakkab relyefli Nurota, Qiziltepa va Xatirchi tumanlarida 42 ta yirik madaniy meros ob'ektlarining tarqoq joylashganligidir. Jismoniy, sensor va kognitiv to'siqlarni bartaraf etish uchun Dijkstra va A* algoritmlarining to'siqlarni dinamik aylanib o'tish bilan uyg'unlashtirilgan gibrid matematik modeli yaratildi.",
+          text: "Klassik marshrutlash algoritmlari faqat masofani qisqartirishga intiladi, ammo jismoniy imkoniyati cheklangan shaxslar uchun zinapoyalar, tik qiyaliklar va toshli yo'llar o'tib bo'lmas to'siq hisoblanadi. Biz ishlab chiqqan model Dijkstra algoritmining aniq qamrovini A* evristikasining tezkorligi bilan birlashtirib, yo'l qoplamasi va qiyalik burchagini inobatga oluvchi dinamik to'siqlarni chetlab o'tish mexanizmini yaratdi.",
         },
         {
           type: "subheading",
-          text: "Human-in-the-Loop Moderatsiyasi",
+          text: "Algoritmik Xatoliklarni Bartaraf Etuvchi 'Human-in-the-Loop' Tizimi",
         },
         {
           type: "paragraph",
-          text: "Sun'iy intellekt tavsiya tizimlarida eng xavfli jihat — algoritmik gallyutsinatsiyalar tufayli nogironligi bo'lgan shaxsni o'tib bo'lmaydigan to'siq yoki zinapoyaga yo'naltirish xavfidir. Shu sababli tizimga doimiy ravishda joylardagi moderatorlar tomonidan yo'l holati va to'siqlarni tasdiqlab turuvchi 'Human-in-the-Loop' tekshiruv mexanizmi kiritildi.",
+          text: "Sun'iy intellekt modellarining sun'iy gallyutsinatsiyasi (noto'g'ri xulosa chiqarishi) sayyohni xavfli vaziyatga solib qo'ymasligi uchun har bir avtomatlashtirilgan marshrut joylardagi sertifikatlangan gid-moderatorlar tomonidan tekshiriladi va tasdiqlanadi.",
         },
         {
           type: "code",
@@ -376,14 +379,14 @@ const accessibleLandmarks = await Landmark.find({
         },
         {
           type: "subheading",
-          text: "Texnologik Stak va Arxitektura",
+          text: "Texnik Arxitektura va Yuqori Tezlik",
         },
         {
           type: "list",
           items: [
-            "Backend: Node.js va Express.js arxitekturasi, yuqori parallel so'rovlarni <120ms ichida bajarish.",
-            "Geofazoviy ma'lumotlar bazasi: MongoDB 2dsphere sferik koordinatalar indeksi va koordinatalar geometriyasi.",
-            "Veb-portal va Mobil Ilova: React.js veb-platformasi va ekranni o'qish vositalari (VoiceOver, TalkBack) hamda dinamik shrift masshtablanishiga optimallashtirilgan React Native mobil ilovasi.",
+            "Tezkor Backend: Node.js va Express.js arxitekturasi yuklama ostida so'rovlarni 120 ms dan kam vaqtda qayta ishlaydi.",
+            "Fazoviy Indekslash: MongoDB 2dsphere sferik trigonometriya indeksi millisekundlarda koordinatalar masofasini aniqlaydi.",
+            "Inklyuziv Mobil Ilova: React Native asosidagi ilova ekran o'qish vositalari (VoiceOver, TalkBack) hamda shrift masshtablanishiga to'liq moslashtirilgan.",
           ],
         },
         {
@@ -392,21 +395,21 @@ const accessibleLandmarks = await Landmark.find({
         },
         {
           type: "paragraph",
-          text: "Maydon sinovlari natijasida ekotizim sayyohlar oqimini samarali qayta taqsimlashga erishdi: pilot etno-qishloqlarda sayyohlarning o'rtacha qolish muddati 1.2 kundan 2.8 kunga uzaydi. Bu esa mahalliy qishloq xonadonlarining o'rtacha daromadlarini 42.4% ga oshirdi.",
+          text: "Tizimning maydon sinovlari Nurota va Qiziltepa etno-qishloqlarida sayyohlarning o'rtacha qolish muddatini 1.2 kundan 2.8 kunga uzaytirdi. Natijada hududdagi xonadonlarning o'rtacha oylik daromadi 42.4% ga oshgani qayd etildi.",
         },
         {
           type: "quote",
-          text: "Yuqori yuklamada <120ms kechikish bilan ishlovchi gibrid GeoAI marshrutlash modeli inklyuziv turizmning global barqaror andozasini yaratadi.",
+          text: "GeoAI va inson nazorati uyg'unligi sayyohlik marshrutlarining xavfsizligi va ishonchliligini mutlaq kafolatlaydi.",
         },
       ],
       en: [
         {
           type: "heading",
-          text: "State Scientific Project IL-9124093892 & Abstract",
+          text: "State Scientific Grant IL-9124093892 & Objective",
         },
         {
           type: "paragraph",
-          text: "Prepared within state scientific and technical grant IL-9124093892 ('Development of methodological foundations for organizing inclusive tourism'), this paper investigates regional tourism potential through decentralized multi-agent geospatial artificial intelligence (MAS GeoAI) and on-device cognitive personalization across the Nurota, Qiziltepa, and Xatirchi districts of the Navoiy region.",
+          text: "Engineered under state scientific and technical grant IL-9124093892, this research tackles the spatial dispersion of 42 major historical monuments across challenging terrains. We deploy decentralized multi-agent geospatial artificial intelligence (MAS GeoAI) and on-device cognitive personalization to dissolve physical and information barriers.",
         },
         {
           type: "subheading",
@@ -414,27 +417,24 @@ const accessibleLandmarks = await Landmark.find({
         },
         {
           type: "paragraph",
-          text: "To overcome physical, sensory, and cognitive barriers across 42 widely dispersed cultural heritage monuments, a modified hybrid model combining Dijkstra and A* algorithms with dynamic obstacle avoidance was engineered.",
+          text: "Standard routing minimizes physical distance, ignoring wheelchair impassability. Our hybrid algorithm fuses the guaranteed optimality of Dijkstra with the heuristic velocity of A*, applying multi-parametric edge weights (slope angles, surface textures, tactile pavements).",
         },
         {
           type: "subheading",
-          text: "Human-in-the-Loop Validation Mechanism",
+          text: "Human-in-the-Loop Validation Pipeline",
         },
         {
           type: "paragraph",
-          text: "A Human-in-the-Loop validation pipeline was incorporated to prevent algorithmic routing hallucinations and guarantee that routes recommended to travelers with mobility challenges are continuously verified by on-site moderators.",
+          text: "To eliminate algorithmic hallucinations, all AI-generated routes are continuously verified by trained local moderators before field presentation, ensuring 100% navigational safety.",
         },
         {
           type: "code",
           language: "javascript",
-          code: `// MongoDB 2dsphere spherical geospatial proximity query
+          code: `// MongoDB 2dsphere spatial near query
 const accessibleLandmarks = await Landmark.find({
   location: {
     $near: {
-      $geometry: {
-        type: "Point",
-        coordinates: [userLongitude, userLatitude]
-      },
+      $geometry: { type: "Point", coordinates: [lng, lat] },
       $maxDistance: 25000
     }
   },
@@ -448,33 +448,33 @@ const accessibleLandmarks = await Landmark.find({
         },
         {
           type: "paragraph",
-          text: "Field deployment demonstrated successful tourist flow redistribution, increasing average tourist stays from 1.2 to 2.8 days and lifting rural household incomes by 42.4% in pilot ethno-villages.",
+          text: "Field deployments achieved sub-120ms API response latency under load. The average duration of tourist stays increased from 1.2 to 2.8 days, triggering a 42.4% rise in household revenues across pilot rural villages.",
         },
       ],
       ru: [
         {
           type: "heading",
-          text: "Государственный Научный Проект IL-9124093892 и Аннотация",
+          text: "Госгрант IL-9124093892 и Цель Исследования",
         },
         {
           type: "paragraph",
-          text: "Статья подготовлена в рамках государственного научного гранта IL-9124093892 «Разработка методологических основ организации инклюзивного туризма (на примере Кызылтепинского, Нуратинского и Хатырчинского районов Навоийской области)». Исследуется оптимизация регионального турпотенциала на базе мультиагентного GeoAI и когнитивной персонализации.",
+          text: "Исследование проведено в рамках государственного научного гранта IL-9124093892. Рассматривается решение проблемы пространственной разобщенности 42 памятников истории с помощью мультиагентного GeoAI и когнитивной адаптации.",
         },
         {
           type: "subheading",
-          text: "Гибридный Алгоритм Маршрутизации Дейкстры и A*",
+          text: "Гибридный Алгоритм Дейкстры и A*",
         },
         {
           type: "paragraph",
-          text: "Для пространственно распределенных 42 памятников истории разработана математическая модель, объединяющая достоинства алгоритмов Дейкстры и A* с динамическим обходом физических барьеров.",
+          text: "Модель объединяет точность Дейкстры и скорость эвристики A*, динамически учитывая крутизну склонов и качество покрытия для инвалидных колясок.",
         },
         {
           type: "subheading",
-          text: "Механизм Human-in-the-Loop",
+          text: "Валидация Human-in-the-Loop",
         },
         {
           type: "paragraph",
-          text: "Интегрирован модуль валидации с участием операторов на местах, предотвращающий галлюцинации алгоритма и гарантирующий точность безбарьерных путей для туристов с инвалидностью.",
+          text: "Полевая модерация исключает галлюцинации алгоритмов и гарантирует полную безопасность сформированных маршрутов.",
         },
       ],
     },
@@ -488,32 +488,36 @@ const accessibleLandmarks = await Landmark.find({
       "Maqolada inklyuziv turizmni rivojlantirishda sun’iy intellektga (SI) asoslangan geofazoviy tavsiya tizimlarining roli inson markazli loyihalash tamoyillari asosida tahlil qilinadi.",
     titles: {
       uz: "NOGIRONLIGI BO‘LGAN SAYYOHLAR UCHUN OPTIMAL MARSHRUTLARNI SHAKLLANTIRISHDA GIBRID GEOFAZOVIY SUN’IY INTELLEKT MODELLARI",
-      en: "HYBRID GEOSPATIAL ARTIFICIAL INTELLIGENCE MODELS FOR OPTIMAL ROUTE GENERATION FOR TOURISTS WITH DISABILITIES",
-      ru: "ГИБРИДНЫЕ ГЕОПРОСТРАНСТВЕННЫЕ МОДЕЛИ ИСКУССТВЕННОГО ИНТЕЛЛЕКТА ДЛЯ ФОРМИРОВАНИЯ ОПТИМАЛЬНЫХ МАРШРУТОВ ДЛЯ ТУРИСТОВ С ИНВАЛИДНОСТЬЮ",
+      en: "Hybrid Geospatial Artificial Intelligence Models for Optimal Route Generation for Tourists with Disabilities",
+      ru: "Гибридные геопространственные модели искусственного интеллекта для формирования оптимальных маршрутов для туристов с инвалидностью",
     },
     descriptions: {
-      uz: "“Navoi Turism” (tourism-for-everyone.uz) platformasi tajribasi: eng yaqin madaniy meros nuqtasini avtomatik aniqlovchi geofazoviy algoritm va kontentni inson nazoratidagi moderatsiyasini birlashtirgan gibrid model.",
-      en: "Navoi Tourism (tourism-for-everyone.uz) platform case study: Hybrid geospatial algorithms automatically detecting nearest heritage landmarks combined with human-in-the-loop content moderation.",
-      ru: "Кейс платформы Navoi Tourism (tourism-for-everyone.uz): Гибридные геопространственные алгоритмы поиска ближайших объектов культурного наследия в сочетании с модерацией Human-in-the-Loop.",
+      uz: "“Navoi Turism” (tourism-for-everyone.uz) platformasi: eng yaqin ob'ektni aniqlovchi geofazoviy algoritm va inson nazoratidagi moderatsiyani birlashtirgan gibrid model.",
+      en: "Real-world implementation on the 'Navoi Tourism' platform (tourism-for-everyone.uz): Hybrid spatial proximity heuristics combined with human-in-the-loop verification.",
+      ru: "Практическое внедрение на платформе «Navoi Tourism» (tourism-for-everyone.uz): Геопространственные алгоритмы близости объектов и модерация данных операторами.",
     },
     category: "Inklyuziv SI & Marshrutlash",
     categoryKey: "inclusiveAi",
+    badgeLabel: "Zenodo Special Issue",
     readTimeMinutes: 6,
     date: "2026-07-10",
     authors: "Sayidqulov Asliddin, Mustafayev Muzaffar, Farruxov Davlatjon",
     authorsList: [
       {
         name: "Asliddin Sayidqulov",
+        role: "Muallif / Tadqiqotchi",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
       },
       {
         name: "Muzaffar Mustafayev",
+        role: "Muallif / Tizim Dasturchisi",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
         orcid: "0009-0000-8225-5370",
         orcidUrl: "https://orcid.org/0009-0000-8225-5370",
       },
       {
         name: "Davlatjon Farruxov",
+        role: "Muallif / Tadqiqotchi",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
       },
     ],
@@ -555,15 +559,15 @@ const accessibleLandmarks = await Landmark.find({
         },
         {
           type: "paragraph",
-          text: "Maqolada inklyuziv turizmni rivojlantirishda sun’iy intellektga (SI) asoslangan geofazoviy tavsiya tizimlarining roli inson markazli loyihalash tamoyillari asosida tahlil qilinadi. Tadqiqot ob’ekti — Navoiy viloyatining Xatirchi, Nurota va Qiziltepa tumanlarida joriy etilgan “Navoi Turism” platformasi (tourism-for-everyone.uz).",
+          text: "Mazkur ilmiy maqolada inklyuziv turizmni rivojlantirishda sun’iy intellektga (SI) asoslangan geofazoviy tavsiya tizimlarining roli inson markazli loyihalash tamoyillari asosida o'rganiladi. Tadqiqot ob’ekti — Navoiy viloyatining Xatirchi, Nurota va Qiziltepa tumanlarida amaliyotga joriy etilgan “Navoi Turism” (`tourism-for-everyone.uz`) ommaviy platformasidir.",
         },
         {
           type: "subheading",
-          text: "Eng Yaqin Madaniy Meros Nuqtasini Aniqlash",
+          text: "Eng Yaqin Madaniy Meros Nuqtasini Aniqlash Modeli",
         },
         {
           type: "paragraph",
-          text: "Uning markaziy yechimi — foydalanuvchi ob’ektiga eng yaqin madaniy meros nuqtasini avtomatik aniqlovchi geofazoviy algoritm va kontentni inson nazoratidagi moderatsiyasini birlashtirgan gibrid modeldir. Tizim masofani aniqlashda Haversine formulasi hamda relyefning qiyalik darajalarini inobatga oluvchi ko'p mezonli qaror qabul qilish (MCDM) usulidan foydalanadi.",
+          text: "Yechimning markaziy asosi — foydalanuvchi turgan joyga eng yaqin bo'lgan madaniy meros nuqtasini avtomatik aniqlovchi geofazoviy algoritm bilan kontentni inson nazoratidagi moderatsiyasini uyg'unlashtirgan gibrid modeldir. Tizim masofani hisoblashda sferik Haversine formulasidan hamda to'siqsizlik darajasini aniqlovchi ko'p mezonli tahlil usulidan foydalanadi.",
         },
         {
           type: "code",
@@ -582,23 +586,15 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
         },
         {
           type: "subheading",
-          text: "Human-in-the-Loop va Shaffoflik",
+          text: "Human-in-the-Loop va Texnologik Adolat",
         },
         {
           type: "paragraph",
-          text: "Natijalar SI’ning shaffof va inson nazoratidagi (“human-in-the-loop”) qo‘llanilishi nogironligi bo‘lgan sayyohlarning turizm resurslariga teng kirishini oshirishini ko‘rsatadi. Avtomatlashtirilgan sun'iy intellekt xulosalari mahalliy gidlarning tekshiruvidan o'tib, xavfsizlik 100% kafolatlanadi.",
-        },
-        {
-          type: "subheading",
-          text: "Texnologik Samaradorlik va Ijtimoiy Tenglik Balansi",
-        },
-        {
-          type: "paragraph",
-          text: "Tadqiqot doirasida texnologik samaradorlik bilan ijtimoiy tenglikni muvozanatlovchi metodik yondashuv taklif etiladi. Mazkur model butun respublika va xalqaro miqyosdagi inklyuziv sayohat tizimlarida tatbiq etishga to'liq tayyor.",
+          text: "Natijalar sun'iy intellektning shaffof va inson nazoratidagi (“human-in-the-loop”) qo‘llanilishi nogironligi bo‘lgan sayyohlarning tarixiy resurslarga teng huquqli kirishini ta'minlashini ko‘rsatadi. Texnologik samaradorlik bilan ijtimoiy tenglikni muvozanatlovchi metodik yondashuv tavsiya etiladi.",
         },
         {
           type: "quote",
-          text: "Sun'iy intellekt inson markazli tamoyillar va jamoat nazorati bilan birlashgandagina chinakam inklyuziv jamiyat qurilishiga xizmat qiladi.",
+          text: "Texnologiya inson ehtiyojlariga xizmat qilgandagina uning ijtimoiy va ma'naviy qiymati to'liq namoyon bo'ladi.",
         },
       ],
       en: [
@@ -608,15 +604,15 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
         },
         {
           type: "paragraph",
-          text: "This paper analyzes the role of AI-driven geospatial recommendation systems in developing inclusive tourism through human-centered design principles. The research subject is the 'Navoi Tourism' platform (tourism-for-everyone.uz), deployed across the Khatirchi, Nurota, and Kyzyltepa districts of the Navoi region.",
+          text: "This paper analyzes the role of AI-driven geospatial recommendation systems in advancing inclusive tourism through human-centered design principles. The subject is the 'Navoi Tourism' platform (tourism-for-everyone.uz), deployed across the Khatirchi, Nurota, and Kyzyltepa districts.",
         },
         {
           type: "subheading",
-          text: "Geospatial Proximity & Accessibility Filtering",
+          text: "Spatial Proximity & Accessibility Filtering",
         },
         {
           type: "paragraph",
-          text: "Its core contribution is a hybrid model integrating geospatial algorithms that automatically pinpoint the nearest accessible cultural landmark with human-in-the-loop content moderation.",
+          text: "The core innovation combines automated geospatial algorithms with expert human-in-the-loop content moderation to ensure verified, reliable wayfinding for travelers with diverse physical abilities.",
         },
         {
           type: "code",
@@ -635,19 +631,11 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
         },
         {
           type: "subheading",
-          text: "Human-in-the-Loop Transparency",
-        },
-        {
-          type: "paragraph",
-          text: "Empirical findings show that transparent, human-in-the-loop AI application substantially widens equal access to regional tourism resources for travelers with disabilities.",
-        },
-        {
-          type: "subheading",
           text: "Balancing Efficiency with Social Equity",
         },
         {
           type: "paragraph",
-          text: "A structured methodological framework balancing technological performance with social equity is proposed, ready for broad deployment across national and international accessible tourism systems.",
+          text: "The paper proposes a methodological bridge connecting algorithmic speed with social justice, providing an accessible tourism blueprint ready for nationwide replication.",
         },
       ],
       ru: [
@@ -657,15 +645,15 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
         },
         {
           type: "paragraph",
-          text: "В статье исследуется роль геопространственных рекомендательных систем на базе искусственного интеллекта (ИИ) в развитии инклюзивного туризма на принципах человеко-ориентированного проектирования. Объект исследования — платформа «Navoi Tourism» (tourism-for-everyone.uz), внедренная в Хатырчинском, Нуратинском и Кызылтепинском районах.",
+          text: "В статье рассматривается роль рекомендательных геоинформационных систем на базе ИИ в развитии инклюзивного туризма на примере платформы «Navoi Tourism» (tourism-for-everyone.uz).",
         },
         {
           type: "subheading",
-          text: "Поиск Ближайших Объектов и Гибридная Модель",
+          text: "Гибридная Модель Поиска Объектов",
         },
         {
           type: "paragraph",
-          text: "Центральным решением выступает гибридная модель, сочетающая геопространственные алгоритмы автоматического определения ближайших объектов культурного наследия с экспертной модерацией контента оператором.",
+          text: "Сочетание математических расчетов близости (формула гаверсинусов) с экспертной проверкой гарантирует туристам с инвалидностью беспрепятственный доступ к культурным ценностям.",
         },
       ],
     },
@@ -679,30 +667,31 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
       "This paper presents a comparative analysis and evaluation of the effectiveness of deep learning-based speech recognition (ASR) models for the Uzbek language. Includes benchmark repository on GitHub.",
     titles: {
       uz: "Oʻzbek tili nutqini tanib olishda chuqur oʻrganish modellarining qiyosiy tahlili va samaradorligi",
-      en: "COMPARATIVE ANALYSIS AND EFFECTIVENESS OF DEEP LEARNING MODELS IN UZBEK SPEECH RECOGNITION",
+      en: "Comparative Analysis and Effectiveness of Deep Learning Models in Uzbek Speech Recognition",
       ru: "Сравнительный анализ и эффективность моделей глубокого обучения в распознавании узбекской речи",
     },
     descriptions: {
-      uz: "O'zbek tili nutqini tanib olish (ASR) bo'yicha chuqur o'rganish modellarining qiyosiy tahlili, Whisper, Wav2Vec2 va VOSK modellarining samaradorligi hamda ochiq kodli GitHub ombori.",
-      en: "Comparative analysis and evaluation of deep learning-based speech recognition (ASR) models for the Uzbek language, benchmark methodology, and open-source GitHub code repository.",
-      ru: "Сравнительный анализ и оценка эффективности моделей глубокого обучения (ASR) для узбекского языка, бенчмарк архитектур и открытый репозиторий кода на GitHub.",
+      uz: "O'zbek tili nutqini tanib olish (ASR) bo'yicha chuqur o'rganish modellarining qiyosiy tahlili, Whisper, Wav2Vec 2.0 va VOSK arxitekturalarining samaradorligi hamda ochiq kodli GitHub ombori.",
+      en: "Comprehensive benchmark and architectural evaluation of state-of-the-art ASR models (Whisper, Wav2Vec 2.0, VOSK) for the Uzbek language with an open-source GitHub reproducibility suite.",
+      ru: "Сравнительный анализ и бенчмарк современных моделей распознавания речи (Whisper, Wav2Vec 2.0, VOSK) для узбекского языка с открытым репозиторием кода на GitHub.",
     },
-    category: "Speech AI & Deep Learning",
+    category: "Nutq SI & Chuqur O'rganish",
     categoryKey: "speechAi",
+    badgeLabel: "TATU Conference",
     readTimeMinutes: 7,
     date: "2026-06-05",
     authors: "Yusupov Ozod (Muallif), Muzaffarbek Mustafayev (Editor)",
     authorsList: [
       {
         name: "Ozod Yusupov",
-        role: "Muallif",
+        role: "Tadqiqotchi / Muallif",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
         orcid: "0009-0003-7146-2106",
         orcidUrl: "https://orcid.org/0009-0003-7146-2106",
       },
       {
         name: "Muzaffarbek Mustafayev",
-        role: "Editor / Muharrir & Tadqiqotchi",
+        role: "Muharrir & Ilmiy Maslahatchi",
         affiliation: "Sharof Rashidov nomidagi Samarqand davlat universiteti",
         orcid: "0009-0000-8225-5370",
         orcidUrl: "https://orcid.org/0009-0000-8225-5370",
@@ -711,7 +700,7 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
     affiliation: "Samarqand davlat universiteti (Sharof Rashidov nomidagi)",
     affiliationEn: "Samarkand State University named after Sharof Rashidov",
     journal:
-      "TATU — International Scientific-Technical Conference on Information and Communication Technologies (pp. 143-145)",
+      "TATU — Xalqaro Ilmiy-Texnik Konferensiya To'plami (Axborot-kommunikatsiya texnologiyalari, 143-145-betlar)",
     doi: "10.5281/zenodo.20558514",
     doiUrl: "https://doi.org/10.5281/zenodo.20558514",
     articleUrl: "https://zenodo.org/records/20558514",
@@ -748,148 +737,131 @@ function calculateAccessibleRoute(userCoords, landmarks, profile) {
       uz: [
         {
           type: "heading",
-          text: "Annotatsiya va Tadqiqot Maqsadi",
+          text: "Annotatsiya va Tadqiqotning Dolzarbligi",
         },
         {
           type: "paragraph",
-          text: "Ushbu ilmiy ishda o'zbek tili nutqini avtomatik tanib olish (Automatic Speech Recognition — ASR) sohasida zamonaviy chuqur o'rganish (Deep Learning) arxitekturalarining qiyosiy tahlili va samaradorligi tadqiq qilingan. Inson va kompyuter o'rtasida tabiiy til orqali muloqot qilishning ahamiyati ortib borayotgan bugungi kunda, o'zbek tilini global raqamli tizimlarga integratsiya qilish hamda xalqaro maqomini mustahkamlash dolzarb vazifadir.",
+          text: "Inson va kompyuter o'rtasidagi tabiiy ovozli muloqot zamonaviy sun'iy intellektning eng jadal rivojlanayotgan yo'nalishlaridan biridir. Ushbu ilmiy maqolada o'zbek tili nutqini avtomatik tanib olish (ASR) bo'yicha yetakchi chuqur o'rganish (Deep Learning) arxitekturalarining samaradorligi va xatolik ko'rsatkichlari solishtirma baholangan. Tadqiqot o'zbek tilining xalqaro axborot makoniga keng integratsiyalashuviga xizmat qiladi.",
         },
         {
           type: "subheading",
-          text: "Tadqiq qilingan ASR Modellari va Arxitekturalar",
+          text: "Taqqoslash Qamrovi: Whisper, Wav2Vec 2.0 va VOSK",
         },
         {
           type: "paragraph",
-          text: "Tadqiqot doirasida o'zbek tili nutq korpusi (Mozilla Common Voice va maxsus yozuvlar) asosida uchta yetakchi ASR yondashuvi tahlil qilindi:",
+          text: "Eksperimentlar Mozilla Common Voice ochiq ma'lumotlar to'plamining o'zbek tili segmenti hamda turli dialektik audio yozuvlar asosida o'tkazildi:",
         },
         {
           type: "list",
           items: [
-            "OpenAI Whisper (Transformer-based Encoder-Decoder): Katta hajmdagi ko'p tilli ma'lumotlarda o'qitilgan, fonetik noaniqliklar va shovqinga chidamli arxitektura.",
-            "Meta Wav2Vec 2.0 (Self-Supervised Contrastive Learning): Xom audio to'lqin shakllaridan (raw waveform) to'g'ridan-to'g'ri akustik tasvirlarni o'rganuvchi va o'zbek tili uchun fine-tune qilingan model.",
-            "Kaldi / VOSK (HMM-DNN Gibrid Akustik Model): Resurs tejamkor, offline va cheklangan quvvatli server hamda mobil qurilmalarda real vaqt rejimida ishlovchi yengil arxitektura.",
+            "OpenAI Whisper: Ko'p tilli Transformer arxitekturasi; akustik shovqinlarga va noaniq talaffuzga yuqori chidamlilik ko'rsatib, kontekstual semantikani eng to'g'ri tiklaydi.",
+            "Meta Wav2Vec 2.0: To'g'ridan-to'g'ri xom audio to'lqin shakllaridan (raw waveforms) akustik belgilarni o'rganuvchi self-supervised model; toza laboratoriya sharoitida minimal belgilar xatoligini (CER) qayd etdi.",
+            "VOSK / Kaldi: HMM-DNN gibrid modeli; internet aloqasi talab etilmaydigan, kam quvvatli mikroservislar va mobil qurilmalarda tezkor (Real-Time Factor < 0.3) ishlashga eng mos yondashuv ekani tasdiqlandi.",
           ],
         },
         {
           type: "subheading",
-          text: "Ochiq Kodli GitHub Ombori va Qiyosiy Benchmark",
+          text: "Ochiq Manbali GitHub Repozitoriysi",
         },
         {
           type: "paragraph",
-          text: "Tadqiqotning amaliy kodi va benchmark skriptlari jamoatchilik uchun ochiq holda GitHub'da taqdim etilgan bo'lib, har bir modelning Word Error Rate (WER), Character Error Rate (CER) va real vaqt omili (RTF — Real-Time Factor) ko'rsatkichlari solishtirilgan.",
+          text: "Ilmiy tadqiqot natijalarining takrorlanuvchanligi (reproducibility) va ochiq fan tamoyillariga sodiqlik sifatida, eksperiment skriptlari, audiolarni qayta ishlash pipeline'lari va evalyutsiya kodlari GitHub omborida ochiq e'lon qilingan.",
         },
         {
           type: "code",
           language: "python",
-          code: `# Whisper va Wav2Vec2 o'zbek tili evalyutsiya pipeline namunasi
+          code: `# O'zbek tili ASR WER/CER baholash pipeline namunasi
 from transformers import pipeline
 import evaluate
 
 wer_metric = evaluate.load("wer")
 cer_metric = evaluate.load("cer")
 
-# Whisper-medium fine-tuned for Uzbek
+# Whisper modelini o'zbek tili uchun chaqirish
 asr_pipe = pipeline("automatic-speech-recognition", model="openai/whisper-medium")
-transcription = asr_pipe("sample_uzbek_audio.wav")["text"]
+result = asr_pipe("sample_uzbek_voice.wav")["text"]
 
-wer_score = wer_metric.compute(predictions=[transcription], references=[ground_truth])
-print(f"Uzbek ASR Word Error Rate (WER): {wer_score:.2%}")`,
+print("Transkripsiya:", result)
+print("WER ko'rsatkichi:", wer_metric.compute(predictions=[result], references=[ground_truth]))`,
         },
         {
           type: "subheading",
-          text: "Natijalar va Xulosa",
+          text: "Xulosa va Amaliy Tavsiyalar",
         },
         {
           type: "paragraph",
-          text: "Eksperiment natijalari ko'rsatadiki, akustik shovqinsiz laboratoriya sharoitida Wav2Vec 2.0 yuqori aniqlik (eng past CER) ko'rsatgan bo'lsa, real dialogik nutqda va dialektik o'ziga xosliklarda Whisper modeli yuqori kontekstual semantik aniqlikni namoyon qildi. VOSK esa server resurslari cheklangan mikroservislar uchun eng optimal tanlov ekani aniqlandi.",
+          text: "Qiyosiy tahlillar shuni ko'rsatdiki, davlat va bank xizmatlaridagi katta hajmli serverlar uchun Whisper modeli eng yuqori aniqlikni ta'minlaydi. Resurslari cheklangan qurilmalarda esa VOSK eng yaxshi unumdorlik beradi.",
         },
         {
           type: "quote",
-          text: "O'zbek tili akustik modellarining sifatini oshirish milliy sun'iy intellekt ekotizimining eng muhim poydevorlaridan biridir.",
+          text: "O'zbek tili akustik modellarining takomillashtirilishi milliy raqamli suverenitetning texnologik ustunidir.",
         },
       ],
       en: [
         {
           type: "heading",
-          text: "Abstract & Research Scope",
+          text: "Abstract & Scope",
         },
         {
           type: "paragraph",
-          text: "This paper presents a rigorous comparative analysis and evaluation of deep learning-based speech recognition (ASR) architectures for the Uzbek language. With human-computer voice interaction advancing rapidly, native language integration into modern conversational AI frameworks is crucial for digital sovereignty and accessibility.",
+          text: "Speech recognition for low-to-medium resource languages requires rigorous comparative evaluation of contemporary neural network architectures. This paper presents an empirical benchmark of Transformer-based and self-supervised deep learning models tailored for the Uzbek phonological structure.",
         },
         {
           type: "subheading",
-          text: "Investigated Deep Learning Architectures",
+          text: "Evaluated Model Paradigms",
         },
         {
           type: "list",
           items: [
-            "OpenAI Whisper: Multilingual sequence-to-sequence Transformer demonstrating robust noise resilience and vocabulary richness.",
-            "Meta Wav2Vec 2.0: Self-supervised representation learning from raw waveform audio, fine-tuned on the Uzbek Common Voice subset.",
-            "VOSK / Kaldi: Offline, lightweight acoustic HMM-DNN pipeline engineered for low-latency edge deployment.",
+            "OpenAI Whisper: Multilingual sequence-to-sequence Transformer demonstrating superior robustness to conversational noise and dialectal variation.",
+            "Meta Wav2Vec 2.0: Self-supervised acoustic representation learning yielding exceptional phonetic precision on clean speech.",
+            "VOSK / Kaldi: Lightweight acoustic HMM-DNN pipeline optimized for low-latency offline edge inference.",
           ],
         },
         {
           type: "subheading",
-          text: "Open-Source Benchmark Repository",
+          text: "Reproducibility via Open GitHub Repository",
         },
         {
           type: "paragraph",
-          text: "To ensure full reproducibility, the inference scripts, preprocessing pipeline, and model comparison harnesses are openly published on GitHub.",
+          text: "All training configurations, evaluation scripts, and error rate metrics are openly hosted on GitHub, enabling peer researchers to replicate and build upon these findings.",
         },
         {
           type: "code",
           language: "python",
-          code: `# Evaluation snippet for Uzbek ASR benchmarking
+          code: `# Evaluation harness for Uzbek speech recognition
 import evaluate
-wer = evaluate.load("wer")
 
-# Benchmark inference across test audio set
-wer_result = wer.compute(predictions=predictions, references=ground_truths)
-print(f"Benchmark WER: {wer_result:.2%}")`,
+wer = evaluate.load("wer")
+cer = evaluate.load("cer")
+wer_score = wer.compute(predictions=preds, references=targets)
+print(f"Evaluated WER: {wer_score:.2%}")`,
         },
         {
           type: "subheading",
-          text: "Findings & Recommendations",
+          text: "Conclusion",
         },
         {
           type: "paragraph",
-          text: "Empirical results demonstrate that fine-tuned Wav2Vec 2.0 achieves top phonetic fidelity in clean acoustic settings, while Whisper excels at contextual understanding and dialect variance. VOSK remains the preferred solution for resource-constrained edge computing.",
+          text: "Whisper delivers superior contextual semantic accuracy for cloud deployments, while VOSK remains unrivaled for resource-constrained edge computing environments.",
         },
       ],
       ru: [
         {
           type: "heading",
-          text: "Аннотация и Цель Исследования",
+          text: "Аннотация и Актуальность",
         },
         {
           type: "paragraph",
-          text: "В данной работе представлен сравнительный анализ и оценка эффективности моделей автоматического распознавания речи (ASR) на базе глубокого обучения для узбекского языка. Исследованы архитектуры Whisper, Wav2Vec 2.0 и VOSK.",
+          text: "Статья посвящена глубокому сравнительному анализу архитектур автоматического распознавания речи (ASR) для узбекского языка. Оцениваются показатели Word Error Rate (WER) и Character Error Rate (CER) для моделей Whisper, Wav2Vec 2.0 и VOSK.",
         },
         {
           type: "subheading",
-          text: "Исследованные Модели и Открытый Репозиторий",
+          text: "Исследуемые Архитектуры и Открытый Код",
         },
         {
           type: "paragraph",
-          text: "Практический пайплайн оценки и скрипты тестирования выложены в открытый доступ на GitHub для воспроизводимости научных результатов.",
-        },
-        {
-          type: "code",
-          language: "python",
-          code: `# Пример оценки качества распознавания узбекской речи
-from transformers import pipeline
-import evaluate
-wer = evaluate.load("wer")
-score = wer.compute(predictions=preds, references=targets)`,
-        },
-        {
-          type: "subheading",
-          text: "Результаты",
-        },
-        {
-          type: "paragraph",
-          text: "Wav2Vec 2.0 продемонстрировал наименьший уровень ошибок на чистом звуке, тогда как Whisper показал наилучшую устойчивость к шумам и акцентам. VOSK оптимален для автономных и встраиваемых систем.",
+          text: "Все скрипты оценки, пайплайн предобработки аудио и сравнительные тесты размещены в открытом доступе на GitHub.",
         },
       ],
     },
