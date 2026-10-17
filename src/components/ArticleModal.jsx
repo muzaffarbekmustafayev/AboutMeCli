@@ -9,19 +9,25 @@ import {
   Share2,
   Sparkles,
   Tag,
-  User,
+  Users,
   X,
   ArrowRight,
-  Bookmark
+  FileDown,
+  Building2,
+  Award,
+  BookOpen,
+  Quote,
+  Github
 } from "lucide-react";
 import { useToast } from "../contexts/ToastContext";
 import { articles, getArticleCopy } from "../data/articlesData";
 
 const categoryThemeMap = {
+  digitization: "from-amber-600 to-orange-600 text-white border-amber-400/30",
+  geoai: "from-purple-600 to-blue-600 text-white border-purple-400/30",
+  inclusiveAi: "from-emerald-600 to-teal-600 text-white border-emerald-400/30",
+  speechAi: "from-cyan-600 to-blue-600 text-white border-cyan-400/30",
   ai: "from-purple-600 to-blue-600 text-white border-purple-400/30",
-  architecture: "from-amber-600 to-orange-600 text-white border-amber-400/30",
-  frontend: "from-emerald-600 to-teal-600 text-white border-emerald-400/30",
-  bestPractices: "from-blue-600 to-indigo-600 text-white border-blue-400/30",
 };
 
 const formatDate = (value, language) => {
@@ -152,6 +158,7 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
   const toast = useToast();
   const scrollRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [copiedCitationKey, setCopiedCitationKey] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -218,6 +225,18 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
     window.open(telegramUrl, "_blank", "noopener,noreferrer");
   };
 
+  const handleCopyCitation = async (format = "apa") => {
+    const citationText = article.citations?.[format] || article.citations?.apa || `${article.authors} (${article.date.split("-")[0]}). ${copy.title}. ${article.journal}. ${article.doiUrl}`;
+    try {
+      await navigator.clipboard.writeText(citationText);
+      setCopiedCitationKey(format);
+      toast.success(t("articles.citationCopied", { defaultValue: "Citation copied to clipboard!" }));
+      setTimeout(() => setCopiedCitationKey(null), 2500);
+    } catch {
+      toast.info("Failed to copy citation");
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-8"
@@ -263,7 +282,7 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
           {/* Header Media */}
           <div className="image-zoom-frame relative mb-8 h-64 w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-80 lg:h-96 dark:bg-slate-800 shadow-lg">
             <img src={article.image} alt={copy.title} className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
             
             <div className="absolute bottom-5 left-5 right-5 flex flex-wrap items-center justify-between gap-3">
               <span className={`inline-flex items-center gap-1.5 rounded-full border bg-gradient-to-r ${badgeTheme} px-4 py-1.5 text-xs font-semibold shadow-xl backdrop-blur-md`}>
@@ -296,10 +315,10 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
 
           {/* Article Header Info */}
           <header className="space-y-4">
-            <div className="flex flex-wrap items-center gap-5 text-xs font-semibold text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-                <User size={14} className="text-blue-500" />
-                {article.author}
+            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
+                <Users size={14} className="text-blue-500" />
+                {article.authors}
               </span>
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} className="text-blue-500" />
@@ -309,6 +328,12 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
                 <Clock size={14} className="text-amber-500" />
                 {copy.readTime}
               </span>
+              {article.grant && (
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300">
+                  <Award size={13} />
+                  <span>Grant: {article.grant}</span>
+                </span>
+              )}
             </div>
 
             <h2
@@ -318,7 +343,127 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
               {copy.title}
             </h2>
 
-            <p className="text-base font-medium leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+            {/* Authors with ORCID details */}
+            {article.authorsList && (
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {article.authorsList.map((author, aIdx) => (
+                  <span
+                    key={aIdx}
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white/90 px-3 py-1.5 text-xs font-medium text-slate-800 dark:border-white/10 dark:bg-slate-900/90 dark:text-slate-200"
+                  >
+                    <Users size={13} className="text-blue-500 shrink-0" />
+                    <span className="font-semibold">{author.name}</span>
+                    {author.role && (
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400">({author.role})</span>
+                    )}
+                    {author.orcid && (
+                      <a
+                        href={author.orcidUrl || `https://orcid.org/${author.orcid}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-50 dark:bg-emerald-950/50 dark:text-emerald-400 hover:underline border border-emerald-300/40"
+                        title={`ORCID: ${author.orcid}`}
+                      >
+                        <span className="font-extrabold">iD</span>
+                        <span>{author.orcid}</span>
+                      </a>
+                    )}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Affiliation & Journal Row */}
+            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4 dark:border-slate-800/80 dark:bg-slate-900/60 space-y-2 text-xs sm:text-sm">
+              <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                <Building2 size={15} className="shrink-0 text-blue-500" />
+                <span className="font-medium">
+                  {language === "uz" ? article.affiliation : article.affiliationEn || article.affiliation}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <BookOpen size={15} className="shrink-0 text-purple-500" />
+                <span>{article.journal}</span>
+              </div>
+              {article.grantTitle && (
+                <div className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+                  • {article.grantTitle}
+                </div>
+              )}
+            </div>
+
+            {/* Quick Action Buttons for Science Articles */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+              {article.pdfUrl && (
+                <a
+                  href={article.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-600/25 transition-all hover:from-blue-700 hover:to-indigo-700 active:scale-95"
+                >
+                  <FileDown size={15} />
+                  <span>
+                    {article.pdfUrl.includes(".docx") ? "Download Document (DOCX)" : t("articles.downloadPdf", { defaultValue: "Download PDF" })}
+                  </span>
+                </a>
+              )}
+
+              {article.githubUrl && (
+                <a
+                  href={article.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-900 hover:text-white dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
+                >
+                  <Github size={14} />
+                  <span>GitHub Repository</span>
+                </a>
+              )}
+
+              {article.doiUrl && (
+                <a
+                  href={article.doiUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                >
+                  <ExternalLink size={14} className="text-blue-500" />
+                  <span>DOI: {article.doi}</span>
+                </a>
+              )}
+
+              {article.articleUrl && (
+                <a
+                  href={article.articleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                >
+                  <ExternalLink size={14} className="text-emerald-500" />
+                  <span>{t("articles.officialPublication", { defaultValue: "Official Publication" })}</span>
+                </a>
+              )}
+
+              <button
+                type="button"
+                onClick={() => handleCopyCitation("apa")}
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+              >
+                {copiedCitationKey === "apa" ? (
+                  <>
+                    <Check size={14} className="text-emerald-500" />
+                    <span className="text-emerald-500 font-bold">{t("articles.copiedCode", { defaultValue: "Copied!" })}</span>
+                  </>
+                ) : (
+                  <>
+                    <Quote size={14} className="text-amber-500" />
+                    <span>{t("articles.copyCitation", { defaultValue: "Cite (APA)" })}</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            <p className="text-base font-medium leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg pt-2">
               {copy.description}
             </p>
 
@@ -341,6 +486,56 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
           <div className="space-y-6">
             {copy.content.map((block, idx) => renderContentBlock(block, idx, t))}
           </div>
+
+          {/* Scientific Citation Card */}
+          {article.citations && (
+            <div className="mt-10 rounded-2xl border border-blue-200/80 bg-blue-50/50 p-6 dark:border-blue-900/40 dark:bg-blue-950/20">
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <Quote size={18} className="text-blue-600 dark:text-blue-400" />
+                  <h4 className="font-display text-base font-bold text-slate-900 dark:text-slate-100">
+                    {t("articles.citationTitle", { defaultValue: "Iqtibos Keltirish Andozasi (Citation)" })}
+                  </h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyCitation("apa")}
+                    className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    {copiedCitationKey === "apa" ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
+                    <span>APA</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleCopyCitation("bibtex")}
+                    className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    {copiedCitationKey === "bibtex" ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
+                    <span>BibTeX</span>
+                  </button>
+                </div>
+              </div>
+              <p className="font-mono text-xs leading-relaxed text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-900/70 p-3.5 rounded-xl border border-blue-200/50 dark:border-blue-900/30">
+                {article.citations.apa}
+              </p>
+              
+              {/* ORCID Researcher Identifier Row */}
+              <div className="mt-3 pt-3 border-t border-blue-200/40 dark:border-blue-900/30 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+                <span>Muallif / Tadqiqotchi ORCID:</span>
+                <a
+                  href="https://orcid.org/0009-0000-8225-5370"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
+                >
+                  <span className="font-bold">iD</span>
+                  <span>0009-0000-8225-5370</span>
+                  <ExternalLink size={11} />
+                </a>
+              </div>
+            </div>
+          )}
 
           {/* Next Article Recommendation */}
           {nextArticle && onSelectArticle && (

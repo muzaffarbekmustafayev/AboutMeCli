@@ -586,9 +586,9 @@
     }
   },
   "articles": {
-    "pageTitle": "Maqolalar va Texnik Maqolalar",
-    "pageSubtitle": "Dasturlash, Sun'iy Intellekt, Moliya Tizimlari va Arxitektura bo'yicha shaxsiy tajriba hamda tahlillarim.",
-    "badge": "Maqolalar & Fikrlar",
+    "pageTitle": "Ilmiy Maqolalar va Tadqiqotlar",
+    "pageSubtitle": "GeoAI, inklyuziv turizm, sun'iy intellekt modellarini mintaqaviy ekotizimlarga integratsiyalash bo'yicha e'lon qilingan ilmiy maqola va tadqiqotlarim.",
+    "badge": "Ilmiy Maqolalar & Tadqiqotlar",
     "search": "Maqolalarni qidirish...",
     "allCategories": "Barchasi",
     "allTags": "Barcha teglar",
@@ -596,8 +596,8 @@
     "count": "ta maqola",
     "readArticle": "Maqolani o'qish",
     "noResults": "Hech qanday maqola topilmadi",
-    "latestArticles": "So'nggi Maqolalar",
-    "latestSubtitle": "Sun'iy intellekt, tizimlar arxitekturasi, frontend unumdorligi va ishonchli web injiniring bo'yicha tahlillar.",
+    "latestArticles": "So'nggi Ilmiy Maqolalar",
+    "latestSubtitle": "GeoAI, sun'iy intellekt, inklyuziv turizm va mintaqaviy ekotizimlar bo'yicha ilmiy nashrlar.",
     "viewAll": "Barcha maqolalarni ko'rish",
     "readTime": "{{count}} daqiqa o'qish",
     "copyCode": "Kodni nusxalash",
@@ -609,11 +609,24 @@
     "copyUnavailable": "Ushbu brauzerda nusxalash imkonsiz",
     "close": "Yopish",
     "openArticle": "Maqolani ochish",
+    "downloadPdf": "PDF yuklab olish",
+    "viewDoi": "DOI havolasi",
+    "officialPublication": "Rasmiy nashr",
+    "copyCitation": "Iqtibosdan nusxa olish",
+    "citationCopied": "Iqtibos andozasi nusxalandi!",
+    "citationTitle": "Iqtibos Keltirish Andozasi (Citation)",
+    "authors": "Mualliflar",
+    "affiliation": "Tashkilot",
+    "journal": "Jurnal",
+    "grant": "Davlat ilmiy granti",
+    "abstract": "Annotatsiya",
+    "keywords": "Kalit so'zlar",
     "categories": {
-      "ai": "AI & ML",
-      "architecture": "Arxitektura",
-      "frontend": "Frontend",
-      "bestPractices": "Eng Yaxshi Amaliyotlar"
+      "digitization": "Raqamlashtirish & Turizm",
+      "geoai": "GeoAI & Multi-Agent Tizimlar",
+      "inclusiveAi": "Inklyuziv SI & Marshrutlash",
+      "speechAi": "Nutq SI & Chuqur O'rganish",
+      "ai": "AI & ML"
     }
   },
   "github": {

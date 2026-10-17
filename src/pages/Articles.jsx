@@ -42,7 +42,10 @@ export default function Articles() {
         copy.title,
         copy.description,
         copy.category,
-        article.tags.join(" "),
+        article.authors || "",
+        article.journal || "",
+        article.doi || "",
+        (article.tags || []).join(" "),
       ]
         .join(" ")
         .toLowerCase();
@@ -91,9 +94,21 @@ export default function Articles() {
       <section className="section-shell min-h-screen px-4 pb-20 pt-28 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
         <div className="mx-auto w-full max-w-7xl">
           <header className="mb-12 max-w-3xl space-y-4 sm:mb-16">
-            <div className="hero-badge">
-              <Sparkles size={14} />
-              {t("articles.badge")}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="hero-badge">
+                <Sparkles size={14} />
+                {t("articles.badge")}
+              </div>
+              <a
+                href="https://orcid.org/0009-0000-8225-5370"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-bold text-emerald-700 transition-all hover:bg-emerald-500/20 active:scale-95 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-300"
+                title="Muzaffarbek Mustafayev ORCID Profile"
+              >
+                <span className="font-extrabold text-emerald-600 dark:text-emerald-400">iD</span>
+                <span>ORCID: 0009-0000-8225-5370</span>
+              </a>
             </div>
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl lg:text-6xl">
               {t("articles.pageTitle")}

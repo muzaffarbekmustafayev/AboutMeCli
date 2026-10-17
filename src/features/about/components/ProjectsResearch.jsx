@@ -9,14 +9,12 @@ const ProjectsResearch = () => {
   const projectsAndResearch = useMemo(() => [
     {
       title: lang === "ru" ? "Исследования ASR для узбекского языка (Speech-to-Text)" : lang === "en" ? "Uzbek ASR Research (Speech-to-Text)" : "O'zbek tili ASR tadqiqotlari (Speech-to-Text)",
-      tag: "Research & Publication",
+      tag: "Research & Development",
       desc: lang === "ru"
-        ? "Сравнительный анализ моделей Whisper, Wav2Vec2 и VOSK на базе открытого датасета Mozilla Common Voice. Публикация научных статей и датасетов на платформе Zenodo."
+        ? "Сравнительный анализ моделей Whisper, Wav2Vec2 и VOSK на базе открытого датасета Mozilla Common Voice для узбекского языка."
         : lang === "en"
-        ? "Comparative benchmark of Whisper, Wav2Vec2, and VOSK models for the Uzbek language using Mozilla Common Voice. Published research papers and open datasets on Zenodo."
-        : "Mozilla Common Voice ochiq ma'lumotlar to'plami asosida Whisper, Wav2Vec2 va VOSK modellarining solishtirma tahlili. Ilmiy maqolalar va ochiq ma'lumotlar to'plamini Zenodo platformasida nashr etish.",
-      doi: "10.5281/zenodo.21299321",
-      doiUrl: "https://doi.org/10.5281/zenodo.21299321",
+        ? "Comparative benchmark of Whisper, Wav2Vec2, and VOSK models for the Uzbek language using Mozilla Common Voice."
+        : "Mozilla Common Voice ochiq ma'lumotlar to'plami asosida Whisper, Wav2Vec2 va VOSK modellarining solishtirma tahlili.",
       icon: <BookOpen className="h-5 w-5 text-purple-500" />
     },
     {
@@ -31,12 +29,14 @@ const ProjectsResearch = () => {
     },
     {
       title: "Tourism for Everyone (Inklyuziv turizm platformasi)",
-      tag: "Social Impact & Web",
+      tag: "Social Impact & GeoAI",
       desc: lang === "ru"
-        ? "Веб-платформа для людей с ограниченными возможностями здоровья, предоставляющая удобную инклюзивную маршрутизацию и интерактивные карты доступных объектов."
+        ? "Веб-платформа для людей с ограниченными возможностями здоровья (tourism-for-everyone.uz), предоставляющая удобную инклюзивную маршрутизацию на базе GeoAI и интерактивные карты доступных объектов."
         : lang === "en"
-        ? "Interactive accessibility platform offering specialized routing and barrier-free interactive maps for travelers with disabilities."
-        : "Imkoniyati cheklangan shaxslar uchun qulay marshrutlash va interaktiv xaritalarni taqdim etuvchi veb-platforma.",
+        ? "Interactive accessibility platform (tourism-for-everyone.uz) offering GeoAI-powered inclusive routing and barrier-free interactive maps for travelers with disabilities."
+        : "Imkoniyati cheklangan shaxslar uchun qulay marshrutlash va interaktiv xaritalarni taqdim etuvchi GeoAI veb-platformasi (tourism-for-everyone.uz).",
+      doi: "10.5281/zenodo.21299321",
+      doiUrl: "https://doi.org/10.5281/zenodo.21299321",
       icon: <Globe2 className="h-5 w-5 text-emerald-500" />
     },
     {

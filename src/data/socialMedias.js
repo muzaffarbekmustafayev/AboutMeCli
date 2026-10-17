@@ -8,6 +8,10 @@ export const socialMedias = {
     path: "https://github.com/muzaffarbekmustafayev",
     label: "GitHub",
   },
+  orcid: {
+    path: "https://orcid.org/0009-0000-8225-5370",
+    label: "ORCID",
+  },
   linkedin: {
     path: "https://www.linkedin.com/in/muzaffarbek-mustafayev-121846278",
     label: "LinkedIn",

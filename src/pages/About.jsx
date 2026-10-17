@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { 
   Sparkles, 
   MapPin,
@@ -55,6 +55,17 @@ function About() {
               >
                 <Globe2 size={14} />
                 muzaffarbek.uz
+                <ExternalLink size={12} />
+              </a>
+              <a
+                href="https://orcid.org/0009-0000-8225-5370"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200/80 bg-emerald-50/80 px-3.5 py-1.5 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-100 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300"
+                title="Muzaffarbek Mustafayev ORCID Profile"
+              >
+                <span className="font-extrabold text-emerald-600 dark:text-emerald-400">iD</span>
+                <span>ORCID: 0009-0000-8225-5370</span>
                 <ExternalLink size={12} />
               </a>
             </div>
