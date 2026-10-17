@@ -159,6 +159,11 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
   const scrollRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copiedCitationKey, setCopiedCitationKey] = useState(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [article?.id]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -239,12 +244,6 @@ export default function ArticleModal({ article, onClose, onSelectArticle, t, lan
       toast.info("Failed to copy citation");
     }
   };
-
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setImageLoaded(false);
-  }, [article?.id]);
 
   return (
     <div
