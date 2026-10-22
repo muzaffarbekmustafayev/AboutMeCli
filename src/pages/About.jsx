@@ -1,9 +1,9 @@
 import React from "react";
 import { 
   Sparkles, 
-  MapPin,
-  Globe2,
-  ExternalLink
+  MapPin, 
+  Globe2, 
+  ExternalLink 
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SEO from "../components/SEO";
@@ -23,11 +23,11 @@ function About() {
         path="/about"
       />
 
-      <div className="section-shell min-h-screen px-4 pt-28 pb-20 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32 lg:px-8">
+      <div className="section-shell min-h-screen px-4 pt-24 pb-16 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32 lg:px-8">
         <div className="mx-auto w-full max-w-7xl">
           
           {/* Header Profile Hero */}
-          <header className="mb-16 space-y-6 max-w-4xl">
+          <header className="mb-10 sm:mb-16 space-y-4 sm:space-y-6 max-w-4xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-blue-700 dark:border-blue-400/20 dark:bg-blue-400/10 dark:text-blue-300">
               <Sparkles size={14} />
               {t("about.role", { defaultValue: "Senior Software Engineer · AI & Systems Researcher" })}
@@ -37,12 +37,12 @@ function About() {
               Muzaffarbek Mustafayev
             </h1>
 
-            <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300 sm:text-xl">
+            <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-xl">
               {t("about.intro")}
             </p>
 
             {/* Quick Meta Row */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2">
               <span className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200">
                 <MapPin size={14} className="text-blue-500" />
                 {t("about.location", { defaultValue: "Samarqand, O'zbekiston · Tomsk, Rossiya" })}
@@ -71,10 +71,10 @@ function About() {
             </div>
           </header>
 
-          <div className="grid gap-14 lg:grid-cols-12">
+          <div className="grid gap-10 lg:gap-14 lg:grid-cols-12">
             
             {/* Main Column (8 cols) */}
-            <div className="space-y-16 lg:col-span-8">
+            <div className="space-y-10 sm:space-y-16 lg:col-span-8">
               
               {/* Ta'lim (Education) Section - Chronological Timeline */}
               <EducationTimeline />

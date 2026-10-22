@@ -197,7 +197,7 @@ const Burger = ({ open, toggle, t }) => (
       ? t("ui.navigation.closeMenu", { defaultValue: "Close" })
       : t("ui.navigation.openMenu", { defaultValue: "Open" })}
     aria-expanded={open}
-    className="lg:hidden flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/5 hover:bg-slate-900/10 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 transition-all active:scale-95"
+    className="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900/5 hover:bg-slate-900/10 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 transition-all active:scale-95 touch-manipulation"
   >
     <div className="space-y-[5px]">
       <span className={`block h-px w-4 rounded-full bg-current origin-center transition-transform duration-300 ${open ? "translate-y-[7px] rotate-45" : ""}`} />

@@ -86,7 +86,7 @@ const Contact = () => {
         <div className="mx-auto w-full max-w-7xl">
           
           {/* Header */}
-          <header className="mb-16 space-y-4 text-center sm:text-left">
+          <header className="mb-10 sm:mb-16 space-y-4 text-center sm:text-left">
             <div className="hero-badge">
               <Sparkles size={14} />
               {t("contact.badge")}
@@ -99,7 +99,7 @@ const Contact = () => {
             </p>
           </header>
 
-          <div className="grid gap-16 lg:grid-cols-[1fr_420px] items-start">
+          <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_420px] items-start">
             
             {/* Form */}
             <div className="order-2 lg:order-1">
@@ -154,7 +154,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-slate-900 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-blue-600 disabled:opacity-50 dark:bg-white dark:text-slate-900 dark:hover:bg-blue-500 dark:hover:text-white"
+                  className="group relative flex w-full sm:w-auto items-center justify-center gap-4 overflow-hidden rounded-full bg-slate-900 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-blue-600 active:scale-95 disabled:opacity-50 dark:bg-white dark:text-slate-900 dark:hover:bg-blue-500 dark:hover:text-white"
                 >
                   {loading ? (
                     <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
@@ -182,7 +182,7 @@ const Contact = () => {
               {/* Socials Grid */}
               <div className="space-y-8">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t("contact.socialTitle", { defaultValue: "Social Connect" })}</h3>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 gap-3 sm:gap-6">
                   {socialLinks.map((social) => (
                     <a
                       key={social.key}

@@ -10,11 +10,12 @@ const ImageModal = ({ image, title, onClose }) => {
     };
 
     document.addEventListener("keydown", handleEscape);
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = originalOverflow;
     };
   }, [onClose]);
 
@@ -22,74 +23,88 @@ const ImageModal = ({ image, title, onClose }) => {
     const link = document.createElement("a");
     link.href = image;
     link.download = title || "certificate";
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/85 p-2 backdrop-blur-sm sm:p-6" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-0 sm:p-4 md:p-6 backdrop-blur-md"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title || "Certificate preview"}
+    >
       <div
-        className="mx-auto flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-200/20 bg-slate-900/85 shadow-2xl sm:rounded-3xl"
+        className="relative flex h-full w-full max-w-5xl flex-col overflow-hidden sm:h-auto sm:max-h-[92vh] sm:rounded-3xl border-0 sm:border border-slate-700/60 bg-slate-900 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-slate-700/70 px-4 py-3 sm:px-5">
-          <div className="min-w-0">
-            <p className="truncate font-display text-base font-semibold text-slate-100 sm:text-lg">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between gap-3 border-b border-slate-800 bg-slate-950/80 px-4 py-3 backdrop-blur-md sm:px-6">
+          <div className="min-w-0 flex-1">
+            <p className="truncate font-display text-sm sm:text-base font-bold text-slate-100">
               {title || "Certificate"}
             </p>
-            <p className="text-xs text-slate-400">Press ESC to close</p>
+            <p className="text-[11px] text-slate-400">
+              <span className="hidden sm:inline">Press ESC or tap outside to close</span>
+              <span className="sm:hidden">Tap outside or X to close</span>
+            </p>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-2">
             <a
               href={image}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
-              title="Open in new tab"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-200 transition hover:bg-slate-700 active:scale-95"
+              title="Open full resolution"
+              aria-label="Open full resolution"
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={18} />
             </a>
 
             <button
               type="button"
               onClick={handleDownload}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-200 transition hover:bg-slate-700 active:scale-95"
               title="Download image"
+              aria-label="Download image"
             >
-              <Download size={16} />
+              <Download size={18} />
             </button>
 
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 bg-slate-800 text-slate-200 transition hover:bg-slate-700"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-200 transition hover:bg-slate-700 active:scale-95"
               title="Close"
+              aria-label="Close"
             >
-              <X size={16} />
+              <X size={18} />
             </button>
           </div>
         </div>
 
-        <div className="flex-1 overflow-auto bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_62%)] p-3 sm:p-5">
-          <div className="mx-auto max-w-5xl rounded-2xl border border-slate-600/70 bg-slate-950/70 p-2 sm:p-3">
-            <div className="relative">
-              {imageLoading && (
-                <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-slate-900/65">
-                  <div className="h-10 w-10 animate-spin rounded-full border-2 border-blue-400 border-t-transparent" />
-                  <span className="sr-only">Loading image</span>
-                </div>
-              )}
+        {/* Image viewport */}
+        <div className="flex-1 overflow-auto bg-slate-950/60 p-2 sm:p-6 flex items-center justify-center">
+          <div className="relative max-h-full max-w-full">
+            {imageLoading && (
+              <div className="absolute inset-0 z-10 flex min-h-[200px] items-center justify-center rounded-2xl bg-slate-900/60">
+                <div className="h-10 w-10 animate-spin rounded-full border-2 border-blue-400 border-t-transparent" />
+                <span className="sr-only">Loading image</span>
+              </div>
+            )}
 
-              <img
-                src={image}
-                alt={title || "Certificate"}
-                onLoad={() => setImageLoading(false)}
-                onError={() => setImageLoading(false)}
-                className={`h-auto w-full rounded-xl object-contain transition-opacity duration-300 ${
-                  imageLoading ? "opacity-0" : "opacity-100"
-                }`}
-              />
-            </div>
+            <img
+              src={image}
+              alt={title || "Certificate"}
+              onLoad={() => setImageLoading(false)}
+              onError={() => setImageLoading(false)}
+              className={`max-h-[80vh] w-auto max-w-full rounded-xl sm:rounded-2xl object-contain shadow-2xl transition-opacity duration-300 ${
+                imageLoading ? "opacity-0" : "opacity-100"
+              }`}
+            />
           </div>
         </div>
       </div>

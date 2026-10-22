@@ -93,7 +93,7 @@ export default function Articles() {
 
       <section className="section-shell min-h-screen px-4 pb-20 pt-28 text-slate-700 dark:text-slate-300 sm:px-6 sm:pt-32">
         <div className="mx-auto w-full max-w-7xl">
-          <header className="mb-12 max-w-3xl space-y-4 sm:mb-16">
+          <header className="mb-10 max-w-3xl space-y-4 sm:mb-16">
             <div className="flex flex-wrap items-center gap-3">
               <div className="hero-badge">
                 <Sparkles size={14} />
@@ -129,7 +129,7 @@ export default function Articles() {
                 placeholder={t("articles.search")}
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                className="form-control w-full rounded-2xl py-3 pl-12 pr-6 text-sm"
+                className="form-control w-full rounded-2xl py-3 pl-12 pr-6 text-base sm:text-sm"
               />
             </div>
 
@@ -141,7 +141,7 @@ export default function Articles() {
               <select
                 value={selectedCategory}
                 onChange={(event) => setSelectedCategory(event.target.value)}
-                className="form-control w-full cursor-pointer appearance-none rounded-2xl py-3 pl-12 pr-10 text-sm lg:min-w-[210px]"
+                className="form-control w-full cursor-pointer appearance-none rounded-2xl py-3 pl-12 pr-10 text-base sm:text-sm lg:min-w-[210px]"
                 aria-label={t("articles.categoryFilter", { defaultValue: "Filter by category" })}
               >
                 {allCategories.map((categoryKey) => (
@@ -160,7 +160,7 @@ export default function Articles() {
               <select
                 value={selectedTag}
                 onChange={(event) => setSelectedTag(event.target.value)}
-                className="form-control w-full cursor-pointer appearance-none rounded-2xl py-3 pl-12 pr-10 text-sm lg:min-w-[190px]"
+                className="form-control w-full cursor-pointer appearance-none rounded-2xl py-3 pl-12 pr-10 text-base sm:text-sm lg:min-w-[190px]"
                 aria-label={t("articles.tagFilter", { defaultValue: "Filter by tag" })}
               >
                 {allTags.map((tag) => (

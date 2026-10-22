@@ -27,6 +27,7 @@ import { projects } from "../data/projects";
 import { SKILLS } from "../data/skillsData";
 import { useTheme } from "../contexts/ThemeContext";
 import GitHubActivity from "../components/GitHubActivity";
+import TerminalSimulation from "../features/home/components/TerminalSimulation";
 
 const socialLinks = [
   {
@@ -55,10 +56,6 @@ const socialLinks = [
   },
 ];
 
-
-
-import TerminalSimulation from "../features/home/components/TerminalSimulation";
-
 function Home() {
   const { t, i18n } = useTranslation();
   const { isDark } = useTheme();
@@ -66,8 +63,6 @@ function Home() {
 
   const expertCount = useMemo(() => SKILLS.filter((s) => s.level === "expert").length, []);
   const advancedCount = useMemo(() => SKILLS.filter((s) => s.level === "advanced").length, []);
-
-
 
   const quickStats = useMemo(
     () => [
@@ -86,8 +81,6 @@ function Home() {
     ],
     [t, expertCount, advancedCount]
   );
-
-
 
   return (
     <>
@@ -118,11 +111,15 @@ function Home() {
               {t("home.description")}
             </p>
 
-            <div className="mt-6 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
+            {/* Quick Metrics Bar - 3 Columns on mobile, flex on desktop */}
+            <div className="mt-6 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
               {quickStats.map((item) => (
-                <div key={item.label} className="metric-pill">
-                  <span className="metric-pill__value">{item.value}</span>
-                  <span className="metric-pill__label">{item.label}</span>
+                <div
+                  key={item.label}
+                  className="metric-pill flex-col sm:flex-row items-center text-center sm:text-left justify-center gap-1 sm:gap-3 px-2 py-2.5 sm:px-4 min-w-0"
+                >
+                  <span className="metric-pill__value text-base sm:text-lg font-bold">{item.value}</span>
+                  <span className="metric-pill__label text-[10px] sm:text-xs leading-tight line-clamp-2">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -132,7 +129,7 @@ function Home() {
 
               <Link
                 to="/contact"
-                className="control-surface inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 dark:text-slate-100"
+                className="control-surface inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 active:scale-95 dark:text-slate-100"
               >
                 {t("home.contactCta", { defaultValue: "Start a conversation" })}
                 <ArrowRight size={16} />
@@ -146,7 +143,7 @@ function Home() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="glass-card social-link-card group flex items-center justify-between rounded-2xl px-4 py-3"
+                  className="glass-card social-link-card group flex items-center justify-between rounded-2xl px-4 py-3 min-h-[48px] active:scale-[0.99]"
                   aria-label={link.label}
                 >
                   <span className="flex items-center gap-3 text-sm font-semibold text-slate-700 dark:text-slate-100">
@@ -163,7 +160,6 @@ function Home() {
               ))}
             </div>
 
-
           </div>
 
           {/* Right Profile & Tech Column */}
@@ -173,7 +169,7 @@ function Home() {
                 <img
                   src={MyImage}
                   alt="Muzaffarbek Mustafayev"
-                  className="h-[22rem] w-full object-cover sm:h-[28rem] select-none"
+                  className="h-[18rem] w-full object-cover sm:h-[26rem] lg:h-[28rem] select-none"
                   width={480}
                   height={448}
                   fetchPriority="high"

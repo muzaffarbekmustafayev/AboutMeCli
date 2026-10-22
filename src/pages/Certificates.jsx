@@ -174,7 +174,7 @@ function Certificates() {
         <div className="mx-auto w-full max-w-7xl">
           
           {/* Header */}
-          <header className="mb-16 space-y-4 text-center sm:text-left">
+          <header className="mb-10 sm:mb-16 space-y-4 text-center sm:text-left">
             <div className="hero-badge">
               <Sparkles size={14} />
               {t("certificates.eyebrow")}
@@ -187,7 +187,7 @@ function Certificates() {
             </p>
 
             {/* Stats */}
-            <div className="mt-12 grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-start sm:gap-6">
+            <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-start sm:gap-6">
               <StatCard label="Total" value={certificates.length} />
               <StatCard label="Issuers" value={totalIssuers} />
               <StatCard label="Latest" value={latestYear} />
@@ -261,9 +261,9 @@ function Certificates() {
 }
 
 const StatCard = ({ label, value }) => (
-  <div className="glass-card rounded-2xl px-8 py-4 dark:border-slate-800 shadow-sm min-w-[140px]">
-    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{label}</p>
-    <p className="text-3xl font-extrabold text-slate-900 dark:text-white">{value}</p>
+  <div className="glass-card rounded-2xl px-3 py-3 sm:px-8 sm:py-4 dark:border-slate-800 shadow-sm min-w-0 sm:min-w-[140px] text-center sm:text-left">
+    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1 truncate">{label}</p>
+    <p className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{value}</p>
   </div>
 );
 

@@ -88,10 +88,10 @@ const EducationTimeline = () => {
         </div>
       </div>
 
-      <div className="relative border-l-2 border-blue-500/20 dark:border-blue-500/30 ml-4 sm:ml-5 pl-6 sm:pl-8 space-y-8">
+      <div className="relative border-l-2 border-blue-500/20 dark:border-blue-500/30 ml-3.5 sm:ml-5 pl-5 sm:pl-8 space-y-6 sm:space-y-8">
         {education.map((edu, idx) => (
           <div key={idx} className="relative group">
-            <div className="absolute -left-[35px] sm:-left-[43px] top-1.5 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border-2 border-white bg-blue-600 text-white shadow-md shadow-blue-600/30 dark:border-slate-950 dark:bg-blue-500">
+            <div className="absolute -left-[33px] sm:-left-[43px] top-1.5 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border-2 border-white bg-blue-600 text-white shadow-md shadow-blue-600/30 dark:border-slate-950 dark:bg-blue-500">
               {edu.icon}
             </div>
 

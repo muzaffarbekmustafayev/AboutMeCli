@@ -82,15 +82,27 @@ const PortfolioProjectCard = ({ project, onClick, t }) => {
             <ExternalLink size={13} className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
           </button>
 
-          <div className="flex gap-4 text-slate-400 sm:gap-5">
+          <div className="flex gap-2 text-slate-400 sm:gap-3">
             {project.links?.github && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:text-slate-900 active:scale-95 dark:hover:text-white">
-                <Github size={20} className="sm:size-[22px]" />
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all hover:-translate-y-0.5 hover:text-slate-900 active:scale-95 dark:hover:text-white"
+                aria-label="GitHub repository"
+              >
+                <Github size={17} />
               </a>
             )}
             {project.links?.live && (
-              <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:text-blue-600 active:scale-95">
-                <ExternalLink size={20} className="sm:size-[22px]" />
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50 transition-all hover:-translate-y-0.5 active:scale-95"
+                aria-label="Live demo preview"
+              >
+                <ExternalLink size={17} />
               </a>
             )}
           </div>

@@ -93,7 +93,7 @@ const ProjectsResearch = () => {
             </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.desc}</p>
             {item.doi && (
-              <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/[0.06] flex items-center justify-between text-xs">
+              <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/[0.06] flex flex-wrap items-center justify-between gap-2 text-xs">
                 <span className="font-mono text-slate-500 dark:text-slate-400">DOI: {item.doi}</span>
                 <a href={item.doiUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 transition-colors">
                   <span>{t("about.projects.zenodo")}</span>

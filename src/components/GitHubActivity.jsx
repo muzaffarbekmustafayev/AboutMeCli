@@ -385,7 +385,7 @@ export default function GitHubActivity() {
         </div>
 
         {/* 1. Contribution Graph Heatmap Container */}
-        <div className="relative rounded-3xl border border-slate-200/80 bg-white/90 p-5 sm:p-7 shadow-xl backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-950/80 mb-12">
+        <div className="relative rounded-3xl border border-slate-200/80 bg-white/90 p-3.5 sm:p-7 shadow-xl backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-950/80 mb-8 sm:mb-12">
           
           {/* Header Row with Total and Year Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-200/60 dark:border-white/[0.08]">
@@ -426,7 +426,7 @@ export default function GitHubActivity() {
           </div>
 
           {/* Heatmap Grid Overflow Scroll */}
-          <div className="overflow-x-auto pb-4 scrollbar-thin">
+          <div className="overflow-x-auto pb-4 scrollbar-thin touch-pan-x">
             <div className="min-w-[760px]">
               
               {/* If data is ready, render the interactive calendar */}

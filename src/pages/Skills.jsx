@@ -98,24 +98,24 @@ function Skills() {
           </header>
 
           {/* Stats Bar */}
-          <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
-            <div className="glass-card card-glow-hover rounded-2xl p-5 shadow-sm">
+          <div className="mb-10 sm:mb-14 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-6">
+            <div className="glass-card card-glow-hover rounded-2xl p-4 sm:p-5 shadow-sm">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.total")}</p>
-              <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">{stats.total}</p>
+              <p className="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{stats.total}</p>
             </div>
-            <div className="glass-card card-glow-hover rounded-2xl p-5 shadow-sm">
+            <div className="glass-card card-glow-hover rounded-2xl p-4 sm:p-5 shadow-sm">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.expert")}</p>
-              <p className="mt-2 text-3xl font-extrabold text-blue-600 dark:text-blue-400">{stats.expert}</p>
+              <p className="mt-2 text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">{stats.expert}</p>
             </div>
-            <div className="glass-card card-glow-hover rounded-2xl p-5 shadow-sm">
+            <div className="glass-card card-glow-hover rounded-2xl p-4 sm:p-5 shadow-sm">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.advanced")}</p>
-              <p className="mt-2 text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">{stats.advanced}</p>
+              <p className="mt-2 text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">{stats.advanced}</p>
             </div>
-            <div className="glass-card card-glow-hover rounded-2xl p-5 shadow-sm">
+            <div className="glass-card card-glow-hover rounded-2xl p-4 sm:p-5 shadow-sm">
               <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{t("skills.stats.status")}</p>
               <div className="mt-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
-                <span className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">{t("skills.stats.active")}</span>
+                <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">{t("skills.stats.active")}</span>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ function Skills() {
           {/* Controls & Filter Bar */}
           <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             {/* Category Tabs */}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               {Object.entries(categoryConfig).map(([key, config]) => {
                 const count = key === "all" ? SKILLS.length : SKILLS.filter(s => s.category === key).length;
                 const isActive = activeCategory === key;
@@ -163,7 +163,7 @@ function Skills() {
                   placeholder={t("skills.search")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="form-control w-full rounded-2xl py-2.5 pl-11 pr-4 text-xs"
+                  className="form-control w-full rounded-2xl py-2.5 pl-11 pr-4 text-base sm:text-xs"
                 />
               </div>
 
