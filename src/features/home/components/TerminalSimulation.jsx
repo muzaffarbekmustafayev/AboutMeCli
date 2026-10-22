@@ -25,7 +25,7 @@ function useTerminalTyping(lines) {
     if (charIdx < currentText.length) {
       const t = setTimeout(() => {
         setCharIdx((c) => c + 1);
-      }, 22);
+      }, 36);
       return () => clearTimeout(t);
     }
 

@@ -1,17 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
-const FOLLOW_EASING = 0.2;
+const FOLLOW_EASING = 0.22;
 
-function MouseTrail() {
-  const [enabled, setEnabled] = useState(false);
-  const [follower, setFollower] = useState({ x: -100, y: -100, ready: false });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
+export default function MouseTrail() {
+  const cursorRef = useRef(null);
   const targetRef = useRef({ x: -100, y: -100 });
-  const followerRef = useRef({ x: -100, y: -100 });
-  const readyRef = useRef(false);
-  const rafRef = useRef(0);
+  const currentRef = useRef({ x: -100, y: -100 });
+  const isMovingRef = useRef(false);
+  const isVisibleRef = useRef(false);
+  const rafIdRef = useRef(0);
+  const lastTargetElemRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -20,88 +18,112 @@ function MouseTrail() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (coarsePointer || reduceMotion) return undefined;
 
-    setEnabled(true);
+    const cursor = cursorRef.current;
+    if (!cursor) return undefined;
+
+    const updatePosition = () => {
+      const dx = targetRef.current.x - currentRef.current.x;
+      const dy = targetRef.current.y - currentRef.current.y;
+
+      currentRef.current.x += dx * FOLLOW_EASING;
+      currentRef.current.y += dy * FOLLOW_EASING;
+
+      // Apply transform directly to GPU compositor layer (0 reflow, 0 React re-renders)
+      cursor.style.transform = `translate3d(${currentRef.current.x}px, ${currentRef.current.y}px, 0) translate(-50%, -50%)`;
+
+      // If close enough to target, stop animating to save 100% CPU when stationary
+      if (Math.abs(dx) < 0.15 && Math.abs(dy) < 0.15) {
+        currentRef.current.x = targetRef.current.x;
+        currentRef.current.y = targetRef.current.y;
+        cursor.style.transform = `translate3d(${currentRef.current.x}px, ${currentRef.current.y}px, 0) translate(-50%, -50%)`;
+        isMovingRef.current = false;
+        return;
+      }
+
+      rafIdRef.current = window.requestAnimationFrame(updatePosition);
+    };
+
+    const startAnimation = () => {
+      if (!isMovingRef.current) {
+        isMovingRef.current = true;
+        rafIdRef.current = window.requestAnimationFrame(updatePosition);
+      }
+    };
 
     const onMouseMove = (event) => {
-      // Offset slightly to the bottom-right so it sits neatly beside the standard mouse arrow
-      targetRef.current = { x: event.clientX + 14, y: event.clientY + 14 };
+      // Offset slightly to the bottom-right so it sits beside the standard cursor
+      targetRef.current.x = event.clientX + 14;
+      targetRef.current.y = event.clientY + 14;
 
-      const target = event.target;
-      if (
-        target &&
-        target.closest("a, button, input, select, textarea, [role='button'], .interactive-card, .cursor-pointer, .clickable")
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        cursor.style.opacity = "1";
       }
+
+      // Fast hover check without querying DOM on every single pixel if target hasn't changed
+      const target = event.target;
+      if (target !== lastTargetElemRef.current) {
+        lastTargetElemRef.current = target;
+        const isClickable =
+          target &&
+          target.closest(
+            "a, button, input, select, textarea, [role='button'], .interactive-card, .cursor-pointer, .clickable"
+          );
+
+        if (isClickable) {
+          cursor.classList.add("cursor-hovered");
+        } else {
+          cursor.classList.remove("cursor-hovered");
+        }
+      }
+
+      startAnimation();
     };
 
-    const onMouseDown = () => setIsClicked(true);
-    const onMouseUp = () => setIsClicked(false);
+    const onMouseDown = () => {
+      cursor.classList.add("cursor-clicked");
+    };
+
+    const onMouseUp = () => {
+      cursor.classList.remove("cursor-clicked");
+    };
 
     const onMouseLeave = () => {
-      readyRef.current = false;
-      setFollower((prev) => ({ ...prev, ready: false }));
-      setIsHovered(false);
-      setIsClicked(false);
-    };
-
-    const tick = () => {
-      const dx = targetRef.current.x - followerRef.current.x;
-      const dy = targetRef.current.y - followerRef.current.y;
-
-      followerRef.current.x += dx * FOLLOW_EASING;
-      followerRef.current.y += dy * FOLLOW_EASING;
-
-      if (!readyRef.current && (targetRef.current.x > 0 || targetRef.current.y > 0)) {
-        readyRef.current = true;
-        setFollower({ x: followerRef.current.x, y: followerRef.current.y, ready: true });
-      } else if (readyRef.current) {
-        setFollower((prev) => ({ ...prev, x: followerRef.current.x, y: followerRef.current.y }));
-      }
-
-      rafRef.current = window.requestAnimationFrame(tick);
+      isVisibleRef.current = false;
+      cursor.style.opacity = "0";
+      cursor.classList.remove("cursor-hovered", "cursor-clicked");
     };
 
     window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mouseup", onMouseUp);
-    document.addEventListener("mouseleave", onMouseLeave);
-    rafRef.current = window.requestAnimationFrame(tick);
+    window.addEventListener("mousedown", onMouseDown, { passive: true });
+    window.addEventListener("mouseup", onMouseUp, { passive: true });
+    document.addEventListener("mouseleave", onMouseLeave, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);
       document.removeEventListener("mouseleave", onMouseLeave);
-      window.cancelAnimationFrame(rafRef.current);
+      window.cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
 
-  if (!enabled) return null;
-
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden" aria-hidden="true">
-      {follower.ready && (
-        <div
-          className={`absolute flex items-center justify-center rounded-lg font-mono font-black select-none will-change-transform ${
-            isHovered
-              ? "h-8 w-8 scale-110 border-2 border-sky-400 bg-sky-500/30 text-sky-200 shadow-[0_0_20px_rgba(56,189,248,0.8)] backdrop-blur-md dark:border-sky-300 dark:bg-sky-400/35 dark:text-white"
-              : "h-6 w-6 scale-100 border border-blue-600/80 bg-white/95 text-blue-700 shadow-[0_2px_12px_rgba(37,99,235,0.35)] backdrop-blur-sm dark:border-sky-400/80 dark:bg-slate-900/90 dark:text-sky-300 dark:shadow-[0_0_12px_rgba(56,189,248,0.5)]"
-          } ${isClicked ? "scale-75" : ""}`}
-          style={{
-            left: follower.x,
-            top: follower.y,
-            transform: "translate(-50%, -50%)",
-            transition: "width 160ms ease, height 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease",
-          }}
-        >
-          <span className="text-[9px] font-black tracking-tight leading-none pointer-events-none">&lt;/&gt;</span>
-        </div>
-      )}
+    <div
+      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
+      aria-hidden="true"
+    >
+      <div
+        ref={cursorRef}
+        className="mouse-trail-follower absolute top-0 left-0 flex items-center justify-center rounded-lg font-mono font-black select-none opacity-0"
+        style={{
+          willChange: "transform",
+        }}
+      >
+        <span className="text-[9px] font-black tracking-tight leading-none pointer-events-none">
+          &lt;/&gt;
+        </span>
+      </div>
     </div>
   );
 }
-
-export default MouseTrail;

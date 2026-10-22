@@ -11,31 +11,34 @@ export default function TechBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
-    let animationFrameId;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    let animationFrameId = null;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Setup 3D Depth Matrix Rain Columns (Foreground, Midground, Background)
-    const columnSpacing = 28; // Spacing between vertical rain drops
+    // Optimized column count for smooth 60fps performance across desktop and mobile
+    const isMobile = width < 768;
+    const columnSpacing = isMobile ? 48 : 36;
     const columnCount = Math.floor(width / columnSpacing);
 
     const streams = Array.from({ length: columnCount }, (_, i) => {
-      const depth = Math.random(); // 0 (far/slow) to 1 (near/fast)
-      const streamLength = Math.floor(10 + Math.random() * 16);
+      const depth = Math.random();
+      const streamLength = Math.floor(8 + Math.random() * 12);
 
       return {
-        x: i * columnSpacing + (Math.random() * 8 - 4),
-        y: Math.random() * (height + 300) - 100, // Pre-distributed across entire screen
-        speed: depth > 0.6 ? 2.2 + Math.random() * 1.5 : 1.2 + Math.random() * 1.0,
+        x: i * columnSpacing + (Math.random() * 6 - 3),
+        y: Math.random() * (height + 200) - 100,
+        speed: depth > 0.6 ? 2.0 + Math.random() * 1.2 : 1.1 + Math.random() * 0.8,
         length: streamLength,
         chars: Array.from({ length: streamLength }, () =>
           GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
         ),
         depth,
-        fontSize: depth > 0.6 ? 13 : depth > 0.3 ? 11 : 9,
+        fontSize: depth > 0.6 ? 12 : depth > 0.3 ? 10 : 9,
         baseOpacity: depth > 0.6 ? 0.75 : depth > 0.3 ? 0.45 : 0.25,
-        mutationRate: 0.08 + Math.random() * 0.12, // Frequency of 0/1 character flipping
+        mutationRate: 0.06 + Math.random() * 0.08,
       };
     });
 
@@ -46,8 +49,8 @@ export default function TechBackground() {
 
     window.addEventListener("resize", handleResize, { passive: true });
 
-    let lastTime = 0;
-    const interval = 1000 / 30; // 30 FPS cap for high performance
+    let lastTime = performance.now();
+    const interval = 1000 / 30; // Solid 30 FPS target for background ambient canvas
 
     const render = (currentTime) => {
       animationFrameId = requestAnimationFrame(render);
@@ -57,33 +60,32 @@ export default function TechBackground() {
       lastTime = currentTime - (delta % interval);
 
       ctx.clearRect(0, 0, width, height);
+      ctx.textAlign = "center";
 
-      streams.forEach((stream) => {
-        ctx.font = `${stream.fontSize}px "Space Grotesk", "Fira Code", monospace`;
-        ctx.textAlign = "center";
+      for (let s = 0; s < streams.length; s++) {
+        const stream = streams[s];
+        const normalFont = `${stream.fontSize}px "Space Grotesk", "Fira Code", monospace`;
+        const boldFont = `bold ${stream.fontSize + 1}px "Space Grotesk", "Fira Code", monospace`;
 
-        stream.chars.forEach((char, idx) => {
-          // Dynamic Live Character Mutation (flickering 0/1)
+        for (let idx = 0; idx < stream.chars.length; idx++) {
           if (Math.random() < stream.mutationRate) {
             stream.chars[idx] = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
           }
 
           const charY = stream.y - idx * (stream.fontSize + 4);
 
-          if (charY > -30 && charY < height + 30) {
+          if (charY > -25 && charY < height + 25) {
             const isHead = idx === 0;
             const isNearHead = idx === 1 || idx === 2;
             const tailFactor = Math.max(0, 1 - idx / stream.length);
 
             if (isHead) {
-              // Glowing Bright Leading Digit
-              const headAlpha = isDark ? 0.95 : 0.85;
-              ctx.fillStyle = isDark ? `rgba(224, 242, 254, ${headAlpha})` : `rgba(30, 64, 175, ${headAlpha})`;
-              ctx.shadowBlur = 6;
-              ctx.shadowColor = isDark ? "#38bdf8" : "#2563eb";
+              // High-contrast crisp leading glyph without expensive GPU shadowBlur
+              ctx.font = boldFont;
+              ctx.fillStyle = isDark ? "#ffffff" : "#1e40af";
             } else {
-              ctx.shadowBlur = 0;
-              const alpha = stream.baseOpacity * tailFactor * (isDark ? 0.8 : 0.65);
+              ctx.font = normalFont;
+              const alpha = stream.baseOpacity * tailFactor * (isDark ? 0.75 : 0.6);
 
               ctx.fillStyle = isDark
                 ? isNearHead
@@ -98,27 +100,43 @@ export default function TechBackground() {
 
             ctx.fillText(stream.chars[idx], stream.x, charY);
           }
-        });
+        }
 
-        // Advance stream downwards
         stream.y += stream.speed;
 
-        // Loop seamlessly once the tail leaves the screen
         const streamTotalHeight = stream.length * (stream.fontSize + 4);
         if (stream.y - streamTotalHeight > height) {
-          stream.y = -Math.random() * 80;
-          stream.speed = stream.depth > 0.6 ? 2.2 + Math.random() * 1.5 : 1.2 + Math.random() * 1.0;
+          stream.y = -Math.random() * 60;
+          stream.speed = stream.depth > 0.6 ? 2.0 + Math.random() * 1.2 : 1.1 + Math.random() * 0.8;
         }
-      });
-
-      ctx.shadowBlur = 0; // Reset shadow
+      }
     };
 
     animationFrameId = requestAnimationFrame(render);
 
+    // Pause canvas execution when browser tab is inactive to free 100% CPU/GPU
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+      } else {
+        lastTime = performance.now();
+        if (!animationFrameId) {
+          animationFrameId = requestAnimationFrame(render);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [isDark]);
 
@@ -127,10 +145,34 @@ export default function TechBackground() {
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
       aria-hidden="true"
     >
-      {/* Ambient Floating Glow Orbs */}
-      <div className="animate-float-orb-1 absolute -top-[15%] left-[10%] h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-600/15 to-indigo-600/10 blur-[120px] dark:from-blue-500/20 dark:to-indigo-600/15" />
-      <div className="animate-float-orb-2 absolute top-[40%] -right-[10%] h-[600px] w-[600px] rounded-full bg-gradient-to-tl from-sky-500/10 to-blue-500/10 blur-[140px] dark:from-sky-400/15 dark:to-indigo-500/10" />
-      <div className="animate-float-orb-1 absolute -bottom-[10%] left-[20%] h-[450px] w-[450px] rounded-full bg-gradient-to-tr from-indigo-500/10 to-purple-500/5 blur-[130px] dark:from-indigo-600/15 dark:to-purple-600/10" />
+      {/* Ambient Floating Glow Orbs - GPU-accelerated soft radial gradients (no heavy blur filter) */}
+      <div
+        className="animate-float-orb-1 absolute -top-[10%] left-[10%] h-[480px] w-[480px] rounded-full pointer-events-none"
+        style={{
+          background: isDark
+            ? "radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%)"
+            : "radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 70%)",
+          willChange: "transform",
+        }}
+      />
+      <div
+        className="animate-float-orb-2 absolute top-[35%] -right-[5%] h-[520px] w-[520px] rounded-full pointer-events-none"
+        style={{
+          background: isDark
+            ? "radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(59, 130, 246, 0.07) 50%, transparent 70%)"
+            : "radial-gradient(circle, rgba(14, 165, 233, 0.11) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%)",
+          willChange: "transform",
+        }}
+      />
+      <div
+        className="animate-float-orb-1 absolute -bottom-[10%] left-[25%] h-[440px] w-[440px] rounded-full pointer-events-none"
+        style={{
+          background: isDark
+            ? "radial-gradient(circle, rgba(99, 102, 241, 0.14) 0%, rgba(139, 92, 246, 0.06) 50%, transparent 70%)"
+            : "radial-gradient(circle, rgba(79, 70, 229, 0.09) 0%, rgba(124, 58, 237, 0.04) 50%, transparent 70%)",
+          willChange: "transform",
+        }}
+      />
 
       {/* Developer Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_40%,#000_75%,transparent_100%)] dark:bg-[linear-gradient(to_right,rgba(96,165,250,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(96,165,250,0.035)_1px,transparent_1px)]" />

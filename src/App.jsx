@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import BackToTop from './components/BackToTop';
 import MouseTrail from './components/MouseTrail';
 import AppRoutes from './routes/AppRoutes';
+import TechBackground from './components/TechBackground';
 import { useTranslation } from 'react-i18next';
 
 const RouteTransitionLoader = () => {
@@ -23,14 +24,14 @@ const RouteTransitionLoader = () => {
     }
 
     setIsVisible(true);
-    setProgress(30);
+    setProgress(35);
 
-    const stepTimer = window.setTimeout(() => setProgress(75), 100);
-    const completeTimer = window.setTimeout(() => setProgress(100), 280);
+    const stepTimer = window.setTimeout(() => setProgress(80), 80);
+    const completeTimer = window.setTimeout(() => setProgress(100), 220);
     const hideTimer = window.setTimeout(() => {
       setIsVisible(false);
       setProgress(0);
-    }, 480);
+    }, 400);
 
     return () => {
       window.clearTimeout(stepTimer);
@@ -47,18 +48,18 @@ const RouteTransitionLoader = () => {
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 shadow-[0_0_12px_rgba(59,130,246,0.9)] transition-all duration-200 ease-out"
+        className="h-full w-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 shadow-[0_0_12px_rgba(59,130,246,0.9)]"
         style={{
-          width: `${progress}%`,
+          transformOrigin: 'left',
+          transform: `scaleX(${progress / 100})`,
           opacity: progress === 100 ? 0 : 1,
-          transitionProperty: 'width, opacity',
+          transition: 'transform 200ms ease-out, opacity 180ms ease-out',
+          willChange: 'transform, opacity',
         }}
       />
     </div>
   );
 };
-
-import TechBackground from './components/TechBackground';
 
 const RouterShell = () => {
   return (
